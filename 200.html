@@ -41,7 +41,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
 
   
-  <link rel="preconnect" href="https://www.diskcleaner.pro" />
+ 
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -64,24 +64,42 @@
   }
   </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5829VKKXH4');
-</script>
 
 
-  <script type="module" crossorigin src="/assets/index-lLV03fer.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-J3G0N-jW.css">
+
+  <script type="module" crossorigin src="/assets/index-qNMJH9cN.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-D8XctpUU.css">
 </head>
   <body>
     <div id="root"></div>
+    <script>
+  // Delay GA until idle to protect LCP/TBT
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  const loadGA = () => {
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+    document.head.appendChild(s);
+
+    gtag("js", new Date());
+    gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+  };
+
+  // best effort: idle time, fallback after 3s, or first interaction
+  if ("requestIdleCallback" in window) requestIdleCallback(loadGA, { timeout: 3000 });
+  else setTimeout(loadGA, 3000);
+
+  ["scroll", "mousemove", "touchstart", "keydown"].forEach(evt =>
+    window.addEventListener(evt, loadGA, { once: true, passive: true })
+  );
+</script>
   </body>
 </html>
