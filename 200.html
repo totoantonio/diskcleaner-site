@@ -29,25 +29,24 @@
       property="og:description"
       content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent."
     />
-    <meta property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
-    <meta property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
+    <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
+    <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta id="og-image-alt" property="og:image:alt" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta id="og-title" property="og:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta id="og-desc" property="og:description" content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent." />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta id="tw-title" name="twitter:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
     <meta
+      id="tw-desc"
       name="twitter:description"
       content="A private, local-first macOS cleaner that shows every file before it moves. Everything goes to Trash."
     />
-    <meta name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
-
-    <!-- Optional: set these if you have a real handle -->
-    <!-- <meta name="twitter:site" content="@diskcleaner" /> -->
-    <!-- <meta name="twitter:creator" content="@diskcleaner" /> -->
+    <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
 
     <!-- Structured data (Google) -->
     <script type="application/ld+json">
@@ -69,6 +68,34 @@
           "url": "https://www.diskcleaner.pro/"
         }
       }
+    </script>
+
+    <!-- Blog OG swap — runs before paint -->
+    <script>
+      (function () {
+        var isBlog = window.location.pathname.indexOf("/blog") === 0;
+        if (!isBlog) return;
+
+        var BLOG_IMAGE = "https://www.diskcleaner.pro/DiskCleaner_blog.webp";
+        var BLOG_TITLE = "DiskCleaner Blog — Clean Mac. Clear Mind.";
+        var BLOG_DESC  = "Guides, tips, and insights about Mac storage, cache cleaning, and getting the most out of your Mac.";
+
+        function setContent(id, val) {
+          var el = document.getElementById(id);
+          if (el) el.setAttribute("content", val);
+        }
+
+        setContent("og-image",        BLOG_IMAGE);
+        setContent("og-image-secure", BLOG_IMAGE);
+        setContent("og-image-alt",    BLOG_TITLE);
+        setContent("og-title",        BLOG_TITLE);
+        setContent("og-desc",         BLOG_DESC);
+        setContent("tw-title",        BLOG_TITLE);
+        setContent("tw-desc",         BLOG_DESC);
+        setContent("tw-image",        BLOG_IMAGE);
+
+        document.title = BLOG_TITLE;
+      })();
     </script>
     <script type="module" crossorigin src="/assets/index-D9Wca-e9.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
@@ -98,7 +125,6 @@
         gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
       };
 
-      // best effort: idle time, fallback after 3s, or first interaction
       if ("requestIdleCallback" in window) requestIdleCallback(loadGA, { timeout: 3000 });
       else setTimeout(loadGA, 3000);
 
