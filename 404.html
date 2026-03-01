@@ -1,11 +1,110 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <script>
-      // Redirect all 404s to index.html for React Router
-      window.location.replace("/");
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0071e3" />
+
+    <link rel="icon" type="image/png" href="./macOS 16pt 2x.png" />
+    <link rel="canonical" href="https://www.diskcleaner.pro/" />
+
+    <!-- Primary SEO -->
+    <title>DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner</title>
+    <meta
+      name="description"
+      content="DiskCleaner is a focused macOS cleaner that scans cache and clutter safely, shows every file before it moves, and sends everything to Trash. Private, fast, and beautifully simple."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="DiskCleaner" />
+
+    <!-- Open Graph (Facebook, iMessage, Slack, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DiskCleaner" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://www.diskcleaner.pro/" />
+    <meta property="og:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta
+      property="og:description"
+      content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent."
+    />
+    <meta property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
+    <meta property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta
+      name="twitter:description"
+      content="A private, local-first macOS cleaner that shows every file before it moves. Everything goes to Trash."
+    />
+    <meta name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
+
+    <!-- Optional: set these if you have a real handle -->
+    <!-- <meta name="twitter:site" content="@diskcleaner" /> -->
+    <!-- <meta name="twitter:creator" content="@diskcleaner" /> -->
+
+    <!-- Structured data (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DiskCleaner",
+        "operatingSystem": "macOS",
+        "applicationCategory": "UtilityApplication",
+        "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
+        "url": "https://www.diskcleaner.pro/",
+        "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+        "softwareVersion": "1.0",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://www.diskcleaner.pro/"
+        }
+      }
     </script>
+    <script type="module" crossorigin src="/assets/index-smkE6HWI.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B6b1B8yb.css">
   </head>
-  <body></body>
+
+  <body>
+    <div id="root"></div>
+
+    <script>
+      // Delay GA until idle to protect LCP/TBT
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      const loadGA = () => {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+        document.head.appendChild(s);
+
+        gtag("js", new Date());
+        gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+      };
+
+      // best effort: idle time, fallback after 3s, or first interaction
+      if ("requestIdleCallback" in window) requestIdleCallback(loadGA, { timeout: 3000 });
+      else setTimeout(loadGA, 3000);
+
+      ["scroll", "mousemove", "touchstart", "keydown"].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true, passive: true })
+      );
+    </script>
+  </body>
 </html>
