@@ -67,25 +67,6 @@ This repository contains the **official DiskCleaner website** (marketing site + 
 - TypeScript
 - Vite
 
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-## Deploy (GitHub Pages)
-
-```bash
-npm run deploy
-```
-
 ## Contact
 
 - Support: support@diskcleaner.pro
