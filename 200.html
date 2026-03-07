@@ -9,6 +9,12 @@
 
     <link rel="icon" type="image/png" href="./macOS 16pt 2x.png" />
     <link rel="canonical" href="https://www.diskcleaner.pro/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap"
+    />
 
     <!-- Primary SEO -->
     <title>DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner</title>
@@ -19,33 +25,24 @@
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="application-name" content="DiskCleaner" />
 
-    <!-- Open Graph (Facebook, iMessage, Slack, etc.) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DiskCleaner" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://www.diskcleaner.pro/" />
-    <meta property="og:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
-    <meta
-      property="og:description"
-      content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent."
-    />
+    <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/" />
+    <meta id="og-title" property="og:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
+    <meta id="og-desc" property="og:description" content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent." />
     <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
     <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta id="og-image-alt" property="og:image:alt" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
-    <meta id="og-title" property="og:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
-    <meta id="og-desc" property="og:description" content="See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent." />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta id="tw-title" name="twitter:title" content="DiskCleaner for Mac – Secure. Fast. Minimal." />
-    <meta
-      id="tw-desc"
-      name="twitter:description"
-      content="A private, local-first macOS cleaner that shows every file before it moves. Everything goes to Trash."
-    />
+    <meta id="tw-desc" name="twitter:description" content="A private, local-first macOS cleaner that shows every file before it moves. Everything goes to Trash." />
     <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_Social.webp" />
 
     <!-- Structured data (Google) -->
@@ -70,36 +67,62 @@
       }
     </script>
 
-    <!-- Blog OG swap — runs before paint -->
+    <!-- Blog / Article OG swap — runs before paint -->
     <script>
       (function () {
-        var isBlog = window.location.pathname.indexOf("/blog") === 0;
-        if (!isBlog) return;
+        var path = window.location.pathname;
+        if (path.indexOf("/blog") !== 0) return;
 
-        var BLOG_IMAGE = "https://www.diskcleaner.pro/DiskCleaner_blog.webp";
-        var BLOG_TITLE = "DiskCleaner Blog — Clean Mac. Clear Mind.";
-        var BLOG_DESC  = "Guides, tips, and insights about Mac storage, cache cleaning, and getting the most out of your Mac.";
+        var BLOG_IMG   = "https://www.diskcleaner.pro/DiskCleaner_blog.webp";
+        var BASE_URL   = "https://www.diskcleaner.pro";
 
-        function setContent(id, val) {
+        var articles = {
+          "how-diskcleaner-works": {
+            title: "How DiskCleaner Works — And Why It Never Touches Files Without Asking",
+            desc:  "A plain-English look at how DiskCleaner scans your Mac, what it finds, and why nothing is ever deleted without your approval."
+          },
+          "what-is-system-data-mac": {
+            title: "What Is System Data on Mac and Why Is It Eating All Your Storage?",
+            desc:  "System Data can quietly consume 50–100+ GB on a Mac. Here's what's actually inside it and how to get that space back safely."
+          },
+          "why-mac-keeps-running-out-of-storage": {
+            title: "Why Your Mac Keeps Running Out of Storage (And What's Actually Eating It)",
+            desc:  "If your Mac keeps showing low storage warnings, the problem usually isn't what you think. Here's what's actually consuming your disk space."
+          },
+          "become-diskcleaner-affiliate": {
+            title: "Become a DiskCleaner Affiliate — Earn From Home Helping Mac Users",
+            desc:  "Learn how to earn from home by promoting DiskCleaner. A simple affiliate opportunity for bloggers, creators, and remote workers."
+          }
+        };
+
+        function set(id, val) {
           var el = document.getElementById(id);
           if (el) el.setAttribute("content", val);
         }
 
-        setContent("og-image",        BLOG_IMAGE);
-        setContent("og-image-secure", BLOG_IMAGE);
-        setContent("og-image-alt",    BLOG_TITLE);
-        setContent("og-title",        BLOG_TITLE);
-        setContent("og-desc",         BLOG_DESC);
-        setContent("tw-title",        BLOG_TITLE);
-        setContent("tw-desc",         BLOG_DESC);
-        setContent("tw-image",        BLOG_IMAGE);
+        var slug = path.replace(/^\/blog\/?/, "").replace(/\/$/, "");
+        var meta = articles[slug];
 
-        document.title = BLOG_TITLE;
+        var title = meta ? meta.title : "DiskCleaner Blog — Clean Mac. Clear Mind.";
+        var desc  = meta ? meta.desc  : "Guides, tips, and insights about Mac storage, cache cleaning, and getting the most out of your Mac.";
+        var url   = BASE_URL + path;
+
+        set("og-title",        title);
+        set("og-desc",         desc);
+        set("og-image",        BLOG_IMG);
+        set("og-image-secure", BLOG_IMG);
+        set("og-image-alt",    title);
+        set("og-url",          url);
+        set("tw-title",        title);
+        set("tw-desc",         desc);
+        set("tw-image",        BLOG_IMG);
+
+        document.title = title;
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-CqdlZ2xI.js"></script>
+    <script type="module" crossorigin src="/assets/index-ByV_wpNz.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DLogDZsv.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-DFCcE0QS.css">
   </head>
 
   <body>
