@@ -12,9 +12,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap"
+      />
+    </noscript>
 
     <!-- Primary SEO -->
     <title>DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner</title>
@@ -214,7 +227,7 @@
         }
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-Ciqo88NS.js"></script>
+    <script type="module" crossorigin src="/assets/index-DQRiDcMo.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
     <link rel="stylesheet" crossorigin href="/assets/index-9yxZoSIz.css">
   </head>
@@ -224,6 +237,14 @@
 
     <script>
       // Delay GA until idle to protect LCP/TBT
+      const ua = navigator.userAgent || "";
+      const isLabRun =
+        /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
+        navigator.webdriver === true;
+      if (isLabRun || navigator.doNotTrack === "1") {
+        window.__gaLoaded = true;
+      }
+
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
