@@ -147,7 +147,7 @@
             "url": url
           });
         }
-      })();</script><script type="module" crossorigin="" src="/assets/index-DQRiDcMo.js"></script><link href="/assets/react-DS5UYnvf.js" rel="modulepreload" crossorigin=""><link href="/assets/index-9yxZoSIz.css" rel="stylesheet" crossorigin=""><link href="https://fonts.googleapis.com" rel="preconnect"></head><body><div id="root"></div><script>// Delay GA until idle to protect LCP/TBT
+      })();</script><script type="module" crossorigin="" src="/assets/index-DHHtn9oY.js"></script><link href="/assets/react-DS5UYnvf.js" rel="modulepreload" crossorigin=""><link href="/assets/index-9yxZoSIz.css" rel="stylesheet" crossorigin=""><link href="https://fonts.googleapis.com" rel="preconnect"></head><body><div id="root"></div><script>// Delay GA until idle to protect LCP/TBT
       const ua = navigator.userAgent || "";
       const isLabRun =
         /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
@@ -174,9 +174,6 @@
         gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
       };
 
-      if ("requestIdleCallback" in window) requestIdleCallback(loadGA, { timeout: 3000 });
-      else setTimeout(loadGA, 3000);
-
-      ["scroll", "mousemove", "touchstart", "keydown"].forEach(evt =>
+      ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
         window.addEventListener(evt, loadGA, { once: true, passive: true })
       );</script></body></html>
