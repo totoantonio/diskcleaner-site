@@ -43,4 +43,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.diskcleaner.pro/blog/why-trash-first-cleanup-matters</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
