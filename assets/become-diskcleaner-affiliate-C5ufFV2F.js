@@ -71,9 +71,20 @@ A better formula:
 
 That approach builds long-term traffic and repeat conversions.
 
-## Next Step
+## Ready to Join?
 
-Affiliate details are rolling out. If you're interested, start publishing useful Mac storage content now so your library is ready when the program opens.
+The affiliate program is live. Sign up through LemonSqueezy — it takes about two minutes and you'll get your tracking link immediately.
+
+<div class="blog-cta-block">
+  <p class="blog-cta-block-title">Become a DiskCleaner Affiliate</p>
+  <p class="blog-cta-block-sub">Earn commissions on every sale. No approval wait. No minimum traffic requirement.</p>
+  <a href="https://cleandiskmac.lemonsqueezy.com/affiliates" target="_blank" rel="noopener noreferrer" class="blog-cta-btn">
+    Apply Now →
+  </a>
+  <p class="blog-cta-block-note">Powered by LemonSqueezy · Instant dashboard access</p>
+</div>
+
+If you want to get ahead before promoting, start publishing useful Mac storage content now — the articles that answer "why is my Mac storage full" tend to rank well and convert naturally.
 
 <div class="blog-references">
 <p class="blog-references-label">References</p>
