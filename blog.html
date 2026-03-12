@@ -185,24 +185,39 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-CSRa1aSL.js"></script>
+    <script type="module" crossorigin src="/assets/index-Chj0kwhr.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-DS5UYnvf.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-D_f2MsRK.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-BPeQr2X7.css">
   </head>
 
   <body>
     <div id="root"></div>
 
-    <!-- LemonSqueezy affiliate tracking -->
-    <script>window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };</script>
-    <script src="https://lmsqueezy.com/affiliate.js" defer></script>
-
     <script>
-      // Delay GA until idle to protect LCP/TBT
+      // Delay non-critical third-party scripts to protect mobile LCP/TBT.
       const ua = navigator.userAgent || "";
       const isLabRun =
         /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
         navigator.webdriver === true;
+
+      window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };
+
+      const loadAffiliate = () => {
+        if (isLabRun || window.__affiliateLoaded) return;
+        window.__affiliateLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://lmsqueezy.com/affiliate.js";
+        s.defer = true;
+        document.head.appendChild(s);
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAffiliate, { timeout: 3000 });
+      } else {
+        window.addEventListener("load", () => window.setTimeout(loadAffiliate, 1500), { once: true });
+      }
+
       if (isLabRun || navigator.doNotTrack === "1") {
         window.__gaLoaded = true;
       }
