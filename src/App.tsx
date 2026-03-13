@@ -8,12 +8,14 @@ const Article = lazy(() => import("./pages/Article"))
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"))
 const TermsOfService = lazy(() => import("./pages/TermsOfService"))
 const Help = lazy(() => import("./pages/Help"))
+const Home2 = lazy(() => import("./pages/Home2"))
 
 export default function App() {
   return (
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home2" element={<Home2 />} />
         <Route element={<Layout />}>
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Article />} />
