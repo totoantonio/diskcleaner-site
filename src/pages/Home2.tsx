@@ -51,8 +51,22 @@ const css = `
     padding: 0 24px;
     z-index: 1000;
     box-sizing: border-box;
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
+
+  /* Light nav — over white/light sections */
+  .h2-nav[data-theme="light"] {
+    background: rgba(251,251,253,0.8);
+    border-bottom-color: rgba(0,0,0,0.06);
+  }
+  .h2-nav[data-theme="light"] .h2-nav-disk    { color: #1d1d1f; }
+  .h2-nav[data-theme="light"] .h2-nav-cleaner { color: #0071e3; }
+  .h2-nav[data-theme="light"] .h2-nav-links a { color: rgba(0,0,0,0.6); }
+  .h2-nav[data-theme="light"] .h2-nav-links a:hover { color: #000; }
+
   .h2-nav-logo { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; text-decoration: none; }
+  .h2-nav-disk    { color: #fff; transition: color 0.4s ease; }
+  .h2-nav-cleaner { color: #47a9ff; transition: color 0.4s ease; }
   .h2-nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
   .h2-nav-links a { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.15s; }
   .h2-nav-links a:hover { color: #fff; }
@@ -184,7 +198,26 @@ export default function Home2() {
     )
     if (statBar) statObs.observe(statBar)
 
-    return () => { revealObs.disconnect(); statObs.disconnect() }
+    // Adaptive nav theme — light over white sections, dark over black sections
+    const nav = document.getElementById("h2-nav")
+    const updateNavTheme = () => {
+      if (!nav) return
+      const sections = document.querySelectorAll<HTMLElement>("[data-nav-theme]")
+      let theme = "dark"
+      sections.forEach(s => {
+        const top = s.getBoundingClientRect().top
+        if (top <= 48) theme = s.dataset.navTheme ?? "dark"
+      })
+      nav.dataset.theme = theme
+    }
+    updateNavTheme()
+    window.addEventListener("scroll", updateNavTheme, { passive: true })
+
+    return () => {
+      revealObs.disconnect()
+      statObs.disconnect()
+      window.removeEventListener("scroll", updateNavTheme)
+    }
   }, [])
 
   return (
@@ -194,10 +227,10 @@ export default function Home2() {
       {/* ════════════════════════════════
           NAV
           ════════════════════════════════ */}
-      <nav className="h2-nav">
+      <nav id="h2-nav" className="h2-nav" data-theme="dark">
         <a href="#" className="h2-nav-logo">
-          <span style={{ color: "#fff" }}>Disk</span>
-          <span style={{ color: "#47a9ff" }}>Cleaner</span>
+          <span className="h2-nav-disk">Disk</span>
+          <span className="h2-nav-cleaner">Cleaner</span>
         </a>
         <ul className="h2-nav-links">
           <li><a href="#features">Features</a></li>
@@ -213,7 +246,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           HERO
           ════════════════════════════════ */}
-      <section className="h2-hero">
+      <section className="h2-hero" data-nav-theme="dark">
         <p className="h2-anim h2-delay-1" style={{ fontSize: 12, textTransform: "uppercase", color: "#47a9ff", letterSpacing: 2, fontWeight: 600, margin: "0 0 20px" }}>
           For Mac
         </p>
@@ -273,7 +306,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           STAT BAR
           ════════════════════════════════ */}
-      <section className="h2-stat-bar" style={{ background: "#111", padding: "64px 24px" }}>
+      <section className="h2-stat-bar" data-nav-theme="dark" style={{ background: "#111", padding: "64px 24px" }}>
         <div className="h2-stat-inner" style={{ display: "flex", justifyContent: "center", alignItems: "center", maxWidth: 900, margin: "0 auto" }}>
 
           <div className="h2-reveal" style={{ flex: 1, textAlign: "center", padding: "0 40px" }}>
@@ -301,7 +334,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           FEATURE STORYTELLING
           ════════════════════════════════ */}
-      <section id="features" style={{ background: "#f5f5f7" }}>
+      <section id="features" data-nav-theme="light" style={{ background: "#f5f5f7" }}>
 
         {/* A — Smart Scan: visual LEFT, text RIGHT */}
         <div className="h2-feature h2-ring-wrap h2-reveal">
@@ -392,7 +425,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           SOCIAL PROOF
           ════════════════════════════════ */}
-      <section className="h2-reveal" style={{ background: "#000", padding: "80px 24px", textAlign: "center" }}>
+      <section className="h2-reveal" data-nav-theme="dark" style={{ background: "#000", padding: "80px 24px", textAlign: "center" }}>
         <h2 className="h2-social-h" style={{ fontSize: 48, fontWeight: 700, color: "#fff", letterSpacing: "-0.022em", lineHeight: 1.1, margin: "0 0 16px" }}>
           Trusted by Mac users<br />who hate wasted space.
         </h2>
@@ -404,7 +437,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           PRICING
           ════════════════════════════════ */}
-      <section id="pricing" style={{ background: "#f5f5f7", padding: "100px 24px" }}>
+      <section id="pricing" data-nav-theme="light" style={{ background: "#f5f5f7", padding: "100px 24px" }}>
         <div className="h2-reveal" style={{ textAlign: "center", marginBottom: 64 }}>
           <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 12px" }}>Pricing</p>
           <h2 className="h2-pricing-h" style={{ fontSize: 48, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 12px" }}>
@@ -460,7 +493,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           FINAL CTA
           ════════════════════════════════ */}
-      <section id="download" className="h2-reveal" style={{ background: "#000", minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 24px", boxSizing: "border-box" }}>
+      <section id="download" className="h2-reveal" data-nav-theme="dark" style={{ background: "#000", minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 24px", boxSizing: "border-box" }}>
         <div>
           <p style={{ fontSize: 12, textTransform: "uppercase", color: "#47a9ff", letterSpacing: 2, fontWeight: 600, margin: "0 0 16px" }}>Free Download</p>
           <h2 className="h2-final-h" style={{ fontSize: 64, fontWeight: 700, color: "#fff", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 auto", maxWidth: 700 }}>
@@ -482,7 +515,7 @@ export default function Home2() {
       {/* ════════════════════════════════
           FOOTER
           ════════════════════════════════ */}
-      <footer className="h2-footer" style={{ background: "#111", padding: "60px 24px 40px" }}>
+      <footer className="h2-footer" data-nav-theme="dark" style={{ background: "#111", padding: "60px 24px 40px" }}>
         <div className="h2-footer-cols" style={{ display: "flex", gap: 60, maxWidth: 1200, margin: "0 auto", flexWrap: "wrap" }}>
 
           {/* Brand */}
