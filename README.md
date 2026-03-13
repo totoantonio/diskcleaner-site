@@ -67,6 +67,25 @@ This repository contains the **official DiskCleaner website** (marketing site + 
 - TypeScript
 - Vite
 
+## Waitlist Setup (Notify Me Button)
+
+The launch waitlist modal reads this environment variable:
+
+- `VITE_WAITLIST_FORM_ACTION`
+
+Supported values:
+
+- Mailchimp embedded form action URL (recommended for this static site)
+- Any JSON webhook endpoint that accepts `{ name, email }`
+
+Example `.env`:
+
+```bash
+VITE_WAITLIST_FORM_ACTION="https://YOUR_PREFIX.list-manage.com/subscribe/post?u=XXX&id=YYY"
+```
+
+If this variable is missing, the modal shows a setup message instead of submitting.
+
 ## Contact
 
 - Support: support@diskcleaner.pro
