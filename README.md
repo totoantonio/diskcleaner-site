@@ -23,13 +23,7 @@ It helps recover storage from caches, logs, temporary files, browser data, and a
 
 ## Screenshots
 
-### Main Scan View
-
-<img src="src/assets/DiskCleaner.webp" width="50%" alt="DiskCleaner main scan view" />
-
-### App Uninstaller
-
-<img src="src/assets/DiskCleaner_Uninstaller.webp" width="50%" alt="DiskCleaner app uninstaller" />
+<img src="src/assets/DiskCleaner.webp" width="49%" alt="DiskCleaner main scan view" /> <img src="src/assets/DiskCleaner_Uninstaller.webp" width="49%" alt="DiskCleaner app uninstaller" />
 
 Direct assets:
 
