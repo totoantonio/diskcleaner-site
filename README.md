@@ -25,20 +25,15 @@ It helps recover storage from caches, logs, temporary files, browser data, and a
 
 ### Main Scan View
 
-![DiskCleaner main scan view](src/assets/DiskCleaner.webp)
-
-### Zero-Decision Cleaning
-
-![DiskCleaner zero-decision cleaning](src/assets/DiskCleaner_ZeroDecision.webp)
+<img src="src/assets/DiskCleaner.webp" width="50%" alt="DiskCleaner main scan view" />
 
 ### App Uninstaller
 
-![DiskCleaner app uninstaller](src/assets/DiskCleaner_Uninstaller.webp)
+<img src="src/assets/DiskCleaner_Uninstaller.webp" width="50%" alt="DiskCleaner app uninstaller" />
 
 Direct assets:
 
 - `src/assets/DiskCleaner.webp`
-- `src/assets/DiskCleaner_ZeroDecision.webp`
 - `src/assets/DiskCleaner_Uninstaller.webp`
 
 ## Product Principles
