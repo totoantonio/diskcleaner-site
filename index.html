@@ -5,11 +5,19 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="theme-color" content="#0071e3" />
+    <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" />
 
     <link rel="icon" type="image/png" href="./macos-icon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/macos-icon.png">
     <link id="canonical-link" rel="canonical" href="https://www.diskcleaner.pro/" />
+
+    <!-- Hero LCP image preload — stable public path, no hash -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/DiskCleaner.webp"
+      imagesrcset="/DiskCleaner-464.webp 464w, /DiskCleaner-640.webp 640w, /DiskCleaner.webp 1376w"
+      imagesizes="(max-width: 1024px) 92vw, 50vw"
+    />
 
     <!-- Primary SEO -->
     <title>DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner</title>
@@ -53,7 +61,11 @@
             "@type": "Organization",
             "name": "DiskCleaner",
             "url": "https://www.diskcleaner.pro/",
-            "logo": "https://www.diskcleaner.pro/macos-icon.png"
+            "logo": "https://www.diskcleaner.pro/macos-icon.png",
+            "sameAs": [
+              "https://x.com/diskcleanerpro",
+              "https://www.threads.net/@diskcleanerpro"
+            ]
           },
           {
             "@type": "WebSite",
@@ -164,7 +176,7 @@
             "name": "Do I need an account or subscription for DiskCleaner?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No account and no subscription. $9.99 one-time purchase covers you for up to 3 Macs and includes every future update."
+              "text": "No account and no subscription. $9.99 one-time purchase covers you for up to 2 Macs and includes every future update."
             }
           },
           {

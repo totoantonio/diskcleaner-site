@@ -57,7 +57,7 @@ This is the main differentiator: where CleanMyMac cleans first and shows you a n
 
 **What it does well:**
 - Full scan-review-clean workflow — nothing moves until you say so
-- $9.99 one-time covers up to 3 Macs, all future updates
+- $9.99 one-time covers up to 2 Macs, all future updates
 - 100% local — no network calls, no account, no data collection
 - Finds Xcode DerivedData, Simulators, CocoaPods, npm — developers typically recover the most
 - Includes an App Uninstaller that finds leftovers across 9 Library locations

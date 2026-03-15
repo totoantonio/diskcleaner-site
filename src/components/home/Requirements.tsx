@@ -50,7 +50,7 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
                   "~5 MB install size",
                   "Apple-notarized — passes Gatekeeper",
                   "Direct download · diskcleaner.pro",
-                  "License covers up to 3 devices",
+                  "License covers up to 2 devices",
                 ].map(i => <li key={i}>{i}</li>)}
               </ul>
             </div>

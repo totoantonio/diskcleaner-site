@@ -1,13 +1,10 @@
 import { Suspense, lazy, useEffect, useState } from "react"
 import { Modal, SupportContent, ChangelogContent, WaitlistContent } from "../components/SiteModal"
 import { modalTitle, type ModalKey } from "../components/modalConfig"
-import appImage from "../assets/DiskCleaner.webp"
-import appImage2 from "../assets/DiskCleaner_ZeroDecision.webp"
+const appImage = "/DiskCleaner.webp"
+const appImage_464 = "/DiskCleaner-464.webp"
+const appImage_640 = "/DiskCleaner-640.webp"
 import appImage3 from "../assets/DiskCleaner_Uninstaller.webp"
-import appImage_464 from "../assets/DiskCleaner-464.webp"
-import appImage_640 from "../assets/DiskCleaner-640.webp"
-import appImage2_464 from "../assets/DiskCleaner_ZeroDecision-464.webp"
-import appImage2_640 from "../assets/DiskCleaner_ZeroDecision-640.webp"
 import appImage3_464 from "../assets/DiskCleaner_Uninstaller-464.webp"
 import appImage3_640 from "../assets/DiskCleaner_Uninstaller-640.webp"
 import menubarImage from "../assets/DiskCleaner_MenuBar.webp"
@@ -27,8 +24,271 @@ function trackCTA(label: string, isLead = false) {
 }
 
 const CompareTable = lazy(() => import("../components/home/CompareTable"))
-const Requirements = lazy(() => import("../components/home/Requirements"))
 const CommunityWall = lazy(() => import("../components/home/CommunityWall"))
+
+// ─── Highlights Carousel ──────────────────────────────────────────────────────
+
+const MACOS_CHIP_SVG = `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <g>
+    <rect x="0" y="0" width="480" height="700" fill="#FFFFFF"/>
+    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
+    <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
+    <circle cx="66" cy="28" r="6" fill="#28C840"/>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">macOS &amp; Chip Compatibility</text>
+
+    <text x="28" y="86" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">macOS COMPATIBILITY</text>
+    <text x="28" y="122" font-size="14" fill="#1D1D1F">macOS 26 Tahoe</text>
+    <circle cx="452" cy="117" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 117l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="164" font-size="14" fill="#1D1D1F">macOS 15 Sequoia</text>
+    <circle cx="452" cy="159" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 159l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="206" font-size="14" fill="#1D1D1F">macOS 14 Sonoma</text>
+    <circle cx="452" cy="201" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 201l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="248" font-size="14" fill="#1D1D1F">macOS 13 Ventura</text>
+    <circle cx="452" cy="243" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 243l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="290" font-size="14" fill="#AEAEB2">Monterey 12 and earlier</text>
+    <circle cx="452" cy="285" r="9" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M448 281l8 8M456 281l-8 8" stroke="#C7C7CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="326" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">CHIP — UNIVERSAL BINARY</text>
+    <text x="28" y="362" font-size="14" fill="#1D1D1F">Apple M4 (ARM 64-bit)</text>
+    <circle cx="452" cy="357" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 357l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="402" font-size="14" fill="#1D1D1F">Apple M3 (ARM 64-bit)</text>
+    <circle cx="452" cy="397" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 397l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="442" font-size="14" fill="#1D1D1F">Apple M2 (ARM 64-bit)</text>
+    <circle cx="452" cy="437" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 437l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="482" font-size="14" fill="#1D1D1F">Apple M1 (ARM 64-bit)</text>
+    <circle cx="452" cy="477" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 477l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="522" font-size="14" fill="#1D1D1F">Intel x86 64-bit</text>
+    <circle cx="452" cy="517" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 517l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="558" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">DISTRIBUTION</text>
+    <text x="28" y="594" font-size="14" fill="#1D1D1F">~5 MB install size</text>
+    <circle cx="452" cy="589" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 589l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="634" font-size="14" fill="#1D1D1F">Apple-notarized — passes Gatekeeper</text>
+    <circle cx="452" cy="629" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 629l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="674" font-size="14" fill="#1D1D1F">License covers up to 2 devices</text>
+    <circle cx="452" cy="669" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 669l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>`
+
+const SCAN_PERF_SVG = `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <g>
+    <rect x="0" y="0" width="480" height="700" fill="#FFFFFF"/>
+    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
+    <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
+    <circle cx="66" cy="28" r="6" fill="#28C840"/>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">Scan Performance</text>
+
+    <text x="28" y="88" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">SCAN TIMES</text>
+
+    <text x="28" y="122" font-size="14" fill="#1D1D1F">Quick Scan — all 7 categories, depth 3</text>
+    <text x="452" y="122" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
+    <rect x="28" y="134" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="134" width="403" height="8" rx="4" fill="#0071E3"/>
+
+    <text x="28" y="188" font-size="14" fill="#1D1D1F">Deep Scan — small DerivedData</text>
+    <text x="452" y="188" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">10–20s</text>
+    <rect x="28" y="200" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="200" width="318" height="8" rx="4" fill="#0071E3"/>
+
+    <text x="28" y="254" font-size="14" fill="#1D1D1F">Deep Scan — large DerivedData (~20 GB)</text>
+    <text x="452" y="254" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">20–45s</text>
+    <rect x="28" y="266" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="266" width="204" height="8" rx="4" fill="#0071E3"/>
+
+    <text x="28" y="320" font-size="14" fill="#1D1D1F">Deep Scan — very large caches (50 GB+)</text>
+    <text x="452" y="320" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">45–90s</text>
+    <rect x="28" y="332" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="332" width="93" height="8" rx="4" fill="#0071E3"/>
+
+    <text x="28" y="378" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">BUILT WITH</text>
+
+    <text x="28" y="416" font-size="14" fill="#1D1D1F">SwiftUI + Swift 6 — full concurrency</text>
+    <circle cx="452" cy="411" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 411l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="462" font-size="14" fill="#1D1D1F">AppKit — menu bar, NSWorkspace</text>
+    <circle cx="452" cy="457" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 457l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="508" font-size="14" fill="#1D1D1F">StoreKit 2 — license management</text>
+    <circle cx="452" cy="503" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 503l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="554" font-size="14" fill="#1D1D1F">FileManager.trashItem() — never removeItem()</text>
+    <circle cx="452" cy="549" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 549l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>`
+
+const PRIVACY_SVG = `<svg width="100%" viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <g>
+    <rect x="0" y="0" width="480" height="512" fill="#FFFFFF"/>
+    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
+    <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
+    <circle cx="66" cy="28" r="6" fill="#28C840"/>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">Privacy, by Design</text>
+
+    <text x="28" y="88" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">PRIVACY GUARANTEES</text>
+
+    <text x="28" y="124" font-size="13.5" fill="#1D1D1F">Zero network activity during scanning or cleaning</text>
+    <circle cx="452" cy="119" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 119l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="172" font-size="13.5" fill="#1D1D1F">No analytics, no telemetry, no crash reporting</text>
+    <circle cx="452" cy="167" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 167l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="220" font-size="13.5" fill="#1D1D1F">No account required — ever</text>
+    <circle cx="452" cy="215" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 215l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="268" font-size="13.5" fill="#1D1D1F">License activation is the only outbound network call</text>
+    <circle cx="452" cy="263" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 263l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="316" font-size="13.5" fill="#1D1D1F">No background processes when the app is closed</text>
+    <circle cx="452" cy="311" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 311l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="364" font-size="13.5" fill="#1D1D1F">Requires Full Disk Access — explicitly granted by you</text>
+    <circle cx="452" cy="359" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 359l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" y="412" font-size="13.5" fill="#1D1D1F">Reads file names and sizes only — never file contents</text>
+    <circle cx="452" cy="407" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 407l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="28" font-size="13.5" fill="#1D1D1F"><tspan x="28" y="460">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="20">system files never touched</tspan></text>
+    <circle cx="452" cy="462" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 462l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+</svg>`
+
+const HIGHLIGHT_SLIDES = [
+  {
+    eyebrow: "Technical Specs",
+    title: "macOS & Chip\nCompatibility.",
+    body: "Requires macOS 13 Ventura or later. Fully tested through macOS 26 Tahoe. Universal binary runs natively on every Mac made since 2010.",
+    svgHtml: MACOS_CHIP_SVG,
+    accent: "#eef5ff",
+  },
+  {
+    eyebrow: "Performance",
+    title: "Scan Performance.",
+    body: "Scans targeted folder paths — not full-disk enumeration. Fast on every Mac regardless of storage size.",
+    svgHtml: SCAN_PERF_SVG,
+    accent: "#f6f6f8",
+  },
+  {
+    eyebrow: "Privacy",
+    title: "Privacy, by Design.",
+    body: "No network activity. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
+    svgHtml: PRIVACY_SVG,
+    accent: "#f3f8f4",
+  },
+]
+
+function HighlightsCarousel({ SURFACE }: { SURFACE: string }) {
+  const [page, setPage] = useState(0)
+  const slideWidth = "min(1104px, calc(100vw - 48px))"
+  const slideGap = 20
+
+  return (
+    <section style={{ background: SURFACE, padding: "clamp(60px,8vw,100px) 0" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+        <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, marginBottom: 40, flexWrap: "wrap" }}>
+          <h2 className="section-h2" style={{ margin: 0 }}>
+            Built for every Mac.
+          </h2>
+          <a href="#download" style={{ fontSize: 17, color: "var(--blue)", textDecoration: "none", paddingTop: 14 }}>
+            Get early access
+          </a>
+        </div>
+      </div>
+
+      <div
+        className="reveal"
+        style={{
+          overflow: "hidden",
+          width: "calc(100vw - max(24px, (100vw - 1200px) / 2))",
+          marginLeft: "max(24px, calc((100vw - 1200px) / 2))",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: slideGap,
+            width: "max-content",
+            paddingRight: slideGap,
+            transform: `translateX(calc(-${page} * (${slideWidth} + ${slideGap}px)))`,
+            transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+            willChange: "transform",
+          }}
+        >
+          {HIGHLIGHT_SLIDES.map((slide) => (
+            <article
+              key={slide.title}
+              className="highlights-card"
+              style={{
+                flex: `0 0 ${slideWidth}`,
+                minHeight: 576,
+                borderRadius: 32,
+                background: "var(--surface)",
+                padding: "45px 42px",
+              }}
+            >
+              <div style={{ maxWidth: 390 }}>
+                <div className="carousel-eyebrow">{slide.eyebrow}</div>
+                <h3 className="carousel-h3">
+                  {slide.title}
+                </h3>
+                <p className="carousel-body">
+                  {slide.body}
+                </p>
+              </div>
+              <div style={{ lineHeight: 0, borderRadius: 20, overflow: "hidden", border: "1px solid #D8DADF", boxShadow: "0 12px 40px rgba(0,0,0,0.10)" }} dangerouslySetInnerHTML={{ __html: slide.svgHtml }} />
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+        <div className="reveal" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 18, marginTop: 28 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, background: "rgba(0,0,0,0.06)", borderRadius: 999, padding: "12px 20px" }}>
+            {HIGHLIGHT_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                style={{
+                  width: i === page ? 34 : 8,
+                  height: 8,
+                  borderRadius: 999,
+                  border: "none",
+                  background: i === page ? "#6e6e73" : "rgba(110,110,115,0.45)",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+          <button
+            onClick={() => setPage((page + 1) % HIGHLIGHT_SLIDES.length)}
+            aria-label="Next slide"
+            style={{
+              width: 52,
+              height: 52,
+              borderRadius: "50%",
+              border: "none",
+              background: "rgba(0,0,0,0.06)",
+              color: "var(--text)",
+              cursor: "pointer",
+              fontSize: 22,
+              lineHeight: 1,
+            }}
+          >
+            ▶
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 // ─── Reveal System ───────────────────────────────────────────────────────────
 
@@ -47,17 +307,24 @@ const useRevealOnce = () => {
       { threshold: 0.06 }
     )
     const refresh = () => {
+      const vh = window.innerHeight
       els().forEach(el => {
         if (el.dataset.revealBound === "1") return
         el.dataset.revealBound = "1"
+        // Immediately reveal elements already in the viewport so there's no flash
+        // when .js-loaded activates the opacity:0 rule
+        if (el.getBoundingClientRect().top < vh * 1.1) {
+          el.classList.add("revealed")
+        }
         observer.observe(el)
       })
     }
-    const raf = window.requestAnimationFrame(refresh)
+    // Pre-reveal above-fold elements and observe all, then activate animations
+    refresh()
+    document.documentElement.classList.add("js-loaded")
     const onRefresh = () => refresh()
     window.addEventListener("dc:reveal-refresh", onRefresh as EventListener)
     return () => {
-      window.cancelAnimationFrame(raf)
       window.removeEventListener("dc:reveal-refresh", onRefresh as EventListener)
       observer.disconnect()
     }
@@ -104,19 +371,7 @@ function Hero({ BG }: { BG: string }) {
           Every other cleaner guesses. DiskCleaner shows you every file,
           every category, every byte — before anything moves.
         </p>
-        {/* Trust signals row — above CTA */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-5">
-          <div className="flex items-center gap-1.5 text-[13px] text-[var(--muted2)]">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span>485+ developers &amp; Mac users on the waitlist</span>
-          </div>
-          <span className="hidden text-[var(--border)] sm:inline">·</span>
-          <div className="flex items-center gap-1 text-[13px] text-[var(--muted2)]">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            100% local · No network calls · No account
-          </div>
-        </div>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a href="#download" onClick={() => trackCTA("hero")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
             Get Early Access
           </a>
@@ -124,9 +379,6 @@ function Hero({ BG }: { BG: string }) {
             See how it works <span aria-hidden>›</span>
           </a>
         </div>
-        <p className="mt-3 text-[12px] tracking-[-0.01em] text-[var(--muted2)]">
-          Free at launch · 3 scans included · $9.99 one-time after · No subscription · Apple-notarized
-        </p>
       </div>
     </section>
   )
@@ -135,7 +387,7 @@ function Hero({ BG }: { BG: string }) {
 function StatsBand({ SURFACE }: { SURFACE: string }) {
   return (
     <div className="border-y border-[var(--border)] py-12 sm:py-16" style={{ background: SURFACE }}>
-      <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
+      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
           {[
             { n: "485",  u: "+",   l: "On the early access waitlist" },
@@ -156,21 +408,21 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
 
 function Features({ SURFACE }: { SURFACE: string }) {
   return (
-    <section id="features" className="py-20 sm:py-32" style={{ background: SURFACE }}>
-      <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
+    <section id="features" className="py-16 sm:py-24" style={{ background: SURFACE }}>
+      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
           <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Why DiskCleaner</span>
           <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
             <span className="inline-block text-left sm:contents">
-              <span className="block text-[var(--text)] sm:inline">Other cleaners delete silently.</span>{" "}
-              <span className="block text-[var(--blue)] sm:inline">You get to see everything.</span>
+              <span className="block text-[var(--text)] sm:inline">Others clean blind.</span>{" "}
+              <span className="block text-[var(--blue)] sm:inline">You see every file.</span>
             </span>
           </h2>
           <p className="reveal d2 mt-4 max-w-[760px] text-[17px] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
               DiskCleaner takes the opposite approach — show everything, delete nothing without your approval. Every file, every category, reviewed by you before anything moves.
             </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 tag: "TRANSPARENCY",
@@ -237,7 +489,7 @@ const InterfaceSplit = lazy(async () => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
       <section className="overflow-hidden py-20 sm:py-32" style={{ background: BG }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
@@ -245,12 +497,12 @@ const InterfaceSplit = lazy(async () => {
                 <p className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
                 </p>
-                <p className="mt-5 text-[15px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   See exactly what's taking up space before a single file moves.
                   Expand any category down to individual files. Uncheck anything you want to keep.
                   When you're ready - and only then - click Clean.
                 </p>
-                <dl className="mt-6 max-w-xl space-y-4 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 lg:max-w-none">
+                <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
                     <dt className="inline text-[var(--text-dim)]">
                       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
@@ -301,61 +553,13 @@ const InterfaceSplit = lazy(async () => {
   return { default: Comp }
 })
 
-const HowItWorks = lazy(async () => {
-  const Comp = ({ BG }: { BG: string }) => {
-    useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
-    return (
-      <section className="py-20 sm:py-32" style={{ background: BG }}>
-        <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
-          <div className="text-center">
-            <h2 className="reveal reveal-headline d1 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
-              <span className="inline-block text-left sm:contents">
-                <span className="block sm:inline">Most cleaners are black boxes.</span>{" "}
-                <span className="block sm:inline"><em className="not-italic text-[var(--blue)]">Not this one.</em></span>
-              </span>
-            </h2>
-            <p className="reveal d2 mt-4 text-[17px] leading-[1.55] text-[var(--muted)]">
-              Scan, review, clean — you see every file at every step. No surprises, ever.
-            </p>
-          </div>
-          <div className="mt-7 grid grid-cols-1 gap-4 sm:mt-10 lg:grid-cols-3">
-            {[
-              {
-                n: "01",
-                ttl: "Scan",
-                bdy: "Choose Quick or Deep. All 7 categories run in parallel. File sizes appear live as they're found — no waiting for a final number.",
-              },
-              {
-                n: "02",
-                ttl: "Review",
-                bdy: "Every file is shown before anything moves. Expand categories, check individual items, uncheck what you want to keep. Full control.",
-              },
-              {
-                n: "03",
-                ttl: "Clean",
-                bdy: "Files move to macOS Trash — not deleted, not gone. A live log shows every file moved in real time. Restore anything, any time.",
-              },
-            ].map((s, i) => (
-              <div key={i} className={`reveal d${i + 1} rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(0,113,227,0.2)] hover:shadow-[0_14px_32px_var(--shadow-lg)]`}>
-                <div className="font-mono text-xs font-semibold tracking-[0.08em] text-[var(--blue)] opacity-60">{s.n}</div>
-                <div className="mt-2 text-[22px] font-semibold tracking-[-0.025em] text-[var(--text)]">{s.ttl}</div>
-                <div className="mt-2 text-[14px] leading-[1.65] text-[var(--muted)]">{s.bdy}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-  return { default: Comp }
-})
 
 const UninstallerSplit = lazy(async () => {
   const Comp = ({ SURFACE }: { SURFACE: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
       <section id="uninstaller" className="overflow-hidden py-20 sm:py-32" style={{ background: SURFACE }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
@@ -363,12 +567,12 @@ const UninstallerSplit = lazy(async () => {
                 <p className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Dragging to Trash isn't enough.</span> <span className="text-[var(--blue)]">Leave no trace.</span>
                 </p>
-                <p className="mt-5 text-[15px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   Dragging an app to Trash leaves behind gigabytes of caches,
                   preferences, and support files spread across 9 Library locations.
                   DiskCleaner finds every leftover - the files Finder never shows you.
                 </p>
-                <dl className="mt-6 max-w-xl space-y-4 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 lg:max-w-none">
+                <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
                     <dt className="inline text-[var(--text-dim)]">
                       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
@@ -433,7 +637,7 @@ const MenuBarSplit = lazy(async () => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
       <section className="py-20 sm:py-32" style={{ background: BG }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 reveal flex justify-center">
               <img
@@ -453,12 +657,12 @@ const MenuBarSplit = lazy(async () => {
               <h2 className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
                 <span className="text-[var(--text)]">Your disk space,</span> <span className="text-[var(--blue)]">always visible.</span>
               </h2>
-              <p className="mt-5 text-[15px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+              <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                 Live free space lives in your menu bar — always one glance away.
                 Trigger a Quick Scan or check full disk stats without ever opening the app.
                 Lightweight. Always on. Never in the way.
               </p>
-              <ul className="mt-6 list-none space-y-4 pl-0 text-[15px] leading-[1.65] text-[var(--text-dim)] sm:mt-8">
+              <ul className="mt-6 list-none space-y-2 pl-0 text-[15px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
                 <li className="flex items-center gap-3">
                   <svg className="h-5 w-5 shrink-0 text-[var(--blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="8" />
@@ -491,50 +695,6 @@ const MenuBarSplit = lazy(async () => {
   return { default: Comp }
 })
 
-const ZeroDecisionSplit = lazy(async () => {
-  const Comp = ({ SURFACE }: { SURFACE: string }) => {
-    useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
-    return (
-      <section className="overflow-hidden py-20 sm:py-32" style={{ background: SURFACE }}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
-            <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
-              <div className="lg:max-w-lg">
-                <h2 className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Zero-Decision Mode</h2>
-                <p className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-                  <span className="inline-block text-left sm:contents">
-                    <span className="block text-[var(--text)] sm:inline">Don't want to review?</span>{" "}
-                    <span className="block text-[var(--blue)] sm:inline">One tap. Done.</span>
-                  </span>
-                </p>
-                <p className="mt-5 text-[15px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
-                  Skip the review screen entirely. Zero-Decision Mode removes only the
-                  universally safe categories - caches, logs, temp files - nothing personal,
-                  nothing irreplaceable. Everything still goes to Trash first.
-                </p>
-                <a href="#download" onClick={() => trackCTA("zero-decision")} className="mt-7 inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
-                  Just Clean My Mac
-                </a>
-              </div>
-            </div>
-            <div className="order-2 lg:order-2 reveal d1">
-              <img
-                src={appImage2}
-                srcSet={`${appImage2_464} 464w, ${appImage2_640} 640w, ${appImage2} 1376w`}
-                sizes="(max-width: 1024px) 92vw, 50vw"
-                width="1376" height="1464"
-                alt="DiskCleaner zero-decision clean result"
-                loading="lazy" decoding="async"
-                className="split-img img-transparent-bg mx-auto w-full lg:w-4/5 max-w-none rounded-[18px] border border-[var(--border)] shadow-[0_24px_80px_var(--shadow-xl),0_8px_24px_var(--shadow-lg),0_2px_6px_var(--shadow)]"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-  return { default: Comp }
-})
 
 const WhatItFinds = lazy(async () => {
   const Comp = ({ SURFACE }: { SURFACE: string }) => {
@@ -550,9 +710,10 @@ const WhatItFinds = lazy(async () => {
     ]
     return (
       <section className="py-20 sm:py-32" style={{ background: SURFACE }}>
-        <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
-            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">What It Cleans</span>
+            <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
               <span className="text-[var(--text)]">More is hiding than you think.</span> <span className="text-[var(--blue)]">One scan finds it all.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[600px] text-[17px] leading-[1.55] text-[var(--muted)]">
@@ -561,7 +722,7 @@ const WhatItFinds = lazy(async () => {
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {categories.map((c, i) => (
-              <div key={i} className="reveal flex items-start gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4" style={{ transitionDelay: `${i * 50}ms` }}>
+              <div key={i} className="reveal flex items-start gap-3 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{c.icon}</div>
                 <div>
                   <div className="text-[14px] font-semibold text-[var(--text)]">{c.name}</div>
@@ -570,7 +731,7 @@ const WhatItFinds = lazy(async () => {
               </div>
             ))}
             {/* 8th card: "All safe" callout */}
-            <div className="reveal d1 flex items-start gap-3 rounded-2xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] p-4">
+            <div className="reveal d1 flex items-start gap-3 rounded-3xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] p-5">
               <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[rgba(0,113,227,0.12)] text-[var(--blue)]">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
@@ -618,14 +779,14 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Do I need an account or subscription?",
-        a: "No account and no subscription. $9.99 one-time covers you for up to 3 Macs and includes every future update.",
+        a: "No account and no subscription. $9.99 one-time covers you for up to 2 Macs and includes every future update.",
       },
     ]
     return (
       <section id="faq" className="py-20 sm:py-32" style={{ background: BG }}>
-        <div className="mx-auto w-full max-w-[860px] px-6 md:px-12">
+        <div className="mx-auto w-full max-w-[860px] px-4 sm:px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
-            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(30px,4vw,52px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
+            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
               Questions answered.
             </h2>
           </div>
@@ -690,9 +851,9 @@ const CTA = lazy(async () => {
       openWaitlistFromCTA()
     }
     return (
-      <section id="download" className="relative overflow-hidden py-20 sm:py-32" style={{ background: BG }}>
+      <section id="download" className="relative overflow-hidden py-12 sm:py-16" style={{ background: BG }}>
         <div className="hero-glow h-[600px] w-[1000px] bg-[radial-gradient(ellipse,var(--blue-glow),transparent_65%)]" />
-        <div className="relative mx-auto w-full max-w-[1080px] px-6 text-center md:px-12">
+        <div className="relative mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
           <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Get DiskCleaner</span>
           <h2 className="reveal reveal-headline d1 mt-4 text-[clamp(42px,5.5vw,76px)] font-bold leading-[0.98] tracking-[-0.045em] text-[var(--text)]">
             <span className="inline-block text-left sm:contents">
@@ -704,21 +865,21 @@ const CTA = lazy(async () => {
             No subscription. No renewal. No upsells.
             One purchase covers macOS 13 through Tahoe 26 and every update in between.
           </p>
-          <div className="reveal d3 mt-8 inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-6 py-3 sm:gap-3 sm:px-7">
+          <div className="reveal d3 mt-8 flex flex-col items-center gap-1 rounded-2xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-6 py-3 sm:inline-flex sm:flex-row sm:rounded-full sm:gap-3 sm:px-7">
             <span className="text-[26px] font-bold tracking-[-0.03em] text-[var(--text)] sm:text-[28px]">$9.99</span>
-            <span className="text-sm text-[var(--muted)]">one-time · yours forever · up to 3 Macs</span>
+            <span className="text-center text-sm text-[var(--muted)]">one-time · yours forever · up to 2 Macs</span>
           </div>
           <div className="reveal d4">
             <button
               type="button"
               onClick={onNotifyClick}
               onTouchEnd={onNotifyTouchEnd}
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90"
+              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
             >
               Get Free Early Access · Launching April 2026
             </button>
           </div>
-          <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-3 gap-y-2 sm:gap-5">
+          <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
             {[
               "3 free scans included",
               "No subscription",
@@ -758,35 +919,50 @@ const CTA = lazy(async () => {
 })
 
 const SiteFooter = lazy(async () => {
-  const Comp = ({ BG, openModal }: { BG: string; openModal: (k: "support" | "changelog") => void }) => {
+  const Comp = ({ openModal }: { openModal: (k: "support" | "changelog") => void }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <footer className="border-t border-[var(--border)] py-6" style={{ background: BG }}>
-        <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
-          {/* Mobile: two rows. Desktop: single row */}
-          <div className="flex flex-col items-center gap-3 md:flex-row md:justify-between md:gap-4">
-            {/* Left: copyright */}
-            <span className="order-1 text-xs font-normal text-[var(--muted2)]">Copyright © {new Date().getFullYear()} DiskCleaner. All rights reserved.</span>
-            {/* Middle: social icons — own row on mobile, inline on desktop */}
-            <div className="order-3 flex items-center gap-2 md:order-2">
-              <a href="mailto:adminsupport@diskcleaner.pro" aria-label="Email" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-              </a>
-              <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer" aria-label="Threads" className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.5 12.068v-.04c.024-7.67 4.76-11.895 10.69-11.995 2.934-.033 5.364.994 7.01 3.024 1.458 1.791 2.3 4.262 2.3 7.91v1h-9.45v-2h7.395c-.15-2.695-.898-4.733-2.21-6.076-1.162-1.19-2.784-1.79-4.819-1.79-4.248 0-8.108 2.891-8.108 9.94v.04c0 3.005.69 5.39 2.054 7.082 1.44 1.784 3.646 2.716 6.553 2.736 2.44.016 4.254-.58 5.59-1.82 1.248-1.16 2.012-2.9 2.27-5.17H12.82v-2h9.454v.93c0 2.958-.778 5.424-2.25 7.144C18.54 22.95 15.77 24 12.186 24z"/></svg>
-              </a>
+      <footer className="site-footer" style={{ marginTop: 0 }}>
+        {/* Columns */}
+        <div className="site-footer-cols">
+          {/* Brand */}
+          <div className="site-footer-brand">
+            <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
+              <span style={{ color: "var(--text)" }}>Disk</span><span style={{ color: "var(--blue)" }}>Cleaner</span>
             </div>
-            {/* Right: nav links */}
-            <div className="order-2 flex items-center gap-5 md:order-3">
-              <a href="/privacy-policy" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] no-underline transition-colors hover:text-[var(--muted)]">Privacy</a>
-              <a href="/terms-of-service" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] no-underline transition-colors hover:text-[var(--muted)]">Terms</a>
-              <button type="button" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]" onClick={() => openModal("support")}>Support</button>
-              <button type="button" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]" onClick={() => openModal("changelog")}>Changelog</button>
-            </div>
+            <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6, margin: 0 }}>
+              The Mac cleaner built for people<br />who actually use their Mac.
+            </p>
           </div>
+          {/* Product */}
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Product</div>
+            <a href="#features" className="site-footer-link">Features</a>
+            <a href="#pricing" className="site-footer-link">Pricing</a>
+            <a href="#download" className="site-footer-link">Download</a>
+            <button type="button" onClick={() => openModal("changelog")} className="site-footer-link">What's New</button>
+          </div>
+          {/* Support */}
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Support</div>
+            <a href="/help" className="site-footer-link">Help Center</a>
+            <button type="button" onClick={() => openModal("support")} className="site-footer-link">FAQ</button>
+            <button type="button" onClick={() => openModal("support")} className="site-footer-link">Contact</button>
+            <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
+            <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
+          </div>
+          {/* Connect */}
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Connect</div>
+            <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Twitter / X</a>
+            <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Threads</a>
+            <a href="mailto:adminsupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
+          </div>
+        </div>
+        {/* Bottom strip */}
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <span style={{ fontSize: 12, color: "var(--muted)" }}>© {new Date().getFullYear()} DiskCleaner. All rights reserved.</span>
+          <span style={{ fontSize: 12, color: "var(--muted)" }}>Made for Mac.</span>
         </div>
       </footer>
     )
@@ -804,6 +980,13 @@ export default function Home() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
   })
   const [modal, setModal] = useState<ModalKey>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 420)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   useRevealOnce()
   const waitlistFormAction = import.meta.env.VITE_WAITLIST_FORM_ACTION as string | undefined
@@ -812,10 +995,37 @@ export default function Home() {
   const STRIPE_GRAY = "var(--surface2)"
 
   return (
-    <div data-theme={theme} className="page-enter">
+    <>
+      {/* FLOATING NAV — outside .page-enter to avoid CSS transform containing-block trap */}
+      <nav style={{
+        position: "fixed", top: 12, left: "50%",
+        width: "calc(100% - 48px)", maxWidth: 1000, height: 59,
+        background: theme === "dark" ? "rgba(28,28,30,0.88)" : "rgba(255,255,255,0.88)",
+        backdropFilter: "blur(20px) saturate(180%)",
+        WebkitBackdropFilter: "blur(20px) saturate(180%)",
+        border: theme === "dark" ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(0,0,0,0.08)",
+        borderRadius: 980, boxShadow: "0 2px 20px rgba(0,0,0,0.10)",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        padding: "0 20px", boxSizing: "border-box",
+        zIndex: 300,
+        opacity: scrolled ? 1 : 0,
+        pointerEvents: scrolled ? "auto" : "none",
+        transform: scrolled ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(-6px)",
+        transition: "opacity 0.3s ease, transform 0.3s ease",
+      }}>
+        <a href="/" style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.02em", textDecoration: "none", color: theme === "dark" ? "#f5f5f7" : "#1d1d1f" }}>
+          Disk<em style={{ fontStyle: "normal", color: "#0071e3" }}>Cleaner</em>
+        </a>
+        <a href="#download" onClick={() => trackCTA("floating-nav")} style={{ fontSize: 13, fontWeight: 500, background: "#0071e3", color: "#fff", borderRadius: 980, padding: "8px 18px", textDecoration: "none" }}>
+          Get Early Access
+        </a>
+      </nav>
+
+      <div data-theme={theme} className="page-enter">
 
       {/* NAV */}
-      <nav className="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150">
+      <nav className="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150"
+        style={{ opacity: scrolled ? 0 : 1, pointerEvents: scrolled ? "none" : "auto", transition: "opacity 0.3s ease" }}>
         <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-6 md:px-12">
           <a href="/" className="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">Disk<em className="not-italic text-[var(--blue)]">Cleaner</em></a>
           <ul className="hidden list-none items-center gap-7 md:flex">
@@ -845,7 +1055,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="pb-16 pt-[52px] md:pb-0">
+      <div className="pt-[52px]">
         <Hero BG="var(--bg)" />
         <StatsBand SURFACE={STRIPE_WHITE} />
 
@@ -853,28 +1063,17 @@ export default function Home() {
           <InterfaceSplit BG={STRIPE_GRAY} />
           <WhatItFinds SURFACE={STRIPE_WHITE} />
           <Features SURFACE={STRIPE_GRAY} />
-          <HowItWorks BG={STRIPE_WHITE} />
           <UninstallerSplit SURFACE={STRIPE_GRAY} />
           <MenuBarSplit BG={STRIPE_WHITE} />
-          <ZeroDecisionSplit SURFACE={STRIPE_GRAY} />
           <FAQ BG={STRIPE_WHITE} />
           <CompareTable BG={STRIPE_GRAY} />
-          <Requirements SURFACE={STRIPE_WHITE} />
-          <CommunityWall SURFACE={STRIPE_GRAY} />
-          <CTA BG={STRIPE_WHITE} openWaitlist={() => setModal("waitlist")} />
-          <SiteFooter BG={STRIPE_GRAY} openModal={k => setModal(k)} />
+          <HighlightsCarousel SURFACE={STRIPE_GRAY} />
+          <CommunityWall SURFACE={STRIPE_WHITE} />
+          <CTA BG={STRIPE_GRAY} openWaitlist={() => setModal("waitlist")} />
+          <SiteFooter openModal={k => setModal(k)} />
         </Suspense>
       </div>
 
-      <nav className="fixed inset-x-0 bottom-0 z-[210] border-t border-[var(--border)] bg-[var(--surface)] px-4 py-2.5 md:hidden">
-        <div className="mx-auto flex max-w-[520px] items-center justify-between gap-2 text-[13px] font-medium">
-          <a href="#features" className="flex-1 text-center text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]">Features</a>
-          <a href="#download" onClick={() => trackCTA("mobile-nav")} className="flex-1 rounded-full bg-[var(--blue)] py-3 text-center text-[13px] font-semibold text-white no-underline transition hover:brightness-110 active:scale-[0.97]">
-            Get Early Access
-          </a>
-          <a href="/help" className="flex-1 text-center text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]">Help</a>
-        </div>
-      </nav>
 
       <Modal
         openKey={modal}
@@ -887,5 +1086,6 @@ export default function Home() {
       </Modal>
 
     </div>
+    </>
   )
 }

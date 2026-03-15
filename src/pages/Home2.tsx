@@ -1,166 +1,524 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import diskCleanerImg from "../assets/DiskCleaner.webp"
+import "../App.css"
 
-/* ─────────────────────────────────────────────
-   All styles scoped to .h2-root — no global CSS
-   ───────────────────────────────────────────── */
-const css = `
-  .h2-root {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
 
-  /* ── Animations ── */
-  @keyframes h2-fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes h2-shimmer {
-    0%   { background-position: -200% 0; }
-    100% { background-position:  200% 0; }
-  }
+const IC = {
+  clock:   "M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 6v4l3 3",
+  globe:   "M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zM2 12h20M12 2c-3.5 4-3.5 16 0 20M12 2c3.5 4 3.5 16 0 20",
+  image:   "M3 3h18v18H3V3zm0 13l5-5 4 4 3-3 5 4",
+  trash:   "M3 6h18M8 6V4h8v2M19 6l-1.5 14H6.5L5 6m4 3v8m3-8v8m3-8v8",
+  doc:     "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6",
+  wrench:  "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z",
+  layers:  "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+  shield:  "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  eye:     "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zm11-3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
+  check:   "M20 6L9 17l-5-5",
+  lock:    "M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2zm-7-5a4 4 0 0 0-4 4v2h8V10a4 4 0 0 0-4-4z",
+  zap:     "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  cpu:     "M9 2h6M9 22h6M4 9v6M20 9v6M2 9h3m0 6H2m20-6h-3m0 6h3M5 5l2 2m10-2l-2 2M7 17l-2 2m12-2l2 2M9 9h6v6H9V9z",
+  terminal:"M4 17l6-6-6-6m8 14h8",
+  code:    "M16 18l6-6-6-6M8 6l-6 6 6 6",
+  pkg:     "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.27 6.96L12 12l8.73-5.05M12 22V12",
+  browser: "M3 4h18v16H3V4zm0 6h18M7 4v6",
+}
 
-  .h2-anim { opacity: 0; animation: h2-fadeUp 0.8s forwards; }
-  .h2-delay-1 { animation-delay: 0.10s; }
-  .h2-delay-2 { animation-delay: 0.30s; }
-  .h2-delay-3 { animation-delay: 0.50s; }
-  .h2-delay-4 { animation-delay: 0.70s; }
-  .h2-delay-5 { animation-delay: 0.85s; }
-  .h2-delay-6 { animation-delay: 1.00s; }
+type FCard = { icon: string; title: string; desc: string; safe?: boolean }
+const FEATURES: { label: string; headline: string; desc: string; cards: FCard[] }[] = [
+  { label: "Transparency", headline: "See Every File. Approve Every Clean.", desc: "Full confirmation screen with per-file checkboxes. Expand any category. Uncheck anything. You stay in control, always.",
+    cards: [
+      { icon: IC.eye,    title: "Per-file Review",  desc: "Every file listed with its size, path, and category." },
+      { icon: IC.check,  title: "Checkboxes",        desc: "Uncheck any file or category before anything moves." },
+      { icon: IC.layers, title: "Category Expand",   desc: "Drill into any category to see every file inside." },
+      { icon: IC.doc,    title: "Size Preview",      desc: "Total size shown per category before you confirm." },
+      { icon: IC.eye,    title: "Nothing Hidden",    desc: "What you see is exactly what gets cleaned." },
+      { icon: IC.lock,   title: "Safe Defaults",     desc: "Conservative selections. You approve before anything moves." },
+      { icon: IC.check,  title: "No Surprises",      desc: "Full visibility before any file is touched." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Passwords, documents, and personal files are never shown.", safe: true },
+    ]},
+  { label: "Safety", headline: "Everything Goes to Trash. Always.", desc: "We use macOS trashItem exclusively — never removeItem. Every file is recoverable, every time. Not a single permanent deletion.",
+    cards: [
+      { icon: IC.trash,  title: "trashItem Only",    desc: "macOS trashItem API exclusively. Zero permanent deletions." },
+      { icon: IC.check,  title: "Always Recoverable",desc: "Every cleaned file goes to Trash. Restore any time." },
+      { icon: IC.shield, title: "No removeItem",     desc: "Permanent delete is never called. Not once. Ever." },
+      { icon: IC.lock,   title: "System Safe",       desc: "System files, app binaries, and OS data are off-limits." },
+      { icon: IC.doc,    title: "Personal Safe",     desc: "Documents, photos, and passwords are never touched." },
+      { icon: IC.check,  title: "Reversible",        desc: "Undo any clean by restoring files from Trash." },
+      { icon: IC.shield, title: "Notarized",         desc: "Apple-notarized and sandboxed. No hidden permissions." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Your data stays yours. We only clean verified junk.", safe: true },
+    ]},
+  { label: "Scanning", headline: "7 Categories. One Pass.", desc: "App Cache, Browser Cache, Screenshots, Trash, System Logs, Developer Data, App Leftovers — scanned simultaneously in under 10 seconds.",
+    cards: [
+      { icon: IC.clock,  title: "App Cache",         desc: "Bloated cache files left by every app you've ever opened." },
+      { icon: IC.globe,  title: "Browser Cache",     desc: "All 9 browsers: cached pages, images, sessions, cookies." },
+      { icon: IC.image,  title: "Screenshots",       desc: "Desktop and Downloads screenshots piling up for months." },
+      { icon: IC.trash,  title: "Trash Contents",    desc: "Files in Trash taking space you think is already freed." },
+      { icon: IC.doc,    title: "System Logs",       desc: "Diagnostic logs, crash reports, and system traces." },
+      { icon: IC.wrench, title: "Developer Data",    desc: "Xcode DerivedData, Simulators, CocoaPods, npm, JetBrains." },
+      { icon: IC.layers, title: "App Leftovers",     desc: "Preferences, support files, caches from deleted apps." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Passwords, documents, and personal files are never touched.", safe: true },
+    ]},
+  { label: "Performance", headline: "Built with Swift Concurrency.", desc: "All file I/O runs on background threads. The interface never freezes. File sizes animate live as they're discovered.",
+    cards: [
+      { icon: IC.zap,    title: "Under 10 Seconds",  desc: "Full 7-category scan completes in under 10 seconds." },
+      { icon: IC.cpu,    title: "Background Threads",desc: "All file I/O on background threads. UI stays instant." },
+      { icon: IC.zap,    title: "Live File Sizes",   desc: "File sizes animate in real-time as they're discovered." },
+      { icon: IC.check,  title: "Never Freezes",     desc: "Scroll and interact freely during the entire scan." },
+      { icon: IC.layers, title: "Parallel Scan",     desc: "All 7 categories scanned simultaneously, not one-by-one." },
+      { icon: IC.code,   title: "Swift Concurrency", desc: "Built with async/await. Efficient and fully modern." },
+      { icon: IC.cpu,    title: "Low Memory",        desc: "Minimal footprint. Optimized for all Mac models." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Performance gains from junk removal, not risky tweaks.", safe: true },
+    ]},
+  { label: "Browsers", headline: "Every Browser. Every Profile.", desc: "Safari, Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Chromium, Opera — all profiles cleaned. Passwords, bookmarks, and history never touched.",
+    cards: [
+      { icon: IC.browser,title: "Safari",            desc: "Cache, cookies, history, and session data." },
+      { icon: IC.browser,title: "Chrome",            desc: "All profiles: cache, cookies, history, downloads." },
+      { icon: IC.browser,title: "Firefox",           desc: "All profiles: cache, cookies, session store." },
+      { icon: IC.browser,title: "Edge",              desc: "Cache, cookies, and browsing history." },
+      { icon: IC.browser,title: "Arc",               desc: "Cache and browsing data from all spaces." },
+      { icon: IC.browser,title: "Brave",             desc: "Cache, cookies, and Shields data." },
+      { icon: IC.browser,title: "Vivaldi & Opera",   desc: "Cache, session, and browsing history." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Passwords, bookmarks, and saved logins are never touched.", safe: true },
+    ]},
+  { label: "Developers", headline: "Developers Recover the Most.", desc: "Xcode DerivedData, Simulators, VS Code, JetBrains, CocoaPods, npm — gigabytes you forgot existed. One scan reveals them all.",
+    cards: [
+      { icon: IC.code,   title: "Xcode DerivedData", desc: "Build artifacts that balloon to 20 GB+ silently." },
+      { icon: IC.cpu,    title: "iOS Simulators",    desc: "Old simulator runtimes consuming gigabytes." },
+      { icon: IC.terminal,title:"VS Code",           desc: "Extension host cache and workspace storage." },
+      { icon: IC.code,   title: "JetBrains IDEs",   desc: "IDE caches, logs, and local history." },
+      { icon: IC.pkg,    title: "CocoaPods",         desc: "Pod cache from old and abandoned projects." },
+      { icon: IC.terminal,title:"npm / Yarn",        desc: "Package cache across all your projects." },
+      { icon: IC.pkg,    title: "Old Archives",      desc: ".xcarchive and .ipa files from past releases." },
+      { icon: IC.shield, title: "Always Safe",       desc: "Source code, Git repos, and project files are never touched.", safe: true },
+    ]},
+]
 
-  .h2-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s cubic-bezier(0.25,0.1,0.25,1),
-                transform 0.7s cubic-bezier(0.25,0.1,0.25,1);
-  }
-  .h2-reveal.h2-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+const UNINSTALLER_SVG = `<svg width="425" height="519" viewBox="0 0 680 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <rect x="0" y="0" width="680" height="820" rx="12" fill="#F5F5F7"/>
+  <rect x="0" y="0" width="680" height="44" rx="12" fill="#ECECEC"/>
+  <rect x="0" y="32" width="680" height="12" fill="#ECECEC"/>
+  <circle cx="20" cy="22" r="6" fill="#FF5F57"/>
+  <circle cx="40" cy="22" r="6" fill="#FEBC2E"/>
+  <circle cx="60" cy="22" r="6" fill="#28C840"/>
+  <rect x="0" y="44" width="270" height="776" fill="#F5F5F7"/>
+  <rect x="20" y="64" width="36" height="22" rx="3" fill="none" stroke="#444" stroke-width="1.5"/>
+  <rect x="25" y="68" width="26" height="14" rx="1" fill="none" stroke="#444" stroke-width="1"/>
+  <rect x="14" y="85" width="48" height="5" rx="2.5" fill="none" stroke="#444" stroke-width="1.5"/>
+  <rect x="30" y="85" width="16" height="2" rx="1" fill="#444"/>
+  <text x="68" y="78" font-size="15" font-weight="700" fill="#1A1A1A">Disk<tspan fill="#3B82F6">Cleaner</tspan></text>
+  <text x="68" y="94" font-size="11" fill="#888">Storage cleanup</text>
+  <rect x="8" y="112" width="254" height="50" rx="10" fill="#3B82F6"/>
+  <rect x="24" y="126" width="8" height="8" rx="1.5" fill="white"/>
+  <rect x="34" y="126" width="8" height="8" rx="1.5" fill="white"/>
+  <rect x="24" y="136" width="8" height="8" rx="1.5" fill="white"/>
+  <rect x="34" y="136" width="8" height="8" rx="1.5" fill="white"/>
+  <text x="54" y="134" font-size="13" font-weight="700" fill="white">Overview</text>
+  <text x="54" y="150" font-size="11" fill="rgba(255,255,255,0.82)">Device status</text>
+  <rect x="22" y="183" width="18" height="14" rx="2.5" fill="none" stroke="#888" stroke-width="1.4"/>
+  <line x1="22" y1="188" x2="40" y2="188" stroke="#888" stroke-width="1"/>
+  <line x1="22" y1="193" x2="40" y2="193" stroke="#888" stroke-width="1"/>
+  <text x="54" y="193" font-size="13" font-weight="600" fill="#1A1A1A">App Cache</text>
+  <text x="54" y="207" font-size="11" fill="#888">App temp files</text>
+  <path d="M23 222 L23 242 Q23 244 25 244 L37 244 Q39 244 39 242 L39 228 L34 222 Z" fill="none" stroke="#888" stroke-width="1.4"/>
+  <path d="M34 222 L34 228 L39 228" fill="none" stroke="#888" stroke-width="1.3"/>
+  <line x1="26" y1="232" x2="36" y2="232" stroke="#888" stroke-width="1"/>
+  <line x1="26" y1="236" x2="36" y2="236" stroke="#888" stroke-width="1"/>
+  <line x1="26" y1="240" x2="32" y2="240" stroke="#888" stroke-width="1"/>
+  <text x="54" y="236" font-size="13" font-weight="600" fill="#1A1A1A">Logs</text>
+  <text x="54" y="250" font-size="11" fill="#888">Log files</text>
+  <circle cx="31" cy="276" r="9" fill="none" stroke="#888" stroke-width="1.4"/>
+  <ellipse cx="31" cy="276" rx="4.5" ry="9" fill="none" stroke="#888" stroke-width="1"/>
+  <line x1="22" y1="276" x2="40" y2="276" stroke="#888" stroke-width="1"/>
+  <text x="54" y="280" font-size="13" font-weight="600" fill="#1A1A1A">Browser Cache</text>
+  <text x="54" y="294" font-size="11" fill="#888">Chrome, Edge, Firefox</text>
+  <rect x="22" y="318" width="18" height="13" rx="2.5" fill="none" stroke="#888" stroke-width="1.4"/>
+  <path d="M27 318 L29 315 L33 315 L35 318" fill="none" stroke="#888" stroke-width="1.2" stroke-linejoin="round"/>
+  <circle cx="31" cy="324.5" r="3.5" fill="none" stroke="#888" stroke-width="1.2"/>
+  <text x="54" y="328" font-size="13" font-weight="600" fill="#1A1A1A">Screenshots</text>
+  <text x="54" y="342" font-size="11" fill="#888">Desktop captures</text>
+  <rect x="25" y="363" width="12" height="14" rx="1.5" fill="none" stroke="#888" stroke-width="1.4"/>
+  <line x1="22" y1="364" x2="40" y2="364" stroke="#888" stroke-width="1.5"/>
+  <rect x="27" y="360" width="8" height="4" rx="1.2" fill="none" stroke="#888" stroke-width="1.2"/>
+  <line x1="28" y1="368" x2="28" y2="374" stroke="#888" stroke-width="1"/>
+  <line x1="31" y1="368" x2="31" y2="374" stroke="#888" stroke-width="1"/>
+  <line x1="34" y1="368" x2="34" y2="374" stroke="#888" stroke-width="1"/>
+  <text x="54" y="373" font-size="13" font-weight="600" fill="#1A1A1A">Trash</text>
+  <text x="54" y="387" font-size="11" fill="#888">Trash items</text>
+  <line x1="38" y1="408" x2="30" y2="420" stroke="#888" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M28 408 Q23 405 23 410 Q23 415 28 414 L30 413 L32 410 Z" fill="none" stroke="#888" stroke-width="1.3" stroke-linejoin="round"/>
+  <text x="54" y="415" font-size="13" font-weight="600" fill="#1A1A1A">Developer</text>
+  <text x="54" y="429" font-size="11" fill="#888">DerivedData, simulators</text>
+  <rect x="8" y="438" width="254" height="48" rx="8" fill="#E8E8E8"/>
+  <path d="M22 468 L22 475 Q22 477 24 477 L38 477 Q40 477 40 475 L40 468" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="22" y1="468" x2="26" y2="468" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="36" y1="468" x2="40" y2="468" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="31" y1="452" x2="31" y2="464" stroke="#555" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M26 460 L31 466 L36 460" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="54" y="458" font-size="13" font-weight="600" fill="#1A1A1A">Downloads</text>
+  <text x="54" y="474" font-size="11" fill="#888">Installers, archives</text>
+  <rect x="25" y="499" width="12" height="21" rx="3" fill="none" stroke="#888" stroke-width="1.4"/>
+  <line x1="29" y1="517" x2="34" y2="517" stroke="#888" stroke-width="1.3" stroke-linecap="round"/>
+  <text x="54" y="513" font-size="13" font-weight="600" fill="#1A1A1A">iOS Backups</text>
+  <text x="54" y="527" font-size="11" fill="#888">Local device backups</text>
+  <rect x="22" y="548" width="18" height="14" rx="2" fill="none" stroke="#888" stroke-width="1.4"/>
+  <path d="M22 550 L31 558 L40 550" fill="none" stroke="#888" stroke-width="1.3"/>
+  <text x="54" y="559" font-size="13" font-weight="600" fill="#1A1A1A">Mail Attachments</text>
+  <text x="54" y="573" font-size="11" fill="#888">Downloaded attachments</text>
+  <path d="M23 597 L23 614 L38 614 L38 609 Q41.5 609 41.5 606 Q41.5 603 38 603 L38 597 L33 597 Q33 593.5 31 593.5 Q29 593.5 29 597 Z" fill="none" stroke="#888" stroke-width="1.3" stroke-linejoin="round"/>
+  <text x="54" y="609" font-size="13" font-weight="600" fill="#1A1A1A">Leftovers</text>
+  <text x="54" y="623" font-size="11" fill="#888">Residual app data</text>
+  <rect x="21" y="650" width="20" height="13" rx="4" fill="none" stroke="#888" stroke-width="1.4"/>
+  <circle cx="25" cy="656.5" r="1.3" fill="#888"/>
+  <text x="54" y="660" font-size="13" font-weight="600" fill="#1A1A1A">External</text>
+  <text x="54" y="674" font-size="11" fill="#888">External storage</text>
+  <rect x="8" y="688" width="254" height="50" rx="10" fill="#3B82F6"/>
+  <rect x="22" y="700" width="18" height="18" rx="4" fill="none" stroke="white" stroke-width="1.5"/>
+  <line x1="27" y1="705" x2="35" y2="715" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="35" y1="705" x2="27" y2="715" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+  <text x="54" y="706" font-size="13" font-weight="700" fill="white">Uninstaller</text>
+  <text x="54" y="722" font-size="10.5" fill="rgba(255,255,255,0.85)">Uninstall Apps safely, Removing traces</text>
+  <line x1="270" y1="44" x2="270" y2="820" stroke="#DCDCDC" stroke-width="1"/>
+  <rect x="270" y="44" width="410" height="776" fill="white"/>
+  <rect x="295" y="76" width="360" height="228" rx="14" fill="#F9F9F9" stroke="#C8C8C8" stroke-width="1.5" stroke-dasharray="8 5"/>
+  <circle cx="475" cy="163" r="28" fill="none" stroke="#AAAAAA" stroke-width="1.8"/>
+  <line x1="475" y1="148" x2="475" y2="170" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round"/>
+  <path d="M466 165 L475 174 L484 165" fill="none" stroke="#AAAAAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="475" y="218" text-anchor="middle" font-size="15" font-weight="700" fill="#1A1A1A">Drop an app here</text>
+  <text x="475" y="237" text-anchor="middle" font-size="12" fill="#888">Drag any app from /Applications</text>
+  <text x="475" y="253" text-anchor="middle" font-size="12" fill="#888">to find and remove its leftover files</text>
+  <text x="295" y="342" font-size="13" font-weight="500" fill="#888">How to uninstall an app</text>
+  <circle cx="313" cy="372" r="11" fill="#EEEEEE"/>
+  <text x="313" y="376" text-anchor="middle" font-size="11" fill="#555">1</text>
+  <text x="334" y="376" font-size="13" fill="#1A1A1A">Open Finder and go to your Applications folder</text>
+  <circle cx="313" cy="414" r="11" fill="#EEEEEE"/>
+  <text x="313" y="418" text-anchor="middle" font-size="11" fill="#555">2</text>
+  <text x="334" y="411" font-size="13" fill="#1A1A1A">Drag the app you want to remove into the drop</text>
+  <text x="334" y="427" font-size="13" fill="#1A1A1A">zone above</text>
+  <circle cx="313" cy="458" r="11" fill="#EEEEEE"/>
+  <text x="313" y="462" text-anchor="middle" font-size="11" fill="#555">3</text>
+  <text x="334" y="462" font-size="13" fill="#1A1A1A">Review the leftover files found on your Mac</text>
+  <circle cx="313" cy="496" r="11" fill="#EEEEEE"/>
+  <text x="313" y="500" text-anchor="middle" font-size="11" fill="#555">4</text>
+  <text x="334" y="500" font-size="13" fill="#1A1A1A">Click Remove to move them all to Trash safely</text>
+  <rect x="330" y="738" width="290" height="44" rx="22" fill="#EEEEEE"/>
+  <text x="475" y="765" text-anchor="middle" font-size="13" font-weight="500" fill="#1A1A1A">&#8592; Back to Overview</text>
+</svg>`
 
-  /* ── Nav ── */
-  .h2-nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 48px;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px;
-    z-index: 1000;
-    box-sizing: border-box;
-    transition: background 0.4s ease, border-color 0.4s ease;
-  }
+const DIFFERENCE_TABLE_SVG = `<svg width="920" height="590" viewBox="0 0 920 590" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <defs>
+    <clipPath id="h2-table-clip">
+      <rect x="0.5" y="0.5" width="919" height="589" rx="28"/>
+    </clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="919" height="589" rx="28" fill="#FFFFFF" stroke="rgba(0,0,0,0.08)"/>
+  <g clip-path="url(#h2-table-clip)">
+    <rect x="1" y="1" width="918" height="58" fill="#F5F5F7"/>
+    <line x1="1" y1="58.5" x2="919" y2="58.5" stroke="#D8DADF"/>
+    <circle cx="28" cy="21" r="6" fill="#FF5F57"/>
+    <circle cx="48" cy="21" r="6" fill="#FEBC2E"/>
+    <circle cx="68" cy="21" r="6" fill="#28C840"/>
+    <text x="94" y="29" font-size="13" font-weight="400" fill="#6E6E73">DiskCleaner</text>
 
-  /* Light nav — over white/light sections */
-  .h2-nav[data-theme="light"] {
-    background: rgba(251,251,253,0.8);
-    border-bottom-color: rgba(0,0,0,0.06);
-  }
-  .h2-nav[data-theme="light"] .h2-nav-disk    { color: #1d1d1f; }
-  .h2-nav[data-theme="light"] .h2-nav-cleaner { color: #0071e3; }
-  .h2-nav[data-theme="light"] .h2-nav-links a { color: rgba(0,0,0,0.6); }
-  .h2-nav[data-theme="light"] .h2-nav-links a:hover { color: #000; }
+    <rect x="1" y="59" width="918" height="531" fill="#FFFFFF"/>
+    <rect x="316" y="59" width="168" height="531" fill="#EAF2FF"/>
 
-  .h2-nav-logo { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; text-decoration: none; }
-  .h2-nav-disk    { color: #fff; transition: color 0.4s ease; }
-  .h2-nav-cleaner { color: #47a9ff; transition: color 0.4s ease; }
-  .h2-nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
-  .h2-nav-links a { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.15s; }
-  .h2-nav-links a:hover { color: #fff; }
+    <line x1="316" y1="59" x2="316" y2="590" stroke="#E5E7EB"/>
+    <line x1="484" y1="59" x2="484" y2="590" stroke="#E5E7EB"/>
+    <line x1="695" y1="59" x2="695" y2="590" stroke="#E5E7EB"/>
 
-  /* ── Buttons ── */
-  .h2-btn-blue {
-    background: #0071e3; color: #fff !important;
-    border: none; border-radius: 980px; cursor: pointer;
-    font-family: inherit; text-decoration: none !important;
-    transition: background 0.15s; display: inline-block; text-align: center;
-  }
-  .h2-btn-blue:hover { background: #0077ed; }
+    <line x1="1" y1="106.5" x2="919" y2="106.5" stroke="#D8DADF"/>
+    <line x1="1" y1="146.5" x2="919" y2="146.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="186.5" x2="919" y2="186.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="226.5" x2="919" y2="226.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="266.5" x2="919" y2="266.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="306.5" x2="919" y2="306.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="346.5" x2="919" y2="346.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="386.5" x2="919" y2="386.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="426.5" x2="919" y2="426.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="466.5" x2="919" y2="466.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="506.5" x2="919" y2="506.5" stroke="#E5E7EB"/>
+    <line x1="1" y1="546.5" x2="919" y2="546.5" stroke="#E5E7EB"/>
 
-  .h2-btn-outline {
-    background: transparent; color: #0071e3 !important;
-    border: 1.5px solid #0071e3; border-radius: 980px; cursor: pointer;
-    font-family: inherit; text-decoration: none !important;
-    transition: background 0.15s; display: inline-block; text-align: center;
-  }
-  .h2-btn-outline:hover { background: rgba(0,113,227,0.06); }
+    <text x="24" y="89" font-size="16" font-weight="700" fill="#1D1D1F">Feature</text>
+    <text x="400" y="89" text-anchor="middle" font-size="16" font-weight="700" fill="#0071E3">DiskCleaner</text>
+    <text x="589.5" y="89" text-anchor="middle" font-size="16" font-weight="700" fill="#1D1D1F">Subscription Cleaner</text>
+    <text x="807" y="89" text-anchor="middle" font-size="16" font-weight="700" fill="#1D1D1F">Free Cleaner</text>
 
-  /* ── Hero ── */
-  .h2-hero {
-    min-height: 100vh;
-    background: radial-gradient(ellipse 80% 50% at 50% 30%, #001530 0%, #000 65%);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 88px 24px 64px; box-sizing: border-box;
-  }
+    <text x="24" y="132" font-size="14.5" fill="#1D1D1F">Full file preview before cleaning</text>
+    <text x="24" y="172" font-size="14.5" fill="#1D1D1F">Per-file checkboxes - keep what you want</text>
+    <text x="24" y="212" font-size="14.5" fill="#1D1D1F">Files go to Trash - never permanent</text>
+    <text x="24" y="252" font-size="14.5" fill="#1D1D1F">App Uninstaller with leftover scan</text>
+    <text x="24" y="292" font-size="14.5" fill="#1D1D1F">One-time purchase - no subscription</text>
+    <text x="24" y="332" font-size="14.5" fill="#1D1D1F">Native SwiftUI - no Electron</text>
+    <text x="24" y="372" font-size="14.5" fill="#1D1D1F">Menu bar live disk monitor</text>
+    <text x="24" y="412" font-size="14.5" fill="#1D1D1F">9 browsers - all profiles</text>
+    <text x="24" y="452" font-size="14.5" fill="#1D1D1F">Developer data cleaning (Xcode, npm)</text>
+    <text x="24" y="492" font-size="14.5" fill="#1D1D1F">No account required - ever</text>
+    <text x="24" y="532" font-size="14.5" fill="#1D1D1F">Zero analytics or tracking</text>
+    <text x="24" y="572" font-size="14.5" font-weight="700" fill="#1D1D1F">Price</text>
 
-  /* ── Mac mockup shimmer ── */
-  .h2-shimmer {
-    height: 6px; border-radius: 3px;
-    background: linear-gradient(90deg, rgba(0,113,227,0.3) 0%, #0071e3 40%, rgba(0,113,227,0.3) 80%);
-    background-size: 200% 100%;
-    animation: h2-shimmer 1.5s linear infinite;
-  }
+    <g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="400" cy="127" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 127l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="167" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 167l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="207" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 207l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="247" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 247l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="287" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 287l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="327" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 327l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="367" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 367l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="407" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 407l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="447" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 447l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="487" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 487l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="400" cy="527" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M396 527l3 3 6-7" stroke="#0071E3"/>
 
-  /* ── SVG ring ── */
-  .h2-ring-path {
-    stroke-dasharray: 502;
-    stroke-dashoffset: 502;
-    transition: stroke-dashoffset 1.5s cubic-bezier(0.25,0.1,0.25,1) 0.2s;
-  }
-  .h2-ring-wrap.h2-visible .h2-ring-path { stroke-dashoffset: 126; }
+      <circle cx="589.5" cy="127" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 123l8 8M593.5 123l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="167" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 163l8 8M593.5 163l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="207" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 203l8 8M593.5 203l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="247" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M585.5 247l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="589.5" cy="287" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 283l8 8M593.5 283l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="327" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 323l8 8M593.5 323l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="367" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M585.5 367l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="589.5" cy="407" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 403l8 8M593.5 403l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="447" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M585.5 447l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="589.5" cy="487" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 483l8 8M593.5 483l-8 8" stroke="#76767B"/>
+      <circle cx="589.5" cy="527" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M585.5 523l8 8M593.5 523l-8 8" stroke="#76767B"/>
 
-  /* ── Feature grid ── */
-  .h2-feature {
-    max-width: 980px; margin: 0 auto; padding: 100px 24px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center; gap: 80px; box-sizing: border-box;
-  }
+      <circle cx="807" cy="127" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 123l8 8M811 123l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="167" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 163l8 8M811 163l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="207" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 203l8 8M811 203l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="247" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M803 247l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="807" cy="287" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M803 287l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="807" cy="327" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M803 327l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="807" cy="367" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 363l8 8M811 363l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="407" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 403l8 8M811 403l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="447" r="10" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M803 443l8 8M811 443l-8 8" stroke="#76767B"/>
+      <circle cx="807" cy="487" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M803 487l3 3 6-7" stroke="#0071E3"/>
+      <circle cx="807" cy="527" r="10" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M803 527l3 3 6-7" stroke="#0071E3"/>
+    </g>
+  </g>
 
-  /* ── Pricing ── */
-  .h2-card { transition: box-shadow 0.3s ease, transform 0.3s ease; box-sizing: border-box; }
-  .h2-card-light:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.1); transform: translateY(-4px); }
-  .h2-card-dark:hover  { box-shadow: 0 12px 40px rgba(0,113,227,0.25); transform: translateY(-4px); }
+  <text x="400" y="572" text-anchor="middle" font-size="17" font-weight="700" fill="#0071E3">$9.99</text>
+  <text x="589.5" y="572" text-anchor="middle" font-size="17" font-weight="600" fill="#6E6E73">$30-40/yr</text>
+  <text x="807" y="572" text-anchor="middle" font-size="17" font-weight="600" fill="#6E6E73">Free</text>
+</svg>`
 
-  /* ── Footer ── */
-  .h2-footer a {
-    color: #6e6e73; text-decoration: none; transition: color 0.2s;
-    display: block; margin-bottom: 12px; font-size: 13px;
-  }
-  .h2-footer a:hover { color: #fff; }
+const HIGHLIGHT_SLIDES = [
+  {
+    eyebrow: "Uninstaller",
+    title: "Remove apps.\nLeave no trace.",
+    body: "Drag an app from /Applications and DiskCleaner finds the caches, preferences, and support files Finder leaves behind. Review everything before removal, then move it all safely to Trash.",
+    visual: "App removal preview",
+    accent: "#eef5ff",
+  },
+  {
+    eyebrow: "Transparency",
+    title: "See every file.\nApprove every clean.",
+    body: "Every cleanup starts with full visibility. Preview files, keep what matters, and confirm exactly what gets removed before anything changes on your Mac.",
+    visual: "Review window",
+    accent: "#f6f6f8",
+  },
+  {
+    eyebrow: "Safety",
+    title: "Everything goes to Trash.\nNothing is permanent.",
+    body: "DiskCleaner never surprises you with irreversible actions. Clean confidently knowing removals stay recoverable and your important files stay protected.",
+    visual: "Safe cleanup",
+    accent: "#f3f8f4",
+  },
+]
 
-  /* ── Reduced motion ── */
-  @media (prefers-reduced-motion: reduce) {
-    .h2-anim   { animation: none; opacity: 1; }
-    .h2-reveal { transition: none; opacity: 1; transform: none; }
-    .h2-ring-path { transition: none; }
-    .h2-shimmer   { animation: none; }
-  }
+function FeaturesAccordion() {
+  const [active, setActive] = useState<number | null>(null)
 
-  /* ── Responsive ── */
-  @media (max-width: 768px) {
-    .h2-nav-links { display: none !important; }
-    .h2-hero-h1   { font-size: 48px !important; }
-    .h2-feature   { grid-template-columns: 1fr !important; gap: 40px !important; padding: 60px 24px !important; }
-    .h2-stat-inner    { flex-direction: column !important; gap: 40px !important; }
-    .h2-stat-divider  { display: none !important; }
-    .h2-stat-num      { font-size: 48px !important; }
-    .h2-pricing-cards { flex-direction: column-reverse !important; align-items: center !important; }
-    .h2-pricing-cards > * { width: 100% !important; max-width: 400px !important; }
-    .h2-footer-cols { flex-direction: column !important; gap: 40px !important; }
-    .h2-final-h   { font-size: 40px !important; }
-    .h2-social-h  { font-size: 32px !important; }
-    .h2-pricing-h { font-size: 32px !important; }
-    .h2-feat-h2   { font-size: 32px !important; }
-  }
-`
+  return (
+    <section id="features" style={{ background: "#f5f5f7", padding: "56px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "360px 1fr", gap: "60px", alignItems: "center" }}>
+
+          {/* Left: nav arrows + accordion list */}
+          <div className="h2-accord-wrap">
+            <div className="h2-accord-nav" style={{ alignSelf: "center" }}>
+              <button className="h2-accord-nav-btn" onClick={() => setActive(n => ((n ?? 0) - 1 + FEATURES.length) % FEATURES.length)} aria-label="Previous">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="1,9 6,3 11,9"/></svg>
+              </button>
+              <button className="h2-accord-nav-btn" onClick={() => setActive(n => ((n ?? -1) + 1) % FEATURES.length)} aria-label="Next">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="1,3 6,9 11,3"/></svg>
+              </button>
+            </div>
+
+            <div className="h2-accord-list" style={{ overflow: "hidden" }}>
+              {FEATURES.map((f, i) => (
+                <div
+                  key={f.label}
+                  className={`h2-accord-item${active === i ? " h2-accord-active" : ""}`}
+                  onClick={() => setActive(active === i ? null : i)}
+                >
+                  {active !== i ? (
+                    <div className="h2-accord-header">
+                      <div className="h2-accord-icon">
+                        <svg width="10" height="10" viewBox="0 0 10 10" stroke="currentColor" strokeWidth="1.5" fill="none"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+                      </div>
+                      <span className="h2-accord-label">{f.label}</span>
+                    </div>
+                  ) : (
+                    <div className="h2-accord-body">
+                      <p style={{ fontSize: 15, color: "#1d1d1f", lineHeight: 1.6, margin: 0 }}>
+                        <strong>{f.headline}</strong>{" "}{f.desc}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: app window mockup */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div
+              style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.13)", border: "1px solid rgba(0,0,0,0.07)", lineHeight: 0 }}
+              dangerouslySetInnerHTML={{ __html: UNINSTALLER_SVG }}
+            />
+          </div>
+
+        </div>
+    </section>
+  )
+}
+
+function HighlightsCarousel() {
+  const [page, setPage] = useState(0)
+  const slideWidth = "min(1104px, calc(100vw - 384px))"
+  const slideGap = 20
+
+  return (
+    <section style={{ background: "#f5f5f7", padding: "100px 24px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div className="h2-reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, marginBottom: 40, flexWrap: "wrap" }}>
+          <h2 style={{ fontSize: 52, fontWeight: 600, lineHeight: 1.05, letterSpacing: "-0.022em", color: "#1d1d1f", margin: 0 }}>
+            Built for every Mac.
+          </h2>
+          <a href="#download" style={{ fontSize: 17, color: "#0071e3", textDecoration: "none", paddingTop: 14 }}>
+            Get early access
+          </a>
+        </div>
+
+      </div>
+
+      <div
+        className="h2-reveal"
+        style={{
+          overflow: "hidden",
+          width: "calc(100vw - max(24px, (100vw - 1200px) / 2))",
+          marginLeft: "max(24px, calc((100vw - 1200px) / 2))",
+        }}
+      >
+          <div
+            style={{
+              display: "flex",
+              gap: slideGap,
+              width: "max-content",
+              paddingRight: slideGap,
+              transform: `translateX(calc(-${page} * (${slideWidth} + ${slideGap}px)))`,
+              transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+              willChange: "transform",
+            }}
+          >
+            {HIGHLIGHT_SLIDES.map((slide) => (
+              <article
+                key={slide.title}
+                style={{
+                  flex: `0 0 ${slideWidth}`,
+                  minHeight: 576,
+                  borderRadius: 32,
+                  background: "#fff",
+                  padding: "45px 42px",
+                  boxSizing: "border-box",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 0.95fr",
+                  alignItems: "center",
+                  gap: 32,
+                }}
+              >
+                <div style={{ maxWidth: 390 }}>
+                  <div style={{ fontSize: 17, color: "#6e6e73", marginBottom: 22 }}>{slide.eyebrow}</div>
+                  <h3 style={{ fontSize: 37, fontWeight: 600, lineHeight: 1.06, letterSpacing: "-0.03em", color: "#1d1d1f", margin: "0 0 20px", whiteSpace: "pre-line" }}>
+                    {slide.title}
+                  </h3>
+                  <p style={{ fontSize: 17, fontWeight: 400, lineHeight: 1.45, letterSpacing: ".011em", color: "#606f7f", margin: 0 }}>
+                    {slide.body}
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    minHeight: 448,
+                    borderRadius: 28,
+                    background: `linear-gradient(180deg, ${slide.accent} 0%, #ffffff 100%)`,
+                    border: "1px solid rgba(0,0,0,0.06)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#8a8a90",
+                    fontSize: 22,
+                    fontWeight: 500,
+                    letterSpacing: "-0.02em",
+                    textAlign: "center",
+                    padding: 32,
+                    boxSizing: "border-box",
+                  }}
+                >
+                  {slide.visual}
+                </div>
+              </article>
+            ))}
+          </div>
+      </div>
+
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <div className="h2-reveal" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 18, marginTop: 28 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, background: "rgba(0,0,0,0.06)", borderRadius: 999, padding: "12px 20px" }}>
+            {HIGHLIGHT_SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                style={{
+                  width: i === page ? 34 : 8,
+                  height: 8,
+                  borderRadius: 999,
+                  border: "none",
+                  background: i === page ? "#6e6e73" : "rgba(110,110,115,0.45)",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+          <button
+            onClick={() => setPage((page + 1) % HIGHLIGHT_SLIDES.length)}
+            aria-label="Next slide"
+            style={{
+              width: 52,
+              height: 52,
+              borderRadius: "50%",
+              border: "none",
+              background: "rgba(0,0,0,0.06)",
+              color: "#1d1d1f",
+              cursor: "pointer",
+              fontSize: 22,
+              lineHeight: 1,
+            }}
+          >
+            ▶
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default function Home2() {
   useEffect(() => {
     // Scroll-reveal
-    const revealEls = document.querySelectorAll(".h2-reveal")
+    const revealEls = document.querySelectorAll(".h2-reveal, .h2-screenshot-wrap")
     const revealObs = new IntersectionObserver(
       (entries) => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add("h2-visible"); revealObs.unobserve(e.target) }
@@ -185,12 +543,10 @@ export default function Home2() {
     const statObs = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          const gb  = document.querySelector('[data-stat="gb"]')
           const sec = document.querySelector('[data-stat="sec"]')
           const cat = document.querySelector('[data-stat="cat"]')
-          if (gb)  animateCounter(gb,  2.3, true,  " GB")
-          if (sec) animateCounter(sec, 11,  false, " sec")
-          if (cat) animateCounter(cat, 10,  false, "+")
+          if (sec) animateCounter(sec, 10,  false, " sec")
+          if (cat) animateCounter(cat, 7,   false, "")
           statObs.disconnect()
         }
       },
@@ -198,79 +554,68 @@ export default function Home2() {
     )
     if (statBar) statObs.observe(statBar)
 
-    // Adaptive nav theme — light over white sections, dark over black sections
-    const nav = document.getElementById("h2-nav")
-    const updateNavTheme = () => {
-      if (!nav) return
-      const sections = document.querySelectorAll<HTMLElement>("[data-nav-theme]")
-      let theme = "dark"
-      sections.forEach(s => {
-        const top = s.getBoundingClientRect().top
-        if (top <= 48) theme = s.dataset.navTheme ?? "dark"
-      })
-      nav.dataset.theme = theme
-    }
-    updateNavTheme()
-    window.addEventListener("scroll", updateNavTheme, { passive: true })
-
     return () => {
       revealObs.disconnect()
       statObs.disconnect()
-      window.removeEventListener("scroll", updateNavTheme)
     }
   }, [])
 
   return (
-    <div className="h2-root">
-      <style>{css}</style>
-
+    <>
       {/* ════════════════════════════════
-          NAV
+          NAV — outside .h2-root so overflow-x:hidden can't trap it
           ════════════════════════════════ */}
-      <nav id="h2-nav" className="h2-nav" data-theme="dark">
-        <a href="#" className="h2-nav-logo">
-          <span className="h2-nav-disk">Disk</span>
-          <span className="h2-nav-cleaner">Cleaner</span>
+      <nav className="h2-localnav">
+        <a href="#" className="h2-localnav-name">
+          <span style={{ color: "#1d1d1f" }}>Disk</span>
+          <span style={{ color: "#0071e3" }}>Cleaner</span>
         </a>
-        <ul className="h2-nav-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/help">Support</a></li>
-        </ul>
-        <a href="#download" className="h2-btn-blue" style={{ fontSize: 13, fontWeight: 500, padding: "7px 16px" }}>
-          Download Free
+        <a href="#download" className="h2-btn-blue" style={{ fontSize: 14, fontWeight: 500, padding: "9px 18px" }}>
+          Get Early Access
         </a>
       </nav>
+
+    <div className="h2-root">
 
       {/* ════════════════════════════════
           HERO
           ════════════════════════════════ */}
-      <section className="h2-hero" data-nav-theme="dark">
-        <p className="h2-anim h2-delay-1" style={{ fontSize: 12, textTransform: "uppercase", color: "#47a9ff", letterSpacing: 2, fontWeight: 600, margin: "0 0 20px" }}>
-          For Mac
+      <section id="h2-hero-section" className="h2-hero">
+        <p className="h2-anim h2-delay-1" style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 20px" }}>
+          DiskCleaner for Mac
         </p>
 
-        <h1 className="h2-anim h2-delay-2 h2-hero-h1" style={{ fontSize: 80, fontWeight: 700, color: "#fff", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 24px" }}>
-          Your Mac.<br />Finally breathing.
+        <h1 className="h2-anim h2-delay-2 h2-hero-h1" style={{ fontSize: 80, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 24px" }}>
+          Clean your Mac.<br />Know exactly why.
         </h1>
 
-        <p className="h2-anim h2-delay-3" style={{ fontSize: 21, fontWeight: 300, color: "rgba(255,255,255,0.6)", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
-          macOS quietly collects gigabytes of junk it never cleans up.
-          DiskCleaner finds it all — and clears it in seconds.
+        <p className="h2-anim h2-delay-3" style={{ fontSize: 21, fontWeight: 400, letterSpacing: ".007em", lineHeight: 1.5, maxWidth: 600, margin: "0 auto", backgroundImage: "linear-gradient(0deg, #7a8fa4, #6e6e73 50%)", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", color: "transparent" }}>
+          Every other cleaner guesses. DiskCleaner shows you every file, every category, every byte — before anything moves.
         </p>
 
-        <div className="h2-anim h2-delay-4" style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginTop: 40 }}>
+        <div className="h2-anim h2-delay-4" style={{ display: "flex", gap: 8, justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginTop: 28 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6e6e73" }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>485+ developers &amp; Mac users on the waitlist</span>
+          </div>
+          <span style={{ color: "#d2d2d7" }}>·</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13, color: "#6e6e73" }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            100% local · No network calls · No account
+          </div>
+        </div>
+
+        <div className="h2-anim h2-delay-4" style={{ display: "flex", gap: 16, justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginTop: 20 }}>
           <a href="#download" className="h2-btn-blue" style={{ fontSize: 17, fontWeight: 500, padding: "14px 28px" }}>
-            Download Free
+            Get Early Access
           </a>
-          <a href="#features" style={{ fontSize: 17, color: "#47a9ff", textDecoration: "none" }}>
-            See What It Cleans ›
+          <a href="#features" style={{ fontSize: 17, color: "#0071e3", textDecoration: "none" }}>
+            See how it works ›
           </a>
         </div>
 
-        <p className="h2-anim h2-delay-5" style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", marginTop: 16 }}>
-          Free download. macOS 13 or later. No account needed.
+        <p className="h2-anim h2-delay-5" style={{ fontSize: 12, color: "#6e6e73", marginTop: 16 }}>
+          Free at launch · 3 scans included · $9.99 one-time after · No subscription · Apple-notarized
         </p>
 
         {/* Mac window mockup */}
@@ -301,228 +646,196 @@ export default function Home2() {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ════════════════════════════════
-          STAT BAR
-          ════════════════════════════════ */}
-      <section className="h2-stat-bar" data-nav-theme="dark" style={{ background: "#111", padding: "64px 24px" }}>
-        <div className="h2-stat-inner" style={{ display: "flex", justifyContent: "center", alignItems: "center", maxWidth: 900, margin: "0 auto" }}>
-
-          <div className="h2-reveal" style={{ flex: 1, textAlign: "center", padding: "0 40px" }}>
-            <div className="h2-stat-num" data-stat="gb" style={{ fontSize: 56, fontWeight: 700, color: "#fff" }}>2.3 GB</div>
-            <div style={{ fontSize: 14, color: "#6e6e73", marginTop: 8 }}>Average junk found per scan</div>
-          </div>
-
-          <div className="h2-stat-divider" style={{ width: 1, height: 64, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
-
-          <div className="h2-reveal" style={{ flex: 1, textAlign: "center", padding: "0 40px" }}>
-            <div className="h2-stat-num" data-stat="sec" style={{ fontSize: 56, fontWeight: 700, color: "#fff" }}>11 sec</div>
-            <div style={{ fontSize: 14, color: "#6e6e73", marginTop: 8 }}>Average time for a full scan</div>
-          </div>
-
-          <div className="h2-stat-divider" style={{ width: 1, height: 64, background: "rgba(255,255,255,0.1)", flexShrink: 0 }} />
-
-          <div className="h2-reveal" style={{ flex: 1, textAlign: "center", padding: "0 40px" }}>
-            <div className="h2-stat-num" data-stat="cat" style={{ fontSize: 56, fontWeight: 700, color: "#fff" }}>10+</div>
-            <div style={{ fontSize: 14, color: "#6e6e73", marginTop: 8 }}>Categories of clutter detected</div>
-          </div>
-
+        <div className="h2-hero-stats">
+          {[
+            { value: "485+", label: "On the early access waitlist" },
+            { value: "7", label: "Junk categories, one pass" },
+            { value: "<10s", label: "From launch to results" },
+            { value: "$9.99", label: "One time · yours forever" },
+          ].map((item) => (
+            <div key={item.label} className="h2-hero-stat-card">
+              <p className="h2-hero-stat-value">{item.value}</p>
+              <p className="h2-hero-stat-label">{item.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ════════════════════════════════
-          FEATURE STORYTELLING
+          CLARITY SECTION (Apple "Design" pattern)
           ════════════════════════════════ */}
-      <section id="features" data-nav-theme="light" style={{ background: "#f5f5f7" }}>
+      <section className="h2-clarity-sec" style={{ background: "#ffffff", padding: "100px 24px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
-        {/* A — Smart Scan: visual LEFT, text RIGHT */}
-        <div className="h2-feature h2-ring-wrap h2-reveal">
-          {/* Visual */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <svg width="160" height="160" viewBox="0 0 200 200" aria-hidden="true">
-              <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(0,113,227,0.15)" strokeWidth="14" />
-              <circle
-                className="h2-ring-path"
-                cx="100" cy="100" r="80"
-                fill="none" stroke="#0071e3" strokeWidth="14" strokeLinecap="round"
-                transform="rotate(-90 100 100)"
-              />
-              <text x="100" y="108" textAnchor="middle" fontSize="28" fontWeight="700" fill="#0071e3" fontFamily="-apple-system,sans-serif">75%</text>
-            </svg>
-          </div>
-          {/* Text */}
-          <div>
-            <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 12px" }}>Smart Scan</p>
-            <h2 className="h2-feat-h2" style={{ fontSize: 48, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 20px" }}>
-              Scans 10 categories.<br />In seconds.
-            </h2>
-            <p style={{ fontSize: 17, fontWeight: 300, color: "#6e6e73", lineHeight: 1.6, maxWidth: 400, margin: 0 }}>
-              DiskCleaner looks everywhere macOS doesn't —
-              system caches, app logs, old downloads, leftover
-              app data, and more. One scan. Nothing missed.
-            </p>
-          </div>
-        </div>
-
-        {/* B — Safe by Design: text LEFT, visual RIGHT */}
-        <div className="h2-feature h2-reveal" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-          {/* Text */}
-          <div>
-            <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 12px" }}>Safe Clean</p>
-            <h2 className="h2-feat-h2" style={{ fontSize: 48, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 20px" }}>
-              Cleans the junk.<br />Keeps what matters.
-            </h2>
-            <p style={{ fontSize: 17, fontWeight: 300, color: "#6e6e73", lineHeight: 1.6, maxWidth: 400, margin: 0 }}>
-              Every file is shown before it's removed.
-              System files are never touched. You review,
-              you decide, you clean. Always in control.
-            </p>
-          </div>
-          {/* Visual */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-          </div>
-        </div>
-
-        {/* C — Pro Features: visual LEFT, text RIGHT */}
-        <div className="h2-feature h2-reveal" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-          {/* Visual */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <div style={{ background: "#1d1d1f", borderRadius: 12, padding: 24, minWidth: 240 }}>
-              {[
-                "App Leftovers Detection",
-                "Downloads Cleanup",
-                "Developer Cache Scan",
-                "Priority Scan Mode",
-              ].map((item, i) => (
-                <div key={item} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
-                  <span style={{ color: "#0071e3", fontWeight: 700, fontSize: 16 }}>✓</span>
-                  <span style={{ fontSize: 15, color: "#fff" }}>{item}</span>
-                </div>
-              ))}
+          {/* Header: label left, headline right → stacks on mobile */}
+          <div className="h2-reveal h2-clarity-hdr" style={{ display: "flex", gap: 40, marginBottom: 72, alignItems: "flex-start" }}>
+            <div className="h2-clarity-label" style={{ flex: "0 0 200px", paddingTop: 6 }}>
+              <span style={{ fontSize: 17, color: "#6e6e73", fontWeight: 400 }}>The Interface</span>
+            </div>
+            <div style={{ flex: 1 }}>
+              <h2 className="h2-clarity-h2" style={{ fontSize: 52, fontWeight: 600, lineHeight: 1.1, margin: 0, letterSpacing: "-0.022em" }}>
+                <span style={{ color: "#1d1d1f", display: "block" }}>Don't clean what you can't see.</span>
+                <span style={{ color: "#86868b", display: "block" }}>Total clarity.</span>
+              </h2>
             </div>
           </div>
-          {/* Text */}
-          <div>
-            <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 12px" }}>DiskCleaner Pro</p>
-            <h2 className="h2-feat-h2" style={{ fontSize: 48, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 20px" }}>
-              Go deeper.<br />Find more.
-            </h2>
-            <p style={{ fontSize: 17, fontWeight: 300, color: "#6e6e73", lineHeight: 1.6, maxWidth: 400, margin: 0 }}>
-              Pro unlocks advanced scan categories including
-              App Leftovers — orphaned data from deleted apps
-              that macOS leaves behind. Built for users who
-              want complete control of their storage.
-            </p>
-          </div>
-        </div>
 
+          {/* App screenshot */}
+          <div className="h2-screenshot-wrap" style={{ display: "flex", justifyContent: "center", marginBottom: 80 }}>
+            <img src={diskCleanerImg} alt="DiskCleaner app screenshot" className="h2-screenshot h2-clarity-img" style={{ width: "62%", height: "auto", display: "block", borderRadius: 18, border: "1px solid rgba(0,0,0,0.10)", boxShadow: "0 40px 80px rgba(0,0,0,0.16)" }} />
+          </div>
+
+          {/* Body text + pill button */}
+          <div className="h2-reveal h2-clarity-body" style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontSize: 19, fontWeight: 400, lineHeight: 1.55, letterSpacing: ".011em", color: "#606f7f", margin: "0 0 32px" }}>
+              See exactly what's taking up space before a single file moves. Expand any category down to individual files. Uncheck anything you want to keep. When you're ready — and only then — <span style={{ color: "#1d1d1f" }}>click Clean.</span>
+            </p>
+            <a href="#features" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(0,0,0,0.05)", borderRadius: 980, padding: "10px 12px 10px 20px", textDecoration: "none" }}>
+              <span style={{ fontSize: 15, color: "#1d1d1f", fontWeight: 400 }}>Explore DiskCleaner</span>
+              <span style={{ width: 28, height: 28, borderRadius: "50%", background: "#0071e3", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 20, lineHeight: 1, flexShrink: 0 }}>+</span>
+            </a>
+          </div>
+
+        </div>
       </section>
+
+      {/* ════════════════════════════════
+          FEATURES ACCORDION
+          ════════════════════════════════ */}
+      <FeaturesAccordion />
 
       {/* ════════════════════════════════
           SOCIAL PROOF
           ════════════════════════════════ */}
-      <section className="h2-reveal" data-nav-theme="dark" style={{ background: "#000", padding: "80px 24px", textAlign: "center" }}>
-        <h2 className="h2-social-h" style={{ fontSize: 48, fontWeight: 700, color: "#fff", letterSpacing: "-0.022em", lineHeight: 1.1, margin: "0 0 16px" }}>
-          Trusted by Mac users<br />who hate wasted space.
-        </h2>
-        <p style={{ fontSize: 17, fontWeight: 300, color: "#6e6e73", margin: 0 }}>
-          Simple enough for anyone. Thorough enough for power users.
-        </p>
-      </section>
+      <section className="h2-clarity-sec" style={{ background: "#ffffff", padding: "100px 24px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
-      {/* ════════════════════════════════
-          PRICING
-          ════════════════════════════════ */}
-      <section id="pricing" data-nav-theme="light" style={{ background: "#f5f5f7", padding: "100px 24px" }}>
-        <div className="h2-reveal" style={{ textAlign: "center", marginBottom: 64 }}>
-          <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 12px" }}>Pricing</p>
-          <h2 className="h2-pricing-h" style={{ fontSize: 48, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 0 12px" }}>
-            Simple, honest pricing.
-          </h2>
-          <p style={{ fontSize: 17, color: "#6e6e73", fontWeight: 300, margin: 0 }}>Start free. Upgrade when you're ready.</p>
-        </div>
-
-        <div className="h2-pricing-cards" style={{ display: "flex", gap: 24, justifyContent: "center", alignItems: "stretch", flexWrap: "wrap" }}>
-
-          {/* Free card */}
-          <div className="h2-card h2-card-light h2-reveal" style={{ background: "#fff", border: "1px solid #d2d2d7", borderRadius: 18, padding: 40, maxWidth: 400, flex: "1 1 300px" }}>
-            <div style={{ fontSize: 21, fontWeight: 600, color: "#1d1d1f", marginBottom: 16 }}>DiskCleaner</div>
-            <div style={{ fontSize: 56, fontWeight: 700, color: "#1d1d1f", lineHeight: 1, marginBottom: 8 }}>Free</div>
-            <div style={{ fontSize: 14, color: "#6e6e73", marginBottom: 32 }}>Always free. No trial, no expiry.</div>
-            <hr style={{ border: "none", borderTop: "1px solid #d2d2d7", margin: "0 0 24px" }} />
-            <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px" }}>
-              {["System Cache Cleaning", "App Cache Cleaning", "Log File Removal", "Trash & Downloads Cleanup", "System Logs Scan"].map(f => (
-                <li key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: "#1d1d1f", padding: "6px 0" }}>
-                  <span style={{ color: "#0071e3", fontWeight: 700 }}>✓</span> {f}
-                </li>
-              ))}
-            </ul>
-            <a href="#download" className="h2-btn-outline" style={{ fontSize: 15, padding: 12, width: "100%", boxSizing: "border-box" }}>
-              Download Free
-            </a>
-          </div>
-
-          {/* Pro card */}
-          <div className="h2-card h2-card-dark h2-reveal" style={{ background: "#000", borderRadius: 18, padding: 40, maxWidth: 400, flex: "1 1 300px" }}>
-            <div style={{ display: "inline-block", background: "#0071e3", color: "#fff", fontSize: 11, fontWeight: 600, padding: "4px 12px", borderRadius: 980, marginBottom: 16, letterSpacing: "0.5px" }}>
-              MOST POPULAR
+          <div className="h2-reveal h2-clarity-hdr" style={{ display: "flex", gap: 40, marginBottom: 72, alignItems: "flex-start" }}>
+            <div className="h2-clarity-label" style={{ flex: "0 0 200px", paddingTop: 6 }}>
+              <span style={{ fontSize: 17, color: "#6e6e73", fontWeight: 400 }}>Uninstaller</span>
             </div>
-            <div style={{ fontSize: 21, fontWeight: 600, color: "#fff", marginBottom: 16 }}>DiskCleaner Pro</div>
-            <div style={{ fontSize: 56, fontWeight: 700, color: "#fff", lineHeight: 1, marginBottom: 8 }}>$9.99</div>
-            <div style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", marginBottom: 32 }}>per year — less than $1 a month</div>
-            <hr style={{ border: "none", borderTop: "1px solid rgba(255,255,255,0.1)", margin: "0 0 24px" }} />
-            <ul style={{ listStyle: "none", padding: 0, margin: "0 0 32px" }}>
-              {["Everything in Free", "App Leftovers Detection", "Downloads & Installer Cleanup", "Developer Cache Scan", "Priority Scan Mode", "Future Pro Features Included"].map(f => (
-                <li key={f} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15, color: "#fff", padding: "6px 0" }}>
-                  <span style={{ color: "#0071e3", fontWeight: 700 }}>✓</span> {f}
-                </li>
-              ))}
-            </ul>
-            <a href="#download" className="h2-btn-blue" style={{ fontSize: 15, padding: 12, width: "100%", boxSizing: "border-box" }}>
-              Get DiskCleaner Pro
-            </a>
+            <div style={{ flex: 1 }}>
+              <h2 className="h2-clarity-h2" style={{ fontSize: 52, fontWeight: 600, lineHeight: 1.1, margin: 0, letterSpacing: "-0.022em" }}>
+                <span style={{ color: "#1d1d1f", display: "block" }}>Dragging to Trash isn't enough.</span>
+                <span style={{ color: "#86868b", display: "block" }}>Leave no trace.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="h2-screenshot-wrap" style={{ display: "flex", justifyContent: "center", marginBottom: 80 }}>
+            <div
+              className="h2-clarity-img"
+              style={{
+                width: "62%",
+                minHeight: 420,
+                borderRadius: 18,
+                border: "1px solid rgba(0,0,0,0.10)",
+                boxShadow: "0 40px 80px rgba(0,0,0,0.16)",
+                background: "linear-gradient(180deg, #f8f8fa 0%, #ececf1 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#86868b",
+                fontSize: 20,
+                fontWeight: 500,
+                letterSpacing: "-0.01em",
+                textAlign: "center",
+                padding: 24,
+                boxSizing: "border-box",
+              }}
+            >
+              Image placeholder
+            </div>
+          </div>
+
+          <div className="h2-reveal h2-clarity-body" style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontSize: 19, fontWeight: 400, lineHeight: 1.55, letterSpacing: ".011em", color: "#606f7f", margin: 0 }}>
+              Dragging an app to Trash only removes the app itself, leaving caches, preferences, and support files scattered across 9 Library locations. DiskCleaner reveals every leftover Finder never shows you, lets you drag any app from <span style={{ color: "#1d1d1f" }}>/Applications</span> to scan instantly, preview every file before removal, and move everything safely to Trash so it stays fully recoverable.
+            </p>
           </div>
 
         </div>
       </section>
+
+      <section className="h2-clarity-sec" style={{ background: "#f5f5f7", padding: "100px 24px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+
+          <div className="h2-reveal h2-clarity-hdr" style={{ display: "flex", gap: 40, marginBottom: 72, alignItems: "flex-start" }}>
+            <div className="h2-clarity-label" style={{ flex: "0 0 200px", paddingTop: 6 }}>
+              <span style={{ fontSize: 17, color: "#6e6e73", fontWeight: 400 }}>Why DiskCleaner</span>
+            </div>
+            <div style={{ flex: 1 }}>
+              <h2 className="h2-clarity-h2" style={{ fontSize: 52, fontWeight: 600, lineHeight: 1.1, margin: 0, letterSpacing: "-0.022em" }}>
+                <span style={{ color: "#1d1d1f", display: "block" }}>Other cleaners delete silently.</span>
+                <span style={{ color: "#86868b", display: "block" }}>You get to see everything.</span>
+              </h2>
+            </div>
+          </div>
+
+          <div className="h2-screenshot-wrap" style={{ display: "flex", justifyContent: "center", marginBottom: 80 }}>
+            <div
+              className="h2-clarity-img"
+              style={{ width: "fit-content", maxWidth: "100%", lineHeight: 0, borderRadius: 28, boxShadow: "0 32px 72px rgba(0,0,0,0.14)", overflow: "hidden", display: "inline-block", background: "#fff" }}
+              dangerouslySetInnerHTML={{ __html: DIFFERENCE_TABLE_SVG }}
+            />
+          </div>
+
+          <div className="h2-reveal h2-clarity-body" style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontSize: 19, fontWeight: 400, lineHeight: 1.55, letterSpacing: ".011em", color: "#606f7f", margin: 0 }}>
+              DiskCleaner takes the opposite approach — show everything, delete nothing without your approval. Every file, every category, reviewed by you before anything moves. Most cleaners are black boxes. <span style={{ color: "#1d1d1f" }}>Not this one.</span>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <HighlightsCarousel />
 
       {/* ════════════════════════════════
           FINAL CTA
           ════════════════════════════════ */}
-      <section id="download" className="h2-reveal" data-nav-theme="dark" style={{ background: "#000", minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "80px 24px", boxSizing: "border-box" }}>
+      <section id="download" className="h2-reveal" style={{ background: "#ffffff", minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "100px 24px", boxSizing: "border-box" }}>
         <div>
-          <p style={{ fontSize: 12, textTransform: "uppercase", color: "#47a9ff", letterSpacing: 2, fontWeight: 600, margin: "0 0 16px" }}>Free Download</p>
-          <h2 className="h2-final-h" style={{ fontSize: 64, fontWeight: 700, color: "#fff", letterSpacing: "-0.022em", lineHeight: 1.05, margin: "0 auto", maxWidth: 700 }}>
-            Your Mac is ready<br />for a fresh start.
+          <p style={{ fontSize: 12, textTransform: "uppercase", color: "#0071e3", letterSpacing: 2, fontWeight: 600, margin: "0 0 16px" }}>Get DiskCleaner</p>
+          <h2 className="h2-final-h" style={{ fontSize: 52, fontWeight: 600, color: "#1d1d1f", letterSpacing: "-0.022em", lineHeight: 1.1, margin: "0 auto", maxWidth: 700 }}>
+            Pay once.<br />Own it forever.
           </h2>
-          <p style={{ fontSize: 19, fontWeight: 300, color: "rgba(255,255,255,0.6)", maxWidth: 480, margin: "16px auto 0", lineHeight: 1.6 }}>
-            DiskCleaner is free to download and free to use.<br />
-            No subscription needed to get started.
+          <p style={{ fontSize: 19, fontWeight: 400, color: "#6e6e73", maxWidth: 480, margin: "20px auto 0", lineHeight: 1.6 }}>
+            No subscription. No renewal. No upsells.<br />
+            One purchase covers macOS 13 through Tahoe 26 and every update in between.
           </p>
-          <a href="#" className="h2-btn-blue" style={{ fontSize: 19, fontWeight: 500, padding: "16px 36px", marginTop: 40, display: "inline-block" }}>
-            Download DiskCleaner — It's Free
-          </a>
-          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", marginTop: 16 }}>
-            For macOS 13 Ventura or later. Apple Silicon &amp; Intel.
-          </p>
+          <div style={{ marginTop: 28, display: "inline-flex", alignItems: "center", gap: 12, background: "#f5f5f7", borderRadius: 980, padding: "12px 24px", border: "1px solid rgba(0,0,0,0.08)" }}>
+            <span style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f", letterSpacing: "-0.03em" }}>$9.99</span>
+            <span style={{ fontSize: 14, color: "#6e6e73" }}>one-time · yours forever · up to 2 Macs</span>
+          </div>
+          <div>
+            <a href="#" className="h2-btn-blue" style={{ fontSize: 17, fontWeight: 500, padding: "14px 32px", marginTop: 24, display: "inline-block" }}>
+              Get Free Early Access · Launching April 2026
+            </a>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 20px", marginTop: 20 }}>
+            {["3 free scans included", "No subscription", "macOS 13 → 26 Tahoe", "Apple Silicon native", "Apple-notarized", "No account needed"].map(f => (
+              <span key={f} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6e6e73" }}>
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#0071e3", display: "inline-block", flexShrink: 0 }} />
+                {f}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ════════════════════════════════
           FOOTER
           ════════════════════════════════ */}
-      <footer className="h2-footer" data-nav-theme="dark" style={{ background: "#111", padding: "60px 24px 40px" }}>
+      <footer className="h2-footer" style={{ background: "#f9f9f9", borderTop: "1px solid rgba(0,0,0,0.06)", padding: "60px 24px 40px", marginTop: 16 }}>
         <div className="h2-footer-cols" style={{ display: "flex", gap: 60, maxWidth: 1200, margin: "0 auto", flexWrap: "wrap" }}>
 
           {/* Brand */}
           <div style={{ flex: "2 1 200px", maxWidth: 260 }}>
             <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
-              <span style={{ color: "#fff" }}>Disk</span>
-              <span style={{ color: "#47a9ff" }}>Cleaner</span>
+              <span style={{ color: "#1d1d1f" }}>Disk</span>
+              <span style={{ color: "#0071e3" }}>Cleaner</span>
             </div>
             <p style={{ fontSize: 13, color: "#6e6e73", lineHeight: 1.6, margin: 0 }}>
               The Mac cleaner built for people<br />who actually use their Mac.
@@ -531,7 +844,7 @@ export default function Home2() {
 
           {/* Product */}
           <div style={{ flex: "1 1 120px" }}>
-            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: 16, fontWeight: 600 }}>Product</div>
+            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "#6e6e73", marginBottom: 16, fontWeight: 600 }}>Product</div>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
             <a href="#download">Download</a>
@@ -540,7 +853,7 @@ export default function Home2() {
 
           {/* Support */}
           <div style={{ flex: "1 1 120px" }}>
-            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: 16, fontWeight: 600 }}>Support</div>
+            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "#6e6e73", marginBottom: 16, fontWeight: 600 }}>Support</div>
             <a href="/help">FAQ</a>
             <a href="/help">Contact</a>
             <a href="/privacy-policy">Privacy Policy</a>
@@ -549,7 +862,7 @@ export default function Home2() {
 
           {/* Connect */}
           <div style={{ flex: "1 1 120px" }}>
-            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "rgba(255,255,255,0.3)", marginBottom: 16, fontWeight: 600 }}>Connect</div>
+            <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "#6e6e73", marginBottom: 16, fontWeight: 600 }}>Connect</div>
             <a href="#">Twitter / X</a>
             <a href="#">GitHub</a>
             <a href="mailto:adminsupport@diskcleaner.pro">Email Us</a>
@@ -558,12 +871,13 @@ export default function Home2() {
         </div>
 
         {/* Bottom strip */}
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, maxWidth: 1200, margin: "40px auto 0" }}>
-          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>© 2025 DiskCleaner. All rights reserved.</span>
-          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>Made for Mac.</span>
+        <div style={{ borderTop: "1px solid rgba(0,0,0,0.08)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8, maxWidth: 1200, margin: "40px auto 0" }}>
+          <span style={{ fontSize: 12, color: "#6e6e73" }}>© 2026 DiskCleaner. All rights reserved.</span>
+          <span style={{ fontSize: 12, color: "#6e6e73" }}>Made for Mac.</span>
         </div>
       </footer>
 
     </div>
+    </>
   )
 }
