@@ -6,10 +6,10 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
   }, [])
 
   return (
-    <section id="requirements" className="py-12 sm:py-20" style={{ background: SURFACE }}>
+    <section id="requirements" className="py-20 sm:py-28" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-8 text-center sm:mb-10">
-            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Technical Specs</span>
+            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Technical Specs</span>
             <h2 className="reveal reveal-headline d1 mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">Built for every Mac.</h2>
             <p className="reveal d2 mx-auto mt-4 max-w-[520px] text-[17px] leading-7 text-[var(--muted)]">
               Universal binary. Apple Silicon native. Intel supported.
@@ -26,7 +26,7 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
               </div>
               <div className="text-xl font-semibold text-[var(--text)]">macOS &amp; Chip</div>
               <div className="mt-2 text-[15px] leading-6 text-[var(--muted)]">Requires macOS 13 Ventura or later. Fully tested through macOS 26 Tahoe. Universal binary runs natively on every Mac made since 2010.</div>
-              <div className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">macOS Compatibility</div>
+              <div className="mt-4 text-xs font-semibold tracking-[0.01em] text-[var(--muted)]">macOS Compatibility</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-medium text-[var(--blue)]">Tahoe 26 ✓</span>
                 <span className="rounded-full border border-[var(--border)] bg-[var(--surface2)] px-3 py-1 text-xs text-[var(--muted)]">Sequoia 15</span>
@@ -34,7 +34,7 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
                 <span className="rounded-full border border-[var(--border)] bg-[var(--surface2)] px-3 py-1 text-xs text-[var(--muted)]">Ventura 13</span>
               </div>
               <p className="mt-2 text-xs text-[var(--muted2)]">Monterey 12 and earlier — not supported (missing SwiftUI APIs)</p>
-              <div className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">Chip — Universal Binary</div>
+              <div className="mt-4 text-xs font-semibold tracking-[0.01em] text-[var(--muted)]">Chip — Universal Binary</div>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-[14px] text-[var(--text)]">
                 {[
                   "Apple M4 (ARM 64-bit) — native",
@@ -44,7 +44,7 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
                   "Intel x86 64-bit — native",
                 ].map(i => <li key={i}>{i}</li>)}
               </ul>
-              <div className="mt-4 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">Distribution</div>
+              <div className="mt-4 text-xs font-semibold tracking-[0.01em] text-[var(--muted)]">Distribution</div>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-[14px] text-[var(--text)]">
                 {[
                   "~5 MB install size",
@@ -79,7 +79,7 @@ export default function Requirements({ SURFACE }: { SURFACE: string }) {
                   </div>
                 </div>
               ))}
-              <div className="mt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">Built With</div>
+              <div className="mt-5 text-xs font-semibold tracking-[0.01em] text-[var(--muted)]">Built With</div>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-[14px] text-[var(--text)]">
                 {[
                   "SwiftUI + Swift 6 — full concurrency",

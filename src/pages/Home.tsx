@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react"
+import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react"
 import { Modal, SupportContent, ChangelogContent, WaitlistContent } from "../components/SiteModal"
 import { modalTitle, type ModalKey } from "../components/modalConfig"
 const appImage = "/DiskCleaner.webp"
@@ -28,175 +28,209 @@ const CommunityWall = lazy(() => import("../components/home/CommunityWall"))
 
 // ─── Highlights Carousel ──────────────────────────────────────────────────────
 
-const MACOS_CHIP_SVG = `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+const getMacOsChipSvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
   <g>
-    <rect x="0" y="0" width="480" height="700" fill="#FFFFFF"/>
-    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
-    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <rect x="0" y="0" width="480" height="700" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+    <rect x="0" y="0" width="480" height="56" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
     <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
     <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
     <circle cx="66" cy="28" r="6" fill="#28C840"/>
-    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">macOS &amp; Chip Compatibility</text>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">macOS &amp; Chip Compatibility</text>
 
-    <text x="28" y="86" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">macOS COMPATIBILITY</text>
-    <text x="28" y="122" font-size="14" fill="#1D1D1F">macOS 26 Tahoe</text>
-    <circle cx="452" cy="117" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 117l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="164" font-size="14" fill="#1D1D1F">macOS 15 Sequoia</text>
-    <circle cx="452" cy="159" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 159l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="206" font-size="14" fill="#1D1D1F">macOS 14 Sonoma</text>
-    <circle cx="452" cy="201" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 201l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="248" font-size="14" fill="#1D1D1F">macOS 13 Ventura</text>
-    <circle cx="452" cy="243" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 243l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="290" font-size="14" fill="#AEAEB2">Monterey 12 and earlier</text>
-    <circle cx="452" cy="285" r="9" fill="#FFFFFF" stroke="#DFDFE4"/><path d="M448 281l8 8M456 281l-8 8" stroke="#C7C7CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="86" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">macOS compatibility</text>
+    <text x="28" y="122" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 26 Tahoe</text>
+    <circle cx="452" cy="117" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 117l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="164" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 15 Sequoia</text>
+    <circle cx="452" cy="159" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 159l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="206" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 14 Sonoma</text>
+    <circle cx="452" cy="201" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 201l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="248" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 13 Ventura</text>
+    <circle cx="452" cy="243" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 243l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="290" font-size="14" fill="${dark ? '#636366' : '#AEAEB2'}">Monterey 12 and earlier</text>
+    <circle cx="452" cy="285" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(255,255,255,0.14)' : '#DFDFE4'}"/><path d="M448 281l8 8M456 281l-8 8" stroke="${dark ? '#636366' : '#C7C7CC'}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="326" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">CHIP — UNIVERSAL BINARY</text>
-    <text x="28" y="362" font-size="14" fill="#1D1D1F">Apple M4 (ARM 64-bit)</text>
-    <circle cx="452" cy="357" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 357l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="402" font-size="14" fill="#1D1D1F">Apple M3 (ARM 64-bit)</text>
-    <circle cx="452" cy="397" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 397l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="442" font-size="14" fill="#1D1D1F">Apple M2 (ARM 64-bit)</text>
-    <circle cx="452" cy="437" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 437l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="482" font-size="14" fill="#1D1D1F">Apple M1 (ARM 64-bit)</text>
-    <circle cx="452" cy="477" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 477l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="522" font-size="14" fill="#1D1D1F">Intel x86 64-bit</text>
-    <circle cx="452" cy="517" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 517l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="326" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Chip — Universal Binary</text>
+    <text x="28" y="362" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M4 (ARM 64-bit)</text>
+    <circle cx="452" cy="357" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 357l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="402" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M3 (ARM 64-bit)</text>
+    <circle cx="452" cy="397" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 397l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="442" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M2 (ARM 64-bit)</text>
+    <circle cx="452" cy="437" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 437l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="482" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M1 (ARM 64-bit)</text>
+    <circle cx="452" cy="477" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 477l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="522" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Intel x86 64-bit</text>
+    <circle cx="452" cy="517" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 517l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="558" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">DISTRIBUTION</text>
-    <text x="28" y="594" font-size="14" fill="#1D1D1F">~5 MB install size</text>
-    <circle cx="452" cy="589" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 589l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="634" font-size="14" fill="#1D1D1F">Apple-notarized — passes Gatekeeper</text>
-    <circle cx="452" cy="629" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 629l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    <text x="28" y="674" font-size="14" fill="#1D1D1F">License covers up to 2 devices</text>
-    <circle cx="452" cy="669" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 669l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="558" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Distribution</text>
+    <text x="28" y="594" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">~5 MB install size</text>
+    <circle cx="452" cy="589" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 589l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="634" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple-notarized — passes Gatekeeper</text>
+    <circle cx="452" cy="629" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 629l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="674" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License covers up to 2 devices</text>
+    <circle cx="452" cy="669" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 669l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </g>
 </svg>`
 
-const SCAN_PERF_SVG = `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+const getScanPerfSvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 700" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
   <g>
-    <rect x="0" y="0" width="480" height="700" fill="#FFFFFF"/>
-    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
-    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <rect x="0" y="0" width="480" height="700" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+    <rect x="0" y="0" width="480" height="56" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
     <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
     <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
     <circle cx="66" cy="28" r="6" fill="#28C840"/>
-    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">Scan Performance</text>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Scan Performance</text>
 
-    <text x="28" y="88" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">SCAN TIMES</text>
+    <text x="28" y="88" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Scan times</text>
 
-    <text x="28" y="122" font-size="14" fill="#1D1D1F">Quick Scan — all 7 categories, depth 3</text>
+    <text x="28" y="122" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Quick Scan — all 7 categories, depth 3</text>
     <text x="452" y="122" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
-    <rect x="28" y="134" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="134" width="424" height="8" rx="4" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
     <rect x="28" y="134" width="403" height="8" rx="4" fill="#0071E3"/>
 
-    <text x="28" y="188" font-size="14" fill="#1D1D1F">Deep Scan — small DerivedData</text>
+    <text x="28" y="188" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — small DerivedData</text>
     <text x="452" y="188" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">10–20s</text>
-    <rect x="28" y="200" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="200" width="424" height="8" rx="4" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
     <rect x="28" y="200" width="318" height="8" rx="4" fill="#0071E3"/>
 
-    <text x="28" y="254" font-size="14" fill="#1D1D1F">Deep Scan — large DerivedData (~20 GB)</text>
+    <text x="28" y="254" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — large DerivedData (~20 GB)</text>
     <text x="452" y="254" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">20–45s</text>
-    <rect x="28" y="266" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="266" width="424" height="8" rx="4" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
     <rect x="28" y="266" width="204" height="8" rx="4" fill="#0071E3"/>
 
-    <text x="28" y="320" font-size="14" fill="#1D1D1F">Deep Scan — very large caches (50 GB+)</text>
+    <text x="28" y="320" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — very large caches (50 GB+)</text>
     <text x="452" y="320" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">45–90s</text>
-    <rect x="28" y="332" width="424" height="8" rx="4" fill="#F0F0F3"/>
+    <rect x="28" y="332" width="424" height="8" rx="4" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
     <rect x="28" y="332" width="93" height="8" rx="4" fill="#0071E3"/>
 
-    <text x="28" y="378" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">BUILT WITH</text>
+    <text x="28" y="378" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Built with</text>
 
-    <text x="28" y="416" font-size="14" fill="#1D1D1F">SwiftUI + Swift 6 — full concurrency</text>
-    <circle cx="452" cy="411" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 411l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="416" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">SwiftUI + Swift 6 — full concurrency</text>
+    <circle cx="452" cy="411" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 411l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="462" font-size="14" fill="#1D1D1F">AppKit — menu bar, NSWorkspace</text>
-    <circle cx="452" cy="457" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 457l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="462" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">AppKit — menu bar, NSWorkspace</text>
+    <circle cx="452" cy="457" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 457l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="508" font-size="14" fill="#1D1D1F">StoreKit 2 — license management</text>
-    <circle cx="452" cy="503" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 503l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="508" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">StoreKit 2 — license management</text>
+    <circle cx="452" cy="503" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 503l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="554" font-size="14" fill="#1D1D1F">FileManager.trashItem() — never removeItem()</text>
-    <circle cx="452" cy="549" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 549l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="554" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">FileManager.trashItem() — never removeItem()</text>
+    <circle cx="452" cy="549" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 549l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </g>
 </svg>`
 
-const PRIVACY_SVG = `<svg width="100%" viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+const getPrivacySvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
   <g>
-    <rect x="0" y="0" width="480" height="512" fill="#FFFFFF"/>
-    <rect x="0" y="0" width="480" height="56" fill="#F5F5F7"/>
-    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="#D8DADF"/>
+    <rect x="0" y="0" width="480" height="512" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+    <rect x="0" y="0" width="480" height="56" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
+    <line x1="0" y1="56.5" x2="480" y2="56.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
     <circle cx="26" cy="28" r="6" fill="#FF5F57"/>
     <circle cx="46" cy="28" r="6" fill="#FEBC2E"/>
     <circle cx="66" cy="28" r="6" fill="#28C840"/>
-    <text x="88" y="34" font-size="13" font-weight="400" fill="#6E6E73">Privacy, by Design</text>
+    <text x="88" y="34" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Privacy, by Design</text>
 
-    <text x="28" y="88" font-size="11" font-weight="600" fill="#AEAEB2" letter-spacing="1">PRIVACY GUARANTEES</text>
+    <text x="28" y="88" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Privacy guarantees</text>
 
-    <text x="28" y="124" font-size="13.5" fill="#1D1D1F">Zero network activity during scanning or cleaning</text>
-    <circle cx="452" cy="119" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 119l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="124" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Zero network activity during scanning or cleaning</text>
+    <circle cx="452" cy="119" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 119l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="172" font-size="13.5" fill="#1D1D1F">No analytics, no telemetry, no crash reporting</text>
-    <circle cx="452" cy="167" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 167l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="172" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No analytics, no telemetry, no crash reporting</text>
+    <circle cx="452" cy="167" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 167l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="220" font-size="13.5" fill="#1D1D1F">No account required — ever</text>
-    <circle cx="452" cy="215" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 215l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="220" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No account required — ever</text>
+    <circle cx="452" cy="215" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 215l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="268" font-size="13.5" fill="#1D1D1F">License activation is the only outbound network call</text>
-    <circle cx="452" cy="263" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 263l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="268" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License activation is the only outbound network call</text>
+    <circle cx="452" cy="263" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 263l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="316" font-size="13.5" fill="#1D1D1F">No background processes when the app is closed</text>
-    <circle cx="452" cy="311" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 311l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="316" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No background processes when the app is closed</text>
+    <circle cx="452" cy="311" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 311l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="364" font-size="13.5" fill="#1D1D1F">Requires Full Disk Access — explicitly granted by you</text>
-    <circle cx="452" cy="359" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 359l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="364" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Requires Full Disk Access — explicitly granted by you</text>
+    <circle cx="452" cy="359" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 359l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" y="412" font-size="13.5" fill="#1D1D1F">Reads file names and sizes only — never file contents</text>
-    <circle cx="452" cy="407" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 407l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" y="412" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Reads file names and sizes only — never file contents</text>
+    <circle cx="452" cy="407" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 407l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 
-    <text x="28" font-size="13.5" fill="#1D1D1F"><tspan x="28" y="460">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="20">system files never touched</tspan></text>
-    <circle cx="452" cy="462" r="9" fill="#FFFFFF" stroke="#B9D4FF"/><path d="M448 462l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="28" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="460">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="20">system files never touched</tspan></text>
+    <circle cx="452" cy="462" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 462l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </g>
 </svg>`
 
-const HIGHLIGHT_SLIDES = [
+const getHighlightSlides = (dark: boolean) => [
   {
     eyebrow: "Technical Specs",
     title: "macOS & Chip\nCompatibility.",
     body: "Requires macOS 13 Ventura or later. Fully tested through macOS 26 Tahoe. Universal binary runs natively on every Mac made since 2010.",
-    svgHtml: MACOS_CHIP_SVG,
-    accent: "#eef5ff",
+    svgHtml: getMacOsChipSvg(dark),
+    accent: dark ? "#0a1628" : "#eef5ff",
   },
   {
     eyebrow: "Performance",
     title: "Scan Performance.",
     body: "Scans targeted folder paths — not full-disk enumeration. Fast on every Mac regardless of storage size.",
-    svgHtml: SCAN_PERF_SVG,
-    accent: "#f6f6f8",
+    svgHtml: getScanPerfSvg(dark),
+    accent: dark ? "#1a1a1c" : "#f6f6f8",
   },
   {
     eyebrow: "Privacy",
     title: "Privacy, by Design.",
     body: "No network activity. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
-    svgHtml: PRIVACY_SVG,
-    accent: "#f3f8f4",
+    svgHtml: getPrivacySvg(dark),
+    accent: dark ? "#0a1a0e" : "#f3f8f4",
   },
 ]
 
-function HighlightsCarousel({ SURFACE }: { SURFACE: string }) {
+function HighlightsCarousel({ SURFACE, theme }: { SURFACE: string; theme: string }) {
+  const isDark = theme === "dark"
   const [page, setPage] = useState(0)
   const slideWidth = "min(1104px, calc(100vw - 48px))"
   const slideGap = 20
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  const SLIDES = getHighlightSlides(isDark)
+  const total = SLIDES.length
+
+  const startTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setPage(p => (p + 1) % total)
+    }, 4000)
+  }, [total])
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { startTimer(); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => { observer.disconnect(); if (timerRef.current) clearInterval(timerRef.current) }
+  }, [startTimer])
+
+  const go = (i: number) => { setPage(i); startTimer() }
+  const next = () => go((page + 1) % total)
+
+  const svgBorder = isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid #D8DADF"
+  const trackBg = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)"
+  const btnStyle: React.CSSProperties = {
+    width: 44, height: 44, borderRadius: "50%", border: "none",
+    background: trackBg, color: "var(--text)", cursor: "pointer",
+    display: "flex", alignItems: "center", justifyContent: "center",
+    flexShrink: 0,
+  }
 
   return (
-    <section style={{ background: SURFACE, padding: "clamp(60px,8vw,100px) 0" }}>
+    <section ref={sectionRef} style={{ background: SURFACE, padding: "80px 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, marginBottom: 40, flexWrap: "wrap" }}>
           <h2 className="section-h2" style={{ margin: 0 }}>
             Built for every Mac.
           </h2>
-          <a href="#download" style={{ fontSize: 17, color: "var(--blue)", textDecoration: "none", paddingTop: 14 }}>
-            Get early access
-          </a>
+          
         </div>
       </div>
 
@@ -219,7 +253,7 @@ function HighlightsCarousel({ SURFACE }: { SURFACE: string }) {
             willChange: "transform",
           }}
         >
-          {HIGHLIGHT_SLIDES.map((slide) => (
+          {SLIDES.map((slide) => (
             <article
               key={slide.title}
               className="highlights-card"
@@ -233,57 +267,47 @@ function HighlightsCarousel({ SURFACE }: { SURFACE: string }) {
             >
               <div style={{ maxWidth: 390 }}>
                 <div className="carousel-eyebrow">{slide.eyebrow}</div>
-                <h3 className="carousel-h3">
-                  {slide.title}
-                </h3>
-                <p className="carousel-body">
-                  {slide.body}
-                </p>
+                <h3 className="carousel-h3">{slide.title}</h3>
+                <p className="carousel-body">{slide.body}</p>
               </div>
-              <div style={{ lineHeight: 0, borderRadius: 20, overflow: "hidden", border: "1px solid #D8DADF", boxShadow: "0 12px 40px rgba(0,0,0,0.10)" }} dangerouslySetInnerHTML={{ __html: slide.svgHtml }} />
+              <div style={{ lineHeight: 0, borderRadius: 20, overflow: "hidden", border: svgBorder, boxShadow: isDark ? "0 12px 40px rgba(0,0,0,0.4)" : "0 12px 40px rgba(0,0,0,0.10)" }} dangerouslySetInnerHTML={{ __html: slide.svgHtml }} />
             </article>
           ))}
         </div>
       </div>
 
+      {/* Controls: dots · play */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div className="reveal" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 18, marginTop: 28 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, background: "rgba(0,0,0,0.06)", borderRadius: 999, padding: "12px 20px" }}>
-            {HIGHLIGHT_SLIDES.map((_, i) => (
+
+          {/* Dots */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10, background: trackBg, borderRadius: 999, padding: "10px 18px" }}>
+            {SLIDES.map((_, i) => (
               <button
                 key={i}
-                onClick={() => setPage(i)}
+                onClick={() => go(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 style={{
-                  width: i === page ? 34 : 8,
+                  width: i === page ? 28 : 8,
                   height: 8,
                   borderRadius: 999,
                   border: "none",
-                  background: i === page ? "#6e6e73" : "rgba(110,110,115,0.45)",
+                  background: i === page ? (isDark ? "#8e8e93" : "#6e6e73") : "rgba(110,110,115,0.4)",
                   cursor: "pointer",
-                  transition: "all 0.25s ease",
+                  transition: "width 0.3s cubic-bezier(0.22,1,0.36,1), background 0.2s ease",
                   padding: 0,
                 }}
               />
             ))}
           </div>
-          <button
-            onClick={() => setPage((page + 1) % HIGHLIGHT_SLIDES.length)}
-            aria-label="Next slide"
-            style={{
-              width: 52,
-              height: 52,
-              borderRadius: "50%",
-              border: "none",
-              background: "rgba(0,0,0,0.06)",
-              color: "var(--text)",
-              cursor: "pointer",
-              fontSize: 22,
-              lineHeight: 1,
-            }}
-          >
-            ▶
+
+          {/* Play / next */}
+          <button onClick={next} aria-label="Next slide" style={btnStyle}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
           </button>
+
         </div>
       </div>
     </section>
@@ -360,7 +384,7 @@ function Hero({ BG }: { BG: string }) {
     <section className="relative overflow-hidden pb-14 pt-20 sm:pb-20 sm:pt-28" style={{ background: BG }}>
       <div className="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]" />
       <div className="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold uppercase tracking-[0.06em] text-[var(--blue)]">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">
           DiskCleaner for Mac
         </div>
         <h1 className="mx-auto max-w-[900px] text-[clamp(40px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
@@ -408,10 +432,10 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
 
 function Features({ SURFACE }: { SURFACE: string }) {
   return (
-    <section id="features" className="py-16 sm:py-24" style={{ background: SURFACE }}>
+    <section id="features" className="py-20 sm:py-28" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Why DiskCleaner</span>
+          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See the difference</span>
           <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
             <span className="inline-block text-left sm:contents">
               <span className="block text-[var(--text)] sm:inline">Others clean blind.</span>{" "}
@@ -425,45 +449,45 @@ function Features({ SURFACE }: { SURFACE: string }) {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
-                tag: "TRANSPARENCY",
+                tag: "Transparency",
 
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>,
                 ttl: "See Every File. Approve Every Clean.",
                 dsc: "Full confirmation screen with per-file checkboxes. Expand any category. Uncheck anything. You stay in control, always.",
               },
               {
-                tag: "SAFETY",
+                tag: "Safety",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /></svg>,
                 ttl: "Everything Goes to Trash. Always.",
                 dsc: "We use macOS trashItem exclusively — never removeItem. Every file is recoverable, every time. Not a single permanent deletion.",
               },
               {
-                tag: "SCANNING",
+                tag: "Scanning",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>,
                 ttl: "7 Categories. One Pass.",
                 dsc: "App Cache, Browser Cache, Screenshots, Trash, System Logs, Developer Data, App Leftovers — scanned simultaneously in under 10 seconds.",
               },
               {
-                tag: "PERFORMANCE",
+                tag: "Performance",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" /></svg>,
                 ttl: "Built with Swift Concurrency.",
                 dsc: "All file I/O runs on background threads. The interface never freezes. File sizes animate live as they're discovered.",
               },
               {
-                tag: "BROWSERS",
+                tag: "Browsers",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><line x1="2" y1="12" x2="22" y2="12" /></svg>,
                 ttl: "Every Browser. Every Profile.",
                 dsc: "Safari, Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Chromium, Opera — all profiles cleaned. Passwords, bookmarks, and history never touched.",
               },
               {
-                tag: "DEVELOPERS",
+                tag: "Developers",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>,
                 ttl: "Developers Recover the Most.",
                 dsc: "Xcode DerivedData, Simulators, VS Code, JetBrains, CocoaPods, npm — gigabytes you forgot existed. One scan reveals them all.",
               },
             ].map((f, i) => (
               <div key={i} className="reveal rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(0,113,227,0.18)] hover:shadow-[0_8px_28px_var(--shadow-lg)]" style={{ transitionDelay: `${i * 65}ms` }}>
-                <div className="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">{f.tag}</div>
+                <div className="text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">{f.tag}</div>
                 <div className="mt-3 flex h-9 w-9 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{f.ico}</div>
                 <div className="mt-4 text-[19px] font-semibold leading-snug tracking-[-0.025em] text-[var(--text)]">{f.ttl}</div>
                 <div className="mt-2 text-[14px] leading-[1.65] text-[var(--muted)]">{f.dsc}</div>
@@ -488,13 +512,16 @@ const InterfaceSplit = lazy(async () => {
   const Comp = ({ BG }: { BG: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-20 sm:py-32" style={{ background: BG }}>
+      <section className="overflow-hidden py-10 sm:py-14" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
-            <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
+          <div className="lg:hidden mb-4">
+            <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See it in action</span>
+          </div>
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+            <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
-                <h2 className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">The Interface</h2>
-                <p className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+                <h2 className="hidden lg:inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See it in action</h2>
+                <p className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
                 </p>
                 <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -534,7 +561,7 @@ const InterfaceSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1">
+            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
               <img
                 src={appImage}
                 srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
@@ -542,7 +569,7 @@ const InterfaceSplit = lazy(async () => {
                 width="1376" height="1464"
                 alt="DiskCleaner interface showing scan results"
                 loading="eager" decoding="async" fetchPriority="high"
-                className="split-img mx-auto w-full lg:w-4/5 max-w-none rounded-[18px] border border-[var(--border)] shadow-[0_24px_80px_var(--shadow-xl),0_8px_24px_var(--shadow-lg),0_2px_6px_var(--shadow)]"
+                className="split-img mx-auto w-full max-w-none lg:max-h-[520px] object-contain object-center"
               />
             </div>
           </div>
@@ -558,13 +585,16 @@ const UninstallerSplit = lazy(async () => {
   const Comp = ({ SURFACE }: { SURFACE: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section id="uninstaller" className="overflow-hidden py-20 sm:py-32" style={{ background: SURFACE }}>
+      <section id="uninstaller" className="overflow-hidden py-20 sm:py-28" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
-            <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
+          <div className="lg:hidden mb-4">
+            <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Complete removal</span>
+          </div>
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+            <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
-                <h2 className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">App Uninstaller</h2>
-                <p className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+                <h2 className="hidden lg:inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Complete removal</h2>
+                <p className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Dragging to Trash isn't enough.</span> <span className="text-[var(--blue)]">Leave no trace.</span>
                 </p>
                 <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -613,7 +643,7 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1">
+            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
               <img
                 src={appImage3}
                 srcSet={`${appImage3_464} 464w, ${appImage3_640} 640w, ${appImage3} 1376w`}
@@ -621,7 +651,7 @@ const UninstallerSplit = lazy(async () => {
                 width="1376" height="1464"
                 alt="DiskCleaner app uninstaller"
                 loading="lazy" decoding="async"
-                className="split-img mx-auto w-full lg:w-4/5 max-w-none rounded-[18px] border border-[var(--border)] shadow-[0_24px_80px_var(--shadow-xl),0_8px_24px_var(--shadow-lg),0_2px_6px_var(--shadow)]"
+                className="split-img mx-auto w-full max-w-none"
               />
             </div>
           </div>
@@ -636,7 +666,7 @@ const MenuBarSplit = lazy(async () => {
   const Comp = ({ BG }: { BG: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="py-20 sm:py-32" style={{ background: BG }}>
+      <section className="py-20 sm:py-28" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 reveal flex justify-center">
@@ -653,8 +683,8 @@ const MenuBarSplit = lazy(async () => {
             </div>
             <div className="order-1 lg:order-2 lg:pt-4 lg:pr-8 reveal d1">
               <div className="lg:max-w-lg">
-              <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Menu Bar</span>
-              <h2 className="reveal reveal-headline mt-2 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
+              <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Always on</span>
+              <h2 className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
                 <span className="text-[var(--text)]">Your disk space,</span> <span className="text-[var(--blue)]">always visible.</span>
               </h2>
               <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -709,10 +739,10 @@ const WhatItFinds = lazy(async () => {
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Preferences, support files, and caches from deleted apps." },
     ]
     return (
-      <section className="py-20 sm:py-32" style={{ background: SURFACE }}>
+      <section className="py-20 sm:py-28" style={{ background: SURFACE }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
-            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">What It Cleans</span>
+            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Seven categories</span>
             <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
               <span className="text-[var(--text)]">More is hiding than you think.</span> <span className="text-[var(--blue)]">One scan finds it all.</span>
             </h2>
@@ -783,7 +813,7 @@ const FAQ = lazy(async () => {
       },
     ]
     return (
-      <section id="faq" className="py-20 sm:py-32" style={{ background: BG }}>
+      <section id="faq" className="py-20 sm:py-28" style={{ background: BG }}>
         <div className="mx-auto w-full max-w-[860px] px-4 sm:px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
@@ -810,13 +840,15 @@ const FAQ = lazy(async () => {
                 </button>
                 <div
                   style={{
-                    maxHeight: open === i ? "400px" : "0",
-                    overflow: "hidden",
-                    transition: "max-height 0.3s cubic-bezier(0.22,1,0.36,1)",
+                    display: "grid",
+                    gridTemplateRows: open === i ? "1fr" : "0fr",
+                    transition: "grid-template-rows 0.32s cubic-bezier(0.22,1,0.36,1)",
                   }}
                 >
-                  <div className="px-5 pb-5 text-[14px] leading-[1.7] text-[var(--muted)]">
-                    {item.a}
+                  <div style={{ overflow: "hidden" }}>
+                    <div className="px-5 pb-5 text-[14px] leading-[1.7] text-[var(--muted)]">
+                      {item.a}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -854,7 +886,6 @@ const CTA = lazy(async () => {
       <section id="download" className="relative overflow-hidden py-12 sm:py-16" style={{ background: BG }}>
         <div className="hero-glow h-[600px] w-[1000px] bg-[radial-gradient(ellipse,var(--blue-glow),transparent_65%)]" />
         <div className="relative mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Get DiskCleaner</span>
           <h2 className="reveal reveal-headline d1 mt-4 text-[clamp(42px,5.5vw,76px)] font-bold leading-[0.98] tracking-[-0.045em] text-[var(--text)]">
             <span className="inline-block text-left sm:contents">
               <span className="block sm:inline">Pay once.</span>{" "}
@@ -938,7 +969,6 @@ const SiteFooter = lazy(async () => {
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Product</div>
             <a href="#features" className="site-footer-link">Features</a>
-            <a href="#pricing" className="site-footer-link">Pricing</a>
             <a href="#download" className="site-footer-link">Download</a>
             <button type="button" onClick={() => openModal("changelog")} className="site-footer-link">What's New</button>
           </div>
@@ -1040,7 +1070,7 @@ export default function Home() {
           </ul>
           <div className="flex items-center gap-2.5">
             <button
-              className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
+              className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
               onClick={() => setTheme(t => {
                 const next = t === "light" ? "dark" : "light"
                 localStorage.setItem("dc-theme", next)
@@ -1067,7 +1097,7 @@ export default function Home() {
           <MenuBarSplit BG={STRIPE_WHITE} />
           <FAQ BG={STRIPE_WHITE} />
           <CompareTable BG={STRIPE_GRAY} />
-          <HighlightsCarousel SURFACE={STRIPE_GRAY} />
+          <HighlightsCarousel SURFACE={STRIPE_GRAY} theme={theme} />
           <CommunityWall SURFACE={STRIPE_WHITE} />
           <CTA BG={STRIPE_GRAY} openWaitlist={() => setModal("waitlist")} />
           <SiteFooter openModal={k => setModal(k)} />

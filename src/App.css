@@ -80,7 +80,7 @@ body, [data-theme] {
 }
 
 [data-theme="dark"] {
-  --bg: #000000;
+  --bg: #0a0a0c;
   --surface: #1c1c1e;
   --surface2: #2c2c2e;
   --border: rgba(255,255,255,0.14);
@@ -369,17 +369,16 @@ body, [data-theme] {
   animation: dc-page-in 0.28s cubic-bezier(.22,1,.36,1) both;
 }
 
-/* Split section image motion (Apple-style: soft reveal + precise hover) */
+/* Split section image motion */
 .js-loaded .reveal .split-img {
   opacity: 0;
-  transform: translate3d(0, 28px, 0) scale(0.97);
-  filter: saturate(0.94) contrast(0.98);
+  transform: translate3d(60px, 0, 0) scale(0.92);
+  filter: saturate(0.8) contrast(0.95);
   transition:
-    opacity .7s cubic-bezier(.22,1,.36,1),
-    transform .88s cubic-bezier(.16,1,.3,1),
-    filter .88s cubic-bezier(.16,1,.3,1),
-    box-shadow .45s cubic-bezier(.22,1,.36,1);
-  will-change: transform, opacity, filter, box-shadow;
+    opacity .75s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.16,1,.3,1),
+    filter .9s cubic-bezier(.16,1,.3,1);
+  will-change: transform, opacity, filter;
 }
 
 .js-loaded .reveal.revealed .split-img {
@@ -389,34 +388,36 @@ body, [data-theme] {
 }
 
 @keyframes dc-image-mobile-settle {
-  0% { transform: translate3d(0, 28px, 0) scale(0.97); }
-  65% { transform: translate3d(0, -4px, 0) scale(1.01); }
-  100% { transform: translate3d(0, 0, 0) scale(1); }
+  0%   { opacity: 0; transform: translate3d(0, 48px, 0) scale(0.9); }
+  60%  { opacity: 1; transform: translate3d(0, -6px, 0) scale(1.02); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .reveal.revealed .split-img:hover {
-    transform: translate3d(0, -10px, 0) scale(1.02) rotateX(1deg) rotateY(-1deg);
-    box-shadow: 0 40px 105px var(--shadow-xl), 0 16px 40px var(--shadow-lg), 0 4px 10px var(--shadow);
+    transform: translate3d(0, -14px, 0) scale(1.04);
+    filter: drop-shadow(0 32px 64px var(--shadow-xl)) drop-shadow(0 12px 28px var(--shadow-lg));
+  }
+}
+
+/* Mobile tap feedback */
+@media (hover: none), (pointer: coarse) {
+  .split-img:active {
+    transform: scale(1.03);
+    transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
 @media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .js-loaded .reveal .split-img {
+    transform: translate3d(0, 48px, 0) scale(0.9);
+  }
   .js-loaded .reveal.revealed .split-img {
-    animation: dc-image-mobile-settle .78s cubic-bezier(.16,1,.3,1) both;
+    animation: dc-image-mobile-settle .85s cubic-bezier(.16,1,.3,1) both;
   }
 }
 
 @media (max-width: 768px) {
-  .js-loaded .reveal .split-img,
-  .js-loaded .reveal.revealed .split-img {
-    opacity: 1;
-    transform: none;
-    filter: none;
-    transition: none;
-    animation: none;
-    will-change: auto;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2094,8 +2095,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   display: inline-flex;
   font-size: 12px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   color: var(--blue);
   background: var(--blue-tint);
   border: 1px solid var(--blue-tint-border);

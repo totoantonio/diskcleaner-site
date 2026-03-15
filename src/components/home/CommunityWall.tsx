@@ -704,7 +704,7 @@ export default function CommunityWall({ SURFACE }: { SURFACE: string }) {
     <section id="community" className="py-20 sm:py-32" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-8 flex flex-col items-center gap-3 text-center sm:mb-10 sm:gap-4">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Community</span>
+          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Real users</span>
           <h2 className="reveal reveal-headline d1 text-[clamp(38px,4.6vw,62px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
             <span className="inline-block text-left sm:contents">
               <span className="block sm:inline">Register your seat.</span>{" "}
@@ -722,7 +722,7 @@ export default function CommunityWall({ SURFACE }: { SURFACE: string }) {
         <>
           <div className="hidden lg:grid grid-cols-1 gap-6 lg:grid-cols-[360px_1fr]">
               <form className="reveal rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7" onSubmit={onRegister}>
-                <div className="mb-2 text-[clamp(18px,2vw,22px)] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">
+                <div className="mb-2 text-[clamp(18px,2vw,22px)] font-semibold tracking-[0.01em] text-[var(--muted)]">
                   Our Community
                 </div>
                 <div className="mb-3 rounded-xl bg-[var(--surface2)] p-0.5 text-sm font-medium">

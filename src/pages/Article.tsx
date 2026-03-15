@@ -162,7 +162,7 @@ export default function Article() {
         </Link>
 
         <div className="mx-auto mt-8 flex max-w-[860px] flex-col items-center gap-3 text-center">
-          <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">
+          <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">
             {post.category}
           </span>
           <h1 className="article-title text-balance">{post.title}</h1>

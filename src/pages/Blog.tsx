@@ -58,7 +58,7 @@ export default function Blog() {
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
 
         <div className="mx-auto mb-14 flex max-w-[760px] flex-col items-center gap-4 text-center">
-          <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">
+          <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">
             Blog
           </span>
           <h1 className="text-balance text-[clamp(36px,4vw,58px)] font-bold leading-[1.06] tracking-[-0.045em] text-[var(--text)]">

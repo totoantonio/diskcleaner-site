@@ -137,7 +137,7 @@ export default function CompareTable({ BG }: { BG: string }) {
     <section id="compare" className="py-12 sm:py-20" style={{ background: BG }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-8 flex flex-col items-center text-center sm:mb-10">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">Comparison</span>
+          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Side by side</span>
           <h2 className="reveal reveal-headline d1 mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
             Why DiskCleaner <span>is different.</span>
           </h2>
