@@ -28,27 +28,9 @@ a, button, [role="button"] { -webkit-tap-highlight-color: transparent; }
 
 /* ===== FONT + TOKENS ===== */
 :root {
-  --font-sans:
-    -apple-system,
-    "SF Pro Display",
-    "SF Pro Text",
-    sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans Variable", "Plus Jakarta Sans", sans-serif;
   --blue: #0071e3;
   --blue-dim: #0051a2;
-}
-
-/* Apple platforms: prioritize SF/Apple system typography */
-@supports (font: -apple-system-body) {
-  :root {
-    --font-sans:
-      -apple-system,
-      BlinkMacSystemFont,
-      "SF Pro Display",
-      "SF Pro Text",
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
-  }
 }
 
 body, [data-theme] {
@@ -1755,7 +1737,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 /* All classes scoped with .h2- prefix */
 
 .h2-root {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background: #ffffff;
@@ -1979,7 +1961,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   background: #fff; border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px; padding: 15px;
   display: flex; flex-direction: column; gap: 5px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans);
 }
 .h2-feat-card-safe {
   background: rgba(0,113,227,0.05); border-color: rgba(0,113,227,0.12);
@@ -2068,7 +2050,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .highlights-card {
   display: grid;
   grid-template-columns: 1fr 0.95fr;
-  align-items: center;
+  align-items: start;
   gap: 32px;
   box-sizing: border-box;
 }
