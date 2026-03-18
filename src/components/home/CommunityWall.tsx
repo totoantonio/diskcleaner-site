@@ -704,7 +704,6 @@ export default function CommunityWall({ SURFACE }: { SURFACE: string }) {
     <section id="community" className="py-20 sm:py-32" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-8 flex flex-col items-center gap-3 text-center sm:mb-10 sm:gap-4">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Real users</span>
           <h2 className="reveal reveal-headline d1 text-[clamp(38px,4.6vw,62px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
             <span className="inline-block text-left sm:contents">
               <span className="block sm:inline">Register your seat.</span>{" "}

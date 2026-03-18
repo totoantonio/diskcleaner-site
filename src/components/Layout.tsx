@@ -1,10 +1,8 @@
 import { useState } from "react"
 import { Outlet } from "react-router-dom"
 import { modalTitle, type ModalKey } from "./modalConfig"
-import {
-  Modal,
-  SupportContent, ChangelogContent,
-} from "./SiteModal"
+import { Modal, SupportContent, ChangelogContent } from "./SiteModal"
+import "../App.css"
 
 const SunIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -23,9 +21,12 @@ const MoonIcon = () => (
 )
 
 export default function Layout() {
-  const [theme, setTheme] = useState<"light" | "dark">(() =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  )
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light"
+    const saved = localStorage.getItem("dc-theme")
+    if (saved === "light" || saved === "dark") return saved
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  })
   const [modal, setModal] = useState<ModalKey>(null)
 
   return (
@@ -36,22 +37,23 @@ export default function Layout() {
           <a href="/" className="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">Disk<em className="not-italic text-[var(--blue)]">Cleaner</em></a>
           <ul className="hidden list-none items-center gap-7 md:flex">
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#features">Features</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#uninstaller">Uninstaller</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#compare">Compare</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#requirements">Requirements</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#download">Pricing</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li>
           </ul>
           <div className="flex items-center gap-2.5">
             <button
-              className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
-              onClick={() => setTheme(t => t === "light" ? "dark" : "light")}
+              className="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
+              onClick={() => setTheme(t => {
+                const next = t === "light" ? "dark" : "light"
+                localStorage.setItem("dc-theme", next)
+                return next
+              })}
               aria-label="Toggle theme"
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="/#download" className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Download Free</a>
+            <a href="/#download" className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a>
           </div>
         </div>
       </nav>
@@ -60,17 +62,40 @@ export default function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-[var(--border)] bg-[var(--bg)] py-8">
-        <div className="mx-auto w-full max-w-[1080px] px-6 md:px-12">
-          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
-            <span className="text-xs font-normal text-[var(--muted2)]">Copyright © {new Date().getFullYear()} DiskCleaner. All rights reserved. · diskcleaner.pro</span>
-            <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="/privacy-policy" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] no-underline transition-colors hover:text-[var(--muted)]">Privacy</a>
-              <a href="/terms-of-service" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] no-underline transition-colors hover:text-[var(--muted)]">Terms</a>
-              <button type="button" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]" onClick={() => setModal("support")}>Support</button>
-              <button type="button" className="bg-transparent p-0 text-[13px] text-[var(--muted2)] transition-colors hover:text-[var(--muted)]" onClick={() => setModal("changelog")}>Changelog</button>
+      <footer className="site-footer" style={{ marginTop: 0 }}>
+        <div className="site-footer-cols">
+          <div className="site-footer-brand">
+            <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
+              <span style={{ color: "var(--text)" }}>Disk</span><span style={{ color: "var(--blue)" }}>Cleaner</span>
             </div>
+            <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6, margin: 0 }}>
+              The Mac cleaner built for people<br />who actually use their Mac.
+            </p>
           </div>
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Product</div>
+            <a href="/#features" className="site-footer-link">Features</a>
+            <a href="/#download" className="site-footer-link">Download</a>
+            <button type="button" onClick={() => setModal("changelog")} className="site-footer-link">What's New</button>
+          </div>
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Support</div>
+            <a href="/help" className="site-footer-link">Help Center</a>
+            <button type="button" onClick={() => setModal("support")} className="site-footer-link">FAQ</button>
+            <button type="button" onClick={() => setModal("support")} className="site-footer-link">Contact</button>
+            <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
+            <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
+          </div>
+          <div className="site-footer-col">
+            <div className="site-footer-col-hd">Connect</div>
+            <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Twitter / X</a>
+            <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Threads</a>
+            <a href="mailto:adminsupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
+          </div>
+        </div>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+          <span style={{ fontSize: 12, color: "var(--muted)" }}>© {new Date().getFullYear()} DiskCleaner. All rights reserved.</span>
+          <span style={{ fontSize: 12, color: "var(--muted)" }}>Made for Mac.</span>
         </div>
       </footer>
 

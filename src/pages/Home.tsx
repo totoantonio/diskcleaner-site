@@ -432,8 +432,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
     <section id="features" className="py-14 sm:py-20" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
-          <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See the difference</span>
-          <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+          <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
             <span className="inline-block text-left sm:contents">
               <span className="block text-[var(--text)] sm:inline">Others clean blind.</span>{" "}
               <span className="block text-[var(--blue)] sm:inline">You see every file.</span>
@@ -510,14 +509,10 @@ const InterfaceSplit = lazy(async () => {
     return (
       <section className="overflow-hidden py-10 sm:py-14" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="lg:hidden mb-4">
-            <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See it in action</span>
-          </div>
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
-                <h2 className="hidden lg:inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">See it in action</h2>
-                <p className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+                <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
                 </p>
                 <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -583,14 +578,10 @@ const UninstallerSplit = lazy(async () => {
     return (
       <section id="uninstaller" className="overflow-hidden py-14 sm:py-20" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="lg:hidden mb-4">
-            <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Complete removal</span>
-          </div>
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
-                <h2 className="hidden lg:inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Complete removal</h2>
-                <p className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+                <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Dragging to Trash isn't enough.</span> <span className="text-[var(--blue)]">Leave no trace.</span>
                 </p>
                 <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -679,8 +670,7 @@ const MenuBarSplit = lazy(async () => {
             </div>
             <div className="order-1 lg:order-2 lg:pt-4 lg:pr-8 reveal d1">
               <div className="lg:max-w-lg">
-              <span className="inline-flex rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Always on</span>
-              <h2 className="reveal reveal-headline mt-4 text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
+              <h2 className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
                 <span className="text-[var(--text)]">Your disk space,</span> <span className="text-[var(--blue)]">always visible.</span>
               </h2>
               <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
@@ -738,8 +728,7 @@ const WhatItFinds = lazy(async () => {
       <section className="py-20 sm:py-28" style={{ background: SURFACE }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
-            <span className="reveal rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">Seven categories</span>
-            <h2 className="reveal reveal-headline d1 mt-4 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
               <span className="text-[var(--text)]">More is hiding than you think.</span> <span className="text-[var(--blue)]">One scan finds it all.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[600px] text-[17px] leading-[1.55] text-[var(--muted)]">
@@ -1085,13 +1074,13 @@ export default function Home() {
           <InterfaceSplit BG={STRIPE_GRAY} />
           <WhatItFinds SURFACE={STRIPE_WHITE} />
           <Features SURFACE={STRIPE_GRAY} />
-          <UninstallerSplit SURFACE={STRIPE_GRAY} />
-          <MenuBarSplit BG={STRIPE_WHITE} />
+          <UninstallerSplit SURFACE={STRIPE_WHITE} />
+          <MenuBarSplit BG={STRIPE_GRAY} />
           <FAQ BG={STRIPE_WHITE} />
-          <CompareTable BG={STRIPE_GRAY} />
-          <HighlightsCarousel SURFACE={STRIPE_GRAY} theme={theme} />
-          <CommunityWall SURFACE={STRIPE_WHITE} />
-          <CTA BG={STRIPE_GRAY} openWaitlist={() => setModal("waitlist")} />
+          <CompareTable BG={STRIPE_GRAY} theme={theme} />
+          <HighlightsCarousel SURFACE={STRIPE_WHITE} theme={theme} />
+          <CommunityWall SURFACE={STRIPE_GRAY} />
+          <CTA BG={STRIPE_WHITE} openWaitlist={() => setModal("waitlist")} />
           <SiteFooter openModal={k => setModal(k)} />
         </Suspense>
       </div>
