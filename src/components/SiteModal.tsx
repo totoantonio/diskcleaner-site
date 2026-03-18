@@ -282,10 +282,11 @@ export function ChangelogContent() {
       <h3>v1.0 (Planned)</h3>
       <ul className="list-disc space-y-2 pl-5">
         <li>Quick Scan and Deep Scan</li>
-        <li>7 cleanup categories</li>
+        <li>Core cleanup categories plus Downloads, iOS backups, Mail attachments, and external drive review</li>
         <li>Per-file review with checkboxes</li>
+        <li>Risk labels and review-required categories</li>
         <li>Trash-only cleaning (recoverable)</li>
-        <li>Menu bar disk monitor</li>
+        <li>Menu bar utilities, update badge, and clean history</li>
         <li>App Uninstaller with leftovers scan</li>
       </ul>
     </div>

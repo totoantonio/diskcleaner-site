@@ -4,9 +4,6 @@ import { modalTitle, type ModalKey } from "../components/modalConfig"
 const appImage = "/DiskCleaner.webp"
 const appImage_464 = "/DiskCleaner-464.webp"
 const appImage_640 = "/DiskCleaner-640.webp"
-import appImage3 from "../assets/DiskCleaner_Uninstaller.webp"
-import appImage3_464 from "../assets/DiskCleaner_Uninstaller-464.webp"
-import appImage3_640 from "../assets/DiskCleaner_Uninstaller-640.webp"
 import menubarImage from "../assets/DiskCleaner_MenuBar.webp"
 import menubarImage_464 from "../assets/DiskCleaner_MenuBar-464.webp"
 import menubarImage_640 from "../assets/DiskCleaner_MenuBar-640.webp"
@@ -434,12 +431,12 @@ function Features({ SURFACE }: { SURFACE: string }) {
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
           <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
             <span className="inline-block text-left sm:contents">
-              <span className="block text-[var(--text)] sm:inline">Others clean blind.</span>{" "}
-              <span className="block text-[var(--blue)] sm:inline">You see every file.</span>
+              <span className="block text-[var(--text)] sm:inline">Review-first cleanup</span>{" "}
+              <span className="block text-[var(--blue)] sm:inline">for the Mac.</span>
             </span>
           </h2>
           <p className="reveal d2 mt-4 max-w-[760px] text-[17px] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
-              DiskCleaner takes the opposite approach — show everything, delete nothing without your approval. Every file, every category, reviewed by you before anything moves.
+              DiskCleaner shows every file, labels caution items, and moves nothing until you approve it. Cleanup with proof, not promises.
             </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -460,8 +457,8 @@ function Features({ SURFACE }: { SURFACE: string }) {
               {
                 tag: "Scanning",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>,
-                ttl: "7 Categories. One Pass.",
-                dsc: "App Cache, Browser Cache, Screenshots, Trash, System Logs, Developer Data, App Leftovers — scanned simultaneously in under 10 seconds.",
+                ttl: "Quick Scan for everyday clutter.",
+                dsc: "Run a fast scan from the app or menu bar, then switch to Deep Scan for additional locations, caution items, and broader review.",
               },
               {
                 tag: "Performance",
@@ -473,13 +470,13 @@ function Features({ SURFACE }: { SURFACE: string }) {
                 tag: "Browsers",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><line x1="2" y1="12" x2="22" y2="12" /></svg>,
                 ttl: "Every Browser. Every Profile.",
-                dsc: "Safari, Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Chromium, Opera — all profiles cleaned. Passwords, bookmarks, and history never touched.",
+                dsc: "Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Chromium, and Opera caches are cleaned across profiles. Safari cache is measured but not cleared. Passwords, bookmarks, and history stay untouched.",
               },
               {
                 tag: "Developers",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>,
                 ttl: "Developers Recover the Most.",
-                dsc: "Xcode DerivedData, Simulators, VS Code, JetBrains, CocoaPods, npm — gigabytes you forgot existed. One scan reveals them all.",
+                dsc: "Xcode DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches. Usually the biggest hidden recovery on a developer Mac.",
               },
             ].map((f, i) => (
               <div key={i} className="reveal rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(0,113,227,0.18)] hover:shadow-[0_8px_28px_var(--shadow-lg)]" style={{ transitionDelay: `${i * 65}ms` }}>
@@ -536,7 +533,7 @@ const InterfaceSplit = lazy(async () => {
                         <rect x="3" y="3" width="14" height="14" rx="3" />
                         <path d="m6.5 10 2 2 5-5" />
                       </svg>
-                      Per-file checkboxes across all 7 categories.
+                      Per-file checkboxes across Quick Scan and Deep Scan results.
                     </dt>
                   </div>
                   <div className="relative pl-9">
@@ -572,8 +569,87 @@ const InterfaceSplit = lazy(async () => {
 })
 
 
+const getAppUninstallerSvg = (dark: boolean) => `<svg width="680" height="830" viewBox="0 0 680 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <defs>
+    <linearGradient id="un-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B9D4FF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="un-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="${dark ? "rgba(0,0,0,0.45)" : "rgba(15,23,42,0.16)"}"/>
+    </filter>
+  </defs>
+  <rect x="42" y="54" width="596" height="722" rx="28" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" filter="url(#un-shadow)"/>
+  <rect x="42" y="54" width="596" height="54" rx="28" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
+  <rect x="42" y="82" width="596" height="26" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
+  <circle cx="78" cy="81" r="6.5" fill="#FF5F57"/>
+  <circle cx="100" cy="81" r="6.5" fill="#FEBC2E"/>
+  <circle cx="122" cy="81" r="6.5" fill="#28C840"/>
+  <text x="340" y="86" text-anchor="middle" font-size="14" fill="${dark ? "#b2b2b8" : "#6E6E73"}">App Uninstaller</text>
+
+  <text x="84" y="156" font-size="26" font-weight="700" fill="${dark ? "#f5f5f7" : "#111827"}">Shows the app and what it leaves behind.</text>
+  <text x="84" y="184" font-size="14" fill="${dark ? "#9ca3af" : "#6B7280"}">Generic view of leftovers, review, and Trash-first removal.</text>
+
+  <rect x="84" y="222" width="214" height="438" rx="24" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="112" y="260" font-size="15" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Selected App</text>
+  <rect x="112" y="286" width="158" height="78" rx="18" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <rect x="132" y="306" width="38" height="38" rx="10" fill="url(#un-accent)"/>
+  <path d="M144 325h14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M151 318v14" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="182" y="322" font-size="14" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Example</text>
+  <text x="182" y="341" font-size="11" fill="${dark ? "#9ca3af" : "#6B7280"}">Review</text>
+
+  <text x="112" y="404" font-size="12" font-weight="600" fill="${dark ? "#9ca3af" : "#6B7280"}">FOUND IN LIBRARY</text>
+  <rect x="112" y="422" width="158" height="48" rx="14" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <circle cx="132" cy="446" r="8" fill="#EAF2FF" stroke="#B9D4FF"/>
+  <path d="M128.5 446l2.5 2.5 4.5-5" stroke="#0071E3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="148" y="442" font-size="13" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Caches</text>
+  <text x="148" y="457" font-size="11" fill="${dark ? "#9ca3af" : "#6B7280"}">2.8 GB</text>
+
+  <rect x="112" y="480" width="158" height="48" rx="14" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <circle cx="132" cy="504" r="8" fill="#EAF2FF" stroke="#B9D4FF"/>
+  <path d="M128.5 504l2.5 2.5 4.5-5" stroke="#0071E3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="148" y="500" font-size="13" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Preferences</text>
+  <text x="148" y="515" font-size="11" fill="${dark ? "#9ca3af" : "#6B7280"}">164 MB</text>
+
+  <rect x="112" y="538" width="158" height="48" rx="14" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <circle cx="132" cy="562" r="8" fill="#EAF2FF" stroke="#B9D4FF"/>
+  <path d="M128.5 562l2.5 2.5 4.5-5" stroke="#0071E3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="148" y="558" font-size="13" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Containers</text>
+  <text x="148" y="573" font-size="11" fill="${dark ? "#9ca3af" : "#6B7280"}">912 MB</text>
+
+  <rect x="314" y="222" width="282" height="438" rx="24" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="352" y="260" font-size="15" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Review Before Removal</text>
+  <rect x="342" y="286" width="226" height="92" rx="16" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="376" y="312" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">~/Library/Caches/</text>
+  <text x="376" y="330" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">com.example.app</text>
+  <text x="376" y="350" font-size="11.5" fill="${dark ? "#9ca3af" : "#6B7280"}">Rebuilt cache data</text>
+  <text x="376" y="366" font-size="11.5" font-weight="600" fill="#0071E3">2.8 GB</text>
+
+  <rect x="342" y="390" width="226" height="92" rx="16" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="376" y="416" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">~/Library/Preferences/</text>
+  <text x="376" y="434" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">com.example.app.plist</text>
+  <text x="376" y="454" font-size="11.5" fill="${dark ? "#9ca3af" : "#6B7280"}">Saved settings and state</text>
+  <text x="376" y="470" font-size="11.5" font-weight="600" fill="#0071E3">164 MB</text>
+
+  <rect x="342" y="494" width="226" height="92" rx="16" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="376" y="520" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">~/Library/Containers/</text>
+  <text x="376" y="538" font-size="12" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">com.example.app</text>
+  <text x="376" y="558" font-size="11.5" fill="${dark ? "#9ca3af" : "#6B7280"}">Container data and support files</text>
+  <text x="376" y="574" font-size="11.5" font-weight="600" fill="#0071E3">912 MB</text>
+
+  <rect x="342" y="606" width="170" height="40" rx="20" fill="#EAF2FF"/>
+  <text x="427" y="631" text-anchor="middle" font-size="12.5" font-weight="600" fill="#0071E3">Move to Trash</text>
+
+  <rect x="84" y="686" width="512" height="54" rx="20" fill="${dark ? "#111827" : "#111827"}"/>
+  <text x="112" y="706" font-size="12.5" fill="${dark ? "#E5E7EB" : "#E5E7EB"}">
+    <tspan x="112" dy="0">Finder removes the app.</tspan>
+    <tspan x="112" dy="18">DiskCleaner reviews the rest first.</tspan>
+  </text>
+</svg>`
+
 const UninstallerSplit = lazy(async () => {
-  const Comp = ({ SURFACE }: { SURFACE: string }) => {
+  const Comp = ({ SURFACE, theme }: { SURFACE: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
       <section id="uninstaller" className="overflow-hidden py-14 sm:py-20" style={{ background: SURFACE }}>
@@ -582,12 +658,12 @@ const UninstallerSplit = lazy(async () => {
             <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-                  <span className="text-[var(--text)]">Dragging to Trash isn't enough.</span> <span className="text-[var(--blue)]">Leave no trace.</span>
+                  <span className="text-[var(--text)]">App Uninstaller shows the files apps leave behind.</span> <span className="text-[var(--blue)]">Remove them completely.</span>
                 </p>
                 <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
-                  Dragging an app to Trash leaves behind gigabytes of caches,
-                  preferences, and support files spread across 9 Library locations.
-                  DiskCleaner finds every leftover - the files Finder never shows you.
+                  Dragging an app to Trash only removes the app itself. The rest can stay behind:
+                  caches, preferences, logs, containers, and support files spread across Library folders.
+                  DiskCleaner shows the full footprint first, then lets you remove the app and its leftovers with the same review-first control as every cleanup.
                 </p>
                 <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
@@ -596,7 +672,7 @@ const UninstallerSplit = lazy(async () => {
                         <path d="M4 10h12" />
                         <path d="M10 4v12" />
                       </svg>
-                      Drag any app from /Applications to scan.
+                      Drag any app from /Applications to scan its full footprint.
                     </dt>
                   </div>
                   <div className="relative pl-9">
@@ -605,7 +681,7 @@ const UninstallerSplit = lazy(async () => {
                         <rect x="3" y="3" width="14" height="14" rx="3" />
                         <path d="m6.5 10 2 2 5-5" />
                       </svg>
-                      Finds leftovers across 9 Library locations.
+                      Finds caches, preferences, containers, logs, and support files across Library locations.
                     </dt>
                   </div>
                   <div className="relative pl-9">
@@ -615,7 +691,7 @@ const UninstallerSplit = lazy(async () => {
                         <path d="M7 6V4h6v2" />
                         <path d="M6 6v10h8V6" />
                       </svg>
-                      Preview every file before removing.
+                      Review every leftover file before removal with the same per-file control as cleanup scans.
                     </dt>
                   </div>
                   <div className="relative pl-9">
@@ -624,21 +700,157 @@ const UninstallerSplit = lazy(async () => {
                         <path d="M4 10h12" />
                         <path d="M10 4v12" />
                       </svg>
-                      All removals go to Trash - fully recoverable.
+                      App removal and leftover cleanup both go to Trash - fully recoverable.
                     </dt>
                   </div>
                 </dl>
               </div>
             </div>
             <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
-              <img
-                src={appImage3}
-                srcSet={`${appImage3_464} 464w, ${appImage3_640} 640w, ${appImage3} 1376w`}
-                sizes="(max-width: 1024px) 92vw, 50vw"
-                width="1376" height="1464"
-                alt="DiskCleaner app uninstaller"
-                loading="lazy" decoding="async"
+              <div
                 className="split-img mx-auto w-full max-w-none"
+                aria-label="Illustration of DiskCleaner app uninstaller review flow"
+                role="img"
+                dangerouslySetInnerHTML={{ __html: getAppUninstallerSvg(theme === "dark") }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+  return { default: Comp }
+})
+
+const getRamOptimizerSvg = (dark: boolean) => `<svg width="680" height="830" viewBox="0 0 680 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <defs>
+    <linearGradient id="ram-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="ram-graph" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(59,130,246,0.24)"/>
+      <stop offset="100%" stop-color="rgba(59,130,246,0.02)"/>
+    </linearGradient>
+    <filter id="ram-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="${dark ? "rgba(0,0,0,0.45)" : "rgba(15,23,42,0.16)"}"/>
+    </filter>
+  </defs>
+  <rect x="42" y="54" width="596" height="722" rx="28" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" filter="url(#ram-shadow)"/>
+  <rect x="42" y="54" width="596" height="54" rx="28" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
+  <rect x="42" y="82" width="596" height="26" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
+  <circle cx="78" cy="81" r="6.5" fill="#FF5F57"/>
+  <circle cx="100" cy="81" r="6.5" fill="#FEBC2E"/>
+  <circle cx="122" cy="81" r="6.5" fill="#28C840"/>
+  <text x="340" y="86" text-anchor="middle" font-size="14" fill="${dark ? "#b2b2b8" : "#6E6E73"}">RAM Optimizer</text>
+
+  <text x="84" y="158" font-size="26" font-weight="700" fill="${dark ? "#f5f5f7" : "#111827"}">Memory status, clearly shown.</text>
+  <text x="84" y="186" font-size="14" fill="${dark ? "#9ca3af" : "#6B7280"}">Live telemetry for pressure, compression, and swap.</text>
+
+  <rect x="84" y="226" width="334" height="254" rx="24" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="112" y="264" font-size="15" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">Memory Pressure</text>
+  <text x="360" y="264" font-size="13" font-weight="600" fill="#2563EB" text-anchor="end">Normal</text>
+  <line x1="112" y1="420" x2="390" y2="420" stroke="${dark ? "#4b5563" : "#D1D5DB"}"/>
+  <line x1="112" y1="304" x2="390" y2="304" stroke="${dark ? "#374151" : "#E5E7EB"}"/>
+  <line x1="112" y1="362" x2="390" y2="362" stroke="${dark ? "#374151" : "#E5E7EB"}"/>
+  <path d="M112 394 C148 390, 178 352, 214 350 C250 348, 274 334, 308 326 C334 319, 350 322, 390 286 L390 420 L112 420 Z" fill="url(#ram-graph)"/>
+  <path d="M112 394 C148 390, 178 352, 214 350 C250 348, 274 334, 308 326 C334 319, 350 322, 390 286" fill="none" stroke="url(#ram-accent)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="390" cy="286" r="6" fill="#3B82F6"/>
+  <rect x="112" y="438" width="88" height="10" rx="5" fill="#22C55E"/>
+  <rect x="204" y="438" width="88" height="10" rx="5" fill="#FACC15"/>
+  <rect x="296" y="438" width="72" height="10" rx="5" fill="#F97316"/>
+  <text x="112" y="465" font-size="12" fill="${dark ? "#9ca3af" : "#6B7280"}">Low pressure</text>
+  <text x="238" y="465" font-size="12" fill="${dark ? "#9ca3af" : "#6B7280"}" text-anchor="middle">Compressed</text>
+  <text x="368" y="465" font-size="12" fill="${dark ? "#9ca3af" : "#6B7280"}" text-anchor="end">Heavy swap</text>
+
+  <rect x="440" y="226" width="156" height="116" rx="22" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="464" y="258" font-size="13" font-weight="600" fill="${dark ? "#9ca3af" : "#6B7280"}">Compressed</text>
+  <text x="464" y="302" font-size="32" font-weight="700" fill="${dark ? "#f5f5f7" : "#111827"}">5.2 GB</text>
+  <text x="464" y="324" font-size="11.5" fill="${dark ? "#9ca3af" : "#6B7280"}">Memory compression</text>
+
+  <rect x="440" y="364" width="156" height="116" rx="22" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="464" y="396" font-size="13" font-weight="600" fill="${dark ? "#9ca3af" : "#6B7280"}">Swap Used</text>
+  <text x="464" y="440" font-size="32" font-weight="700" fill="${dark ? "#f5f5f7" : "#111827"}">512 MB</text>
+  <text x="464" y="462" font-size="11.5" fill="${dark ? "#9ca3af" : "#6B7280"}">Disk-backed memory</text>
+
+  <rect x="84" y="516" width="512" height="160" rx="24" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="112" y="552" font-size="15" font-weight="600" fill="${dark ? "#f5f5f7" : "#111827"}">The Apple-approved way to handle memory</text>
+  <text x="112" y="579" font-size="12.5" fill="${dark ? "#9ca3af" : "#6B7280"}">
+    <tspan x="112" dy="0">DiskCleaner reads real system signals: memory pressure, compressed</tspan>
+    <tspan x="112" dy="18">memory, swap used, and page in/out. That is safer than fake “RAM</tspan>
+    <tspan x="112" dy="18">cleaning” because it explains what macOS is doing instead of forcing</tspan>
+    <tspan x="112" dy="18">risky behavior that works against how Apple devices manage memory.</tspan>
+  </text>
+
+  <rect x="84" y="688" width="512" height="68" rx="22" fill="${dark ? "#111827" : "#111827"}"/>
+  <text x="112" y="718" font-size="13" font-weight="600" fill="#93C5FD">How DiskCleaner approaches RAM</text>
+  <text x="112" y="738" font-size="12.5" fill="#E5E7EB">Shows memory pressure clearly and avoids fake RAM-cleaning claims.</text>
+</svg>`
+
+const RamOptimizerSplit = lazy(async () => {
+  const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
+    useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
+    return (
+      <section className="overflow-hidden py-14 sm:py-20" style={{ background: BG }}>
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+            <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
+              <div className="lg:max-w-lg">
+                <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
+                  <span className="text-[var(--text)]">RAM Optimizer shows what memory is doing.</span> <span className="text-[var(--blue)]">Refresh safely.</span>
+                </p>
+                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                  DiskCleaner does not promise fake RAM gains or risky background tricks. Instead, it shows the memory signals that actually matter on macOS:
+                  memory pressure, compressed memory, and swap usage. When your Mac feels heavy, you get a safe refresh action and a clear read on what changed.
+                </p>
+                <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
+                  <div className="relative pl-9">
+                    <dt className="inline text-[var(--text-dim)]">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
+                        <path d="M4 12h3l2-5 3 8 2-5h2" />
+                      </svg>
+                      Live memory pressure, compressed memory, and swap telemetry.
+                    </dt>
+                  </div>
+                  <div className="relative pl-9">
+                    <dt className="inline text-[var(--text-dim)]">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
+                        <path d="M10 3v3" />
+                        <path d="M10 14v3" />
+                        <path d="M3 10h3" />
+                        <path d="M14 10h3" />
+                        <circle cx="10" cy="10" r="4" />
+                      </svg>
+                      See whether slowdown is cache clutter, memory compression, or swap pressure.
+                    </dt>
+                  </div>
+                  <div className="relative pl-9">
+                    <dt className="inline text-[var(--text-dim)]">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
+                        <path d="M16 10a6 6 0 1 1-1.76-4.24" />
+                        <path d="M16 4v4h-4" />
+                      </svg>
+                      Use a safe refresh action instead of aggressive “RAM cleaning” claims.
+                    </dt>
+                  </div>
+                  <div className="relative pl-9">
+                    <dt className="inline text-[var(--text-dim)]">
+                      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
+                        <rect x="3" y="3" width="14" height="14" rx="3" />
+                        <path d="m6.5 10 2 2 5-5" />
+                      </svg>
+                      Built to explain what your Mac is doing, not hide it behind a single button.
+                    </dt>
+                  </div>
+                </dl>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
+              <div
+                className="split-img mx-auto w-full max-w-none"
+                aria-label="Illustration of DiskCleaner RAM optimizer telemetry"
+                role="img"
+                dangerouslySetInnerHTML={{ __html: getRamOptimizerSvg(theme === "dark") }}
               />
             </div>
           </div>
@@ -675,7 +887,7 @@ const MenuBarSplit = lazy(async () => {
               </h2>
               <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                 Live free space lives in your menu bar — always one glance away.
-                Trigger a Quick Scan or check full disk stats without ever opening the app.
+                Trigger a Quick Scan, see update badges, or check full disk stats without ever opening the app.
                 Lightweight. Always on. Never in the way.
               </p>
               <ul className="mt-6 list-none space-y-2 pl-0 text-[15px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
@@ -698,7 +910,7 @@ const MenuBarSplit = lazy(async () => {
                     <rect x="7" y="7" width="10" height="10" rx="2" />
                     <path d="M9 4v2M15 4v2M9 18v2M15 18v2M4 9h2M4 15h2M18 9h2M18 15h2" />
                   </svg>
-                  Zero CPU when idle
+                  Update badge and lightweight utilities
                 </li>
               </ul>
               </div>
@@ -716,13 +928,13 @@ const WhatItFinds = lazy(async () => {
   const Comp = ({ SURFACE }: { SURFACE: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     const categories = [
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>, name: "App Cache", desc: "Bloated cache files left by every app you've ever opened." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>, name: "Browser Cache", desc: "All 9 browsers: cached pages, images, sessions, cookies." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, name: "Screenshots", desc: "Desktop and Downloads screenshots piling up for months." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>, name: "Trash Contents", desc: "Files sitting in Trash taking space you think is already freed." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>, name: "System Logs", desc: "Diagnostic logs, crash reports, and system traces." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>, name: "Developer Data", desc: "Xcode DerivedData, Simulators, CocoaPods, npm, JetBrains." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Preferences, support files, and caches from deleted apps." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>, name: "App Cache", desc: "Safe third-party app caches that grow quietly over time." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>, name: "Browser Cache", desc: "Chrome, Edge, Firefox, Brave, and Arc caches, plus Safari cache measurement." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, name: "Screenshots", desc: "Screenshot-named files in the actual macOS screenshots folder." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>, name: "Trash Contents", desc: "Trash measured across users and mounted volumes so hidden waste still shows up." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>, name: "System Logs", desc: "App logs, crash reports, and diagnostic logs that are safe to review and remove." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>, name: "Developer Data", desc: "DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Orphaned support files, caches, and preferences with risk labels and review before cleanup." },
     ]
     return (
       <section className="py-20 sm:py-28" style={{ background: SURFACE }}>
@@ -732,7 +944,7 @@ const WhatItFinds = lazy(async () => {
               <span className="text-[var(--text)]">More is hiding than you think.</span> <span className="text-[var(--blue)]">One scan finds it all.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[600px] text-[17px] leading-[1.55] text-[var(--muted)]">
-              Every category runs in parallel. You see exactly what's found — nothing is removed until you say so.
+              Quick Scan covers the clutter most Macs accumulate every day. Deep Scan goes further into larger, review-required categories. You see exactly what was found before anything moves.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -774,11 +986,11 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Does DiskCleaner connect to the internet or collect my data?",
-        a: "Never. DiskCleaner runs 100% locally on your Mac. It makes no network calls, collects no data, and requires no account. Your file names and disk contents never leave your machine.",
+        a: "DiskCleaner runs locally on your Mac. Scanning and cleaning stay on-device, the app includes no analytics or tracking, and no account is required. License activation and update checks are the only outbound network activity.",
       },
       {
         q: "What exactly does DiskCleaner scan?",
-        a: "Seven categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers from uninstalled apps. Personal files, passwords, and documents are never touched.",
+        a: "Quick Scan covers App Cache, Browser Cache, Screenshots, Trash, System Logs, Developer Data, and App Leftovers. Deep Scan expands into additional locations such as Downloads, iOS backups, Mail attachments, and external drives. Caution categories are marked for review before cleanup.",
       },
       {
         q: "Which macOS versions are supported?",
@@ -794,7 +1006,7 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Do I need an account or subscription?",
-        a: "No account and no subscription. $9.99 one-time covers you for up to 2 Macs and includes every future update.",
+        a: "No account and no subscription. DiskCleaner includes 3 free scans, then unlocks Pro with a license key. The current direct license is $9.99 one-time for up to 2 Macs and includes future updates.",
       },
     ]
     return (
@@ -926,6 +1138,27 @@ const CTA = lazy(async () => {
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[var(--blue)]" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               Zero data collected
             </span>
+          </div>
+        </div>
+      </section>
+    )
+  }
+  return { default: Comp }
+})
+
+const TrustBand = lazy(async () => {
+  const Comp = ({ BG }: { BG: string }) => {
+    useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
+    return (
+      <section className="py-16 sm:py-20" style={{ background: BG }}>
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
+          <div className="reveal rounded-[32px] border border-[var(--border)] bg-[var(--surface)] px-6 py-10 text-center shadow-sm sm:px-10">
+            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(30px,3.6vw,48px)] font-bold leading-[1.06] tracking-[-0.04em] text-[var(--text)]">
+              Clean with proof.
+            </h2>
+            <p className="reveal d2 mx-auto mt-4 max-w-[760px] text-[17px] leading-[1.6] text-[var(--muted)]">
+              DiskCleaner shows what it found, labels what needs review, protects cloud and sensitive paths, and sends removals to Trash. No black-box cleaning. No permanent deletion. No guesswork.
+            </p>
           </div>
         </div>
       </section>
@@ -1074,12 +1307,14 @@ export default function Home() {
           <InterfaceSplit BG={STRIPE_GRAY} />
           <WhatItFinds SURFACE={STRIPE_WHITE} />
           <Features SURFACE={STRIPE_GRAY} />
-          <UninstallerSplit SURFACE={STRIPE_WHITE} />
+          <UninstallerSplit SURFACE={STRIPE_WHITE} theme={theme} />
+          <RamOptimizerSplit BG={STRIPE_GRAY} theme={theme} />
           <MenuBarSplit BG={STRIPE_GRAY} />
           <FAQ BG={STRIPE_WHITE} />
           <CompareTable BG={STRIPE_GRAY} theme={theme} />
           <HighlightsCarousel SURFACE={STRIPE_WHITE} theme={theme} />
           <CommunityWall SURFACE={STRIPE_GRAY} />
+          <TrustBand BG={STRIPE_WHITE} />
           <CTA BG={STRIPE_WHITE} openWaitlist={() => setModal("waitlist")} />
           <SiteFooter openModal={k => setModal(k)} />
         </Suspense>

@@ -65,9 +65,9 @@ const getTableSvg = (dark: boolean) => {
     <text x="24" y="252" font-size="14.5" fill="${textPri}">App Uninstaller with leftover scan</text>
     <text x="24" y="292" font-size="14.5" fill="${textPri}">One-time purchase - no subscription</text>
     <text x="24" y="332" font-size="14.5" fill="${textPri}">Native SwiftUI - no Electron</text>
-    <text x="24" y="372" font-size="14.5" fill="${textPri}">Menu bar live disk monitor</text>
-    <text x="24" y="412" font-size="14.5" fill="${textPri}">9 browsers - all profiles</text>
-    <text x="24" y="452" font-size="14.5" fill="${textPri}">Developer data cleaning (Xcode, npm)</text>
+    <text x="24" y="372" font-size="14.5" fill="${textPri}">Menu bar scan and update utilities</text>
+    <text x="24" y="412" font-size="14.5" fill="${textPri}">Browser cache cleanup and Safari measurement</text>
+    <text x="24" y="452" font-size="14.5" fill="${textPri}">Developer cleanup (Xcode, npm, JetBrains)</text>
     <text x="24" y="492" font-size="14.5" fill="${textPri}">No account required - ever</text>
     <text x="24" y="532" font-size="14.5" fill="${textPri}">Zero analytics or tracking</text>
     <text x="24" y="572" font-size="14.5" font-weight="700" fill="${textPri}">Price</text>
@@ -100,9 +100,9 @@ const ROWS = [
   { f: "App Uninstaller",            dc: true,  sub: true,  free: true  },
   { f: "One-time purchase",          dc: true,  sub: false, free: true  },
   { f: "Native SwiftUI",             dc: true,  sub: false, free: true  },
-  { f: "Menu bar monitor",           dc: true,  sub: true,  free: false },
-  { f: "9 browsers & profiles",      dc: true,  sub: false, free: false },
-  { f: "Developer data (Xcode/npm)", dc: true,  sub: true,  free: false },
+  { f: "Menu bar utilities",         dc: true,  sub: true,  free: false },
+  { f: "Browser cache + Safari measurement", dc: true,  sub: false, free: false },
+  { f: "Developer cleanup",          dc: true,  sub: true,  free: false },
   { f: "No account — ever",          dc: true,  sub: false, free: true  },
   { f: "Zero analytics",             dc: true,  sub: false, free: true  },
 ]
