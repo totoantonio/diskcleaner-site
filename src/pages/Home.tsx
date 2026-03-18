@@ -28,140 +28,154 @@ const CommunityWall = lazy(() => import("../components/home/CommunityWall"))
 
 // ─── Highlights Carousel ──────────────────────────────────────────────────────
 
-const getMacOsChipSvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
-  <rect x="0" y="0" width="480" height="480" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+const getMacOsChipSvg = (dark: boolean) => {
+  const sep = `<line x1="28" x2="464" stroke="${dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)'}" stroke-width="0.5"/>`
+  const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
+  const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  const cross = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(255,255,255,0.14)' : '#DFDFE4'}"/><path d="M448 ${cy-4}l8 8M456 ${cy-4}l-8 8" stroke="${dark ? '#636366' : '#C7C7CC'}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  return `<svg width="100%" viewBox="0 0 480 502" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  <rect x="0" y="0" width="480" height="502" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
   <circle cx="26" cy="22" r="6" fill="#FF5F57"/>
   <circle cx="46" cy="22" r="6" fill="#FEBC2E"/>
   <circle cx="66" cy="22" r="6" fill="#28C840"/>
-  <text x="88" y="28" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">macOS &amp; Chip Compatibility</text>
-
-  <text x="28" y="62" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">macOS compatibility</text>
-  <text x="28" y="88" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 26 Tahoe</text>
-  <circle cx="452" cy="83" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 83l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="116" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 15 Sequoia</text>
-  <circle cx="452" cy="111" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 111l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="144" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 14 Sonoma</text>
-  <circle cx="452" cy="139" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 139l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="172" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 13 Ventura</text>
-  <circle cx="452" cy="167" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 167l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="200" font-size="14" fill="${dark ? '#636366' : '#AEAEB2'}">Monterey 12 and earlier</text>
-  <circle cx="452" cy="195" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(255,255,255,0.14)' : '#DFDFE4'}"/><path d="M448 191l8 8M456 191l-8 8" stroke="${dark ? '#636366' : '#C7C7CC'}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <text x="28" y="222" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Chip — Universal Binary</text>
-  <text x="28" y="248" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M4 (ARM 64-bit)</text>
-  <circle cx="452" cy="243" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 243l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="276" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M3 (ARM 64-bit)</text>
-  <circle cx="452" cy="271" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 271l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="304" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M2 (ARM 64-bit)</text>
-  <circle cx="452" cy="299" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 299l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="332" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M1 (ARM 64-bit)</text>
-  <circle cx="452" cy="327" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 327l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="360" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Intel x86 64-bit</text>
-  <circle cx="452" cy="355" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 355l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-  <text x="28" y="382" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Distribution</text>
-  <text x="28" y="408" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">~5 MB install size</text>
-  <circle cx="452" cy="403" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 403l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="436" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple-notarized — passes Gatekeeper</text>
-  <circle cx="452" cy="431" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 431l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="464" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License covers up to 2 devices</text>
-  <circle cx="452" cy="459" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 459l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="88" y="28" font-size="13" fill="${dark ? '#b2b2b8' : '#6E6E73'}">macOS &amp; Chip Compatibility</text>
+  <g transform="translate(0,12)">
+  ${sectionBg(48)}
+  <text x="28" y="64" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">MACOS COMPATIBILITY</text>
+  <text x="28" y="90" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 26 Tahoe</text>${check(85)}
+  ${sep.replace('x2="464"', 'y1="102" y2="102" x2="464"')}
+  <text x="28" y="118" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 15 Sequoia</text>${check(113)}
+  ${sep.replace('x2="464"', 'y1="130" y2="130" x2="464"')}
+  <text x="28" y="146" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 14 Sonoma</text>${check(141)}
+  ${sep.replace('x2="464"', 'y1="158" y2="158" x2="464"')}
+  <text x="28" y="174" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">macOS 13 Ventura</text>${check(169)}
+  ${sep.replace('x2="464"', 'y1="186" y2="186" x2="464"')}
+  <text x="28" y="202" font-size="13" fill="${dark ? '#636366' : '#AEAEB2'}">Monterey 12 and earlier</text>${cross(197)}
+  ${sectionBg(212)}
+  <text x="28" y="228" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">CHIP — UNIVERSAL BINARY</text>
+  <text x="28" y="254" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M4 (ARM 64-bit)</text>${check(249)}
+  ${sep.replace('x2="464"', 'y1="266" y2="266" x2="464"')}
+  <text x="28" y="282" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M3 (ARM 64-bit)</text>${check(277)}
+  ${sep.replace('x2="464"', 'y1="294" y2="294" x2="464"')}
+  <text x="28" y="310" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M2 (ARM 64-bit)</text>${check(305)}
+  ${sep.replace('x2="464"', 'y1="322" y2="322" x2="464"')}
+  <text x="28" y="338" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple M1 (ARM 64-bit)</text>${check(333)}
+  ${sep.replace('x2="464"', 'y1="350" y2="350" x2="464"')}
+  <text x="28" y="366" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Intel x86 64-bit</text>${check(361)}
+  ${sectionBg(376)}
+  <text x="28" y="392" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">DISTRIBUTION</text>
+  <text x="28" y="418" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">~5 MB install size</text>${check(413)}
+  ${sep.replace('x2="464"', 'y1="430" y2="430" x2="464"')}
+  <text x="28" y="446" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Apple-notarized — passes Gatekeeper</text>${check(441)}
+  ${sep.replace('x2="464"', 'y1="458" y2="458" x2="464"')}
+  <text x="28" y="474" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License covers up to 2 devices</text>${check(469)}
+  </g>
 </svg>`
+}
 
-const getScanPerfSvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 420" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
-  <rect x="0" y="0" width="480" height="420" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+const getScanPerfSvg = (dark: boolean) => {
+  const sep = (y: number) => `<line x1="28" y1="${y}" x2="464" y2="${y}" stroke="${dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)'}" stroke-width="0.5"/>`
+  const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
+  const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  return `<svg width="100%" viewBox="0 0 480 432" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  <rect x="0" y="0" width="480" height="432" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
   <circle cx="26" cy="22" r="6" fill="#FF5F57"/>
   <circle cx="46" cy="22" r="6" fill="#FEBC2E"/>
   <circle cx="66" cy="22" r="6" fill="#28C840"/>
-  <text x="88" y="28" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Scan Performance</text>
-
-  <text x="28" y="62" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Scan times</text>
-
-  <text x="28" y="86" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Quick Scan — all 7 categories, depth 3</text>
-  <text x="452" y="86" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
-  <rect x="28" y="96" width="424" height="6" rx="3" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
-  <rect x="28" y="96" width="403" height="6" rx="3" fill="#0071E3"/>
-
-  <text x="28" y="136" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — small DerivedData</text>
-  <text x="452" y="136" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">10–20s</text>
-  <rect x="28" y="146" width="424" height="6" rx="3" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
-  <rect x="28" y="146" width="318" height="6" rx="3" fill="#0071E3"/>
-
-  <text x="28" y="186" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — large DerivedData (~20 GB)</text>
-  <text x="452" y="186" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">20–45s</text>
-  <rect x="28" y="196" width="424" height="6" rx="3" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
-  <rect x="28" y="196" width="204" height="6" rx="3" fill="#0071E3"/>
-
-  <text x="28" y="236" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — very large caches (50 GB+)</text>
-  <text x="452" y="236" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">45–90s</text>
-  <rect x="28" y="246" width="424" height="6" rx="3" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
-  <rect x="28" y="246" width="93" height="6" rx="3" fill="#0071E3"/>
-
-  <text x="28" y="278" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Built with</text>
-
-  <text x="28" y="302" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">SwiftUI + Swift 6 — full concurrency</text>
-  <circle cx="452" cy="297" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 297l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="330" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">AppKit — menu bar, NSWorkspace</text>
-  <circle cx="452" cy="325" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 325l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="358" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">StoreKit 2 — license management</text>
-  <circle cx="452" cy="353" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 353l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="386" font-size="14" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">FileManager.trashItem() — never removeItem()</text>
-  <circle cx="452" cy="381" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 381l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="88" y="28" font-size="13" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Scan Performance</text>
+  <g transform="translate(0,12)">
+  ${sectionBg(48)}
+  <text x="28" y="64" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">SCAN TIMES</text>
+  <text x="28" y="88" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Quick Scan — all 7 categories</text>
+  <text x="452" y="88" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
+  <rect x="28" y="98" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
+  <rect x="28" y="98" width="403" height="5" rx="2.5" fill="#0071E3"/>
+  ${sep(118)}
+  <text x="28" y="138" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — small DerivedData</text>
+  <text x="452" y="138" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">10–20s</text>
+  <rect x="28" y="148" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
+  <rect x="28" y="148" width="318" height="5" rx="2.5" fill="#0071E3"/>
+  ${sep(168)}
+  <text x="28" y="188" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — large DerivedData (~20 GB)</text>
+  <text x="452" y="188" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">20–45s</text>
+  <rect x="28" y="198" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
+  <rect x="28" y="198" width="204" height="5" rx="2.5" fill="#0071E3"/>
+  ${sep(218)}
+  <text x="28" y="238" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — very large caches (50 GB+)</text>
+  <text x="452" y="238" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">45–90s</text>
+  <rect x="28" y="248" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
+  <rect x="28" y="248" width="93" height="5" rx="2.5" fill="#0071E3"/>
+  ${sectionBg(268)}
+  <text x="28" y="284" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">BUILT WITH</text>
+  <text x="28" y="308" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">SwiftUI + Swift 6 — full concurrency</text>${check(303)}
+  ${sep(320)}
+  <text x="28" y="340" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">AppKit — menu bar, NSWorkspace</text>${check(335)}
+  ${sep(352)}
+  <text x="28" y="372" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">StoreKit 2 — license management</text>${check(367)}
+  ${sep(384)}
+  <text x="28" y="404" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">FileManager.trashItem() — no removeItem()</text>${check(399)}
+  </g>
 </svg>`
+}
 
-const getPrivacySvg = (dark: boolean) => `<svg width="100%" viewBox="0 0 480 440" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
-  <rect x="0" y="0" width="480" height="440" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
+const getPrivacySvg = (dark: boolean) => {
+  const sep = (y: number) => `<line x1="28" y1="${y}" x2="464" y2="${y}" stroke="${dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)'}" stroke-width="0.5"/>`
+  const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
+  const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
+  return `<svg width="100%" viewBox="0 0 480 378" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  <rect x="0" y="0" width="480" height="378" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
   <circle cx="26" cy="22" r="6" fill="#FF5F57"/>
   <circle cx="46" cy="22" r="6" fill="#FEBC2E"/>
   <circle cx="66" cy="22" r="6" fill="#28C840"/>
-  <text x="88" y="28" font-size="13" font-weight="400" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Privacy, by Design</text>
-
-  <text x="28" y="62" font-size="11" font-weight="600" fill="${dark ? '#636366' : '#AEAEB2'}" letter-spacing="0.5">Privacy guarantees</text>
-
-  <text x="28" y="88" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Zero network activity during scanning or cleaning</text>
-  <circle cx="452" cy="83" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 83l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="132" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No analytics, no telemetry, no crash reporting</text>
-  <circle cx="452" cy="127" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 127l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="176" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No account required — ever</text>
-  <circle cx="452" cy="171" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 171l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="220" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License activation is the only outbound network call</text>
-  <circle cx="452" cy="215" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 215l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="264" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No background processes when the app is closed</text>
-  <circle cx="452" cy="259" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 259l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="308" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Requires Full Disk Access — explicitly granted by you</text>
-  <circle cx="452" cy="303" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 303l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" y="352" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Reads file names and sizes only — never file contents</text>
-  <circle cx="452" cy="347" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 347l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <text x="28" font-size="13.5" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="396">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="18">system files never touched</tspan></text>
-  <circle cx="452" cy="398" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 398l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="88" y="28" font-size="13" fill="${dark ? '#b2b2b8' : '#6E6E73'}">Privacy, by Design</text>
+  <g transform="translate(0,12)">
+  ${sectionBg(48)}
+  <text x="28" y="64" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">PRIVACY GUARANTEES</text>
+  <text x="28" y="90" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Zero network activity during scanning or cleaning</text>${check(85)}
+  ${sep(104)}
+  <text x="28" y="124" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No analytics, no telemetry, no crash reporting</text>${check(119)}
+  ${sep(138)}
+  <text x="28" y="158" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No account required — ever</text>${check(153)}
+  ${sep(172)}
+  <text x="28" y="192" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">License activation is the only outbound network call</text>${check(187)}
+  ${sep(206)}
+  <text x="28" y="226" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No background processes when the app is closed</text>${check(221)}
+  ${sep(240)}
+  <text x="28" y="260" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Requires Full Disk Access — explicitly granted by you</text>${check(255)}
+  ${sep(274)}
+  <text x="28" y="294" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Reads file names and sizes only — never file contents</text>${check(289)}
+  ${sep(308)}
+  <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="18">system files never touched</tspan></text>${check(333)}
+  </g>
 </svg>`
+}
 
 const getHighlightSlides = (dark: boolean) => [
   {
     eyebrow: "Technical Specs",
     title: "macOS & Chip\nCompatibility.",
     body: "Requires macOS 13 Ventura or later. Fully tested through macOS 26 Tahoe. Universal binary runs natively on every Mac made since 2010.",
-    svgHtml: getMacOsChipSvg(dark),
+    svgHtml: getMacOsChipSvg(dark) as string,
     accent: dark ? "#0a1628" : "#eef5ff",
   },
   {
     eyebrow: "Performance",
     title: "Scan Performance.",
     body: "Scans targeted folder paths — not full-disk enumeration. Fast on every Mac regardless of storage size.",
-    svgHtml: getScanPerfSvg(dark),
+    svgHtml: getScanPerfSvg(dark) as string,
     accent: dark ? "#1a1a1c" : "#f6f6f8",
   },
   {
     eyebrow: "Privacy",
     title: "Privacy, by Design.",
     body: "No network activity. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
-    svgHtml: getPrivacySvg(dark),
+    svgHtml: getPrivacySvg(dark) as string,
     accent: dark ? "#0a1a0e" : "#f3f8f4",
   },
 ]
@@ -364,12 +378,9 @@ const MoonIcon = () => (
 
 function Hero({ BG }: { BG: string }) {
   return (
-    <section className="relative overflow-hidden pb-14 pt-20 sm:pb-20 sm:pt-28" style={{ background: BG }}>
+    <section className="relative overflow-hidden pb-0 pt-20 sm:pt-28" style={{ background: BG }}>
       <div className="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]" />
       <div className="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">
-          DiskCleaner for Mac
-        </div>
         <h1 className="mx-auto max-w-[900px] text-[clamp(40px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
           <span className="text-[var(--text)]">Clean your Mac.</span><br />
           <em className="not-italic text-[var(--blue)]">Know exactly why.</em>
@@ -387,6 +398,19 @@ function Hero({ BG }: { BG: string }) {
           </a>
         </div>
       </div>
+      <div className="relative mx-auto mt-12 max-w-[860px] px-6 md:px-12">
+        <img
+          src={appImage}
+          srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
+          sizes="(max-width: 768px) 92vw, 860px"
+          width="1376" height="1464"
+          alt="DiskCleaner app interface"
+          loading="eager" decoding="async" fetchPriority="high"
+          className="w-full rounded-2xl shadow-[0_32px_80px_var(--shadow-xl)]"
+          style={{ border: "1px solid var(--border)" }}
+        />
+        <div className="pointer-events-none absolute bottom-0 left-6 right-6 h-40 rounded-b-2xl bg-gradient-to-t from-[var(--bg)] to-transparent md:left-12 md:right-12" />
+      </div>
     </section>
   )
 }
@@ -397,10 +421,10 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
           {[
-            { n: "485",  u: "+",   l: "On the early access waitlist" },
-            { n: "7",    u: "",    l: "Junk categories, one pass" },
-            { n: "<10",  u: "s",   l: "From launch to results" },
-            { n: "$9",   u: ".99", l: "One time · yours forever" },
+            { n: "7",   u: "",   l: "Junk categories, one scan" },
+            { n: "<10", u: "s",  l: "From launch to results" },
+            { n: "9",   u: "",   l: "Browsers supported" },
+            { n: "~5",  u: "MB", l: "Install size" },
           ].map((s, i) => (
             <div className={`reveal d${i + 1} px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 ${i < 2 ? "border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0" : ""}`} key={i}>
               <div className="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">{s.n}<span className="text-[var(--blue)]">{s.u}</span></div>
@@ -470,8 +494,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
               },
             ].map((f, i) => (
               <div key={i} className="reveal rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(0,113,227,0.18)] hover:shadow-[0_8px_28px_var(--shadow-lg)]" style={{ transitionDelay: `${i * 65}ms` }}>
-                <div className="text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">{f.tag}</div>
-                <div className="mt-3 flex h-9 w-9 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{f.ico}</div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{f.ico}</div>
                 <div className="mt-4 text-[19px] font-semibold leading-snug tracking-[-0.025em] text-[var(--text)]">{f.ttl}</div>
                 <div className="mt-2 text-[14px] leading-[1.65] text-[var(--muted)]">{f.dsc}</div>
               </div>
@@ -890,7 +913,7 @@ const CTA = lazy(async () => {
               onTouchEnd={onNotifyTouchEnd}
               className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
             >
-              Get Free Early Access · Launching April 2026
+              Get Early Access
             </button>
           </div>
           <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
@@ -1043,10 +1066,6 @@ export default function Home() {
           <a href="/" className="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">Disk<em className="not-italic text-[var(--blue)]">Cleaner</em></a>
           <ul className="hidden list-none items-center gap-7 md:flex">
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#features">Features</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#uninstaller">Uninstaller</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#compare">Compare</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#community">Community</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#faq">FAQ</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#download">Pricing</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li>
