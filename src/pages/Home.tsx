@@ -549,7 +549,7 @@ const InterfaceSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-1 lg:order-2 reveal d1 -mt-20 sm:-mt-14 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
               <img
                 src={appImage}
                 srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
@@ -706,9 +706,10 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-1 lg:order-2 reveal d1 -mt-20 sm:-mt-14 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
               <div
-                className="split-img mx-auto w-full max-w-none"
+                className="split-img mx-auto w-full max-w-[560px]"
+                style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner app uninstaller review flow"
                 role="img"
                 dangerouslySetInnerHTML={{ __html: getAppUninstallerSvg(theme === "dark") }}
@@ -847,7 +848,8 @@ const RamOptimizerSplit = lazy(async () => {
             </div>
             <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
               <div
-                className="split-img mx-auto w-full max-w-none"
+                className="split-img mx-auto w-full max-w-[560px]"
+                style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner RAM optimizer telemetry"
                 role="img"
                 dangerouslySetInnerHTML={{ __html: getRamOptimizerSvg(theme === "dark") }}
