@@ -378,9 +378,12 @@ const MoonIcon = () => (
 
 function Hero({ BG }: { BG: string }) {
   return (
-    <section className="relative overflow-hidden pb-0 pt-20 sm:pt-28" style={{ background: BG }}>
+    <section className="relative overflow-hidden pb-14 pt-20 sm:pb-20 sm:pt-28" style={{ background: BG }}>
       <div className="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]" />
       <div className="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">
+          DiskCleaner for Mac
+        </div>
         <h1 className="mx-auto max-w-[900px] text-[clamp(40px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
           <span className="text-[var(--text)]">Clean your Mac.</span><br />
           <em className="not-italic text-[var(--blue)]">Know exactly why.</em>
@@ -397,19 +400,6 @@ function Hero({ BG }: { BG: string }) {
             See how it works <span aria-hidden>›</span>
           </a>
         </div>
-      </div>
-      <div className="relative mx-auto mt-12 max-w-[860px] px-6 md:px-12">
-        <img
-          src={appImage}
-          srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
-          sizes="(max-width: 768px) 92vw, 860px"
-          width="1376" height="1464"
-          alt="DiskCleaner app interface"
-          loading="eager" decoding="async" fetchPriority="high"
-          className="w-full rounded-2xl shadow-[0_32px_80px_var(--shadow-xl)]"
-          style={{ border: "1px solid var(--border)" }}
-        />
-        <div className="pointer-events-none absolute bottom-0 left-6 right-6 h-40 rounded-b-2xl bg-gradient-to-t from-[var(--bg)] to-transparent md:left-12 md:right-12" />
       </div>
     </section>
   )
