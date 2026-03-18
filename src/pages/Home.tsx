@@ -507,7 +507,7 @@ const InterfaceSplit = lazy(async () => {
       <section className="overflow-hidden py-10 sm:py-14" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
-            <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
+            <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
@@ -549,7 +549,7 @@ const InterfaceSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-1 lg:order-2 reveal d1 -mt-20 sm:-mt-14 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
               <img
                 src={appImage}
                 srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
@@ -655,7 +655,7 @@ const UninstallerSplit = lazy(async () => {
       <section id="uninstaller" className="overflow-hidden py-14 sm:py-20" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
-            <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
+            <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">App Uninstaller shows the files apps leave behind.</span> <span className="text-[var(--blue)]">Remove them completely.</span>
@@ -706,7 +706,7 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-1 lg:order-2 reveal d1 -mt-20 sm:-mt-14 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
               <div
                 className="split-img mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
@@ -846,7 +846,7 @@ const RamOptimizerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-1 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
               <div
                 className="split-img mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
