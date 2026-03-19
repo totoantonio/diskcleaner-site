@@ -4,9 +4,6 @@ import { modalTitle, type ModalKey } from "../components/modalConfig"
 const appImage = "/DiskCleaner.webp"
 const appImage_464 = "/DiskCleaner-464.webp"
 const appImage_640 = "/DiskCleaner-640.webp"
-import menubarImage from "../assets/DiskCleaner_MenuBar.webp"
-import menubarImage_464 from "../assets/DiskCleaner_MenuBar-464.webp"
-import menubarImage_640 from "../assets/DiskCleaner_MenuBar-640.webp"
 import "../App.css"
 
 // ─── Analytics ────────────────────────────────────────────────────────────────
@@ -151,6 +148,101 @@ const getPrivacySvg = (dark: boolean) => {
   <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="18">system files never touched</tspan></text>${check(333)}
   </g>
 </svg>`
+}
+
+const getMenuBarCodeSvg = (dark: boolean) => `<svg width="680" height="830" viewBox="0 0 680 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
+  <defs>
+    <linearGradient id="mb-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${dark ? "#151821" : "#F7FAFE"}"/>
+      <stop offset="100%" stop-color="${dark ? "#0C1018" : "#EDF4FD"}"/>
+    </linearGradient>
+    <linearGradient id="mb-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="mb-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="${dark ? "rgba(0,0,0,0.42)" : "rgba(15,23,42,0.14)"}"/>
+    </filter>
+  </defs>
+
+  <rect x="42" y="54" width="596" height="722" rx="30" fill="url(#mb-bg)" filter="url(#mb-shadow)"/>
+  <rect x="42" y="54" width="596" height="722" rx="30" fill="none" stroke="${dark ? "rgba(255,255,255,0.08)" : "#DCE6F2"}"/>
+
+  <rect x="42" y="54" width="596" height="54" rx="30" fill="${dark ? "#1D2430" : "#F5F7FB"}"/>
+  <rect x="42" y="82" width="596" height="26" fill="${dark ? "#1D2430" : "#F5F7FB"}"/>
+  <circle cx="78" cy="81" r="6.5" fill="#FF5F57"/>
+  <circle cx="100" cy="81" r="6.5" fill="#FEBC2E"/>
+  <circle cx="122" cy="81" r="6.5" fill="#28C840"/>
+  <text x="340" y="86" text-anchor="middle" font-size="14" fill="${dark ? "#AAB4C4" : "#6E6E73"}">DiskStatusMenu.swift</text>
+
+  <rect x="64" y="128" width="552" height="612" rx="22" fill="${dark ? "#0F1724" : "#FFFFFF"}" stroke="${dark ? "rgba(255,255,255,0.06)" : "#D8E2EF"}"/>
+  <rect x="64" y="128" width="552" height="52" rx="22" fill="${dark ? "#111A28" : "#F8FBFF"}"/>
+  <rect x="64" y="156" width="552" height="24" fill="${dark ? "#111A28" : "#F8FBFF"}"/>
+  <text x="92" y="160" font-size="11" font-weight="700" letter-spacing="1.6" fill="${dark ? "#7E8A9C" : "#7A8798"}">EDITOR</text>
+  <text x="92" y="208" font-size="13" fill="#C084FC">import</text>
+  <text x="136" y="208" font-size="13" fill="${dark ? "#E5EEF8" : "#111827"}">SwiftUI</text>
+
+  <text x="92" y="236" font-size="13" fill="#C084FC">import</text>
+  <text x="136" y="236" font-size="13" fill="${dark ? "#E5EEF8" : "#111827"}">Foundation</text>
+
+  <text x="92" y="278" font-size="12.5" fill="#F59E0B">@MainActor</text>
+  <text x="92" y="306" font-size="12.5" fill="#C084FC">struct</text>
+  <text x="138" y="306" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">DiskStatusMenu</text>
+  <text x="230" y="306" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">: Scene {</text>
+
+  <text x="92" y="334" font-size="12.5" fill="#C084FC">private</text>
+  <text x="142" y="334" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let</text>
+  <text x="166" y="334" font-size="12.5" fill="${dark ? "#E879F9" : "#9333EA"}">formatter</text>
+  <text x="227" y="334" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">= </text>
+  <text x="243" y="334" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">ByteCountFormatter()</text>
+
+  <text x="92" y="362" font-size="12.5" fill="#C084FC">var</text>
+  <text x="123" y="362" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">body: some Scene {</text>
+  <text x="92" y="390" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">MenuBarExtra</text>
+  <text x="186" y="390" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(</text>
+  <text x="195" y="390" font-size="12.5" fill="#34D399">"DiskCleaner"</text>
+  <text x="272" y="390" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">) {</text>
+
+  <text x="92" y="418" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">Text(</text>
+  <text x="126" y="418" font-size="12.5" fill="#34D399">"Open DiskCleaner"</text>
+  <text x="231" y="418" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">)</text>
+
+  <text x="92" y="446" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">} label: {</text>
+  <text x="92" y="474" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">DiskStatusLabel</text>
+  <text x="186" y="474" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(</text>
+  <text x="195" y="474" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">sampler</text>
+  <text x="243" y="474" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">:</text>
+  <text x="92" y="502" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">StorageSampler</text>
+  <text x="190" y="502" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(formatter: formatter))</text>
+
+  <text x="92" y="530" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">}</text>
+
+  <text x="92" y="566" font-size="12.5" fill="#C084FC">struct</text>
+  <text x="138" y="566" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">StorageSampler</text>
+  <text x="236" y="566" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">{</text>
+  <text x="92" y="594" font-size="12.5" fill="#C084FC">func</text>
+  <text x="127" y="594" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">currentFreeSpace</text>
+  <text x="242" y="594" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">() throws -&gt; Int64 {</text>
+  <text x="92" y="622" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let homeURL =</text>
+  <text x="178" y="622" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">FileManager.default</text>
+  <text x="92" y="650" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">.homeDirectoryForCurrentUser</text>
+
+  <text x="92" y="678" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let values = try homeURL.resourceValues(</text>
+  <text x="92" y="706" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">forKeys: [.</text>
+  <text x="160" y="706" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">volumeAvailableCapacityForImportantUsageKey</text>
+  <text x="452" y="706" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">])</text>
+
+  <rect x="84" y="688" width="508" height="52" rx="16" fill="${dark ? "#111827" : "#111827"}"/>
+  <text x="108" y="720" font-size="12.5" fill="#DBEAFE">Disk space size is reflected in the menu bar in real time.</text>
+</svg>`
+
+function MenuBarIllustration({ dark }: { dark: boolean }) {
+  return (
+    <div
+      style={{ lineHeight: 0, borderRadius: 28, overflow: "hidden" }}
+      dangerouslySetInnerHTML={{ __html: getMenuBarCodeSvg(dark) }}
+    />
+  )
 }
 
 const getHighlightSlides = (dark: boolean) => [
@@ -512,7 +604,7 @@ const InterfaceSplit = lazy(async () => {
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
                 </p>
-                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   See exactly what's taking up space before a single file moves.
                   Expand any category down to individual files. Uncheck anything you want to keep.
                   When you're ready - and only then - click Clean.
@@ -660,7 +752,7 @@ const UninstallerSplit = lazy(async () => {
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">App Uninstaller shows the files apps leave behind.</span> <span className="text-[var(--blue)]">Remove them completely.</span>
                 </p>
-                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   Dragging an app to Trash only removes the app itself. The rest can stay behind:
                   caches, preferences, logs, containers, and support files spread across Library folders.
                   DiskCleaner shows the full footprint first, then lets you remove the app and its leftovers with the same review-first control as every cleanup.
@@ -706,9 +798,9 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 -mt-2 py-6 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-12 sm:-mb-14 lg:mb-0">
               <div
-                className="split-img mx-auto w-full max-w-[560px]"
+                className="split-img split-hero-visual split-hero-visual-lg mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner app uninstaller review flow"
                 role="img"
@@ -800,7 +892,7 @@ const RamOptimizerSplit = lazy(async () => {
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
                   <span className="text-[var(--text)]">RAM Optimizer shows what memory is doing.</span> <span className="text-[var(--blue)]">Refresh safely.</span>
                 </p>
-                <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+                <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   DiskCleaner does not promise fake RAM gains or risky background tricks. Instead, it shows the memory signals that actually matter on macOS:
                   memory pressure, compressed memory, and swap usage. When your Mac feels heavy, you get a safe refresh action and a clear read on what changed.
                 </p>
@@ -846,9 +938,9 @@ const RamOptimizerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 -mt-2 py-6 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-12 sm:-mb-14 lg:mb-0">
               <div
-                className="split-img mx-auto w-full max-w-[560px]"
+                className="split-img split-hero-visual split-hero-visual-lg mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner RAM optimizer telemetry"
                 role="img"
@@ -864,30 +956,28 @@ const RamOptimizerSplit = lazy(async () => {
 })
 
 const MenuBarSplit = lazy(async () => {
-  const Comp = ({ BG }: { BG: string }) => {
+  const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
       <section className="py-20 sm:py-28" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 reveal flex justify-center">
-              <img
-                src={menubarImage}
-                srcSet={`${menubarImage_464} 464w, ${menubarImage_640} 640w`}
-                sizes="(max-width: 1024px) 60vw, 340px"
-                width="426" height="568"
-                alt="DiskCleaner menu bar popup showing disk usage"
-                className="split-img w-3/5 lg:w-auto lg:max-w-[340px] rounded-2xl border border-[var(--border)] shadow-2xl"
-                loading="lazy"
-                decoding="async"
-              />
+              <div
+                className="split-img split-hero-visual mx-auto w-full max-w-[560px]"
+                style={{ lineHeight: 0 }}
+                aria-label="Illustration of DiskCleaner free space shown in the macOS menu bar with annotated design notes"
+                role="img"
+              >
+                <MenuBarIllustration dark={theme === "dark"} />
+              </div>
             </div>
             <div className="order-1 lg:order-2 lg:pt-4 lg:pr-8 reveal d1">
               <div className="lg:max-w-lg">
               <h2 className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
                 <span className="text-[var(--text)]">Your disk space,</span> <span className="text-[var(--blue)]">always visible.</span>
               </h2>
-              <p className="mt-5 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
+              <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                 Live free space lives in your menu bar — always one glance away.
                 Trigger a Quick Scan, see update badges, or check full disk stats without ever opening the app.
                 Lightweight. Always on. Never in the way.
@@ -1190,7 +1280,7 @@ const SiteFooter = lazy(async () => {
             <div className="site-footer-col-hd">Product</div>
             <a href="#features" className="site-footer-link">Features</a>
             <a href="#download" className="site-footer-link">Download</a>
-            <button type="button" onClick={() => openModal("changelog")} className="site-footer-link">What's New</button>
+            <button type="button" onClick={() => openModal("changelog")} className="site-footer-link">Changelog</button>
           </div>
           {/* Support */}
           <div className="site-footer-col">
@@ -1311,7 +1401,7 @@ export default function Home() {
           <Features SURFACE={STRIPE_GRAY} />
           <UninstallerSplit SURFACE={STRIPE_WHITE} theme={theme} />
           <RamOptimizerSplit BG={STRIPE_GRAY} theme={theme} />
-          <MenuBarSplit BG={STRIPE_GRAY} />
+          <MenuBarSplit BG={STRIPE_GRAY} theme={theme} />
           <FAQ BG={STRIPE_WHITE} />
           <CompareTable BG={STRIPE_GRAY} theme={theme} />
           <HighlightsCarousel SURFACE={STRIPE_WHITE} theme={theme} />
