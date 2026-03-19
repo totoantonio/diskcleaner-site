@@ -76,7 +76,7 @@ export default function Trust() {
           </span>
           <h1 className="article-title text-balance">How DiskCleaner backs up its claims.</h1>
           <p className="article-excerpt">
-            This page explains the evidence model behind DiskCleaner’s safety, privacy, notarization, and performance messaging.
+            A clear look at how DiskCleaner approaches safety, privacy, Apple notarization, and performance claims.
           </p>
         </div>
 
@@ -84,27 +84,32 @@ export default function Trust() {
           <div className="blog-content">
             <h2>1. Trash-first safety</h2>
             <p>
-              DiskCleaner’s public product position is that users review files before cleanup and that removed items go through macOS Trash instead of permanent deletion. That reduces the risk of silent, irreversible cleanup actions.
+              DiskCleaner is built around a review-first workflow. You see what was found before anything moves, and cleanup actions are designed to go through macOS Trash instead of permanent deletion.
+              That means removed items remain recoverable and cleanup stays visible rather than hidden behind a one-click black box.
             </p>
 
             <h2>2. Privacy and network behavior</h2>
             <p>
-              The site states that DiskCleaner is local-first, requires no account for cleanup, and does not run analytics or telemetry during scanning and cleaning. If you publish future product documentation, this should be paired with a versioned privacy and network behavior note.
+              DiskCleaner is positioned as a local-first utility. Cleanup does not depend on creating an account, and the product messaging is built around keeping scanning and cleaning on your Mac rather than turning storage cleanup into a cloud service.
+              Privacy matters most when a utility can inspect thousands of files, so the standard here is simple: explain what the app reads, explain what it avoids, and keep that scope narrow.
             </p>
 
             <h2>3. Apple notarization and Gatekeeper</h2>
             <p>
-              The site currently claims Apple notarization and Gatekeeper compliance. The next trust step is to publish a lightweight release status note whenever the shipping build changes so users and reviewers can verify what build was notarized.
+              DiskCleaner is presented as Apple-notarized software that passes Gatekeeper. For Mac users, that matters because notarization is one of the clearest trust signals available for independent software distribution.
+              As new builds ship, this page will continue to be the place where release and trust-related status is kept clear and easy to verify.
             </p>
 
             <h2>4. Scan-performance methodology</h2>
             <p>
-              Performance claims such as quick scan time should be tied to repeatable test conditions: hardware class, macOS version, sample cache sizes, and whether the run was cold or warm. This page is the right place to keep that methodology current.
+              Performance claims are most useful when they are repeatable. Scan timing depends on the Mac model, macOS version, storage condition, and the amount of cache or developer data on disk.
+              When DiskCleaner publishes scan-speed guidance, the goal is to describe the kind of workload behind the number so users understand what “fast” means in practice.
             </p>
 
             <h2>5. What DiskCleaner does not touch</h2>
             <p>
-              Strong trust comes from negative scope as much as positive scope. DiskCleaner should keep publishing exactly which file classes it avoids, including personal documents, passwords, and protected system locations.
+              Trust is not only about what a cleaner removes. It is also about what it refuses to touch.
+              DiskCleaner is designed to stay away from personal documents, passwords, and protected system locations, and that boundary matters just as much as the cleanup features themselves.
             </p>
           </div>
         </article>

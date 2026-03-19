@@ -55,7 +55,7 @@ export default function EditorialPolicy() {
           </span>
           <h1 className="article-title text-balance">How DiskCleaner publishes product and comparison content.</h1>
           <p className="article-excerpt">
-            This page explains how bylines, updates, product claims, and comparison content are handled across DiskCleaner’s website.
+            A simple overview of how DiskCleaner handles bylines, updates, product claims, and comparison content across the site.
           </p>
         </div>
 
@@ -63,22 +63,22 @@ export default function EditorialPolicy() {
           <div className="blog-content">
             <h2>Authorship</h2>
             <p>
-              Each blog article is published with an explicit byline. Author profiles are shown on article pages so readers and crawlers can associate content with a named contributor rather than an anonymous brand page.
+              Every article on the site is published with a byline. Where relevant, article pages also include author context so readers can see who wrote the piece and what kind of content they focus on.
             </p>
 
             <h2>Updates</h2>
             <p>
-              Articles should include publication dates and update dates when material changes are made. Comparison content and technical claims should be revisited when pricing, platform support, or product behavior changes.
+              Articles include publication dates, and pages may also note updates when meaningful changes are made. Comparison pages and technical claims are intended to stay current as pricing, platform support, and product behavior change over time.
             </p>
 
             <h2>Comparisons and product claims</h2>
             <p>
-              Comparison articles should clearly separate measured behavior, public pricing, and editorial interpretation. Where claims are based on public product pages or documentation, they should be checked again before updates are published.
+              DiskCleaner’s comparison content aims to separate observable product behavior, public pricing, and editorial opinion as clearly as possible. When claims rely on public documentation or vendor pages, they should reflect the most current information available at the time of publication or update.
             </p>
 
             <h2>Corrections</h2>
             <p>
-              If a factual error is found in pricing, support policy, compatibility, or feature coverage, the preferred correction path is to update the article and reflect the corrected date on the page.
+              If a factual error is found in pricing, compatibility, support policy, or feature coverage, the goal is to correct the page promptly and keep the published information accurate.
             </p>
 
             <h2>Contact</h2>
