@@ -183,29 +183,32 @@ export default function Help() {
 
             {/* ── Section 4 ── */}
             <h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
-            <p>DiskCleaner supports standard macOS shortcuts throughout the app.</p>
+            <p>
+              DiskCleaner supports core macOS app shortcuts such as closing windows, hiding the app, quitting the app,
+              and standard text-editing shortcuts in text fields. Shortcut support may expand over time as the app evolves.
+            </p>
 
-            <h3>Main window</h3>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "22px", fontSize: "14px" }}>
+            <h3>Common macOS shortcuts</h3>
+            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "22px", fontSize: "14px", tableLayout: "fixed" }}>
+              <colgroup>
+                <col style={{ width: "64%" }} />
+                <col style={{ width: "36%" }} />
+              </colgroup>
               <thead>
                 <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", color: "var(--text)", fontWeight: 600 }}>Action</th>
-                  <th style={{ textAlign: "left", padding: "8px 0", color: "var(--text)", fontWeight: 600 }}>Shortcut</th>
+                  <th style={{ textAlign: "left", padding: "8px 16px", color: "var(--text)", fontWeight: 600 }}>Action</th>
+                  <th style={{ textAlign: "right", padding: "8px 16px", color: "var(--text)", fontWeight: 600 }}>Shortcut</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ["Scan for junk files",       "⌘ R"],
-                  ["Start cleaning",             "⌘ ↩"],
-                  ["Open Preferences",           "⌘ ,"],
-                  ["Switch to Cleaner tab",      "⌘ 1"],
-                  ["Switch to Uninstaller tab",  "⌘ 2"],
-                  ["Hide DiskCleaner",           "⌘ H"],
-                  ["Quit DiskCleaner",           "⌘ Q"],
+                  ["Hide DiskCleaner", "⌘ H"],
+                  ["Quit DiskCleaner", "⌘ Q"],
+                  ["Close the current window", "⌘ W"],
                 ].map(([action, key]) => (
                   <tr key={action} style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "10px 12px 10px 0", color: "var(--muted)" }}>{action}</td>
-                    <td style={{ padding: "10px 0" }}>
+                    <td style={{ padding: "10px 16px", color: "var(--muted)" }}>{action}</td>
+                    <td style={{ padding: "10px 16px", textAlign: "right" }}>
                       <kbd style={{
                         display: "inline-block",
                         padding: "2px 8px",
@@ -223,41 +226,14 @@ export default function Help() {
               </tbody>
             </table>
 
-            <h3>Menu Bar mode</h3>
-            <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "22px", fontSize: "14px" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid var(--border)" }}>
-                  <th style={{ textAlign: "left", padding: "8px 12px 8px 0", color: "var(--text)", fontWeight: 600 }}>Action</th>
-                  <th style={{ textAlign: "left", padding: "8px 0", color: "var(--text)", fontWeight: 600 }}>Shortcut</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["Open main window",          "Click menu bar icon"],
-                  ["Quick clean (no window)",   "Option + Click icon"],
-                ].map(([action, key]) => (
-                  <tr key={action} style={{ borderBottom: "1px solid var(--border)" }}>
-                    <td style={{ padding: "10px 12px 10px 0", color: "var(--muted)" }}>{action}</td>
-                    <td style={{ padding: "10px 0" }}>
-                      <kbd style={{
-                        display: "inline-block",
-                        padding: "2px 8px",
-                        borderRadius: "6px",
-                        border: "1px solid var(--border)",
-                        background: "var(--surface2)",
-                        fontFamily: "inherit",
-                        fontSize: "13px",
-                        color: "var(--text)",
-                        letterSpacing: "0.02em",
-                      }}>{key}</kbd>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <h3>Text fields</h3>
+            <p>
+              Standard macOS text-editing shortcuts such as <strong>⌘A</strong>, <strong>⌘C</strong>, <strong>⌘V</strong>,
+              and <strong>⌘Z</strong> work anywhere DiskCleaner provides a normal text field.
+            </p>
 
             <blockquote>
-              <strong>Pro tip:</strong> Most standard macOS text-editing shortcuts (⌘A, ⌘C, ⌘V, ⌘Z) work in any text field inside DiskCleaner.
+              <strong>Note:</strong> If a shortcut is not shown in the app’s menus, do not rely on it as part of your workflow yet.
             </blockquote>
 
           </div>
