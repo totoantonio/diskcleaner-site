@@ -9,7 +9,7 @@
 - Privacy: 100% local — no network calls, no data collection, no account required
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
-- Support: adminsupport@diskcleaner.pro
+- Support: customersupport@diskcleaner.pro
 
 ## What It Does
 DiskCleaner scans seven categories of junk on macOS and shows you every file before moving anything:
