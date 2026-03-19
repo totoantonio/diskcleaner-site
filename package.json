@@ -18,6 +18,10 @@
     "source": "dist",
     "include": [
       "/",
+      "/about",
+      "/trust",
+      "/editorial-policy",
+      "/help",
       "/privacy-policy",
       "/terms-of-service",
       "/blog",

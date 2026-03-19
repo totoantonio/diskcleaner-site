@@ -152,88 +152,75 @@ const getPrivacySvg = (dark: boolean) => {
 
 const getMenuBarCodeSvg = (dark: boolean) => `<svg width="680" height="830" viewBox="0 0 680 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif">
   <defs>
-    <linearGradient id="mb-bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="${dark ? "#151821" : "#F7FAFE"}"/>
-      <stop offset="100%" stop-color="${dark ? "#0C1018" : "#EDF4FD"}"/>
-    </linearGradient>
     <linearGradient id="mb-accent" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#60A5FA"/>
       <stop offset="100%" stop-color="#2563EB"/>
     </linearGradient>
     <filter id="mb-shadow" x="-20%" y="-20%" width="140%" height="160%">
-      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="${dark ? "rgba(0,0,0,0.42)" : "rgba(15,23,42,0.14)"}"/>
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="${dark ? "rgba(0,0,0,0.45)" : "rgba(15,23,42,0.16)"}"/>
     </filter>
   </defs>
 
-  <rect x="42" y="54" width="596" height="722" rx="30" fill="url(#mb-bg)" filter="url(#mb-shadow)"/>
-  <rect x="42" y="54" width="596" height="722" rx="30" fill="none" stroke="${dark ? "rgba(255,255,255,0.08)" : "#DCE6F2"}"/>
-
-  <rect x="42" y="54" width="596" height="54" rx="30" fill="${dark ? "#1D2430" : "#F5F7FB"}"/>
-  <rect x="42" y="82" width="596" height="26" fill="${dark ? "#1D2430" : "#F5F7FB"}"/>
+  <rect x="42" y="54" width="596" height="722" rx="28" fill="${dark ? "#1c1c1e" : "#FFFFFF"}" filter="url(#mb-shadow)"/>
+  <rect x="42" y="54" width="596" height="54" rx="28" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
+  <rect x="42" y="82" width="596" height="26" fill="${dark ? "#2c2c2e" : "#F5F5F7"}"/>
   <circle cx="78" cy="81" r="6.5" fill="#FF5F57"/>
   <circle cx="100" cy="81" r="6.5" fill="#FEBC2E"/>
   <circle cx="122" cy="81" r="6.5" fill="#28C840"/>
-  <text x="340" y="86" text-anchor="middle" font-size="14" fill="${dark ? "#AAB4C4" : "#6E6E73"}">DiskStatusMenu.swift</text>
+  <text x="340" y="86" text-anchor="middle" font-size="14" fill="${dark ? "#b2b2b8" : "#6E6E73"}">DiskStatusLabel.swift</text>
 
-  <rect x="64" y="128" width="552" height="612" rx="22" fill="${dark ? "#0F1724" : "#FFFFFF"}" stroke="${dark ? "rgba(255,255,255,0.06)" : "#D8E2EF"}"/>
-  <rect x="64" y="128" width="552" height="52" rx="22" fill="${dark ? "#111A28" : "#F8FBFF"}"/>
-  <rect x="64" y="156" width="552" height="24" fill="${dark ? "#111A28" : "#F8FBFF"}"/>
-  <text x="92" y="160" font-size="11" font-weight="700" letter-spacing="1.6" fill="${dark ? "#7E8A9C" : "#7A8798"}">EDITOR</text>
-  <text x="92" y="208" font-size="13" fill="#C084FC">import</text>
-  <text x="136" y="208" font-size="13" fill="${dark ? "#E5EEF8" : "#111827"}">SwiftUI</text>
+  <text x="84" y="158" font-size="26" font-weight="700" fill="${dark ? "#f5f5f7" : "#111827"}">Disk space, reflected in the menu bar.</text>
+  <text x="84" y="186" font-size="14" fill="${dark ? "#9ca3af" : "#6B7280"}">A focused SwiftUI label that refreshes the visible free-space value.</text>
 
-  <text x="92" y="236" font-size="13" fill="#C084FC">import</text>
-  <text x="136" y="236" font-size="13" fill="${dark ? "#E5EEF8" : "#111827"}">Foundation</text>
+  <rect x="84" y="226" width="512" height="450" rx="24" fill="${dark ? "#232326" : "#F8FAFC"}" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
+  <text x="112" y="258" font-size="11" font-weight="700" letter-spacing="1.6" fill="${dark ? "#7E8A9C" : "#7A8798"}">EDITOR</text>
+  <line x1="112" y1="276" x2="568" y2="276" stroke="${dark ? "#3a3a3c" : "#E5E7EB"}"/>
 
-  <text x="92" y="278" font-size="12.5" fill="#F59E0B">@MainActor</text>
-  <text x="92" y="306" font-size="12.5" fill="#C084FC">struct</text>
-  <text x="138" y="306" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">DiskStatusMenu</text>
-  <text x="230" y="306" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">: Scene {</text>
+  <text x="112" y="318" font-size="12.5" fill="#C084FC">struct</text>
+  <text x="158" y="318" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">DiskStatusLabel</text>
+  <text x="253" y="318" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">: View {</text>
 
-  <text x="92" y="334" font-size="12.5" fill="#C084FC">private</text>
-  <text x="142" y="334" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let</text>
-  <text x="166" y="334" font-size="12.5" fill="${dark ? "#E879F9" : "#9333EA"}">formatter</text>
-  <text x="227" y="334" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">= </text>
-  <text x="243" y="334" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">ByteCountFormatter()</text>
+  <text x="112" y="346" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let sampler: </text>
+  <text x="186" y="346" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">StorageSampler</text>
 
-  <text x="92" y="362" font-size="12.5" fill="#C084FC">var</text>
-  <text x="123" y="362" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">body: some Scene {</text>
-  <text x="92" y="390" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">MenuBarExtra</text>
-  <text x="186" y="390" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(</text>
-  <text x="195" y="390" font-size="12.5" fill="#34D399">"DiskCleaner"</text>
-  <text x="272" y="390" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">) {</text>
+  <text x="112" y="374" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let formatter: </text>
+  <text x="200" y="374" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">ByteCountFormatter</text>
 
-  <text x="92" y="418" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">Text(</text>
-  <text x="126" y="418" font-size="12.5" fill="#34D399">"Open DiskCleaner"</text>
-  <text x="231" y="418" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">)</text>
+  <text x="112" y="416" font-size="12.5" fill="${dark ? "#9CA3AF" : "#6B7280"}">// State triggers a UI refresh when the value changes</text>
+  <text x="112" y="444" font-size="12.5" fill="#F59E0B">@State</text>
+  <text x="159" y="444" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">private var</text>
+  <text x="237" y="444" font-size="12.5" fill="${dark ? "#E879F9" : "#9333EA"}">freeSpace</text>
+  <text x="299" y="444" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">: String = </text>
+  <text x="367" y="444" font-size="12.5" fill="#34D399">"Calculating..."</text>
 
-  <text x="92" y="446" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">} label: {</text>
-  <text x="92" y="474" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">DiskStatusLabel</text>
-  <text x="186" y="474" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(</text>
-  <text x="195" y="474" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">sampler</text>
-  <text x="243" y="474" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">:</text>
-  <text x="92" y="502" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">StorageSampler</text>
-  <text x="190" y="502" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(formatter: formatter))</text>
+  <text x="112" y="486" font-size="12.5" fill="${dark ? "#9CA3AF" : "#6B7280"}">// A timer simulates the "real-time" aspect</text>
+  <text x="112" y="514" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let timer = </text>
+  <text x="180" y="514" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">Timer.publish</text>
+  <text x="266" y="514" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(every: 30, on: .main,</text>
+  <text x="112" y="542" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">in: .common).autoconnect()</text>
 
-  <text x="92" y="530" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">}</text>
+  <text x="112" y="584" font-size="12.5" fill="#C084FC">var</text>
+  <text x="143" y="584" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">body: some View {</text>
+  <text x="112" y="612" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">HStack</text>
+  <text x="157" y="612" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(spacing: 4) {</text>
+  <text x="112" y="640" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">Image</text>
+  <text x="152" y="640" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(systemName: </text>
+  <text x="235" y="640" font-size="12.5" fill="#34D399">"internaldrive"</text>
+  <text x="327" y="640" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">)</text>
 
-  <text x="92" y="566" font-size="12.5" fill="#C084FC">struct</text>
-  <text x="138" y="566" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">StorageSampler</text>
-  <text x="236" y="566" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">{</text>
-  <text x="92" y="594" font-size="12.5" fill="#C084FC">func</text>
-  <text x="127" y="594" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">currentFreeSpace</text>
-  <text x="242" y="594" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">() throws -&gt; Int64 {</text>
-  <text x="92" y="622" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let homeURL =</text>
-  <text x="178" y="622" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">FileManager.default</text>
-  <text x="92" y="650" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">.homeDirectoryForCurrentUser</text>
+  <text x="360" y="612" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">Text</text>
+  <text x="394" y="612" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">(</text>
+  <text x="403" y="612" font-size="12.5" fill="${dark ? "#E879F9" : "#9333EA"}">freeSpace</text>
+  <text x="465" y="612" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">)</text>
+  <text x="360" y="640" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">}</text>
+  <text x="360" y="668" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">.onAppear { updateSpace() }</text>
+  <text x="360" y="696" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">.onReceive(timer) { _ in</text>
+  <text x="360" y="724" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">updateSpace</text>
+  <text x="433" y="724" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">() }</text>
 
-  <text x="92" y="678" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">let values = try homeURL.resourceValues(</text>
-  <text x="92" y="706" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">forKeys: [.</text>
-  <text x="160" y="706" font-size="12.5" fill="${dark ? "#60A5FA" : "#2563EB"}">volumeAvailableCapacityForImportantUsageKey</text>
-  <text x="452" y="706" font-size="12.5" fill="${dark ? "#E5EEF8" : "#111827"}">])</text>
-
-  <rect x="84" y="688" width="508" height="52" rx="16" fill="${dark ? "#111827" : "#111827"}"/>
-  <text x="108" y="720" font-size="12.5" fill="#DBEAFE">Disk space size is reflected in the menu bar in real time.</text>
+  <rect x="84" y="688" width="512" height="68" rx="22" fill="${dark ? "#111827" : "#111827"}"/>
+  <text x="112" y="718" font-size="13" font-weight="600" fill="#93C5FD">Disk status in the menu bar</text>
+  <text x="112" y="738" font-size="12.5" fill="#E5E7EB">Disk space size is reflected in the menu bar in real time.</text>
 </svg>`
 
 function MenuBarIllustration({ dark }: { dark: boolean }) {
@@ -744,9 +731,9 @@ const UninstallerSplit = lazy(async () => {
   const Comp = ({ SURFACE, theme }: { SURFACE: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section id="uninstaller" className="overflow-hidden py-14 sm:py-20" style={{ background: SURFACE }}>
+      <section id="uninstaller" className="overflow-hidden py-10 sm:py-20" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
@@ -798,9 +785,9 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 -mt-2 py-6 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-12 sm:-mb-14 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 mt-1 py-2 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-6 sm:-mb-14 lg:mb-0">
               <div
-                className="split-img split-hero-visual split-hero-visual-lg mx-auto w-full max-w-[560px]"
+                className="split-img split-hero-visual split-hero-visual-lg mobile-bleed-visual mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner app uninstaller review flow"
                 role="img"
@@ -884,9 +871,9 @@ const RamOptimizerSplit = lazy(async () => {
   const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-14 sm:py-20" style={{ background: BG }}>
+      <section className="overflow-hidden py-10 sm:py-20" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
@@ -938,9 +925,9 @@ const RamOptimizerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 -mt-2 py-6 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-12 sm:-mb-14 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 mt-1 py-2 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-6 sm:-mb-14 lg:mb-0">
               <div
-                className="split-img split-hero-visual split-hero-visual-lg mx-auto w-full max-w-[560px]"
+                className="split-img split-hero-visual split-hero-visual-lg mobile-bleed-visual mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner RAM optimizer telemetry"
                 role="img"
@@ -959,12 +946,12 @@ const MenuBarSplit = lazy(async () => {
   const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="py-20 sm:py-28" style={{ background: BG }}>
+      <section className="py-12 sm:py-28" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
-            <div className="order-2 lg:order-1 reveal flex justify-center">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
+            <div className="order-2 lg:order-1 reveal flex justify-center py-1 sm:py-0">
               <div
-                className="split-img split-hero-visual mx-auto w-full max-w-[560px]"
+                className="split-img split-hero-visual split-hero-visual-lg mobile-bleed-visual mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
                 aria-label="Illustration of DiskCleaner free space shown in the macOS menu bar with annotated design notes"
                 role="img"
@@ -1094,7 +1081,7 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Can I get a refund?",
-        a: "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at adminsupport@diskcleaner.pro and we'll sort it out.",
+        a: "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at customersupport@diskcleaner.pro and we'll sort it out.",
       },
       {
         q: "Do I need an account or subscription?",
@@ -1296,7 +1283,7 @@ const SiteFooter = lazy(async () => {
             <div className="site-footer-col-hd">Connect</div>
             <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Twitter / X</a>
             <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Threads</a>
-            <a href="mailto:adminsupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
+            <a href="mailto:customersupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
           </div>
         </div>
         {/* Bottom strip */}

@@ -1,6 +1,40 @@
+import { useEffect } from "react"
 import { PrivacyContent } from "../components/SiteModal"
+import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
 
 export default function PrivacyPolicy() {
+  useEffect(() => {
+    const url = "https://www.diskcleaner.pro/privacy-policy"
+    const description = "DiskCleaner privacy policy covering personal information, support requests, and how the website and service handle data."
+
+    applyPageMetadata({
+      title: "DiskCleaner Privacy Policy",
+      description,
+      url,
+    })
+
+    setJsonLd("article-jsonld", {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "name": "DiskCleaner Privacy Policy",
+          "url": url,
+          "description": description
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
+            { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": url }
+          ]
+        }
+      ]
+    })
+
+    return () => restoreDefaultMetadata()
+  }, [])
+
   return (
     <section className="bg-[var(--bg)] py-16 sm:py-24">
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">

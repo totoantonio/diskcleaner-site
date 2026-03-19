@@ -97,26 +97,38 @@ function replaceJsonLd(html, scriptId, json) {
 function buildArticleJsonLd(post, url) {
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.updatedAt,
-    mainEntityOfPage: url,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "DiskCleaner",
-      logo: {
-        "@type": "ImageObject",
-        url: LOGO_URL,
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.updatedAt,
+        mainEntityOfPage: url,
+        author: {
+          "@type": "Person",
+          name: post.author,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "DiskCleaner",
+          logo: {
+            "@type": "ImageObject",
+            url: LOGO_URL,
+          },
+        },
+        image: BLOG_SOCIAL_IMAGE,
+        articleSection: post.category,
       },
-    },
-    image: BLOG_SOCIAL_IMAGE,
-    articleSection: post.category,
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
   }
 }
 
@@ -127,6 +139,23 @@ function buildCollectionJsonLd(url) {
     name: "DiskCleaner Blog",
     description: "Guides, tips, and insights about Mac storage, cache cleaning, and getting the most out of your Mac.",
     url,
+  }
+}
+
+function buildBreadcrumbJsonLd(items) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      },
+    ],
   }
 }
 
@@ -161,8 +190,54 @@ cpSync(path.join(DIST_DIR, "index.html"), path.join(DIST_DIR, "404.html"))
 const notFoundHtml = replaceTitle(templateHtml, "404 - Page Not Found | DiskCleaner")
 writeFileSync(path.join(DIST_DIR, "404.html"), notFoundHtml)
 
-writeRouteHtml("/privacy-policy", templateHtml)
-writeRouteHtml("/terms-of-service", templateHtml)
+const staticPages = [
+  {
+    route: "/about",
+    title: "About DiskCleaner",
+    description: "Learn what DiskCleaner is, how it approaches Mac cleanup safely, and how to contact the team behind the product.",
+  },
+  {
+    route: "/trust",
+    title: "DiskCleaner Trust Center",
+    description: "Evidence and methodology behind DiskCleaner's privacy, safety, notarization, and scan-performance claims.",
+  },
+  {
+    route: "/editorial-policy",
+    title: "DiskCleaner Editorial Policy",
+    description: "How DiskCleaner handles authorship, updates, comparisons, and editorial accuracy across its product and blog content.",
+  },
+  {
+    route: "/help",
+    title: "DiskCleaner Help Center",
+    description: "DiskCleaner help center covering cleanup categories, troubleshooting, menu bar mode, and common Mac cleaning questions.",
+  },
+  {
+    route: "/privacy-policy",
+    title: "DiskCleaner Privacy Policy",
+    description: "DiskCleaner privacy policy covering personal information, support requests, and how the website and service handle data.",
+  },
+  {
+    route: "/terms-of-service",
+    title: "DiskCleaner Terms of Service",
+    description: "DiskCleaner terms of service covering website usage, software access, licenses, and support terms.",
+  },
+]
+
+for (const page of staticPages) {
+  const url = `${BASE_URL}${page.route}`
+  const html = applySeo(templateHtml, {
+    title: page.title,
+    description: page.description,
+    url,
+    image: `${BASE_URL}/DiskCleaner_Social.webp`,
+    ogType: "website",
+    jsonLd: buildBreadcrumbJsonLd([
+      { name: "Home", url: BASE_URL },
+      { name: page.title.replace("DiskCleaner ", ""), url },
+    ]),
+  })
+  writeRouteHtml(page.route, html)
+}
 
 const blogUrl = `${BASE_URL}/blog`
 const blogHtml = applySeo(templateHtml, {

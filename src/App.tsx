@@ -8,6 +8,9 @@ const Article = lazy(() => import("./pages/Article"))
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"))
 const TermsOfService = lazy(() => import("./pages/TermsOfService"))
 const Help = lazy(() => import("./pages/Help"))
+const About = lazy(() => import("./pages/About"))
+const Trust = lazy(() => import("./pages/Trust"))
+const EditorialPolicy = lazy(() => import("./pages/EditorialPolicy"))
 const Home2 = lazy(() => import("./pages/Home2"))
 
 export default function App() {
@@ -19,6 +22,9 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Article />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/trust" element={<Trust />} />
+          <Route path="/editorial-policy" element={<EditorialPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/help" element={<Help />} />

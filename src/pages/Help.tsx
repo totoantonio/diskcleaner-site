@@ -1,4 +1,6 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
 
 const ChevronLeft = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -14,6 +16,53 @@ const sections = [
 ]
 
 export default function Help() {
+  useEffect(() => {
+    const url = "https://www.diskcleaner.pro/help"
+    const description = "DiskCleaner help center covering cleanup categories, troubleshooting, menu bar mode, and common Mac cleaning questions."
+
+    applyPageMetadata({
+      title: "DiskCleaner Help Center",
+      description,
+      url,
+    })
+
+    setJsonLd("article-jsonld", {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does DiskCleaner require administrator permission?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Removing some system-level files requires macOS to ask for administrator approval through the standard system dialog."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does DiskCleaner clean?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DiskCleaner focuses on common cleanup categories such as caches, logs, temporary files, Trash contents, screenshots, developer data, and app leftovers."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
+            { "@type": "ListItem", "position": 2, "name": "Help", "item": url }
+          ]
+        }
+      ]
+    })
+
+    return () => restoreDefaultMetadata()
+  }, [])
+
   return (
     <section className="bg-[var(--bg)] py-12 sm:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-4 md:px-12">

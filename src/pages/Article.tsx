@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getPostBySlug, type BlogPost } from "../lib/blog"
+import { getAuthorProfile } from "../lib/authors"
+import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
 
 const ChevronLeft = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -51,6 +53,7 @@ function ShareButton({ title, excerpt }: { title: string; excerpt: string }) {
 export default function Article() {
   const { slug } = useParams()
   const [post, setPost] = useState<BlogPost | null>(null)
+  const author = post ? getAuthorProfile(post.author) : null
 
   useEffect(() => {
     if (!slug) return
@@ -61,84 +64,57 @@ export default function Article() {
       const url = `https://www.diskcleaner.pro/blog/${p.slug}`
       const desc = p.description || p.excerpt
       const image = "https://www.diskcleaner.pro/DiskCleaner_blog.webp"
+      const authorProfile = getAuthorProfile(p.author)
 
-      // Title + meta description
-      document.title = `${p.title} — DiskCleaner`
-      const setContent = (id: string, value: string) => {
-        const el = document.getElementById(id)
-        if (el) el.setAttribute("content", value)
-      }
-      const setHref = (id: string, value: string) => {
-        const el = document.getElementById(id)
-        if (el) el.setAttribute("href", value)
-      }
-      setContent("meta-desc", desc)
-      setHref("canonical-link", url)
+      applyPageMetadata({
+        title: `${p.title} — DiskCleaner`,
+        description: desc,
+        url,
+        ogType: "article",
+        image,
+      })
 
-      // Open Graph
-      setContent("og-type", "article")
-      setContent("og-url", url)
-      setContent("og-title", p.title)
-      setContent("og-desc", desc)
-      setContent("og-image", image)
-      setContent("og-image-secure", image)
-      setContent("og-image-alt", p.title)
-
-      // Twitter
-      setContent("tw-url", url)
-      setContent("tw-title", p.title)
-      setContent("tw-desc", desc)
-      setContent("tw-image", image)
-
-      // JSON-LD
       const schema = {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "headline": p.title,
-        "description": desc,
-        "datePublished": p.date,
-        "dateModified": p.updatedAt || p.date,
-        "author": { "@type": "Organization", "name": "DiskCleaner", "url": "https://www.diskcleaner.pro/" },
-        "publisher": {
-          "@type": "Organization",
-          "name": "DiskCleaner",
-          "url": "https://www.diskcleaner.pro/",
-          "logo": { "@type": "ImageObject", "url": "https://www.diskcleaner.pro/favicon.png" }
-        },
-        "url": url,
-        "mainEntityOfPage": { "@type": "WebPage", "@id": url },
-        "articleSection": p.category,
-        "inLanguage": "en-US",
-        "image": image
+        "@graph": [
+          {
+            "@type": "BlogPosting",
+            "headline": p.title,
+            "description": desc,
+            "datePublished": p.date,
+            "dateModified": p.updatedAt || p.date,
+            "author": {
+              "@type": "Person",
+              "name": authorProfile.name,
+              "description": authorProfile.role
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "DiskCleaner",
+              "url": "https://www.diskcleaner.pro/",
+              "logo": { "@type": "ImageObject", "url": "https://www.diskcleaner.pro/favicon.png" }
+            },
+            "url": url,
+            "mainEntityOfPage": { "@type": "WebPage", "@id": url },
+            "articleSection": p.category,
+            "inLanguage": "en-US",
+            "image": image
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
+              { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.diskcleaner.pro/blog" },
+              { "@type": "ListItem", "position": 3, "name": p.title, "item": url }
+            ]
+          }
+        ]
       }
-      const el = document.getElementById("article-jsonld")
-      if (el) el.textContent = JSON.stringify(schema)
+      setJsonLd("article-jsonld", schema)
     })
 
     return () => {
-      // Restore homepage defaults when navigating away
-      document.title = "DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner"
-      const setContent = (id: string, value: string) => {
-        const el = document.getElementById(id)
-        if (el) el.setAttribute("content", value)
-      }
-      const setHref = (id: string, value: string) => {
-        const el = document.getElementById(id)
-        if (el) el.setAttribute("href", value)
-      }
-      setContent("meta-desc", "DiskCleaner is a focused macOS cleaner that scans cache and clutter safely, shows every file before it moves, and sends everything to Trash. Private, fast, and beautifully simple.")
-      setHref("canonical-link", "https://www.diskcleaner.pro/")
-      setContent("og-type", "website")
-      setContent("og-url", "https://www.diskcleaner.pro/")
-      setContent("og-title", "DiskCleaner for Mac – Secure. Fast. Minimal.")
-      setContent("og-desc", "See every file before it moves. Clean only what you approve. Everything goes to Trash, never permanent.")
-      setContent("og-image", "https://www.diskcleaner.pro/DiskCleaner_Social.webp")
-      setContent("og-image-secure", "https://www.diskcleaner.pro/DiskCleaner_Social.webp")
-      setContent("og-image-alt", "DiskCleaner for Mac – Secure. Fast. Minimal.")
-      setContent("tw-url", "https://www.diskcleaner.pro/")
-      setContent("tw-title", "DiskCleaner for Mac – Secure. Fast. Minimal.")
-      setContent("tw-desc", "A private, local-first macOS cleaner that shows every file before it moves. Everything goes to Trash.")
-      setContent("tw-image", "https://www.diskcleaner.pro/DiskCleaner_Social.webp")
+      restoreDefaultMetadata()
     }
   }, [slug])
 
@@ -180,10 +156,17 @@ export default function Article() {
             <span className="article-meta-sep">·</span>
             <span>{post.wordCount.toLocaleString()} words</span>
             <span className="article-meta-sep">·</span>
-            <span>By {post.author}</span>
+            <span>By {author?.name || post.author}</span>
           </div>
           <ShareButton title={post.title} excerpt={post.excerpt} />
         </div>
+
+        <section className="mx-auto mt-8 max-w-[860px] rounded-3xl border border-[var(--border)] bg-[var(--surface)] px-6 py-5 sm:px-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted2)]">About the Author</p>
+          <h2 className="mt-2 text-xl font-semibold tracking-[-0.03em] text-[var(--text)]">{author?.name || post.author}</h2>
+          <p className="mt-1 text-sm font-medium text-[var(--blue)]">{author?.role || "Contributor"}</p>
+          <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">{author?.bio || "Contributes to DiskCleaner editorial content."}</p>
+        </section>
 
         <article className="mx-auto mt-10 max-w-[860px] rounded-3xl bg-[var(--surface)]">
           <div

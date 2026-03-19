@@ -39,6 +39,8 @@ export default function Layout() {
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#features">Features</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#download">Pricing</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li>
+            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/about">About</a></li>
+            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/trust">Trust</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li>
           </ul>
           <div className="flex items-center gap-2.5">
@@ -76,7 +78,9 @@ export default function Layout() {
             <div className="site-footer-col-hd">Product</div>
             <a href="/#features" className="site-footer-link">Features</a>
             <a href="/#download" className="site-footer-link">Download</a>
-            <button type="button" onClick={() => setModal("changelog")} className="site-footer-link">What's New</button>
+            <button type="button" onClick={() => setModal("changelog")} className="site-footer-link">Changelog</button>
+            <a href="/about" className="site-footer-link">About</a>
+            <a href="/trust" className="site-footer-link">Trust Center</a>
           </div>
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Support</div>
@@ -85,12 +89,13 @@ export default function Layout() {
             <button type="button" onClick={() => setModal("support")} className="site-footer-link">Contact</button>
             <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
             <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
+            <a href="/editorial-policy" className="site-footer-link">Editorial Policy</a>
           </div>
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Connect</div>
             <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Twitter / X</a>
             <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer" className="site-footer-link">Threads</a>
-            <a href="mailto:adminsupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
+            <a href="mailto:customersupport@diskcleaner.pro" className="site-footer-link">Email Us</a>
           </div>
         </div>
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>

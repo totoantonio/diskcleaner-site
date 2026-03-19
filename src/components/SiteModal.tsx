@@ -155,7 +155,7 @@ export function PrivacyContent() {
           your personal information.
         </li>
         <li>You may also have rights to data portability and to object to certain processing activities.</li>
-        <li>You may submit requests by contacting support@diskcleaner.pro.</li>
+        <li>You may submit requests by contacting customersupport@diskcleaner.pro.</li>
       </ul>
       <h3>Children&apos;s Privacy</h3>
       <p>
@@ -168,7 +168,7 @@ export function PrivacyContent() {
         Date unless a later date is stated.
       </p>
       <h3>Contact</h3>
-      <p>For privacy questions or requests, contact support@diskcleaner.pro.</p>
+      <p>For privacy questions or requests, contact customersupport@diskcleaner.pro.</p>
     </div>
   )
 }
@@ -241,7 +241,7 @@ export function TosContent() {
       <ul className="list-disc space-y-2 pl-5">
         <li>These Terms are governed by applicable laws of the jurisdiction where DiskCleaner operates.</li>
         <li>
-          You agree to attempt informal resolution first by contacting support@diskcleaner.pro before filing a formal
+          You agree to attempt informal resolution first by contacting customersupport@diskcleaner.pro before filing a formal
           legal claim.
         </li>
         <li>Where enforceable, disputes will be resolved in the courts with proper jurisdiction over DiskCleaner.</li>
@@ -253,7 +253,7 @@ export function TosContent() {
         of the revised Terms.
       </p>
       <h3>Contact</h3>
-      <p>Questions about these Terms can be sent to support@diskcleaner.pro.</p>
+      <p>Questions about these Terms can be sent to customersupport@diskcleaner.pro.</p>
     </div>
   )
 }
@@ -270,25 +270,128 @@ export function SupportContent() {
         <li>Screenshot of the result screen (if possible)</li>
       </ul>
       <h3>Support email</h3>
-      <p className="font-semibold text-[var(--text)]">support@diskcleaner.pro</p>
+      <p className="font-semibold text-[var(--text)]">customersupport@diskcleaner.pro</p>
     </div>
   )
 }
 
 export function ChangelogContent() {
   return (
-    <div className="space-y-4 [&>h3]:mt-6 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-[var(--text)]">
-      <p>Updates and release notes.</p>
-      <h3>v1.0 (Planned)</h3>
-      <ul className="list-disc space-y-2 pl-5">
-        <li>Quick Scan and Deep Scan</li>
-        <li>Core cleanup categories plus Downloads, iOS backups, Mail attachments, and external drive review</li>
-        <li>Per-file review with checkboxes</li>
-        <li>Risk labels and review-required categories</li>
-        <li>Trash-only cleaning (recoverable)</li>
-        <li>Menu bar utilities, update badge, and clean history</li>
-        <li>App Uninstaller with leftovers scan</li>
-      </ul>
+    <div className="space-y-5">
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface2)] px-4 py-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted2)]">Release Notes</p>
+        <p className="mt-1 text-sm text-[var(--muted)]">Shipped changes from the DiskCleaner Team.</p>
+      </div>
+
+      {[
+        {
+          version: "2026.01.12",
+          date: "January 12, 2026",
+          title: "v1.0 (Planned)",
+          groups: [
+            {
+              label: "◎ Foundation",
+              items: [
+                "Quick Scan and Deep Scan.",
+                "Core cleanup categories plus Downloads, iOS backups, Mail attachments, and external drive review.",
+                "Per-file review with checkboxes.",
+                "Risk labels and review-required categories.",
+                "Trash-only cleaning (recoverable).",
+                "Menu bar utilities, update badge, and clean history.",
+                "App Uninstaller with leftovers scan.",
+              ],
+            },
+          ],
+        },
+        {
+          version: "2026.02.28",
+          date: "February 28, 2026",
+          title: "Uninstaller UX Overhaul",
+          groups: [
+            {
+              label: "• Improved",
+              items: [
+                "App Uninstaller layout for cleaner spacing, alignment, and typography consistency.",
+                "Drag-and-drop uninstall flow with clearer instructional hierarchy.",
+                "Bottom action placement to match primary screen patterns.",
+              ],
+            },
+            {
+              label: "+ Added",
+              items: [
+                "Installed-app gallery option to pick apps directly without drag-and-drop.",
+              ],
+            },
+          ],
+        },
+        {
+          version: "2026.03.14",
+          date: "March 14, 2026",
+          title: "Overview + Scan Results Polish",
+          groups: [
+            {
+              label: "• Improved",
+              items: [
+                "Scan results column layout with better row spacing, badge handling, and size alignment.",
+                "Notes and legend presentation for safety indicators and review guidance.",
+                "Gauge and summary area visual polish while preserving fast scan performance.",
+                "Section text styles and title casing across major Overview states.",
+              ],
+            },
+          ],
+        },
+        {
+          version: "2026.03.18",
+          date: "March 18, 2026",
+          title: "RAM Optimizer + Mail Attachments Expansion",
+          groups: [
+            {
+              label: "+ Added",
+              items: [
+                "Full RAM Optimizer route and UI with live metrics for Memory Pressure, Compressed Memory, Swap Used, and Page In/Out (Min).",
+                "Safe Optimize action with immediate telemetry refresh.",
+              ],
+            },
+            {
+              label: "~ Expanded",
+              items: [
+                "Mail Attachments coverage to include supported Outlook, Spark, and Canary attachment locations.",
+              ],
+            },
+            {
+              label: "• Improved",
+              items: [
+                "System-wide typography token migration for cleaner, more consistent readability.",
+              ],
+            },
+          ],
+        },
+      ].map(entry => (
+        <section key={entry.version} className="rounded-[22px] border border-[var(--border)] bg-[var(--surface)] px-4 py-4 sm:px-5 sm:py-5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-[var(--blue)]">
+              {entry.version}
+            </span>
+            <span className="text-[12px] text-[var(--muted2)]">{entry.date}</span>
+          </div>
+          <h3 className="mt-3 text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)]">{entry.title}</h3>
+          <div className="mt-4 space-y-4">
+            {entry.groups.map(group => (
+              <div key={group.label}>
+                <p className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted2)]">{group.label}</p>
+                <ul className="mt-2 space-y-2 pl-0 list-none">
+                  {group.items.map(item => (
+                    <li key={item} className="flex gap-2.5 text-[15px] leading-7 text-[var(--muted)]">
+                      <span className="pt-[10px] text-[10px] leading-none text-[var(--blue)]">●</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   )
 }

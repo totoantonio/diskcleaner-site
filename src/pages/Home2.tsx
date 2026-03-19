@@ -865,7 +865,7 @@ export default function Home2() {
             <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "1.5px", color: "#6e6e73", marginBottom: 16, fontWeight: 600 }}>Connect</div>
             <a href="#">Twitter / X</a>
             <a href="#">GitHub</a>
-            <a href="mailto:adminsupport@diskcleaner.pro">Email Us</a>
+            <a href="mailto:customersupport@diskcleaner.pro">Email Us</a>
           </div>
 
         </div>
