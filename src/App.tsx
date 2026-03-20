@@ -11,14 +11,12 @@ const Help = lazy(() => import("./pages/Help"))
 const About = lazy(() => import("./pages/About"))
 const Trust = lazy(() => import("./pages/Trust"))
 const EditorialPolicy = lazy(() => import("./pages/EditorialPolicy"))
-const Home2 = lazy(() => import("./pages/Home2"))
 
 export default function App() {
   return (
     <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home2" element={<Home2 />} />
         <Route element={<Layout />}>
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Article />} />

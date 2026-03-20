@@ -527,7 +527,7 @@ export default function CommunityWall({ SURFACE }: { SURFACE: string }) {
 
     raf = requestAnimationFrame(step)
     return () => cancelAnimationFrame(raf)
-  }, [countInView, totalSupporters])
+  }, [countInView, seededSupporterCount, totalSupporters])
 
   useEffect(() => {
     try {
