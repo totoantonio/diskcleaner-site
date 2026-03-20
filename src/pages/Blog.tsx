@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactElement } from "react"
 import { Link } from "react-router-dom"
 import { getAllPosts, type BlogPost } from "../lib/blog"
+import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
 
 // SF Symbol-style icons as SVG — matches Apple's Xcode "What's New" style
 const postIcons: Record<string, ReactElement> = {
@@ -50,7 +51,26 @@ export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([])
 
   useEffect(() => {
+    const url = "https://www.diskcleaner.pro/blog"
+    const description = "Mac cleaner guides, CleanMyMac and MacPaw alternative comparisons, and practical help for reclaiming storage safely on Mac."
+
+    applyPageMetadata({
+      title: "DiskCleaner Blog - Mac Cleaner Guides, Comparisons, and Alternatives",
+      description,
+      url,
+    })
+
+    setJsonLd("article-jsonld", {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "DiskCleaner Blog",
+      "description": description,
+      "url": url,
+    })
+
     getAllPosts().then(setPosts)
+
+    return () => restoreDefaultMetadata()
   }, [])
 
   return (
@@ -62,11 +82,32 @@ export default function Blog() {
             Blog
           </span>
           <h1 className="text-balance text-[clamp(36px,4vw,58px)] font-bold leading-[1.06] tracking-[-0.045em] text-[var(--text)]">
-            Updates that matter.
+            Mac cleaner guides and comparison pages that answer buying-intent searches.
           </h1>
           <p className="text-[clamp(16px,1.6vw,19px)] leading-[1.6] tracking-[-0.01em] text-[var(--muted)]">
-            Guides, releases, and insights about building a cleaner macOS experience.
+            Storage guides, product updates, and direct comparisons for people searching for a better Mac cleaner without vague claims or subscription bloat.
           </p>
+        </div>
+
+        <div className="mx-auto mb-10 flex max-w-[900px] flex-wrap justify-center gap-2.5">
+          {[
+            { href: "/blog/best-mac-cleaner", label: "Best Mac Cleaner" },
+            { href: "/blog/cleanmymac-alternative", label: "CleanMyMac Alternative" },
+            { href: "/blog/macpaw-alternative", label: "MacPaw Alternative" },
+            { href: "/blog/appcleaner-vs-cleanmymac", label: "AppCleaner vs CleanMyMac" },
+            { href: "/blog/best-mac-cleaner-for-developers", label: "Best Mac Cleaner for Developers" },
+            { href: "/blog/one-time-purchase-mac-cleaner", label: "One-Time Purchase Mac Cleaner" },
+            { href: "/blog/what-is-system-data-mac", label: "System Data on Mac" },
+            { href: "/blog/is-it-safe-to-delete-developer-data-on-mac", label: "Delete Developer Data" },
+          ].map(link => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3.5 py-2 text-[13px] font-medium text-[var(--text)] no-underline transition-colors hover:border-[var(--blue-tint-border)] hover:text-[var(--blue)]"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:gap-4">

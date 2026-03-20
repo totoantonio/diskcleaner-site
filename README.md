@@ -76,5 +76,5 @@ If this variable is missing, the modal shows a setup message instead of submitti
 
 ## Contact
 
-- Support: support@diskcleaner.pro
+- Support: customersupport@diskcleaner.pro
 - Website: https://www.diskcleaner.pro/

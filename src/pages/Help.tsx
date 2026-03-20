@@ -18,7 +18,7 @@ const sections = [
 export default function Help() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/help"
-    const description = "DiskCleaner help center covering cleanup categories, troubleshooting, menu bar mode, and common Mac cleaning questions."
+    const description = "DiskCleaner help center covering Quick Scan, Deep Scan, RAM Optimizer, App Uninstaller, safety labels, and common Mac cleaning questions."
 
     applyPageMetadata({
       title: "DiskCleaner Help Center",
@@ -34,10 +34,10 @@ export default function Help() {
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Does DiskCleaner require administrator permission?",
+              "name": "Does DiskCleaner require Full Disk Access or administrator permission?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Yes. Removing some system-level files requires macOS to ask for administrator approval through the standard system dialog."
+                "text": "Some categories may require Full Disk Access or standard macOS administrator approval, depending on what you choose to review and move to Trash."
               }
             },
             {
@@ -45,7 +45,7 @@ export default function Help() {
               "name": "What does DiskCleaner clean?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner focuses on common cleanup categories such as caches, logs, temporary files, Trash contents, screenshots, developer data, and app leftovers."
+                "text": "DiskCleaner includes Quick Scan and Deep Scan coverage for app cache, browser cache, screenshots, Trash, system logs, developer data, app leftovers, and additional review categories such as Downloads, iOS backups, Mail attachments, and external drives."
               }
             }
           ]
@@ -78,7 +78,7 @@ export default function Help() {
             Help Center
           </span>
           <h1 className="article-title text-balance">DiskCleaner Help</h1>
-          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what it cleans, how to use it, and how to fix common issues.</p>
+          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what Quick Scan and Deep Scan cover, how review labels work, and how to use the latest cleanup tools safely.</p>
         </div>
 
         {/* Table of Contents */}
@@ -105,19 +105,37 @@ export default function Help() {
 
             {/* ── Section 1 ── */}
             <h2 id="what-gets-cleaned">What Gets Cleaned — and What's Safe</h2>
-            <p>DiskCleaner targets only files that macOS generates automatically and regenerates on demand. Your documents, photos, and personal data are never touched.</p>
+            <p>DiskCleaner is built around a review-first, Trash-first workflow. It focuses on clutter macOS and apps regenerate automatically, then marks larger or riskier areas for closer review before anything moves.</p>
 
-            <h3>Files DiskCleaner removes</h3>
+            <h3>Quick Scan coverage</h3>
             <ul>
-              <li><strong>User caches</strong> — Temporary data stored by apps in <code>~/Library/Caches</code>. Apps rebuild these automatically; removing them is always safe.</li>
-              <li><strong>System caches</strong> — macOS-level caches in <code>/Library/Caches</code> that accumulate over time. Removing them may prompt a brief rebuild on next boot.</li>
-              <li><strong>Log files</strong> — Diagnostic logs written by apps and the OS (<code>~/Library/Logs</code>, <code>/var/log</code>). Logs are for diagnostics only and can safely be discarded.</li>
-              <li><strong>Temporary files</strong> — Files in <code>/var/folders</code> and system temp directories that were never cleaned up by their parent process.</li>
-              <li><strong>Trash contents</strong> — Files you've already moved to the Trash that are still consuming disk space.</li>
-              <li><strong>Download quarantine metadata</strong> — Small <code>.DS_Store</code> and <code>__MACOSX</code> files created by macOS Finder.</li>
+              <li><strong>App Cache</strong> — Temporary app cache files that rebuild as needed.</li>
+              <li><strong>Browser Cache</strong> — Cache data from supported browsers and profiles. Safari cache is measured but not cleared. Passwords, bookmarks, and history stay untouched.</li>
+              <li><strong>Screenshots</strong> — Old screenshots that tend to accumulate unnoticed on long-used Macs.</li>
+              <li><strong>Trash</strong> — Files you already threw away that are still consuming space.</li>
+              <li><strong>System Logs</strong> — Diagnostic and crash logs that are useful temporarily but rarely worth keeping forever.</li>
+              <li><strong>Developer Data</strong> — Xcode DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches.</li>
+              <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed.</li>
             </ul>
 
-            <h3>What DiskCleaner never touches</h3>
+            <h3>Deep Scan and expanded review areas</h3>
+            <p>Deep Scan goes beyond the everyday clutter pass and surfaces larger storage categories that often need more deliberate review.</p>
+            <ul>
+              <li><strong>Downloads</strong> — Useful for catching forgotten installers, archives, and exported files.</li>
+              <li><strong>iOS backups</strong> — Old device backups that can consume tens of gigabytes.</li>
+              <li><strong>Mail Attachments</strong> — Attachment caches, including expanded support for Outlook, Spark, and Canary locations.</li>
+              <li><strong>External drive review</strong> — Additional clutter visibility beyond the startup disk.</li>
+              <li><strong>Caution-labeled items</strong> — Results that deserve a second look before cleanup.</li>
+            </ul>
+
+            <h3>What DiskCleaner does not do for you automatically</h3>
+            <ul>
+              <li>It does not silently delete files in the background.</li>
+              <li>It does not permanently delete as part of normal cleanup. Files go to macOS Trash.</li>
+              <li>It does not clear personal content like passwords, bookmarks, or saved logins.</li>
+            </ul>
+
+            <h3>What DiskCleaner never targets as cleanup junk</h3>
             <ul>
               <li>Documents, spreadsheets, or any file in your home folder outside of <code>Library/</code></li>
               <li>Photos, videos, or music libraries</li>
@@ -127,7 +145,7 @@ export default function Help() {
             </ul>
 
             <blockquote>
-              <strong>Tip:</strong> Before cleaning, use the <em>Preview</em> mode to see exactly which files will be removed and their sizes — no surprises.
+              <strong>Tip:</strong> DiskCleaner shows every file before anything moves. Use the checkboxes and caution labels to keep high-confidence cleanup fast and everything else deliberate.
             </blockquote>
 
             <hr />
@@ -137,21 +155,27 @@ export default function Help() {
 
             <h3>Running your first clean</h3>
             <ol>
-              <li><strong>Open DiskCleaner</strong> from your Applications folder or the menu bar icon.</li>
-              <li>Click <strong>Scan</strong>. DiskCleaner will analyse your Mac and display a categorised breakdown of junk files and their total size.</li>
-              <li>Review each category. Toggle off any category you'd prefer to skip — your choices are remembered for next time.</li>
-              <li>Click <strong>Clean</strong>. macOS may ask for your password to remove system-level files.</li>
-              <li>A summary shows how much space was freed.</li>
+              <li><strong>Open DiskCleaner</strong> and start with <strong>Quick Scan</strong> for the most common clutter categories.</li>
+              <li>Review the results list. DiskCleaner shows categories, file sizes, and per-file checkboxes before anything moves.</li>
+              <li>If you want deeper coverage, switch to <strong>Deep Scan</strong> to include larger review areas such as Downloads, iOS backups, Mail attachments, and external-drive findings.</li>
+              <li>Pay attention to notes, legends, and caution labels. Those are there to slow you down on categories where context matters.</li>
+              <li>Click <strong>Clean</strong> when you are satisfied with the selection. Files move to Trash, not permanent deletion.</li>
             </ol>
 
-            <h3>Menu Bar mode</h3>
-            <p>Enable <strong>Menu Bar mode</strong> in Preferences (⌘,) to keep DiskCleaner in your menu bar. A small disk-usage indicator updates in real time. Click the icon to run a quick clean without opening the main window.</p>
+            <h3>Understanding Quick Scan vs Deep Scan</h3>
+            <p><strong>Quick Scan</strong> is the fast everyday pass. <strong>Deep Scan</strong> expands into larger, more review-sensitive storage areas. The best default workflow is to run Quick Scan regularly and use Deep Scan when storage pressure is real or you need a broader audit.</p>
 
-            <h3>Scheduled cleaning</h3>
-            <p>In Preferences, turn on <strong>Auto-Clean</strong> and choose a schedule — daily, weekly, or monthly. DiskCleaner will clean silently in the background and show a notification when it's done.</p>
+            <h3>Menu bar utilities</h3>
+            <p>DiskCleaner includes menu bar utilities so disk state is always close at hand. The menu bar view is useful for quick visibility into available space and for returning to the app quickly when storage pressure starts building.</p>
+
+            <h3>Using RAM Optimizer</h3>
+            <p>The latest update adds a dedicated <strong>RAM Optimizer</strong> view with live metrics for Memory Pressure, Compressed Memory, Swap Used, and Page In/Out (Min). Use <strong>Optimize</strong> when memory pressure is elevated and you want a safe refresh without digging through Activity Monitor first.</p>
 
             <h3>Using the Uninstaller</h3>
-            <p>Switch to the <strong>Uninstaller</strong> tab to see every app on your Mac with its total footprint (app bundle + leftover support files). Select one or more apps, then click <strong>Uninstall</strong> to remove them completely — no orphaned files left behind.</p>
+            <p>Open <strong>App Uninstaller</strong> when dragging an app to Trash is not enough. DiskCleaner helps you review the app bundle plus leftover support files before removal, and the latest uninstaller update improves layout, drag-and-drop flow, and installed-app selection.</p>
+
+            <h3>Free scans and Pro unlock</h3>
+            <p>DiskCleaner includes <strong>3 free scans</strong>. After that, Pro unlocks with a license key. The current direct-license messaging in the app and site is <strong>$9.99 one-time for up to 2 Macs</strong>, with future updates included.</p>
 
             <hr />
 
@@ -161,20 +185,23 @@ export default function Help() {
             <h3>DiskCleaner shows 0 MB found</h3>
             <p>This is normal on a freshly cleaned or new Mac. macOS caches rebuild as you use your apps — try scanning again after a day of normal use.</p>
 
-            <h3>macOS asks for my password — is that normal?</h3>
-            <p>Yes. Removing files outside your user folder (system caches, certain logs) requires administrator permission. DiskCleaner uses macOS's standard authorisation dialog and does not store your password.</p>
+            <h3>macOS asks for Full Disk Access or my password — is that normal?</h3>
+            <p>Yes. Some categories involve locations macOS protects more aggressively. Depending on what you review and choose to clean, macOS may require Full Disk Access or standard administrator approval. DiskCleaner uses the normal macOS permission flow and does not ask you to bypass it.</p>
 
             <h3>An app is slow after cleaning</h3>
             <p>Apps may feel slightly slower the first time they launch after their cache is removed — this is expected. Performance returns to normal within a minute as the cache rebuilds. If an app continues to behave oddly, restarting it or your Mac usually resolves it.</p>
 
             <h3>Disk space didn't change much after cleaning</h3>
-            <p>macOS reports "available" storage differently from raw free space. Some reclaimed space may show as <em>purgeable</em> rather than immediately available. Restarting your Mac flushes purgeable space into the available pool.</p>
+            <p>macOS does not always reflect reclaimed space instantly. Some recovery may appear as <em>purgeable</em> before it shows up as fully available. If the number looks slow to update, wait a moment and then recheck, or restart the Mac if storage reporting still looks stale.</p>
 
             <h3>DiskCleaner can't be opened (Gatekeeper warning)</h3>
             <p>If macOS shows "DiskCleaner cannot be opened because it is from an unidentified developer," go to <strong>System Settings → Privacy &amp; Security</strong>, scroll down, and click <strong>Open Anyway</strong> next to the DiskCleaner entry.</p>
 
-            <h3>The Uninstaller doesn't show all my apps</h3>
-            <p>Apps distributed exclusively through the Mac App Store are sandboxed and cannot be uninstalled by third-party tools — use the App Store's built-in purchase management to remove them. All other apps should appear in the list.</p>
+            <h3>The Uninstaller doesn't show what I expected</h3>
+            <p>Use the improved installed-app picker first, then try the drag-and-drop uninstall flow if needed. Some apps may have fewer matchable leftovers than others, and App Store-distributed apps can behave differently because of macOS sandboxing.</p>
+
+            <h3>Deep Scan found categories I want to keep</h3>
+            <p>That is exactly what the review model is for. Deep Scan is broader by design, and some categories are intentionally marked for second-look review. Uncheck anything you want to keep and clean only the categories you are confident about.</p>
 
             <h3>Still need help?</h3>
             <p>Reach out via the <strong>Support</strong> link in the footer — we typically respond within one business day.</p>
@@ -185,7 +212,7 @@ export default function Help() {
             <h2 id="keyboard-shortcuts">Keyboard Shortcuts</h2>
             <p>
               DiskCleaner supports core macOS app shortcuts such as closing windows, hiding the app, quitting the app,
-              and standard text-editing shortcuts in text fields. Shortcut support may expand over time as the app evolves.
+              and standard text-editing shortcuts in text fields. The table below stays intentionally focused on reliable, app-wide shortcuts.
             </p>
 
             <h3>Common macOS shortcuts</h3>

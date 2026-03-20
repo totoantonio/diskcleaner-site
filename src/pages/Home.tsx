@@ -1268,6 +1268,8 @@ const SiteFooter = lazy(async () => {
             <a href="#features" className="site-footer-link">Features</a>
             <a href="#download" className="site-footer-link">Download</a>
             <button type="button" onClick={() => openModal("changelog")} className="site-footer-link">Changelog</button>
+            <a href="/about" className="site-footer-link">About</a>
+            <a href="/trust" className="site-footer-link">Trust Center</a>
           </div>
           {/* Support */}
           <div className="site-footer-col">
@@ -1277,6 +1279,7 @@ const SiteFooter = lazy(async () => {
             <button type="button" onClick={() => openModal("support")} className="site-footer-link">Contact</button>
             <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
             <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
+            <a href="/editorial-policy" className="site-footer-link">Editorial Policy</a>
           </div>
           {/* Connect */}
           <div className="site-footer-col">

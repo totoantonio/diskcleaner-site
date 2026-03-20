@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getPostBySlug, type BlogPost } from "../lib/blog"
+import { getPostBySlug, getRelatedPosts, type BlogPost } from "../lib/blog"
 import { getAuthorProfile } from "../lib/authors"
 import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
 
@@ -53,6 +53,7 @@ function ShareButton({ title, excerpt }: { title: string; excerpt: string }) {
 export default function Article() {
   const { slug } = useParams()
   const [post, setPost] = useState<BlogPost | null>(null)
+  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
   const author = post ? getAuthorProfile(post.author) : null
 
   useEffect(() => {
@@ -112,6 +113,8 @@ export default function Article() {
       }
       setJsonLd("article-jsonld", schema)
     })
+
+    getRelatedPosts(slug).then(setRelatedPosts)
 
     return () => {
       restoreDefaultMetadata()
@@ -174,6 +177,37 @@ export default function Article() {
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
+
+        {relatedPosts.length > 0 && (
+          <section className="mx-auto mt-10 max-w-[860px] rounded-3xl border border-[var(--border)] bg-[var(--surface)] px-6 py-6 sm:px-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted2)]">Keep Reading</p>
+            <h2 className="mt-2 text-[24px] font-semibold tracking-[-0.03em] text-[var(--text)]">Related Mac cleaner guides</h2>
+            <div className="mt-5 grid gap-3">
+              {relatedPosts.map(relatedPost => (
+                <Link
+                  key={relatedPost.slug}
+                  to={`/blog/${relatedPost.slug}`}
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface2)] px-4 py-4 no-underline transition-colors hover:border-[var(--blue-tint-border)]"
+                >
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] text-[var(--blue)]">
+                      {relatedPost.category}
+                    </span>
+                    <span className="text-[11px] font-medium uppercase tracking-[0.06em] text-[var(--muted2)]">
+                      {relatedPost.readingTimeMinutes} min read
+                    </span>
+                  </div>
+                  <h3 className="mt-2 text-[18px] font-semibold tracking-[-0.02em] text-[var(--text)]">
+                    {relatedPost.title}
+                  </h3>
+                  <p className="mt-1 text-[14px] leading-6 text-[var(--muted)]">
+                    {relatedPost.excerpt}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
       </div>
     </section>

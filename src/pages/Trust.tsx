@@ -111,6 +111,15 @@ export default function Trust() {
               Trust is not only about what a cleaner removes. It is also about what it refuses to touch.
               DiskCleaner is designed to stay away from personal documents, passwords, and protected system locations, and that boundary matters just as much as the cleanup features themselves.
             </p>
+
+            <h2>6. Technical security documentation</h2>
+            <p>
+              For readers who want a more technical summary of DiskCleaner&apos;s security posture and disclosure path, the repository also includes a dedicated
+              {" "}
+              <a href="https://github.com/totoantonio/diskcleaner-site/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a>
+              {" "}
+              document.
+            </p>
           </div>
         </article>
       </div>

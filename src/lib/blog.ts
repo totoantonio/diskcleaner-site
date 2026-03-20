@@ -120,3 +120,24 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | undefined>
   const posts = await getAllPosts()
   return posts.find(p => p.slug === slug)
 }
+
+export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost[]> {
+  const posts = await getAllPosts()
+  const current = posts.find(post => post.slug === slug)
+  if (!current) return posts.filter(post => post.slug !== slug).slice(0, limit)
+
+  return posts
+    .filter(post => post.slug !== slug)
+    .sort((a, b) => {
+      const aScore =
+        Number(a.category === current.category) * 3 +
+        Number(Boolean(a.featured)) * 2
+      const bScore =
+        Number(b.category === current.category) * 3 +
+        Number(Boolean(b.featured)) * 2
+
+      if (bScore !== aScore) return bScore - aScore
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
+    .slice(0, limit)
+}
