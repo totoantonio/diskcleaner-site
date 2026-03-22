@@ -458,19 +458,19 @@ function Hero({ BG }: { BG: string }) {
       <div className="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]" />
       <div className="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">
-          DiskCleaner for Mac
+          No subscription · Apple-notarized · Native macOS
         </div>
-        <h1 className="mx-auto max-w-[900px] text-[clamp(40px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
+        <h1 className="mx-auto max-w-[900px] text-[clamp(44px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
           <span className="text-[var(--text)]">Clean your Mac.</span><br />
-          <em className="not-italic text-[var(--blue)]">Know exactly why.</em>
+          <em className="not-italic text-[var(--blue)]">Every file, your call.</em>
         </h1>
         <p className="mx-auto mt-5 max-w-[620px] text-[clamp(18px,2vw,22px)] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
-          Every other cleaner guesses. DiskCleaner shows you every file,
-          every category, every byte — before anything moves.
+          Most Mac cleaners delete first — and tell you later, if at all.
+          DiskCleaner shows you every file, every category, every byte before a single thing moves.
         </p>
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a href="#download" onClick={() => trackCTA("hero")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
-            Notify Me
+            Get Early Access
           </a>
           <a href="#features" className="inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">
             See how it works <span aria-hidden>›</span>
@@ -483,14 +483,14 @@ function Hero({ BG }: { BG: string }) {
 
 function StatsBand({ SURFACE }: { SURFACE: string }) {
   return (
-    <div className="border-y border-[var(--border)] py-12 sm:py-16" style={{ background: SURFACE }}>
+    <div className="border-y border-[var(--border)] py-6 sm:py-10" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
           {[
-            { n: "7",   u: "",   l: "Junk categories, one scan" },
-            { n: "<10", u: "s",  l: "From launch to results" },
-            { n: "9",   u: "",   l: "Browsers supported" },
-            { n: "~5",  u: "MB", l: "Install size" },
+            { n: "7",   u: "",   l: "Categories in one scan" },
+            { n: "<10", u: "s",  l: "Time to first results" },
+            { n: "9",   u: "",   l: "Browsers cleaned" },
+            { n: "~5",  u: "MB", l: "Total install size" },
           ].map((s, i) => (
             <div className={`reveal d${i + 1} px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 ${i < 2 ? "border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0" : ""}`} key={i}>
               <div className="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">{s.n}<span className="text-[var(--blue)]">{s.u}</span></div>
@@ -505,13 +505,13 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
 
 function Features({ SURFACE }: { SURFACE: string }) {
   return (
-    <section id="features" className="py-14 sm:py-20" style={{ background: SURFACE }}>
+    <section id="features" className="py-20 sm:py-28" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="mb-7 flex flex-col items-center text-center sm:mb-10">
           <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
             <span className="inline-block text-left sm:contents">
-              <span className="block text-[var(--text)] sm:inline">Review-first cleanup</span>{" "}
-              <span className="block text-[var(--blue)] sm:inline">for the Mac.</span>
+              <span className="block text-[var(--text)] sm:inline">You see it first.</span>{" "}
+              <span className="block text-[var(--blue)] sm:inline">You decide.</span>
             </span>
           </h2>
           <p className="reveal d2 mt-4 max-w-[760px] text-[17px] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
@@ -536,14 +536,14 @@ function Features({ SURFACE }: { SURFACE: string }) {
               {
                 tag: "Scanning",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>,
-                ttl: "Quick Scan for everyday clutter.",
+                ttl: "Under 10 seconds. Every category.",
                 dsc: "Run a fast scan from the app or menu bar, then switch to Deep Scan for additional locations, caution items, and broader review.",
               },
               {
                 tag: "Performance",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" /></svg>,
-                ttl: "Built with Swift Concurrency.",
-                dsc: "All file I/O runs on background threads. The interface never freezes. File sizes animate live as they're discovered.",
+                ttl: "The interface never freezes.",
+                dsc: "All file I/O runs on background threads. Scans large caches without a stall. File sizes animate live as they're discovered.",
               },
               {
                 tag: "Browsers",
@@ -554,7 +554,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
               {
                 tag: "Developers",
                 ico: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>,
-                ttl: "Developers Recover the Most.",
+                ttl: "Developers save the most.",
                 dsc: "Xcode DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches. Usually the biggest hidden recovery on a developer Mac.",
               },
             ].map((f, i) => (
@@ -568,7 +568,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
         {/* Inline CTA after features grid */}
         <div className="reveal mt-10 flex flex-col items-center gap-3 text-center">
           <a href="#download" onClick={() => trackCTA("features-cta")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
-            Notify Me
+            Get Early Access
           </a>
           <p className="text-[12px] text-[var(--muted2)]">$9.99 one-time · No subscription · Apple-notarized</p>
         </div>
@@ -583,13 +583,13 @@ const InterfaceSplit = lazy(async () => {
   const Comp = ({ BG }: { BG: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-10 sm:py-14" style={{ background: BG }}>
+      <section className="overflow-hidden py-16 sm:py-24" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-0 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-                  <span className="text-[var(--text)]">Don't clean what you can't see.</span> <span className="text-[var(--blue)]">Total clarity.</span>
+                  <span className="text-[var(--text)]">The full picture.</span> <span className="text-[var(--blue)]">Before anything moves.</span>
                 </p>
                 <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   See exactly what's taking up space before a single file moves.
@@ -628,7 +628,7 @@ const InterfaceSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 -mt-6 sm:-mt-4 lg:mt-0 lg:flex lg:items-center -mb-20 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 lg:flex lg:items-center -mb-20 lg:mb-0">
               <img
                 src={appImage}
                 srcSet={`${appImage_464} 464w, ${appImage_640} 640w, ${appImage} 1376w`}
@@ -731,18 +731,17 @@ const UninstallerSplit = lazy(async () => {
   const Comp = ({ SURFACE, theme }: { SURFACE: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section id="uninstaller" className="overflow-hidden py-10 sm:py-20" style={{ background: SURFACE }}>
+      <section id="uninstaller" className="overflow-hidden py-16 sm:py-24" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-                  <span className="text-[var(--text)]">App Uninstaller shows the files apps leave behind.</span> <span className="text-[var(--blue)]">Remove them completely.</span>
+                  <span className="text-[var(--text)]">Apps leave more behind than you know.</span> <span className="text-[var(--blue)]">See it all. Remove it completely.</span>
                 </p>
                 <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
-                  Dragging an app to Trash only removes the app itself. The rest can stay behind:
-                  caches, preferences, logs, containers, and support files spread across Library folders.
-                  DiskCleaner shows the full footprint first, then lets you remove the app and its leftovers with the same review-first control as every cleanup.
+                  Dragging an app to Trash only removes the app itself. The rest hides quietly in Library folders: caches, preferences, logs, containers, and support files.
+                  DiskCleaner shows the full footprint first — then lets you remove everything cleanly, with the same file-by-file review you get everywhere.
                 </p>
                 <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
@@ -785,7 +784,7 @@ const UninstallerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 mt-1 py-2 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-6 sm:-mb-14 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 lg:flex lg:items-center -mb-6 sm:-mb-14 lg:mb-0">
               <div
                 className="split-img split-hero-visual split-hero-visual-lg mobile-bleed-visual mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
@@ -871,17 +870,17 @@ const RamOptimizerSplit = lazy(async () => {
   const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-10 sm:py-20" style={{ background: BG }}>
+      <section className="overflow-hidden py-16 sm:py-24" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-6 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-2 lg:order-1 lg:pt-4 lg:pr-8 reveal">
               <div className="lg:max-w-lg">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-                  <span className="text-[var(--text)]">RAM Optimizer shows what memory is doing.</span> <span className="text-[var(--blue)]">Refresh safely.</span>
+                  <span className="text-[var(--text)]">Memory pressure.</span> <span className="text-[var(--blue)]">Finally explained.</span>
                 </p>
                 <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
-                  DiskCleaner does not promise fake RAM gains or risky background tricks. Instead, it shows the memory signals that actually matter on macOS:
-                  memory pressure, compressed memory, and swap usage. When your Mac feels heavy, you get a safe refresh action and a clear read on what changed.
+                  No fake RAM gains. No risky background tricks. DiskCleaner shows the memory signals that actually matter: pressure, compressed memory, and swap usage.
+                  When your Mac feels heavy, you get a clear picture of why — and a safe refresh action that works with macOS, not against it.
                 </p>
                 <dl className="mt-6 max-w-xl space-y-2 text-[15px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
@@ -925,7 +924,7 @@ const RamOptimizerSplit = lazy(async () => {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 mt-1 py-2 sm:py-8 lg:mt-0 lg:flex lg:items-center lg:py-0 -mb-6 sm:-mb-14 lg:mb-0">
+            <div className="order-2 lg:order-2 reveal d1 lg:flex lg:items-center -mb-6 sm:-mb-14 lg:mb-0">
               <div
                 className="split-img split-hero-visual split-hero-visual-lg mobile-bleed-visual mx-auto w-full max-w-[560px]"
                 style={{ lineHeight: 0 }}
@@ -946,7 +945,7 @@ const MenuBarSplit = lazy(async () => {
   const Comp = ({ BG, theme }: { BG: string; theme: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="py-12 sm:py-28" style={{ background: BG }}>
+      <section className="py-16 sm:py-24" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 reveal flex justify-center py-1 sm:py-0">
@@ -962,11 +961,11 @@ const MenuBarSplit = lazy(async () => {
             <div className="order-1 lg:order-2 lg:pt-4 lg:pr-8 reveal d1">
               <div className="lg:max-w-lg">
               <h2 className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-inherit">
-                <span className="text-[var(--text)]">Your disk space,</span> <span className="text-[var(--blue)]">always visible.</span>
+                <span className="text-[var(--text)]">Disk space.</span> <span className="text-[var(--blue)]">Always one glance away.</span>
               </h2>
               <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
-                Live free space lives in your menu bar — always one glance away.
-                Trigger a Quick Scan, see update badges, or check full disk stats without ever opening the app.
+                Your free space, always visible — no app to open.
+                Trigger a Quick Scan, see update badges, or check full disk stats from a single click.
                 Lightweight. Always on. Never in the way.
               </p>
               <ul className="mt-6 list-none space-y-2 pl-0 text-[15px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
@@ -1020,13 +1019,13 @@ const WhatItFinds = lazy(async () => {
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-              <span className="text-[var(--text)]">More is hiding than you think.</span> <span className="text-[var(--blue)]">One scan finds it all.</span>
+              <span className="text-[var(--text)]">Seven categories.</span> <span className="text-[var(--blue)]">One scan. You decide what goes.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[600px] text-[17px] leading-[1.55] text-[var(--muted)]">
-              Quick Scan covers the clutter most Macs accumulate every day. Deep Scan goes further into larger, review-required categories. You see exactly what was found before anything moves.
+              Quick Scan covers what every Mac accumulates quietly over time. Deep Scan goes deeper — developer files, large downloads, and more. You see exactly what was found before anything moves.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {categories.map((c, i) => (
               <div key={i} className="reveal flex items-start gap-3 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{c.icon}</div>
@@ -1077,7 +1076,7 @@ const FAQ = lazy(async () => {
       },
       {
         q: "How is DiskCleaner different from other Mac cleaners?",
-        a: "Most cleaners delete files silently and show you a number after the fact. DiskCleaner shows you every single file before anything moves, with per-file checkboxes so you stay in control. It also never permanently deletes — everything goes through Trash.",
+        a: "Most cleaners delete files silently and show you a number. You never know what moved. DiskCleaner works the opposite way: you see every file — with its path and size — before anything happens. Per-file checkboxes. Nothing permanent. Everything recoverable from Trash.",
       },
       {
         q: "Can I get a refund?",
@@ -1183,7 +1182,7 @@ const CTA = lazy(async () => {
               onTouchEnd={onNotifyTouchEnd}
               className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
             >
-              Launching April 2026
+              Get Early Access — Launching April 2026
             </button>
           </div>
           <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
@@ -1236,7 +1235,7 @@ const TrustBand = lazy(async () => {
               Clean with proof.
             </h2>
             <p className="reveal d2 mx-auto mt-4 max-w-[760px] text-[17px] leading-[1.6] text-[var(--muted)]">
-              DiskCleaner shows what it found, labels what needs review, protects cloud and sensitive paths, and sends removals to Trash. No black-box cleaning. No permanent deletion. No guesswork.
+              DiskCleaner shows exactly what it found, marks what needs a second look, leaves your personal files untouched, and sends everything to Trash. No black-box cleaning. No permanent deletion. No guesswork.
             </p>
           </div>
         </div>
@@ -1347,7 +1346,7 @@ export default function Home() {
           Disk<em style={{ fontStyle: "normal", color: "#0071e3" }}>Cleaner</em>
         </a>
         <a href="#download" onClick={() => trackCTA("floating-nav")} style={{ fontSize: 13, fontWeight: 500, background: "#0071e3", color: "#fff", borderRadius: 980, padding: "8px 18px", textDecoration: "none" }}>
-          Notify Me
+          Get Early Access
         </a>
       </nav>
 
@@ -1376,7 +1375,7 @@ export default function Home() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="#download" onClick={() => trackCTA("nav")} className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Notify Me</a>
+            <a href="#download" onClick={() => trackCTA("nav")} className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a>
           </div>
         </div>
       </nav>
@@ -1391,12 +1390,12 @@ export default function Home() {
           <Features SURFACE={STRIPE_GRAY} />
           <UninstallerSplit SURFACE={STRIPE_WHITE} theme={theme} />
           <RamOptimizerSplit BG={STRIPE_GRAY} theme={theme} />
-          <MenuBarSplit BG={STRIPE_GRAY} theme={theme} />
+          <MenuBarSplit BG={STRIPE_WHITE} theme={theme} />
           <FAQ BG={STRIPE_WHITE} />
           <CompareTable BG={STRIPE_GRAY} theme={theme} />
           <HighlightsCarousel SURFACE={STRIPE_WHITE} theme={theme} />
           <CommunityWall SURFACE={STRIPE_GRAY} />
-          <TrustBand BG={STRIPE_WHITE} />
+          <TrustBand BG={STRIPE_GRAY} />
           <CTA BG={STRIPE_WHITE} openWaitlist={() => setModal("waitlist")} />
           <SiteFooter openModal={k => setModal(k)} />
         </Suspense>
