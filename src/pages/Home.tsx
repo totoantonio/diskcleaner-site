@@ -583,7 +583,7 @@ const InterfaceSplit = lazy(async () => {
   const Comp = ({ BG }: { BG: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-16 sm:py-24" style={{ background: BG }}>
+      <section className="overflow-hidden py-10 sm:py-14" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-stretch lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pt-4 lg:pr-8 reveal">
@@ -1015,7 +1015,7 @@ const WhatItFinds = lazy(async () => {
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Orphaned support files, caches, and preferences with risk labels and review before cleanup." },
     ]
     return (
-      <section className="py-20 sm:py-28" style={{ background: SURFACE }}>
+      <section className="py-14 sm:py-20" style={{ background: SURFACE }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
