@@ -4,15 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "postbuild": "node scripts/generate-static-routes.mjs",
-    "snap": "vite preview --port 4567 & sleep 2 && react-snap",
-    "predeploy": "npm run build && npm run snap",
-    "deploy": "gh-pages -d dist",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "postbuild": "node scripts/generate-static-routes.mjs",
+  "snap": "vite preview --port 4567 & sleep 2 && react-snap",
+  "predeploy": "npm run build && npm run snap",
+  "deploy": "gh-pages -d dist && git add . && git commit -m 'deploy' && git push origin main",
+  "lint": "eslint .",
+  "preview": "vite preview"
+   },
   "reactSnap": {
     "inlineCss": false,
     "source": "dist",

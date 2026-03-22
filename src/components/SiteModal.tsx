@@ -450,52 +450,113 @@ export function WaitlistContent({ formAction }: { formAction?: string }) {
 
   return (
     <div className="flex h-full min-h-[460px] flex-col">
-      <p className="text-[16px] leading-7 text-[var(--muted)]">Get launch access updates for DiskCleaner.</p>
-      <form className="mt-6 space-y-4" onSubmit={onSubmit}>
-        <input
-          className="h-12 w-full rounded-2xl border border-[var(--border)] bg-[var(--surface2)] px-4 text-[15px] text-[var(--text)]"
-          type="text"
-          placeholder="Your name (optional)"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          autoComplete="name"
+      <div className="relative overflow-hidden rounded-[28px] border border-[var(--border)] bg-[linear-gradient(180deg,var(--surface),var(--surface2))] px-5 py-5 sm:px-6 sm:py-6">
+        <div
+          className="pointer-events-none absolute inset-x-[-8%] top-[-26%] h-[220px] rounded-full opacity-80 blur-3xl"
+          style={{
+            background: "radial-gradient(circle at center, rgba(0,113,227,0.18), rgba(0,113,227,0) 68%)",
+          }}
         />
-        <input
-          className="h-12 w-full rounded-2xl border border-[var(--border)] bg-[var(--surface2)] px-4 text-[15px] text-[var(--text)]"
-          type="email"
-          placeholder="you@domain.com"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          autoComplete="email"
-          required
-        />
-        <button
-          type="submit"
-          className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--blue)] px-7 text-[16px] font-medium text-white transition hover:brightness-110 disabled:opacity-70"
-          disabled={status === "submitting"}
-        >
-          {status === "submitting" ? "Joining..." : "Join Waitlist"}
-        </button>
+        <div className="relative">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--blue)]">
+            <span className="inline-flex h-1.5 w-1.5 rounded-full bg-[var(--blue)]" />
+            Launch Updates
+          </div>
+          <h2 className="mt-4 text-[clamp(28px,4vw,36px)] font-semibold leading-[1.05] tracking-[-0.05em] text-[var(--text)]">
+            Get first access when DiskCleaner ships.
+          </h2>
+          <p className="mt-3 max-w-[440px] text-[15px] leading-[1.45] text-[var(--muted)] sm:text-[16px]">
+            Join the list for launch access, major product updates, and pricing changes. No spam, no weekly marketing drip, and no account required.
+          </p>
+
+          <div className="mt-5 grid gap-2.5 sm:grid-cols-3">
+            {[
+              ["Quick Scan + Deep Scan", "See the launch flow as it ships."],
+              ["Trash-first cleanup", "Review-first and recoverable by design."],
+              ["One-time pricing", "Know when direct purchase opens."],
+            ].map(([title, body]) => (
+              <div key={title} className="rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.52)] px-4 py-3 backdrop-blur-sm dark:bg-[rgba(255,255,255,0.03)]">
+                <p className="text-[13px] font-semibold tracking-[-0.02em] text-[var(--text)]">{title}</p>
+                <p className="mt-1 text-[12px] leading-5 text-[var(--muted)]">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <form className="mt-5 space-y-4" onSubmit={onSubmit}>
+        <div className="grid gap-3">
+          <label className="space-y-1.5">
+            <span className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted2)]">Name</span>
+            <input
+              className="h-[52px] w-full rounded-[20px] border border-[var(--border)] bg-[var(--surface2)] px-4 text-[15px] text-[var(--text)] outline-none transition-[border-color,box-shadow] placeholder:text-[var(--muted2)] focus:border-[var(--blue-tint-border)] focus:shadow-[0_0_0_4px_rgba(0,113,227,0.10)]"
+              type="text"
+              placeholder="Your name (optional)"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              autoComplete="name"
+            />
+          </label>
+          <label className="space-y-1.5">
+            <span className="text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted2)]">Email</span>
+            <input
+              className="h-[52px] w-full rounded-[20px] border border-[var(--border)] bg-[var(--surface2)] px-4 text-[15px] text-[var(--text)] outline-none transition-[border-color,box-shadow] placeholder:text-[var(--muted2)] focus:border-[var(--blue-tint-border)] focus:shadow-[0_0_0_4px_rgba(0,113,227,0.10)]"
+              type="email"
+              placeholder="you@domain.com"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              autoComplete="email"
+              required
+            />
+          </label>
+        </div>
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <button
+            type="submit"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--blue)] px-7 text-[15px] font-semibold tracking-[-0.01em] text-white shadow-[0_14px_30px_rgba(0,113,227,0.24)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "Joining..." : "Join Waitlist"}
+          </button>
+          <p className="text-[12px] leading-5 text-[var(--muted)]">
+            Early updates only. Unsubscribe any time.
+          </p>
+        </div>
       </form>
+
       {message && (
-        <p className={`mt-3 text-[14px] ${status === "success" ? "text-[var(--blue)]" : "text-[#ff3b30]"}`}>{message}</p>
-      )}
-      <p className="mt-auto flex items-center gap-1.5 pt-4 text-[11px] leading-[1.25] text-[var(--muted)] sm:text-[12px] sm:leading-[1.3]">
-        <svg
-          className="h-3.5 w-3.5 shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
+        <div
+          className={`mt-4 rounded-2xl border px-4 py-3 text-[14px] leading-6 ${
+            status === "success"
+              ? "border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]"
+              : "border-[rgba(255,59,48,0.18)] bg-[rgba(255,59,48,0.08)] text-[#ff3b30]"
+          }`}
         >
-          <rect x="5" y="11" width="14" height="10" rx="2" />
-          <path d="M8 11V8a4 4 0 1 1 8 0v3" />
-        </svg>
-        <span>We only use your email for DiskCleaner launch updates. See our Privacy Policy.</span>
-      </p>
+          {message}
+        </div>
+      )}
+
+      <div className="mt-auto pt-5">
+        <div className="flex items-start gap-2.5 rounded-2xl border border-[var(--border)] bg-[var(--surface2)] px-4 py-3">
+          <svg
+            className="mt-0.5 h-4 w-4 shrink-0 text-[var(--muted)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+          </svg>
+          <p className="text-[12px] leading-[1.4] text-[var(--muted)]">
+            We only use your email for DiskCleaner launch and product updates. Review our Privacy Policy for details.
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

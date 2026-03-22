@@ -54,7 +54,7 @@ export default function Layout() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="/#download" className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a>
+            <a href="/#download" className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Notify Me</a>
           </div>
         </div>
       </nav>

@@ -470,7 +470,7 @@ function Hero({ BG }: { BG: string }) {
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a href="#download" onClick={() => trackCTA("hero")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
-            Get Early Access
+            Notify Me
           </a>
           <a href="#features" className="inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">
             See how it works <span aria-hidden>›</span>
@@ -568,7 +568,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
         {/* Inline CTA after features grid */}
         <div className="reveal mt-10 flex flex-col items-center gap-3 text-center">
           <a href="#download" onClick={() => trackCTA("features-cta")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
-            Get Early Access
+            Notify Me
           </a>
           <p className="text-[12px] text-[var(--muted2)]">$9.99 one-time · No subscription · Apple-notarized</p>
         </div>
@@ -1183,7 +1183,7 @@ const CTA = lazy(async () => {
               onTouchEnd={onNotifyTouchEnd}
               className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
             >
-              Get Early Access
+              Launching April 2026
             </button>
           </div>
           <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
@@ -1347,7 +1347,7 @@ export default function Home() {
           Disk<em style={{ fontStyle: "normal", color: "#0071e3" }}>Cleaner</em>
         </a>
         <a href="#download" onClick={() => trackCTA("floating-nav")} style={{ fontSize: 13, fontWeight: 500, background: "#0071e3", color: "#fff", borderRadius: 980, padding: "8px 18px", textDecoration: "none" }}>
-          Get Early Access
+          Notify Me
         </a>
       </nav>
 
@@ -1376,7 +1376,7 @@ export default function Home() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="#download" onClick={() => trackCTA("nav")} className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a>
+            <a href="#download" onClick={() => trackCTA("nav")} className="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Notify Me</a>
           </div>
         </div>
       </nav>
