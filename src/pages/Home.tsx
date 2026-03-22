@@ -1015,7 +1015,7 @@ const WhatItFinds = lazy(async () => {
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Orphaned support files, caches, and preferences with risk labels and review before cleanup." },
     ]
     return (
-      <section className="py-14 sm:py-20" style={{ background: SURFACE }}>
+      <section className="pt-14 sm:pt-20 pb-8 sm:pb-12" style={{ background: SURFACE }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
@@ -1025,9 +1025,9 @@ const WhatItFinds = lazy(async () => {
               Quick Scan covers what every Mac accumulates quietly over time. Deep Scan goes deeper — developer files, large downloads, and more. You see exactly what was found before anything moves.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((c, i) => (
-              <div key={i} className="reveal flex items-start gap-3 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5" style={{ transitionDelay: `${i * 50}ms` }}>
+              <div key={i} className="flex items-start gap-3 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
                 <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] text-[var(--blue)]">{c.icon}</div>
                 <div>
                   <div className="text-[14px] font-semibold text-[var(--text)]">{c.name}</div>
@@ -1035,14 +1035,14 @@ const WhatItFinds = lazy(async () => {
                 </div>
               </div>
             ))}
-            {/* 8th card: "All safe" callout */}
-            <div className="reveal d1 flex items-start gap-3 rounded-3xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] p-5">
-              <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] border border-[var(--blue-tint-border)] bg-[rgba(0,113,227,0.12)] text-[var(--blue)]">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            {/* Always safe — spans 2 cols on lg for bento effect */}
+            <div className="sm:col-span-2 lg:col-span-2 flex items-center gap-5 rounded-3xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] p-6 shadow-[0_2px_16px_rgba(0,113,227,0.10)]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] border border-[var(--blue-tint-border)] bg-[rgba(0,113,227,0.12)] text-[var(--blue)]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 24, height: 24 }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
               <div>
-                <div className="text-[14px] font-semibold text-[var(--blue)]">Always safe</div>
-                <div className="mt-0.5 text-[13px] leading-[1.55] text-[var(--muted)]">Passwords, documents, and personal files are never touched — ever.</div>
+                <div className="text-[17px] font-bold text-[var(--blue)]">Always safe</div>
+                <div className="mt-1 text-[14px] leading-[1.6] text-[var(--muted)]">Passwords, documents, and personal files are never touched — ever. Every removal goes to Trash, not permanent deletion.</div>
               </div>
             </div>
           </div>
