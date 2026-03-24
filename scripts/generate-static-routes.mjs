@@ -159,6 +159,13 @@ function buildBreadcrumbJsonLd(items) {
   }
 }
 
+function setNoindex(html) {
+  return html.replace(
+    /<meta name="robots"[^>]*>/,
+    `<meta name="robots" content="noindex, nofollow" />`
+  )
+}
+
 function applySeo(html, seo) {
   let next = html
   next = replaceTitle(next, seo.title)
@@ -176,6 +183,7 @@ function applySeo(html, seo) {
   next = replaceMetaById(next, "tw-desc", seo.description)
   next = replaceMetaById(next, "tw-image", seo.image)
   next = replaceJsonLd(next, "article-jsonld", seo.jsonLd)
+  if (seo.noindex) next = setNoindex(next)
   return next
 }
 
@@ -215,11 +223,13 @@ const staticPages = [
     route: "/privacy-policy",
     title: "DiskCleaner Privacy Policy",
     description: "DiskCleaner privacy policy covering personal information, support requests, and how the website and service handle data.",
+    noindex: true,
   },
   {
     route: "/terms-of-service",
     title: "DiskCleaner Terms of Service",
     description: "DiskCleaner terms of service covering website usage, software access, licenses, and support terms.",
+    noindex: true,
   },
 ]
 
@@ -241,8 +251,8 @@ for (const page of staticPages) {
 
 const blogUrl = `${BASE_URL}/blog`
 const blogHtml = applySeo(templateHtml, {
-  title: "DiskCleaner Blog - Clean Mac. Clear Mind.",
-  description: "Guides, tips, and insights about Mac storage, cache cleaning, and getting the most out of your Mac.",
+  title: "DiskCleaner Blog — Mac Cleaner Guides, Comparisons, and Alternatives",
+  description: "Mac cleaner guides, CleanMyMac and MacPaw alternative comparisons, and practical help for reclaiming storage safely on Mac.",
   url: blogUrl,
   image: BLOG_SOCIAL_IMAGE,
   ogType: "website",

@@ -7,6 +7,10 @@ export default function PrivacyPolicy() {
     const url = "https://www.diskcleaner.pro/privacy-policy"
     const description = "DiskCleaner privacy policy covering personal information, support requests, and how the website and service handle data."
 
+    // noindex — legal pages waste crawl budget and occupy indexed slots
+    const robotsMeta = document.querySelector('meta[name="robots"]')
+    if (robotsMeta) robotsMeta.setAttribute("content", "noindex, nofollow")
+
     applyPageMetadata({
       title: "DiskCleaner Privacy Policy",
       description,
@@ -32,7 +36,11 @@ export default function PrivacyPolicy() {
       ]
     })
 
-    return () => restoreDefaultMetadata()
+    return () => {
+      const robotsMeta = document.querySelector('meta[name="robots"]')
+      if (robotsMeta) robotsMeta.setAttribute("content", "index, follow, max-image-preview:large")
+      restoreDefaultMetadata()
+    }
   }, [])
 
   return (

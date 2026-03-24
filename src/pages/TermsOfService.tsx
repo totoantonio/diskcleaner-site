@@ -7,6 +7,10 @@ export default function TermsOfService() {
     const url = "https://www.diskcleaner.pro/terms-of-service"
     const description = "DiskCleaner terms of service covering website usage, software access, licenses, and support terms."
 
+    // noindex — legal pages waste crawl budget and occupy indexed slots
+    const robotsMeta = document.querySelector('meta[name="robots"]')
+    if (robotsMeta) robotsMeta.setAttribute("content", "noindex, nofollow")
+
     applyPageMetadata({
       title: "DiskCleaner Terms of Service",
       description,
@@ -32,7 +36,11 @@ export default function TermsOfService() {
       ]
     })
 
-    return () => restoreDefaultMetadata()
+    return () => {
+      const robotsMeta = document.querySelector('meta[name="robots"]')
+      if (robotsMeta) robotsMeta.setAttribute("content", "index, follow, max-image-preview:large")
+      restoreDefaultMetadata()
+    }
   }, [])
 
   return (

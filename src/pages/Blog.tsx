@@ -55,7 +55,7 @@ export default function Blog() {
     const description = "Mac cleaner guides, CleanMyMac and MacPaw alternative comparisons, and practical help for reclaiming storage safely on Mac."
 
     applyPageMetadata({
-      title: "DiskCleaner Blog - Mac Cleaner Guides, Comparisons, and Alternatives",
+      title: "DiskCleaner Blog — Mac Cleaner Guides, Comparisons, and Alternatives",
       description,
       url,
     })
@@ -82,7 +82,7 @@ export default function Blog() {
             Blog
           </span>
           <h1 className="text-balance text-[clamp(36px,4vw,58px)] font-bold leading-[1.06] tracking-[-0.045em] text-[var(--text)]">
-            Mac cleaner guides and comparison pages that answer buying-intent searches.
+            DiskCleaner — Mac Cleaner Guides, Comparisons, and Alternatives
           </h1>
           <p className="text-[clamp(16px,1.6vw,19px)] leading-[1.6] tracking-[-0.01em] text-[var(--muted)]">
             Storage guides, product updates, and direct comparisons for people searching for a better Mac cleaner without vague claims or subscription bloat.
