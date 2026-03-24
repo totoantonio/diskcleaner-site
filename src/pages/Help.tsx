@@ -34,18 +34,66 @@ export default function Help() {
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Does DiskCleaner require Full Disk Access or administrator permission?",
+              "name": "What does DiskCleaner clean?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Some categories may require Full Disk Access or standard macOS administrator approval, depending on what you choose to review and move to Trash."
+                "text": "DiskCleaner scans seven categories in Quick Scan: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers from uninstalled apps. Deep Scan adds Downloads, iOS backups, Mail attachments, and external drive review."
               }
             },
             {
               "@type": "Question",
-              "name": "What does DiskCleaner clean?",
+              "name": "Does DiskCleaner require Full Disk Access or administrator permission?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner includes Quick Scan and Deep Scan coverage for app cache, browser cache, screenshots, Trash, system logs, developer data, app leftovers, and additional review categories such as Downloads, iOS backups, Mail attachments, and external drives."
+                "text": "Some categories may require Full Disk Access or standard macOS administrator approval, depending on what you choose to review and move to Trash. DiskCleaner uses the normal macOS permission flow and does not ask you to bypass it."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between Quick Scan and Deep Scan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Quick Scan is the fast everyday pass covering the most common clutter categories. Deep Scan expands into larger, more review-sensitive storage areas including Downloads, iOS backups, Mail attachments, and external drives. The best workflow is to run Quick Scan regularly and use Deep Scan when storage pressure is real or you need a broader audit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does DiskCleaner delete files permanently?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. DiskCleaner never permanently deletes files as part of normal cleanup. Every file moves to macOS Trash, where you can review or restore it at any time. DiskCleaner also shows you every file before anything moves."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does DiskCleaner show 0 MB found?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This is normal on a freshly cleaned or new Mac. macOS caches rebuild as you use your apps — try scanning again after a day of normal use."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "An app is slow after cleaning. What should I do?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Apps may feel slightly slower the first time they launch after their cache is removed — this is expected. Performance returns to normal within a minute as the cache rebuilds. If an app continues to behave oddly, restarting it or your Mac usually resolves it."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much does DiskCleaner cost?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "DiskCleaner includes 3 free scans. After that, Pro unlocks with a one-time license of $9.99 for up to 2 Macs, with all future updates included. No subscription required."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I get a Gatekeeper warning when opening DiskCleaner?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If macOS shows DiskCleaner cannot be opened because it is from an unidentified developer, go to System Settings → Privacy & Security, scroll down, and click Open Anyway next to the DiskCleaner entry."
               }
             }
           ]
@@ -54,7 +102,7 @@ export default function Help() {
           "@type": "BreadcrumbList",
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
-            { "@type": "ListItem", "position": 2, "name": "Help", "item": url }
+            { "@type": "ListItem", "position": 2, "name": "Help Center", "item": url }
           ]
         }
       ]

@@ -62,10 +62,23 @@ export default function Blog() {
 
     setJsonLd("article-jsonld", {
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "DiskCleaner Blog",
-      "description": description,
-      "url": url,
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "name": "DiskCleaner Blog",
+          "description": description,
+          "url": url,
+          "inLanguage": "en-US",
+          "publisher": { "@type": "Organization", "name": "DiskCleaner", "url": "https://www.diskcleaner.pro/" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": url }
+          ]
+        }
+      ]
     })
 
     getAllPosts().then(setPosts)

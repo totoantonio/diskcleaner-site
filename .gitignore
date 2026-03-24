@@ -4,6 +4,7 @@
 node_modules/
 dist/
 dist-ssr/
+.ssg-server/
 build/
 .cache/
 

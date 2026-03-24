@@ -4,48 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "tsc -b && vite build",
-  "postbuild": "node scripts/generate-static-routes.mjs",
-  "snap": "vite preview --port 4567 & sleep 2 && react-snap",
-  "predeploy": "npm run build && npm run snap",
-  "deploy": "gh-pages -d dist && git add . && git commit -m 'deploy' && git push origin main",
-  "lint": "eslint .",
-  "preview": "vite preview"
-   },
-  "reactSnap": {
-    "inlineCss": false,
-    "source": "dist",
-    "include": [
-      "/",
-      "/about",
-      "/trust",
-      "/editorial-policy",
-      "/help",
-      "/privacy-policy",
-      "/terms-of-service",
-      "/blog",
-      "/blog/how-diskcleaner-works",
-      "/blog/what-is-system-data-mac",
-      "/blog/why-mac-keeps-running-out-of-storage",
-      "/blog/become-diskcleaner-affiliate",
-      "/blog/why-trash-first-cleanup-matters",
-      "/blog/future-of-mac-cleaner-apps",
-      "/blog/top-mac-cleaner-apps-ranked",
-      "/blog/how-much-space-do-system-logs-take-on-mac",
-      "/blog/is-it-safe-to-delete-developer-data-on-mac",
-      "/blog/cleanmymac-alternative",
-      "/blog/macpaw-alternative",
-      "/blog/best-mac-cleaner",
-      "/blog/appcleaner-vs-cleanmymac",
-      "/blog/best-mac-cleaner-for-developers",
-      "/blog/one-time-purchase-mac-cleaner",
-      "/help"
-    ],
-    "puppeteerArgs": [
-      "--no-sandbox"
-    ],
-    "puppeteerExecutablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "postbuild": "node scripts/ssg.mjs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist && git add . && git commit -m 'deploy' && git push origin main",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
@@ -68,7 +33,6 @@
     "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
     "postcss": "^8.5.6",
-    "react-snap": "^1.23.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.4",
     "typescript": "~5.9.3",
