@@ -458,7 +458,7 @@ function Hero({ BG }: { BG: string }) {
       <div className="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]" />
       <div className="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">
-          No subscription · Apple-notarized · Native macOS
+          Free trial · No subscription · Apple-notarized
         </div>
         <h1 className="mx-auto max-w-[900px] text-[clamp(44px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]">
           <span className="text-[var(--text)]">Clean your Mac.</span><br />
@@ -570,7 +570,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
           <a href="#download" onClick={() => trackCTA("features-cta")} className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
             Get Early Access
           </a>
-          <p className="text-[12px] text-[var(--muted2)]">$9.99 one-time · No subscription · Apple-notarized</p>
+          <p className="text-[12px] text-[var(--muted2)]">Free trial · $9.99 one-time after · No subscription</p>
         </div>
       </div>
     </section>

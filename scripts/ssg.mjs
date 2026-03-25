@@ -264,37 +264,134 @@ function buildCollectionJsonLd(url) {
   }
 }
 
+// ── Comparison article FAQ data (generates FAQPage rich snippets) ────────────
+
+const COMPARISON_FAQS = {
+  "cleanmymac-alternative": [
+    {
+      q: "What is the best CleanMyMac alternative for Mac?",
+      a: "DiskCleaner is a focused Mac cleaner that shows every file before moving it and sends everything to Trash. It covers App Cache, Browser Cache (9 browsers), System Logs, Developer Data, App Leftovers, Large Files, Downloads, iOS Backups, and Mail Attachments. Includes 3 free scans — $9.99 one-time after, no subscription.",
+    },
+    {
+      q: "Is there a free CleanMyMac alternative?",
+      a: "DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the full app for up to 2 Macs — no annual subscription, unlike CleanMyMac.",
+    },
+    {
+      q: "How is DiskCleaner different from CleanMyMac?",
+      a: "CleanMyMac requires an annual subscription and moves files without explicit per-file confirmation. DiskCleaner is $9.99 one-time, shows every file in a checklist before anything moves, and sends cleaned items to Trash — not permanent deletion.",
+    },
+  ],
+  "macpaw-alternative": [
+    {
+      q: "What is the best MacPaw alternative for Mac cleaning?",
+      a: "DiskCleaner covers the core cleaning MacPaw's CleanMyMac offers — App Cache, Browser Cache, System Logs, Developer Data, and App Leftovers — plus Large Files, RAM Optimizer, and App Uninstaller. $9.99 one-time with 3 free scans.",
+    },
+    {
+      q: "Is DiskCleaner a good alternative to MacPaw's CleanMyMac?",
+      a: "Yes. DiskCleaner covers all major Mac cleanup categories, shows every file before moving it, and sends cleaned items to Trash. It costs $9.99 one-time compared to MacPaw's recurring annual pricing.",
+    },
+  ],
+  "best-mac-cleaner": [
+    {
+      q: "What is the best Mac cleaner app?",
+      a: "The best Mac cleaner shows every file before removal, uses Trash instead of permanent deletion, covers major categories (App Cache, Browser Cache, System Logs, Developer Data, Large Files), and doesn't require a subscription. DiskCleaner meets all four criteria at $9.99 one-time with 3 free scans.",
+    },
+    {
+      q: "What should I look for in a Mac cleaner?",
+      a: "Look for transparency (files shown before removal), safety (Trash-first instead of permanent deletion), privacy (no network calls, no data collection), and honest pricing (one-time vs subscription). DiskCleaner prioritizes all four.",
+    },
+    {
+      q: "Is a one-time Mac cleaner better than a subscription?",
+      a: "For most users, yes. A one-time purchase avoids recurring costs and typically covers all future updates. DiskCleaner charges $9.99 once, covers up to 2 Macs, and includes every future update with no renewal.",
+    },
+  ],
+  "appcleaner-vs-cleanmymac": [
+    {
+      q: "AppCleaner vs CleanMyMac — which is better?",
+      a: "AppCleaner is free but limited to app uninstallation only. CleanMyMac covers more categories but requires an annual subscription. DiskCleaner covers both: full cleanup across App Cache, Browser Cache, System Logs, Developer Data, Large Files, plus an App Uninstaller with leftover detection — at $9.99 one-time.",
+    },
+    {
+      q: "Does DiskCleaner replace both AppCleaner and CleanMyMac?",
+      a: "Yes. DiskCleaner includes an App Uninstaller (like AppCleaner) plus full cleanup across all major cache and log categories, Large Files scanner, RAM Optimizer, and more — all in one app at a one-time price.",
+    },
+  ],
+  "best-mac-cleaner-for-developers": [
+    {
+      q: "What is the best Mac cleaner for developers?",
+      a: "DiskCleaner's Developer Data category targets Xcode derived data, iOS Simulators, CocoaPods caches, npm caches, and build artifacts — the largest sources of developer storage bloat on Mac. Deep Scan adds Downloads and Large Files. Includes 3 free scans.",
+    },
+    {
+      q: "How much disk space can developers recover on Mac?",
+      a: "Xcode derived data and iOS Simulators alone often total 20–80 GB on an active development machine. DiskCleaner surfaces all of this in one scan with per-file checkboxes so you review before removing.",
+    },
+    {
+      q: "Does DiskCleaner clean npm and CocoaPods caches?",
+      a: "Yes. DiskCleaner's Developer Data category covers Xcode derived data, iOS Simulators, CocoaPods caches, npm caches, and build artifacts. Each item is shown individually with its size before anything is moved.",
+    },
+  ],
+  "one-time-purchase-mac-cleaner": [
+    {
+      q: "What is the best one-time purchase Mac cleaner?",
+      a: "DiskCleaner offers a $9.99 one-time purchase covering up to 2 Macs and all future updates. It includes 3 free scans before purchase so you can verify it finds real junk on your Mac before spending anything.",
+    },
+    {
+      q: "Which Mac cleaners don't require a subscription?",
+      a: "DiskCleaner is $9.99 one-time with no subscription. AppCleaner is free but only handles app uninstallation. Most other full-featured Mac cleaners like CleanMyMac require annual subscriptions.",
+    },
+    {
+      q: "Does a one-time Mac cleaner include future updates?",
+      a: "DiskCleaner's $9.99 one-time purchase includes all future updates for up to 2 Macs. There are no upgrade fees, no annual renewals, and no subscription tiers.",
+    },
+  ],
+}
+
 function buildArticleJsonLd(post, url) {
+  const articleType = post.category === "Industry" ? "NewsArticle" : "BlogPosting"
+
+  const graph = [
+    {
+      "@type": articleType,
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.updatedAt || post.date,
+      mainEntityOfPage: url,
+      author: { "@type": "Person", name: getAuthor(post.author).name },
+      publisher: {
+        "@type": "Organization",
+        name: "DiskCleaner",
+        logo: { "@type": "ImageObject", url: `${BASE_URL}/favicon.png` },
+      },
+      image: `${BASE_URL}/DiskCleaner_blog.webp`,
+      articleSection: post.category,
+      wordCount: post.wordCount,
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    },
+  ]
+
+  const faqItems = COMPARISON_FAQS[post.slug]
+  if (faqItems) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: faqItems.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
+    })
+  }
+
   return {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BlogPosting",
-        headline: post.title,
-        description: post.description,
-        datePublished: post.date,
-        dateModified: post.updatedAt || post.date,
-        mainEntityOfPage: url,
-        author: { "@type": "Person", name: getAuthor(post.author).name },
-        publisher: {
-          "@type": "Organization",
-          name: "DiskCleaner",
-          logo: { "@type": "ImageObject", url: `${BASE_URL}/favicon.png` },
-        },
-        image: `${BASE_URL}/DiskCleaner_blog.webp`,
-        articleSection: post.category,
-        wordCount: post.wordCount,
-        inLanguage: "en-US",
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
-          { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/blog` },
-          { "@type": "ListItem", position: 3, name: post.title, item: url },
-        ],
-      },
-    ],
+    "@graph": graph,
   }
 }
 

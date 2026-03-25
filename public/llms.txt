@@ -1,19 +1,22 @@
 # DiskCleaner
-> A macOS utility app that removes junk files, system logs, and clutter to free up disk space. Available on the Mac App Store. $9.99 one-time purchase — no subscription.
+> A macOS utility app that removes junk files, system logs, and clutter to free up disk space. Free trial includes 3 scans. $9.99 one-time purchase after — no subscription.
+
+> Full reference: https://www.diskcleaner.pro/llms-full.txt
 
 ## About
 - Name: DiskCleaner
 - Platform: macOS 13 Ventura through macOS 26 Tahoe
 - Category: Utilities / Disk Cleaner / Mac Storage Optimizer
-- Price: $9.99 one-time (no subscription, covers up to 3 Macs)
+- Price: Free trial (3 scans included); $9.99 one-time after (no subscription, covers up to 2 Macs)
 - Privacy: 100% local — no network calls, no data collection, no account required
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
 - Support: customersupport@diskcleaner.pro
 
 ## What It Does
-DiskCleaner scans seven categories of junk on macOS and shows you every file before moving anything:
+DiskCleaner scans junk on macOS and shows you every file before moving anything. Quick Scan covers seven categories; Deep Scan adds larger storage areas.
 
+### Quick Scan categories
 1. App Cache — cached data from installed applications
 2. Browser Cache — supports 9 browsers: Safari, Chrome, Firefox, Edge, Brave, Opera, Arc, Vivaldi, Tor (all profiles)
 3. Screenshots — old screenshots accumulated on your Desktop
@@ -22,12 +25,21 @@ DiskCleaner scans seven categories of junk on macOS and shows you every file bef
 6. Developer Data — Xcode derived data, iOS Simulators, CocoaPods, npm caches, build artifacts
 7. App Leftovers — residual preference files and support data from uninstalled apps
 
+### Deep Scan adds
+- Large Files — surfaces oversized files across the disk for review
+- Downloads folder — forgotten installers, archives, and exported files
+- iOS Backups — old device backups that can consume tens of gigabytes
+- Mail Attachments — attachment caches from Mail, Outlook, Spark, and Canary
+- External drive review — clutter visibility beyond the startup disk
+
 ## Key Features
 - Zero-decision cleanup: every file is shown in a checklist before anything moves
 - Trash-first safety: all cleaned files go to macOS Trash — nothing is permanently deleted
 - Private and local: no internet connection required, no accounts, no telemetry
 - Menu Bar App: quick disk usage overview accessible from your Mac's menu bar
-- App Uninstaller: cleanly remove apps and all their associated leftover files
+- RAM Optimizer: live Memory Pressure, Compressed Memory, Swap Used, and Page In/Out metrics with one-tap memory optimization
+- App Uninstaller: cleanly remove apps and all their associated leftover files, with drag-and-drop support
+- Large Files scanner: find and review oversized files taking up space across your disk
 - Per-file checkboxes: granular control — approve or skip individual files
 - Universal Binary: full native performance on both Apple Silicon and Intel Macs
 
@@ -45,8 +57,11 @@ A: Never. It runs 100% locally. No network calls, no data collection, no account
 Q: What macOS versions are supported?
 A: macOS 13 Ventura through macOS 26 Tahoe. Universal Binary for Apple Silicon and Intel.
 
+Q: Is there a free trial?
+A: Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription ever.
+
 Q: Is there a subscription?
-A: No. $9.99 one-time purchase covers up to 3 Macs and includes all future updates.
+A: No. $9.99 one-time purchase covers up to 2 Macs and includes all future updates.
 
 Q: How is it different from other Mac cleaners?
 A: Most cleaners delete files silently. DiskCleaner shows you every single file first, with per-file checkboxes, and only moves files to Trash — never permanent deletion.
