@@ -90,15 +90,21 @@
           {
             "@type": "SoftwareApplication",
             "name": "DiskCleaner",
-            "operatingSystem": "macOS",
+            "operatingSystem": "macOS 13 Ventura or later",
             "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
             "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
             "url": "https://www.diskcleaner.pro/",
             "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "softwareVersion": "1.0",
             "softwareRequirements": "macOS 13 Ventura or later",
             "memoryRequirements": "4 GB RAM",
             "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help"
+            },
             "featureList": [
               "App Cache cleaning",
               "Browser Cache cleaning (9 browsers, all profiles)",
@@ -107,20 +113,35 @@
               "System Logs removal",
               "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
               "App Leftovers detection and removal",
-              "App Uninstaller",
+              "Large Files scanner — finds oversized files across the disk",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
               "Menu Bar disk usage overview",
               "Trash-first safety — nothing permanently deleted",
               "Zero-decision interface — review every file before moving",
               "100% local — no internet, no data collection, no account",
               "Universal Binary — native Apple Silicon and Intel"
             ],
-            "offers": {
-              "@type": "Offer",
-              "price": "9.99",
-              "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://www.diskcleaner.pro/"
-            }
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Trial",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "3 free scans included — no account required",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
           }
         ]
       }
@@ -172,7 +193,7 @@
             "name": "What exactly does DiskCleaner scan?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Seven categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers from uninstalled apps. Personal files, passwords, and documents are never touched."
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
             }
           },
           {
@@ -193,10 +214,18 @@
           },
           {
             "@type": "Question",
+            "name": "Does DiskCleaner have a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Do I need an account or subscription for DiskCleaner?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No account and no subscription. $9.99 one-time purchase covers you for up to 2 Macs and includes every future update."
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
             }
           },
           {
@@ -211,13 +240,13 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-BEHSDViI.js"></script>
+    <script type="module" crossorigin src="/assets/index-CPExe7Ul.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-C2Npreoe.js">
     <link rel="stylesheet" crossorigin href="/assets/index-D7elslvJ.css">
   </head>
 
   <body>
-    <div id="root"><!--$--><nav style="position:fixed;top:12px;left:50%;width:calc(100% - 48px);max-width:1000px;height:59px;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(0,0,0,0.08);border-radius:980px;box-shadow:0 2px 20px rgba(0,0,0,0.10);display:flex;align-items:center;justify-content:space-between;padding:0 20px;box-sizing:border-box;z-index:300;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity 0.3s ease, transform 0.3s ease"><a href="/" style="font-size:17px;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:#1d1d1f">Disk<em style="font-style:normal;color:#0071e3">Cleaner</em></a><a href="#download" style="font-size:13px;font-weight:500;background:#0071e3;color:#fff;border-radius:980px;padding:8px 18px;text-decoration:none">Get Early Access</a></nav><div data-theme="light" class="page-enter"><nav class="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150" style="opacity:1;pointer-events:auto;transition:opacity 0.3s ease"><div class="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-6 md:px-12"><a href="/" class="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">Disk<em class="not-italic text-[var(--blue)]">Cleaner</em></a><ul class="hidden list-none items-center gap-7 md:flex"><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#features">Features</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#download">Pricing</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li></ul><div class="flex items-center gap-2.5"><button class="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]" aria-label="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a href="#download" class="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a></div></div></nav><div class="pt-[52px]"><section class="relative overflow-hidden pb-14 pt-20 sm:pb-20 sm:pt-28" style="background:var(--bg)"><div class="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]"></div><div class="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12"><div class="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">No subscription · Apple-notarized · Native macOS</div><h1 class="mx-auto max-w-[900px] text-[clamp(44px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]"><span class="text-[var(--text)]">Clean your Mac.</span><br/><em class="not-italic text-[var(--blue)]">Every file, your call.</em></h1><p class="mx-auto mt-5 max-w-[620px] text-[clamp(18px,2vw,22px)] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">Most Mac cleaners delete first — and tell you later, if at all. DiskCleaner shows you every file, every category, every byte before a single thing moves.</p><div class="mt-9 flex flex-wrap items-center justify-center gap-3"><a href="#download" class="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">Get Early Access</a><a href="#features" class="inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">See how it works <span aria-hidden="true">›</span></a></div></div></section><div class="border-y border-[var(--border)] py-6 sm:py-10" style="background:var(--surface)"><div class="mx-auto w-full max-w-[1200px] px-6 md:px-12"><div class="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0"><div class="reveal d1 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0"><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">7<span class="text-[var(--blue)]"></span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Categories in one scan</div></div><div class="reveal d2 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0"><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">&lt;10<span class="text-[var(--blue)]">s</span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Time to first results</div></div><div class="reveal d3 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 "><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">9<span class="text-[var(--blue)]"></span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Browsers cleaned</div></div><div class="reveal d4 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 "><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">~5<span class="text-[var(--blue)]">MB</span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Total install size</div></div></div></div></div><!--$!--><template data-msg="Switched to client rendering because the server rendering aborted due to:
+    <div id="root"><!--$--><nav style="position:fixed;top:12px;left:50%;width:calc(100% - 48px);max-width:1000px;height:59px;background:rgba(255,255,255,0.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(0,0,0,0.08);border-radius:980px;box-shadow:0 2px 20px rgba(0,0,0,0.10);display:flex;align-items:center;justify-content:space-between;padding:0 20px;box-sizing:border-box;z-index:300;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(-6px);transition:opacity 0.3s ease, transform 0.3s ease"><a href="/" style="font-size:17px;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:#1d1d1f">Disk<em style="font-style:normal;color:#0071e3">Cleaner</em></a><a href="#download" style="font-size:13px;font-weight:500;background:#0071e3;color:#fff;border-radius:980px;padding:8px 18px;text-decoration:none">Get Early Access</a></nav><div data-theme="light" class="page-enter"><nav class="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150" style="opacity:1;pointer-events:auto;transition:opacity 0.3s ease"><div class="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-6 md:px-12"><a href="/" class="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">Disk<em class="not-italic text-[var(--blue)]">Cleaner</em></a><ul class="hidden list-none items-center gap-7 md:flex"><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#features">Features</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="#download">Pricing</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li><li><a class="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li></ul><div class="flex items-center gap-2.5"><button class="flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface2)] text-[var(--muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]" aria-label="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a href="#download" class="rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110">Get Early Access</a></div></div></nav><div class="pt-[52px]"><section class="relative overflow-hidden pb-14 pt-20 sm:pb-20 sm:pt-28" style="background:var(--bg)"><div class="hero-glow h-[800px] w-[1100px] bg-[radial-gradient(ellipse,var(--blue-glow)_0%,transparent_60%)]"></div><div class="mx-auto w-full max-w-[1200px] px-6 text-center md:px-12"><div class="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-4 py-1.5 text-[13px] font-semibold tracking-[0.01em] text-[var(--blue)]">Free trial · No subscription · Apple-notarized</div><h1 class="mx-auto max-w-[900px] text-[clamp(44px,10vw,96px)] font-bold leading-[0.97] tracking-[-0.055em]"><span class="text-[var(--text)]">Clean your Mac.</span><br/><em class="not-italic text-[var(--blue)]">Every file, your call.</em></h1><p class="mx-auto mt-5 max-w-[620px] text-[clamp(18px,2vw,22px)] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">Most Mac cleaners delete first — and tell you later, if at all. DiskCleaner shows you every file, every category, every byte before a single thing moves.</p><div class="mt-9 flex flex-wrap items-center justify-center gap-3"><a href="#download" class="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">Get Early Access</a><a href="#features" class="inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">See how it works <span aria-hidden="true">›</span></a></div></div></section><div class="border-y border-[var(--border)] py-6 sm:py-10" style="background:var(--surface)"><div class="mx-auto w-full max-w-[1200px] px-6 md:px-12"><div class="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0"><div class="reveal d1 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0"><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">7<span class="text-[var(--blue)]"></span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Categories in one scan</div></div><div class="reveal d2 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0"><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">&lt;10<span class="text-[var(--blue)]">s</span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Time to first results</div></div><div class="reveal d3 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 "><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">9<span class="text-[var(--blue)]"></span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Browsers cleaned</div></div><div class="reveal d4 px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 "><div class="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">~5<span class="text-[var(--blue)]">MB</span></div><div class="mt-2 text-[14px] font-medium text-[var(--muted)]">Total install size</div></div></div></div></div><!--$!--><template data-msg="Switched to client rendering because the server rendering aborted due to:
 
 The server used &quot;renderToString&quot; which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to &quot;renderToPipeableStream&quot; which supports Suspense on the server" data-cstck="
     at Lazy (&lt;anonymous&gt;)

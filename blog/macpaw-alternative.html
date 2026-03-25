@@ -90,15 +90,21 @@
           {
             "@type": "SoftwareApplication",
             "name": "DiskCleaner",
-            "operatingSystem": "macOS",
+            "operatingSystem": "macOS 13 Ventura or later",
             "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
             "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
             "url": "https://www.diskcleaner.pro/",
             "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "softwareVersion": "1.0",
             "softwareRequirements": "macOS 13 Ventura or later",
             "memoryRequirements": "4 GB RAM",
             "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help"
+            },
             "featureList": [
               "App Cache cleaning",
               "Browser Cache cleaning (9 browsers, all profiles)",
@@ -107,20 +113,35 @@
               "System Logs removal",
               "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
               "App Leftovers detection and removal",
-              "App Uninstaller",
+              "Large Files scanner — finds oversized files across the disk",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
               "Menu Bar disk usage overview",
               "Trash-first safety — nothing permanently deleted",
               "Zero-decision interface — review every file before moving",
               "100% local — no internet, no data collection, no account",
               "Universal Binary — native Apple Silicon and Intel"
             ],
-            "offers": {
-              "@type": "Offer",
-              "price": "9.99",
-              "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://www.diskcleaner.pro/"
-            }
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Trial",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "3 free scans included — no account required",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
           }
         ]
       }
@@ -176,6 +197,27 @@
           "item": "https://www.diskcleaner.pro/blog/macpaw-alternative"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best MacPaw alternative for Mac cleaning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DiskCleaner covers the core cleaning MacPaw's CleanMyMac offers — App Cache, Browser Cache, System Logs, Developer Data, and App Leftovers — plus Large Files, RAM Optimizer, and App Uninstaller. $9.99 one-time with 3 free scans."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DiskCleaner a good alternative to MacPaw's CleanMyMac?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DiskCleaner covers all major Mac cleanup categories, shows every file before moving it, and sends cleaned items to Trash. It costs $9.99 one-time compared to MacPaw's recurring annual pricing."
+          }
+        }
+      ]
     }
   ]
 }
@@ -208,7 +250,7 @@
             "name": "What exactly does DiskCleaner scan?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Seven categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers from uninstalled apps. Personal files, passwords, and documents are never touched."
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
             }
           },
           {
@@ -229,10 +271,18 @@
           },
           {
             "@type": "Question",
+            "name": "Does DiskCleaner have a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Do I need an account or subscription for DiskCleaner?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No account and no subscription. $9.99 one-time purchase covers you for up to 2 Macs and includes every future update."
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
             }
           },
           {
@@ -247,7 +297,7 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-BEHSDViI.js"></script>
+    <script type="module" crossorigin src="/assets/index-CPExe7Ul.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-C2Npreoe.js">
     <link rel="stylesheet" crossorigin href="/assets/index-D7elslvJ.css">
   </head>
