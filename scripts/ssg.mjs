@@ -141,6 +141,45 @@ function applySeo(html, seo) {
   return h
 }
 
+function generateSitemap(staticPages, posts) {
+  const entries = [
+    {
+      loc: `${BASE_URL}/`,
+      lastmod: new Date().toISOString().split("T")[0],
+      changefreq: "weekly",
+      priority: 1.0,
+    },
+    ...staticPages
+      .filter(page => page.route !== "/" && !page.noindex)
+      .map(page => ({
+        loc: `${BASE_URL}${page.route}`,
+        lastmod: new Date().toISOString().split("T")[0],
+        changefreq: "monthly",
+        priority: 0.6,
+      })),
+
+    ...posts.map(post => ({
+      loc: `${BASE_URL}/blog/${post.slug}`,
+      lastmod: post.updatedAt || post.date,
+      changefreq: "monthly",
+      priority: 0.7,
+    })),
+  ]
+
+  const sitemap = [`<?xml version="1.0" encoding="UTF-8"?>`, `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`]
+  for (const entry of entries) {
+    sitemap.push("  <url>")
+    sitemap.push(`    <loc>${entry.loc}</loc>`)
+    sitemap.push(`    <lastmod>${entry.lastmod}</lastmod>`)
+    sitemap.push(`    <changefreq>${entry.changefreq}</changefreq>`)
+    sitemap.push(`    <priority>${entry.priority.toFixed(1)}</priority>`)
+    sitemap.push("  </url>")
+  }
+  sitemap.push("</urlset>")
+
+  writeFileSync(path.join(DIST, "sitemap.xml"), sitemap.join("\n") + "\n")
+}
+
 // ── Blog helpers ─────────────────────────────────────────────────────────────
 
 function parseFrontmatter(raw) {
@@ -554,7 +593,7 @@ for (const post of posts) {
   let html = injectBody(template, body)
   html = applySeo(html, {
     title: `${post.title} — DiskCleaner`,
-    description: post.description,
+    description: post.description || post.excerpt || "Learn how DiskCleaner protects your Mac disk space with safe, manual cleanup.",
     url,
     image: IMG_BLOG,
     ogType: "article",
@@ -564,4 +603,6 @@ for (const post of posts) {
   process.stdout.write("✓\n")
 }
 
-console.log(`\n✅ SSG complete — ${STATIC_PAGES.length} pages + ${posts.length} articles\n`)
+generateSitemap(STATIC_PAGES, posts)
+
+console.log(`\n✅ SSG complete — ${STATIC_PAGES.length} pages + ${posts.length} articles (sitemap updated)\n`)
