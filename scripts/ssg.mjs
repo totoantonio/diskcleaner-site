@@ -29,6 +29,10 @@ const SSR_DIR = path.join(ROOT, ".ssg-server")
 const BLOG_DIR = path.join(ROOT, "src", "content", "blog")
 const BASE_URL = "https://www.diskcleaner.pro"
 
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim() || ""
+const INDEXNOW_FILENAME = "indexnow.txt"
+const INDEXNOW_URL = `${BASE_URL}/${INDEXNOW_FILENAME}`
+
 // ── Authors (mirrors src/lib/authors.ts) ────────────────────────────────────
 
 const AUTHORS = {
@@ -139,6 +143,50 @@ function applySeo(html, seo) {
   h = replaceJsonLd(h, "article-jsonld", seo.jsonLd)
   if (seo.noindex) h = setNoindex(h)
   return h
+}
+
+function writeIndexNowKey() {
+  if (!INDEXNOW_KEY) {
+    console.log("⚠️  INDEXNOW_KEY not set. Skipping IndexNow key file and ping.")
+    return
+  }
+
+  writeFileSync(path.join(DIST, INDEXNOW_FILENAME), `${INDEXNOW_KEY}\n`, "utf8")
+  console.log(`✅ Wrote ${INDEXNOW_FILENAME}`)
+}
+
+async function pingIndexNow(urls) {
+  if (!INDEXNOW_KEY) return
+
+  const uniqueUrls = Array.from(new Set(urls)).slice(0, 1000)
+  if (uniqueUrls.length === 0) {
+    console.log("⚠️  No URLs to ping to IndexNow")
+    return
+  }
+
+  const payload = {
+    host: new URL(BASE_URL).hostname,
+    key: INDEXNOW_KEY,
+    keyLocation: INDEXNOW_URL,
+    urlList: uniqueUrls,
+  }
+
+  try {
+    const resp = await fetch("https://api.indexnow.org/v1/ping", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+
+    const text = await resp.text()
+    if (resp.ok) {
+      console.log(`✅ IndexNow ping success (${uniqueUrls.length} URLs)`, text)
+    } else {
+      console.warn(`⚠️ IndexNow ping failed status=${resp.status}`, text)
+    }
+  } catch (err) {
+    console.warn("⚠️ IndexNow ping error", err)
+  }
 }
 
 function generateSitemap(staticPages, posts) {
@@ -605,4 +653,13 @@ for (const post of posts) {
 
 generateSitemap(STATIC_PAGES, posts)
 
-console.log(`\n✅ SSG complete — ${STATIC_PAGES.length} pages + ${posts.length} articles (sitemap updated)\n`)
+writeIndexNowKey()
+
+const indexNowUrls = [
+  `${BASE_URL}/`,
+  ...STATIC_PAGES.filter((page) => page.route !== "/" && !page.noindex).map((page) => `${BASE_URL}${page.route}`),
+  ...posts.map((post) => `${BASE_URL}/blog/${post.slug}`),
+]
+await pingIndexNow(indexNowUrls)
+
+console.log(`\n✅ SSG complete — ${STATIC_PAGES.length} pages + ${posts.length} articles (sitemap updated, indexnow attempted)\n`)
