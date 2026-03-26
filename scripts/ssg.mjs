@@ -464,18 +464,7 @@ function buildArticleJsonLd(post, url) {
     },
   ]
 
-  const faqItems = COMPARISON_FAQS[post.slug]
-  if (faqItems) {
-    graph.push({
-      "@type": "FAQPage",
-      mainEntity: faqItems.map(({ q, a }) => ({
-        "@type": "Question",
-        name: q,
-        acceptedAnswer: { "@type": "Answer", text: a },
-      })),
-    })
-  }
-
+  // Keep FAQPage schema only in the global template (index.html) to avoid duplicate FAQPage items.
   return {
     "@context": "https://schema.org",
     "@graph": graph,

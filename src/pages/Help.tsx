@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
+import { applyPageMetadata, restoreDefaultMetadata, restoreFaqPageSchema, setJsonLd, suppressFaqPageSchema } from "../lib/seo"
 
 const ChevronLeft = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -19,6 +19,8 @@ export default function Help() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/help"
     const description = "DiskCleaner help center covering Quick Scan, Deep Scan, RAM Optimizer, App Uninstaller, safety labels, and common Mac cleaning questions."
+
+    suppressFaqPageSchema()
 
     applyPageMetadata({
       title: "DiskCleaner Help Center",
@@ -108,7 +110,10 @@ export default function Help() {
       ]
     })
 
-    return () => restoreDefaultMetadata()
+    return () => {
+      restoreDefaultMetadata()
+      restoreFaqPageSchema()
+    }
   }, [])
 
   return (

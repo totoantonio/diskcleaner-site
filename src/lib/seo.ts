@@ -55,3 +55,13 @@ export function setJsonLd(id: string, schema: unknown) {
   const el = document.getElementById(id)
   if (el) el.textContent = JSON.stringify(schema)
 }
+
+export function suppressFaqPageSchema() {
+  const el = document.getElementById("global-faqpage-jsonld")
+  if (el) el.setAttribute("type", "text/plain")
+}
+
+export function restoreFaqPageSchema() {
+  const el = document.getElementById("global-faqpage-jsonld")
+  if (el) el.setAttribute("type", "application/ld+json")
+}

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { applyPageMetadata, restoreDefaultMetadata, setJsonLd } from "../lib/seo"
+import { applyPageMetadata, restoreDefaultMetadata, restoreFaqPageSchema, setJsonLd, suppressFaqPageSchema } from "../lib/seo"
 
 const ChevronLeft = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -12,6 +12,8 @@ export default function Trust() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/trust"
     const description = "Evidence and methodology behind DiskCleaner's privacy, safety, notarization, and scan-performance claims."
+
+    suppressFaqPageSchema()
 
     applyPageMetadata({
       title: "DiskCleaner Trust Center",
@@ -59,7 +61,10 @@ export default function Trust() {
       ]
     })
 
-    return () => restoreDefaultMetadata()
+    return () => {
+      restoreDefaultMetadata()
+      restoreFaqPageSchema()
+    }
   }, [])
 
   return (
