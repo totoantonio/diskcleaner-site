@@ -1,12 +1,24 @@
 User-agent: *
 Allow: /
 
+# Google
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing
 User-agent: bingbot
 Allow: /
 
 User-agent: adidxbot
 Allow: /
 
+User-agent: MicrosoftPreview
+Allow: /
+
+# OpenAI / ChatGPT
 User-agent: GPTBot
 Allow: /
 
@@ -16,50 +28,85 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
+# Anthropic / Claude
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
+# You.com
 User-agent: YouBot
 Allow: /
 
+# Google AI (Gemini, GenAI features, Vertex)
 User-agent: Google-Extended
+Allow: /
+
+# Apple
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
+# Meta / Facebook
 User-agent: Meta-ExternalAgent
 Allow: /
 
+User-agent: facebookexternalhit
+Allow: /
+
+# LinkedIn link previews
+User-agent: LinkedInBot
+Allow: /
+
+# Amazon
 User-agent: Amazonbot
 Allow: /
 
+# ByteDance
 User-agent: Bytespider
 Allow: /
 
+# Cohere
 User-agent: cohere-ai
 Allow: /
 
+# Diffbot
 User-agent: Diffbot
 Allow: /
 
+# Allen Institute for AI
 User-agent: AI2Bot
 Allow: /
 
+# DuckDuckGo
 User-agent: DuckAssistBot
 Allow: /
 
+# xAI / Grok
 User-agent: Grok
+Allow: /
+
+# Common Crawl (backbone of many AI training datasets)
+User-agent: CCBot
+Allow: /
+
+# Internet Archive
+User-agent: ia_archiver
+Allow: /
+
+# Mistral AI
+User-agent: MistralAI-User
 Allow: /
 
 Sitemap: https://www.diskcleaner.pro/sitemap.xml
 
-# AI reference files
+# AI reference files (machine-readable product summary)
 # https://www.diskcleaner.pro/llms.txt
 # https://www.diskcleaner.pro/llms-full.txt
