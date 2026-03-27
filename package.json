@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "postbuild": "node scripts/ssg.mjs",
+    "postbuild": "node scripts/generate-feed.mjs && node scripts/ssg.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist && git add . && git commit -m 'deploy' && git push origin main",
     "lint": "eslint .",
