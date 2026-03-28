@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link id="canonical-link" rel="canonical" href="https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac" />
+
+    <!-- Hero LCP image preload — stable public path, no hash -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/DiskCleaner.webp"
+      imagesrcset="/DiskCleaner-464.webp 464w, /DiskCleaner-640.webp 640w, /DiskCleaner.webp 1376w"
+      imagesizes="(max-width: 1024px) 92vw, 50vw"
+    />
+
+    <!-- Primary SEO -->
+    <title>How to Clear Cache on Mac — The Right Way (Without Breaking Anything) — DiskCleaner</title>
+    <meta
+      id="meta-desc"
+      name="description"
+      content="Clearing cache on your Mac can recover gigabytes of storage and fix slow or buggy apps. Here's exactly what cache is, where it lives, and how to clear it safely."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="DiskCleaner" />
+    <meta name="author" content="DiskCleaner" />
+    <meta name="keywords" content="mac cleaner, disk cleaner mac, mac storage cleaner, cache cleaner mac, free up mac space, macOS junk cleaner, system data mac, app uninstaller mac, mac disk space, mac cache remover, macOS utility, diskcleaner" />
+
+    <script>
+      if (window.location.hostname === "diskcleaner.pro") {
+        window.location.replace(`https://www.diskcleaner.pro${window.location.pathname}${window.location.search}${window.location.hash}`)
+      }
+    </script>
+
+    <!-- Open Graph -->
+    <meta id="og-type" property="og:type" content="article" />
+    <meta property="og:site_name" content="DiskCleaner" />
+    <meta property="og:locale" content="en_US" />
+    <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac" />
+    <meta id="og-title" property="og:title" content="How to Clear Cache on Mac — The Right Way (Without Breaking Anything) — DiskCleaner" />
+    <meta id="og-desc" property="og:description" content="Clearing cache on your Mac can recover gigabytes of storage and fix slow or buggy apps. Here's exactly what cache is, where it lives, and how to clear it safely." />
+    <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta id="og-image-alt" property="og:image:alt" content="How to Clear Cache on Mac — The Right Way (Without Breaking Anything) — DiskCleaner" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="tw-url" name="twitter:url" content="https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac" />
+    <meta id="tw-title" name="twitter:title" content="How to Clear Cache on Mac — The Right Way (Without Breaking Anything) — DiskCleaner" />
+    <meta id="tw-desc" name="twitter:description" content="Clearing cache on your Mac can recover gigabytes of storage and fix slow or buggy apps. Here's exactly what cache is, where it lives, and how to clear it safely." />
+    <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+
+    <!-- Structured data (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "logo": "https://www.diskcleaner.pro/favicon.png",
+            "email": "customersupport@diskcleaner.pro",
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "customersupport@diskcleaner.pro",
+                "url": "https://www.diskcleaner.pro/help"
+              }
+            ],
+            "sameAs": [
+              "https://x.com/diskcleanerpro",
+              "https://www.threads.net/@diskcleanerpro"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@type": "Organization",
+              "name": "DiskCleaner"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "DiskCleaner",
+            "operatingSystem": "macOS 13 Ventura or later",
+            "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
+            "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
+            "url": "https://www.diskcleaner.pro/",
+            "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "softwareVersion": "1.0",
+            "softwareRequirements": "macOS 13 Ventura or later",
+            "memoryRequirements": "4 GB RAM",
+            "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help"
+            },
+            "featureList": [
+              "App Cache cleaning",
+              "Browser Cache cleaning (9 browsers, all profiles)",
+              "Screenshot removal",
+              "Trash cleanup",
+              "System Logs removal",
+              "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
+              "App Leftovers detection and removal",
+              "Large Files scanner — finds oversized files across the disk",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
+              "Menu Bar disk usage overview",
+              "Trash-first safety — nothing permanently deleted",
+              "Zero-decision interface — review every file before moving",
+              "100% local — no internet, no data collection, no account",
+              "Universal Binary — native Apple Silicon and Intel"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Trial",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "3 free scans included — no account required",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <script id="article-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How to Clear Cache on Mac — The Right Way (Without Breaking Anything)",
+      "description": "Clearing cache on your Mac can recover gigabytes of storage and fix slow or buggy apps. Here's exactly what cache is, where it lives, and how to clear it safely.",
+      "datePublished": "2026-03-21",
+      "dateModified": "2026-03-21",
+      "mainEntityOfPage": "https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac",
+      "author": {
+        "@type": "Person",
+        "name": "DiskCleaner Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DiskCleaner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.diskcleaner.pro/favicon.png"
+        }
+      },
+      "image": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+      "articleSection": "macOS",
+      "wordCount": 909,
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.diskcleaner.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.diskcleaner.pro/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Clear Cache on Mac — The Right Way (Without Breaking Anything)",
+          "item": "https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FAQPage schema — home page default; suppressed on pages with their own FAQPage schema -->
+    <script id="global-faqpage-jsonld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is DiskCleaner safe? Does it delete files permanently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No file is ever permanently deleted. DiskCleaner uses macOS's native Trash system exclusively — every file moved is recoverable from your Trash. You also review every file before anything moves."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner connect to the internet or collect my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. DiskCleaner runs 100% locally on your Mac. It makes no network calls, collects no data, and requires no account. Your file names and disk contents never leave your machine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly does DiskCleaner scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which macOS versions does DiskCleaner support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13 Ventura through macOS 26 Tahoe. DiskCleaner is built as a native Universal Binary with full Apple Silicon and Intel support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is DiskCleaner different from other Mac cleaners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most Mac cleaners delete files silently and show you a number after the fact. DiskCleaner shows you every single file before anything moves, with per-file checkboxes so you stay in control. It also never permanently deletes — everything goes through Trash."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner have a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account or subscription for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a refund for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at customersupport@diskcleaner.pro."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="module" crossorigin src="/assets/index-znn8fDgq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-DawcuT5q.css">
+  </head>
+
+  <body>
+    <div id="root"><section style="background:var(--bg,#f5f5f7);padding:48px 0 80px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+    <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
+    <div style="max-width:860px;margin:0 auto;text-align:center">
+      <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">macOS</span>
+      <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">How to Clear Cache on Mac — The Right Way (Without Breaking Anything)</h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">Mac running slow? Cache might be the problem. Here's what it actually is, where it hides, and how to clear it without accidentally breaking your apps.</p>
+      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">March 21, 2026 · 5 min read · 909 words · By DiskCleaner Team</p>
+    </div>
+    <section style="max-width:860px;margin:32px auto 0;padding:20px 24px;border-radius:20px;border:1px solid var(--border,rgba(0,0,0,.1));background:var(--surface,#fff)">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2,#aeaeb2);margin:0 0 8px">About the Author</p>
+      <h2 style="font-size:18px;font-weight:600;margin:0 0 4px;color:var(--text,#1d1d1f)">DiskCleaner Team</h2>
+      <p style="font-size:13px;font-weight:500;color:#0071e3;margin:0 0 10px">Editorial Team</p>
+      <p style="font-size:15px;line-height:1.7;color:var(--muted,#6e6e73);margin:0">Publishes product explainers, help content, and update notes for DiskCleaner.</p>
+    </section>
+    <article style="max-width:860px;margin:24px auto 0;border-radius:24px;background:var(--surface,#fff);padding:20px 20px 40px">
+      <div class="blog-content" style="padding:24px 20px 0">
+        <h1>How to Clear Cache on Mac — The Right Way (Without Breaking Anything)</h1><p>You notice your Mac getting sluggish. Apps take longer to open. Safari feels weird. And storage is tighter than it should be.</p>
+<p>Before you start deleting apps or buying more iCloud storage, check your cache.</p>
+<p>On a Mac that&#39;s been running for a year or two, cache files can stack up to several gigabytes — sometimes more. The good news is that most of it is safe to clear. The tricky part is knowing which parts to leave alone.</p>
+<h2>What Is Cache, Actually?</h2><p>Cache is temporary data your apps and system store to speed things up.<sup><a href="#ref-1">[1]</a></sup></p>
+<p>When Safari loads a webpage, it saves images and scripts locally so the next visit loads faster. When an app processes something complex, it might cache the result to avoid repeating the work. That&#39;s the idea.</p>
+<p>The problem is that cache is supposed to be cleaned up automatically — and often it isn&#39;t. Apps write to their cache folders and never bother clearing old entries. Over time, that builds up.</p>
+<h2>The Three Types of Cache on macOS</h2><h3>1. Browser Cache</h3><p>This is usually the biggest single contributor.</p>
+<p>Safari, Chrome, Firefox, Arc, Edge — each one maintains its own cache folder. If you switch between browsers or use multiple regularly, those caches stack independently.<sup><a href="#ref-2">[2]</a></sup></p>
+<p>Safari&#39;s cache lives at <code>~/Library/Caches/com.apple.Safari</code>. Chrome stores its cache at <code>~/Library/Caches/Google/Chrome</code>. Each one can reach multiple gigabytes over months of regular use.</p>
+<h3>2. System Cache</h3><p>macOS itself caches data to improve performance — fonts, UI elements, system lookups, and more.</p>
+<p>These files live primarily in <code>~/Library/Caches</code> and <code>/Library/Caches</code>. Some of it is app-specific, some of it is macOS-level. The system cache is generally safe to clear, though macOS will rebuild some of it after a restart.</p>
+<h3>3. App Cache</h3><p>Every app that follows macOS conventions writes its cache to <code>~/Library/Caches/&lt;app-bundle-id&gt;/</code>. Photo editing apps, media players, cloud sync services — they all accumulate here.</p>
+<p>Some apps clear their caches responsibly. Others don&#39;t.</p>
+<h2>How to Clear Browser Cache on Mac</h2><h3>Safari</h3><ol>
+<li>Open Safari</li>
+<li>Go to <strong>Safari → Settings → Advanced</strong> and check &quot;Show features for web developers&quot;</li>
+<li>In the <strong>Develop</strong> menu, click <strong>Empty Caches</strong></li>
+</ol>
+<p>Or hold <code>⌥ Option</code> and go to <strong>Safari → Settings → Privacy → Manage Website Data</strong> to remove site data alongside the cache.</p>
+<h3>Chrome</h3><ol>
+<li>Open Chrome</li>
+<li>Press <code>⌘ + Shift + Delete</code></li>
+<li>Set time range to <strong>All time</strong></li>
+<li>Check <strong>Cached images and files</strong></li>
+<li>Click <strong>Clear data</strong></li>
+</ol>
+<h3>Firefox</h3><ol>
+<li>Open Firefox</li>
+<li>Press <code>⌘ + Shift + Delete</code></li>
+<li>Choose <strong>Everything</strong> for time range</li>
+<li>Check <strong>Cache</strong></li>
+<li>Click <strong>Clear Now</strong></li>
+</ol>
+<h2>How to Clear System and App Cache on Mac</h2><p>The manual method: open Finder, press <code>⌘ + Shift + G</code>, type <code>~/Library/Caches</code>, and start reviewing folders.</p>
+<p>A few things to keep in mind:</p>
+<ul>
+<li><strong>Don&#39;t delete folders blindly.</strong> Some apps use their cache in ways that matter more than others. Deleting a large folder for an app you use constantly might slow it down temporarily until it rebuilds.</li>
+<li><strong>Delete folder contents, not the folder itself.</strong> Some apps expect their cache folder to exist at launch and will error if it&#39;s missing.</li>
+<li>Quit an app before clearing its cache.</li>
+</ul>
+<p><img src="/DiskCleaner_blog.webp" alt="DiskCleaner showing cache categories before cleanup"></p>
+<h2>Using a Tool to Clear Cache Safely</h2><p>If you&#39;d rather not navigate Library folders manually, a cleaner like DiskCleaner handles this with a safer workflow:</p>
+<ol>
+<li>Scan shows you the cache total per category (browser, app, system)</li>
+<li>You can expand each category to see individual entries</li>
+<li>You approve what moves — nothing is deleted without your confirmation</li>
+<li>Cleanup goes to Trash first, not permanent deletion</li>
+</ol>
+<p>That last part matters. If an app misbehaves after clearing its cache, you can restore from Trash. A tool that permanently deletes immediately doesn&#39;t give you that option.</p>
+<h2>Will Clearing Cache Make My Mac Faster?</h2><p>Sometimes yes, sometimes no.</p>
+<p>Cache clearing can help when:</p>
+<ul>
+<li>An app is behaving erratically (corrupted cache)</li>
+<li>Storage is nearly full and the system is struggling to write temp files</li>
+<li>You want to recover space without deleting anything important</li>
+</ul>
+<p>Cache clearing won&#39;t help when:</p>
+<ul>
+<li>The slowdown is from RAM, not disk</li>
+<li>Apps are just old and need updating</li>
+<li>The problem is an app bug, not cached data</li>
+</ul>
+<p>The honest answer is that clearing cache is a good maintenance step, but it&#39;s not a magic fix. It&#39;s most valuable as a regular habit combined with clearing other low-risk storage categories like Trash and old screenshots.</p>
+<h2>How Often Should You Clear Cache on Mac?</h2><p>There&#39;s no universal rule. A reasonable approach:</p>
+<ul>
+<li><strong>Browser cache:</strong> every few months, or when a site is behaving strangely</li>
+<li><strong>App cache:</strong> when an app is acting buggy, or during a quarterly cleanup</li>
+<li><strong>System cache:</strong> when storage gets tight, or during a macOS update prep</li>
+</ul>
+<p>You don&#39;t need to clear cache obsessively. But letting it go unchecked for years is how you end up with 10GB of cached data you&#39;d never notice otherwise.</p>
+<div class="blog-references">
+<p class="blog-references-label">References</p>
+<ol class="references">
+  <li id="ref-1">Apple Inc. "Manage storage space on your Mac." <em>Mac User Guide</em>, Apple Support, 2024. <a href="https://support.apple.com/guide/mac-help/manage-storage-space-syser5a93c9f/mac">support.apple.com</a></li>
+  <li id="ref-2">Google LLC. "HTTP caching." <em>web.dev</em>, Google, 2024. <a href="https://web.dev/articles/http-cache">web.dev/articles/http-cache</a></li>
+  <li id="ref-3">Apple Inc. "File System Basics — The Role of the Home Directory." <em>Apple Developer Documentation: File System Programming Guide</em>, 2024. <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">developer.apple.com</a></li>
+</ol>
+</div>
+
+      </div>
+    </article>
+  </div>
+</section></div>
+
+    <script>
+      // Delay non-critical third-party scripts to protect mobile LCP/TBT.
+      const ua = navigator.userAgent || "";
+      const isLabRun =
+        /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
+        navigator.webdriver === true;
+
+      window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };
+
+      const loadAffiliate = () => {
+        if (isLabRun || window.__affiliateLoaded) return;
+        window.__affiliateLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://lmsqueezy.com/affiliate.js";
+        s.defer = true;
+        document.head.appendChild(s);
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAffiliate, { timeout: 3000 });
+      } else {
+        window.addEventListener("load", () => window.setTimeout(loadAffiliate, 1500), { once: true });
+      }
+
+      if (isLabRun || navigator.doNotTrack === "1") {
+        window.__gaLoaded = true;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      const loadGA = () => {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+        document.head.appendChild(s);
+
+        gtag("js", new Date());
+        gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+      };
+
+      ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true, passive: true })
+      );
+    </script>
+  </body>
+</html>

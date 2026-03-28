@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link id="canonical-link" rel="canonical" href="https://www.diskcleaner.pro/blog/delete-xcode-derived-data" />
+
+    <!-- Hero LCP image preload — stable public path, no hash -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/DiskCleaner.webp"
+      imagesrcset="/DiskCleaner-464.webp 464w, /DiskCleaner-640.webp 640w, /DiskCleaner.webp 1376w"
+      imagesizes="(max-width: 1024px) 92vw, 50vw"
+    />
+
+    <!-- Primary SEO -->
+    <title>How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone) — DiskCleaner</title>
+    <meta
+      id="meta-desc"
+      name="description"
+      content="Xcode DerivedData can silently consume 20–50GB or more on your Mac. Here's exactly what it is, where it lives, when it's safe to delete, and how to prevent it from piling up again."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="DiskCleaner" />
+    <meta name="author" content="DiskCleaner" />
+    <meta name="keywords" content="mac cleaner, disk cleaner mac, mac storage cleaner, cache cleaner mac, free up mac space, macOS junk cleaner, system data mac, app uninstaller mac, mac disk space, mac cache remover, macOS utility, diskcleaner" />
+
+    <script>
+      if (window.location.hostname === "diskcleaner.pro") {
+        window.location.replace(`https://www.diskcleaner.pro${window.location.pathname}${window.location.search}${window.location.hash}`)
+      }
+    </script>
+
+    <!-- Open Graph -->
+    <meta id="og-type" property="og:type" content="article" />
+    <meta property="og:site_name" content="DiskCleaner" />
+    <meta property="og:locale" content="en_US" />
+    <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/blog/delete-xcode-derived-data" />
+    <meta id="og-title" property="og:title" content="How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone) — DiskCleaner" />
+    <meta id="og-desc" property="og:description" content="Xcode DerivedData can silently consume 20–50GB or more on your Mac. Here's exactly what it is, where it lives, when it's safe to delete, and how to prevent it from piling up again." />
+    <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta id="og-image-alt" property="og:image:alt" content="How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone) — DiskCleaner" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="tw-url" name="twitter:url" content="https://www.diskcleaner.pro/blog/delete-xcode-derived-data" />
+    <meta id="tw-title" name="twitter:title" content="How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone) — DiskCleaner" />
+    <meta id="tw-desc" name="twitter:description" content="Xcode DerivedData can silently consume 20–50GB or more on your Mac. Here's exactly what it is, where it lives, when it's safe to delete, and how to prevent it from piling up again." />
+    <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+
+    <!-- Structured data (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "logo": "https://www.diskcleaner.pro/favicon.png",
+            "email": "customersupport@diskcleaner.pro",
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "customersupport@diskcleaner.pro",
+                "url": "https://www.diskcleaner.pro/help"
+              }
+            ],
+            "sameAs": [
+              "https://x.com/diskcleanerpro",
+              "https://www.threads.net/@diskcleanerpro"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@type": "Organization",
+              "name": "DiskCleaner"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "DiskCleaner",
+            "operatingSystem": "macOS 13 Ventura or later",
+            "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
+            "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
+            "url": "https://www.diskcleaner.pro/",
+            "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "softwareVersion": "1.0",
+            "softwareRequirements": "macOS 13 Ventura or later",
+            "memoryRequirements": "4 GB RAM",
+            "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help"
+            },
+            "featureList": [
+              "App Cache cleaning",
+              "Browser Cache cleaning (9 browsers, all profiles)",
+              "Screenshot removal",
+              "Trash cleanup",
+              "System Logs removal",
+              "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
+              "App Leftovers detection and removal",
+              "Large Files scanner — finds oversized files across the disk",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
+              "Menu Bar disk usage overview",
+              "Trash-first safety — nothing permanently deleted",
+              "Zero-decision interface — review every file before moving",
+              "100% local — no internet, no data collection, no account",
+              "Universal Binary — native Apple Silicon and Intel"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Trial",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "3 free scans included — no account required",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <script id="article-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)",
+      "description": "Xcode DerivedData can silently consume 20–50GB or more on your Mac. Here's exactly what it is, where it lives, when it's safe to delete, and how to prevent it from piling up again.",
+      "datePublished": "2026-03-24",
+      "dateModified": "2026-03-24",
+      "mainEntityOfPage": "https://www.diskcleaner.pro/blog/delete-xcode-derived-data",
+      "author": {
+        "@type": "Person",
+        "name": "DiskCleaner Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DiskCleaner",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.diskcleaner.pro/favicon.png"
+        }
+      },
+      "image": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+      "articleSection": "Developer",
+      "wordCount": 1059,
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.diskcleaner.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.diskcleaner.pro/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)",
+          "item": "https://www.diskcleaner.pro/blog/delete-xcode-derived-data"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FAQPage schema — home page default; suppressed on pages with their own FAQPage schema -->
+    <script id="global-faqpage-jsonld" type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is DiskCleaner safe? Does it delete files permanently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No file is ever permanently deleted. DiskCleaner uses macOS's native Trash system exclusively — every file moved is recoverable from your Trash. You also review every file before anything moves."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner connect to the internet or collect my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. DiskCleaner runs 100% locally on your Mac. It makes no network calls, collects no data, and requires no account. Your file names and disk contents never leave your machine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly does DiskCleaner scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which macOS versions does DiskCleaner support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13 Ventura through macOS 26 Tahoe. DiskCleaner is built as a native Universal Binary with full Apple Silicon and Intel support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is DiskCleaner different from other Mac cleaners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most Mac cleaners delete files silently and show you a number after the fact. DiskCleaner shows you every single file before anything moves, with per-file checkboxes so you stay in control. It also never permanently deletes — everything goes through Trash."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner have a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account or subscription for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a refund for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at customersupport@diskcleaner.pro."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="module" crossorigin src="/assets/index-znn8fDgq.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-DawcuT5q.css">
+  </head>
+
+  <body>
+    <div id="root"><section style="background:var(--bg,#f5f5f7);padding:48px 0 80px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+    <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
+    <div style="max-width:860px;margin:0 auto;text-align:center">
+      <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">Developer</span>
+      <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)</h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">If you use Xcode even occasionally, DerivedData might be eating 20–50GB on your Mac right now. Here's what it is, how to delete it safely, and why it comes back.</p>
+      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">March 24, 2026 · 5 min read · 1,059 words · By DiskCleaner Team</p>
+    </div>
+    <section style="max-width:860px;margin:32px auto 0;padding:20px 24px;border-radius:20px;border:1px solid var(--border,rgba(0,0,0,.1));background:var(--surface,#fff)">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2,#aeaeb2);margin:0 0 8px">About the Author</p>
+      <h2 style="font-size:18px;font-weight:600;margin:0 0 4px;color:var(--text,#1d1d1f)">DiskCleaner Team</h2>
+      <p style="font-size:13px;font-weight:500;color:#0071e3;margin:0 0 10px">Editorial Team</p>
+      <p style="font-size:15px;line-height:1.7;color:var(--muted,#6e6e73);margin:0">Publishes product explainers, help content, and update notes for DiskCleaner.</p>
+    </section>
+    <article style="max-width:860px;margin:24px auto 0;border-radius:24px;background:var(--surface,#fff);padding:20px 20px 40px">
+      <div class="blog-content" style="padding:24px 20px 0">
+        <h1>How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn&#39;t Know Were Gone)</h1><p>If you&#39;ve ever looked at your Mac&#39;s storage and thought &quot;where did 40GB go?&quot; — and you have Xcode installed — there&#39;s a very good chance DerivedData is the answer.</p>
+<p>It&#39;s one of the most consistent storage surprises for Mac developers: you install Xcode, work on a few projects, and without ever consciously storing anything, your disk shrinks noticeably.</p>
+<p>Here&#39;s what&#39;s happening and what to do about it.</p>
+<h2>What Is DerivedData?</h2><p>DerivedData is Xcode&#39;s build cache.<sup><a href="#ref-1">[1]</a></sup></p>
+<p>Every time you compile a project, Xcode stores intermediate build artifacts, compiled modules, index data, and other derived outputs in this folder. The intention is to speed up subsequent builds — rather than recompiling everything from scratch, Xcode checks what&#39;s changed and only recompiles what it needs to.</p>
+<p>That&#39;s good for build times. The problem is that Xcode doesn&#39;t aggressively clean up old entries. Projects you haven&#39;t touched in months still have their DerivedData sitting on disk. Multiple scheme configurations, multiple Swift module versions, multiple build targets — they all accumulate.</p>
+<h2>Where DerivedData Lives</h2><p>The default location is:</p>
+<pre><code>~/Library/Developer/Xcode/DerivedData
+</code></pre>
+<p>Open Finder, press <code>⌘ + Shift + G</code>, paste that path, and press Enter. You&#39;ll see one subfolder per project — usually named with the project name followed by a random hash.</p>
+<p>On a Mac where Xcode has been used for a year or two across multiple projects, this folder commonly reaches 20–50GB. Heavy users or teams working on large projects (like the iOS system frameworks, game engines, or apps with many targets) can see 100GB+.</p>
+<h2>How to Delete DerivedData</h2><h3>Method 1: From Within Xcode</h3><ol>
+<li>Open Xcode</li>
+<li>Go to <strong>File → Packages → Reset Package Caches</strong> (for package caches)</li>
+<li>Or hold <strong>Option</strong> and go to <strong>Xcode → Preferences</strong> — actually the cleanest path is:</li>
+<li><strong>Xcode → Settings → Locations</strong> tab</li>
+<li>Click the arrow next to the DerivedData path to open it in Finder</li>
+<li>Select all folders inside and delete them</li>
+</ol>
+<p>Alternatively, use the keyboard shortcut method: in Xcode, go to <strong>Product → Clean Build Folder</strong> (<code>⌘ + Shift + K</code>) for the active project. That only cleans the current project though — not all of DerivedData.</p>
+<h3>Method 2: Delete Directly in Terminal</h3><p>This deletes everything in DerivedData in one command:</p>
+<pre><code>rm -rf ~/Library/Developer/Xcode/DerivedData
+</code></pre>
+<p>macOS and Xcode will recreate the folder automatically the next time you build. This is the fastest method and is completely safe.</p>
+<h3>Method 3: Via a Disk Cleaner</h3><p>Tools like DiskCleaner scan for developer data including DerivedData as a named category. You can see the size before removing it, and it goes to Trash rather than being immediately deleted — so you can restore it if anything unexpected happens.</p>
+<p>The Trash-first approach is useful if you&#39;re uncertain: you can delete, verify everything still builds correctly, then empty Trash once you&#39;re confident.</p>
+<p><img src="/DiskCleaner_blog.webp" alt="DiskCleaner showing Xcode DerivedData in the developer data category"></p>
+<h2>Is It Safe to Delete DerivedData?</h2><p>Yes, completely.</p>
+<p>DerivedData contains only derived artifacts — nothing original. Xcode generates all of it from your source code. If you delete the whole folder and then open a project, Xcode rebuilds what it needs on the next build.<sup><a href="#ref-2">[2]</a></sup></p>
+<p>The consequence is a slower first build after deletion. For small projects, you won&#39;t notice. For large projects, the first build might take a few minutes longer than usual.</p>
+<p>That&#39;s it. No project data is stored in DerivedData. No settings, no source files, no team data.</p>
+<h2>Other Xcode Storage Locations Worth Checking</h2><p>DerivedData is the biggest one, but it&#39;s not the only place Xcode leaves large files.</p>
+<h3>iOS Simulator Runtimes</h3><p>Each simulator runtime — iOS 17, iOS 18, watchOS 11, etc. — is a multi-gigabyte download.<sup><a href="#ref-3">[3]</a></sup></p>
+<p>Location: <code>~/Library/Developer/CoreSimulator/Runtimes</code></p>
+<p>You can manage these in Xcode under <strong>Settings → Platforms</strong>. Runtimes for OS versions you no longer test against can be removed. Each one you delete typically recovers 3–7GB.</p>
+<h3>Simulator Device Data</h3><p>Simulator device states (the contents of simulated devices you&#39;ve run) live at:</p>
+<pre><code>~/Library/Developer/CoreSimulator/Devices
+</code></pre>
+<p>If you&#39;ve never cleaned this out, it can contain device states from years of simulator runs. You can delete stale device folders, or use <code>xcrun simctl delete unavailable</code> in Terminal to remove simulators for platforms no longer installed.</p>
+<h3>Archives</h3><p>Every time you archive a build for distribution, Xcode saves a copy at <code>~/Library/Developer/Xcode/Archives</code>.</p>
+<p>Old archives for apps you&#39;ve already shipped — or projects you&#39;ve abandoned — can be safely deleted. Xcode&#39;s Organizer window shows them in a friendlier UI: <strong>Window → Organizer → Archives</strong>.</p>
+<h3>Package Caches</h3><p>If you use Swift Package Manager, resolved packages are cached at:</p>
+<pre><code>~/Library/Caches/org.swift.swiftpm
+~/Library/org.swift.swiftpm
+</code></pre>
+<p>These are generally smaller than DerivedData but worth knowing about.</p>
+<h2>Why DerivedData Keeps Coming Back</h2><p>Deleting DerivedData is not a permanent fix — Xcode rebuilds it every time you compile.</p>
+<p>The goal isn&#39;t to delete it once and be done. It&#39;s to build a habit of occasional cleanup so it doesn&#39;t quietly grow to 50GB before you notice.</p>
+<p>A few approaches that help:</p>
+<ul>
+<li><strong>Delete DerivedData before major macOS or Xcode updates</strong> — a clean rebuild after updating avoids stale build artifacts causing cryptic errors</li>
+<li><strong>Remove simulator runtimes for deprecated OS versions</strong> — you don&#39;t need iOS 15 simulators if you&#39;re shipping for iOS 17+</li>
+<li><strong>Check archives quarterly</strong> — old distribution builds are rarely needed after a few update cycles</li>
+<li><strong>Run a scanner occasionally</strong> — tools that categorize developer data make it easy to see the total at a glance</li>
+</ul>
+<h2>The Broader Picture</h2><p>DerivedData is the single highest-yield storage cleanup for developers on Mac.</p>
+<p>Most other cleanup steps — clearing browser cache, screenshots, logs — recover megabytes to low gigabytes. Cleaning DerivedData on a Mac that&#39;s been running Xcode for a couple of years commonly recovers 20–50GB in a few seconds.</p>
+<p>If you&#39;ve been struggling with Mac storage and you&#39;re a developer, this is almost certainly one of the first places to look.</p>
+<div class="blog-references">
+<p class="blog-references-label">References</p>
+<ol class="references">
+  <li id="ref-1">Apple Inc. "Reduce Disk Usage in Xcode." <em>Apple Developer Documentation</em>, 2024. <a href="https://developer.apple.com/documentation/xcode/reducing-your-app-s-size">developer.apple.com</a></li>
+  <li id="ref-2">Apple Inc. "Build system — Xcode Help." <em>Xcode User Guide</em>, Apple Developer Documentation, 2024. <a href="https://developer.apple.com/documentation/xcode">developer.apple.com</a></li>
+  <li id="ref-3">Apple Inc. "Simulator Help — Download and install additional simulators." <em>Xcode User Guide</em>, Apple Support, 2024. <a href="https://developer.apple.com/documentation/xcode/installing-additional-simulator-runtimes">developer.apple.com</a></li>
+</ol>
+</div>
+
+      </div>
+    </article>
+  </div>
+</section></div>
+
+    <script>
+      // Delay non-critical third-party scripts to protect mobile LCP/TBT.
+      const ua = navigator.userAgent || "";
+      const isLabRun =
+        /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
+        navigator.webdriver === true;
+
+      window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };
+
+      const loadAffiliate = () => {
+        if (isLabRun || window.__affiliateLoaded) return;
+        window.__affiliateLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://lmsqueezy.com/affiliate.js";
+        s.defer = true;
+        document.head.appendChild(s);
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAffiliate, { timeout: 3000 });
+      } else {
+        window.addEventListener("load", () => window.setTimeout(loadAffiliate, 1500), { once: true });
+      }
+
+      if (isLabRun || navigator.doNotTrack === "1") {
+        window.__gaLoaded = true;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      const loadGA = () => {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+        document.head.appendChild(s);
+
+        gtag("js", new Date());
+        gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+      };
+
+      ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true, passive: true })
+      );
+    </script>
+  </body>
+</html>
