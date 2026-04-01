@@ -298,9 +298,9 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-DZjjYgvW.js"></script>
+    <script type="module" crossorigin src="/assets/index-CWrRiawj.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BTwfM96d.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-kMIaEyZz.css">
   </head>
 
   <body>
@@ -344,14 +344,7 @@
 <p><strong>Time Machine snapshots:</strong> can&#39;t browse directly in Finder — use Terminal</p>
 <p><strong>Container data:</strong> <code>~/Library/Containers</code> and <code>~/Library/Group Containers</code></p>
 <p>Looking at the folder sizes (right-click → Get Info, or use a disk analyzer) will tell you which category is contributing most to the number.</p>
-<h2 class="blog-step-heading">
-  <span class="blog-step-icon" aria-hidden="true">
-    <svg viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="8.25" />
-      <path d="M8 6.75 11.25 10 8 13.25" />
-    </svg>
-  </span>
-<span>Time Machine Local Snapshots</span></h2><p>This is often the biggest hidden contributor.</p>
+<h2 class="blog-step-heading"><span>Time Machine Local Snapshots</span></h2><p>This is often the biggest hidden contributor.</p>
 <p>macOS automatically creates local &quot;snapshots&quot; — a kind of on-device Time Machine backup — so you can restore recent changes even when your external backup drive isn&#39;t plugged in.<sup><a href="#ref-2">[2]</a></sup></p>
 <p>These snapshots are supposed to be released automatically when disk space gets tight. In practice, that release mechanism doesn&#39;t always kick in fast enough.</p>
 <p>To see your local snapshots, open Terminal and run:</p>
@@ -361,14 +354,7 @@
 <pre><code>tmutil deletelocalsnapshots &lt;date&gt;
 </code></pre>
 <p>Replace <code>&lt;date&gt;</code> with the snapshot identifier from the list output. If you have an external Time Machine backup and don&#39;t need local snapshots, you can also disable local snapshotting entirely in Time Machine settings.</p>
-<h2 class="blog-step-heading">
-  <span class="blog-step-icon" aria-hidden="true">
-    <svg viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="8.25" />
-      <path d="M8 6.75 11.25 10 8 13.25" />
-    </svg>
-  </span>
-<span>System Logs and Crash Reports</span></h2><p>Every time an app crashes, macOS writes a report. Every background service produces logs. These accumulate continuously.<sup><a href="#ref-3">[3]</a></sup></p>
+<h2 class="blog-step-heading"><span>System Logs and Crash Reports</span></h2><p>Every time an app crashes, macOS writes a report. Every background service produces logs. These accumulate continuously.<sup><a href="#ref-3">[3]</a></sup></p>
 <p>They&#39;re safe to delete. Logs are diagnostic data — if you&#39;re not debugging a specific crash, you don&#39;t need them.</p>
 <p><strong>Manual cleanup:</strong></p>
 <ul>
@@ -376,14 +362,7 @@
 <li><code>/private/var/log</code> — system logs, safe to clear but requires admin password</li>
 </ul>
 <p>You can also open <strong>Console.app</strong>, which gives you a UI for browsing logs — but it doesn&#39;t help with deletion.</p>
-<h2 class="blog-step-heading">
-  <span class="blog-step-icon" aria-hidden="true">
-    <svg viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="8.25" />
-      <path d="M8 6.75 11.25 10 8 13.25" />
-    </svg>
-  </span>
-<span>Docker Images and Virtual Machine Disks</span></h2><p>If you use Docker, the storage footprint can be significant.</p>
+<h2 class="blog-step-heading"><span>Docker Images and Virtual Machine Disks</span></h2><p>If you use Docker, the storage footprint can be significant.</p>
 <p>Docker images, build cache, and unused containers all live under <code>~/Library/Containers/com.docker.docker</code>. A Docker installation that&#39;s been running for a year might have 20–30GB in images alone.</p>
 <p><strong>In Docker Desktop:</strong></p>
 <ul>
@@ -393,25 +372,11 @@
 </ul>
 <p>Virtual machine disk images (Parallels, VMware Fusion, UTM) are even larger — a Windows VM might be 40–80GB. If you&#39;ve set up a VM and rarely use it, it&#39;s worth asking whether you still need it.</p>
 <p><img src="/DiskCleaner_blog.webp" alt="DiskCleaner showing category breakdown before cleanup"></p>
-<h2 class="blog-step-heading">
-  <span class="blog-step-icon" aria-hidden="true">
-    <svg viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="8.25" />
-      <path d="M8 6.75 11.25 10 8 13.25" />
-    </svg>
-  </span>
-<span>Leftover App Data in Application Support</span></h2><p>When you delete an app by dragging it to Trash, the app bundle is removed — but the support files it wrote to <code>~/Library/Application Support</code> usually aren&#39;t.<sup><a href="#ref-4">[4]</a></sup></p>
+<h2 class="blog-step-heading"><span>Leftover App Data in Application Support</span></h2><p>When you delete an app by dragging it to Trash, the app bundle is removed — but the support files it wrote to <code>~/Library/Application Support</code> usually aren&#39;t.<sup><a href="#ref-4">[4]</a></sup></p>
 <p>Over years of installing and uninstalling software, this folder grows into a graveyard of data from apps you haven&#39;t thought about in years.</p>
 <p>Browse <code>~/Library/Application Support</code> in Finder and look for folders with names you don&#39;t recognize or that correspond to apps you&#39;ve deleted. If the app is gone, the support folder is safe to remove.</p>
 <p>Using an app uninstaller that finds these leftover files when you delete an app prevents this from accumulating in the first place.</p>
-<h2 class="blog-step-heading">
-  <span class="blog-step-icon" aria-hidden="true">
-    <svg viewBox="0 0 20 20" fill="none">
-      <circle cx="10" cy="10" r="8.25" />
-      <path d="M8 6.75 11.25 10 8 13.25" />
-    </svg>
-  </span>
-<span>Application Cache</span></h2><p><code>~/Library/Caches</code> is technically not always counted in System Data — macOS sometimes attributes it to individual apps. But it ends up in the System Data count frequently enough to be worth checking.</p>
+<h2 class="blog-step-heading"><span>Application Cache</span></h2><p><code>~/Library/Caches</code> is technically not always counted in System Data — macOS sometimes attributes it to individual apps. But it ends up in the System Data count frequently enough to be worth checking.</p>
 <p>Clearing app cache is generally safe. Apps rebuild their caches as needed. The risk is a temporary slowdown after clearing (the app re-generates what it needs), not data loss.</p>
 <h2>How Much Can You Actually Recover?</h2><p>It depends entirely on what&#39;s contributing to your number.</p>
 <p>If Time Machine snapshots are the culprit, you might recover 10–15GB from that alone. If Docker is the issue, you could get back 20–30GB.</p>
