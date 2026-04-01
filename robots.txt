@@ -58,6 +58,12 @@ Allow: /
 User-agent: Grok
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: MistralAI-Robotparser
+Allow: /
+
 Sitemap: https://www.diskcleaner.pro/sitemap.xml
 
 # AI reference files
