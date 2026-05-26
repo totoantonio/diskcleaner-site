@@ -71,6 +71,7 @@
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://www.diskcleaner.pro/#organization",
             "name": "DiskCleaner",
             "url": "https://www.diskcleaner.pro/",
             "logo": "https://www.diskcleaner.pro/favicon.png",
@@ -93,16 +94,18 @@
           },
           {
             "@type": "WebSite",
+            "@id": "https://www.diskcleaner.pro/#website",
             "name": "DiskCleaner",
             "url": "https://www.diskcleaner.pro/",
             "inLanguage": "en-US",
             "publisher": {
               "@type": "Organization",
-              "name": "DiskCleaner"
+              "@id": "https://www.diskcleaner.pro/#organization"
             }
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://www.diskcleaner.pro/#software",
             "name": "DiskCleaner",
             "operatingSystem": "macOS 13 Ventura or later",
             "operatingSystemVersion": "macOS 13 Ventura or later",
@@ -111,6 +114,10 @@
             "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
             "inLanguage": "en-US",
             "url": "https://www.diskcleaner.pro/",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            },
             "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "softwareVersion": "1.0",
@@ -175,30 +182,68 @@
   "@graph": [
     {
       "@type": "BlogPosting",
+      "@id": "https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac#article",
       "headline": "How to Free Up Storage on Mac — A Practical Guide That Actually Works",
       "description": "When your Mac says storage is full, most fixes people try don't address the real problem. Here's a practical, step-by-step guide to actually freeing up space — without losing anything important.",
+      "abstract": "Storage full warnings on Mac are frustrating — especially when you can't figure out why. Here's exactly where that space went and how to get it back without guessing.",
       "datePublished": "2026-03-22",
       "dateModified": "2026-03-22",
-      "mainEntityOfPage": "https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac",
+      "url": "https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://www.diskcleaner.pro/blog#blog"
+      },
       "author": {
         "@type": "Person",
-        "name": "DiskCleaner Team"
+        "name": "DiskCleaner Team",
+        "description": "Editorial Team"
       },
       "publisher": {
         "@type": "Organization",
+        "@id": "https://www.diskcleaner.pro/#organization",
         "name": "DiskCleaner",
+        "url": "https://www.diskcleaner.pro",
         "logo": {
           "@type": "ImageObject",
           "url": "https://www.diskcleaner.pro/favicon.png"
         }
       },
-      "image": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+        "width": 1200,
+        "height": 630
+      },
       "articleSection": "macOS",
+      "keywords": [
+        "macOS",
+        "DiskCleaner",
+        "Mac cleaner",
+        "macOS storage"
+      ],
       "wordCount": 1094,
-      "inLanguage": "en-US"
+      "timeRequired": "PT5M",
+      "inLanguage": "en-US",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.diskcleaner.pro/#software",
+          "name": "DiskCleaner",
+          "url": "https://www.diskcleaner.pro"
+        },
+        {
+          "@type": "Thing",
+          "name": "macOS"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
+      "@id": "https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -225,7 +270,7 @@
     </script>
 
     <!-- FAQPage schema — home page default; suppressed on pages with their own FAQPage schema -->
-    <script id="global-faqpage-jsonld" type="application/ld+json">
+    <script id="global-faqpage-jsonld" type="text/plain">
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -298,9 +343,9 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-D816LEVv.js"></script>
+    <script type="module" crossorigin src="/assets/index-B1lAzSeb.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DwUYKl8T.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-B8OAP_Ki.css">
   </head>
 
   <body>
@@ -428,6 +473,23 @@
       function gtag() {
         dataLayer.push(arguments);
       }
+
+      document.addEventListener("click", event => {
+        const anchor = event.target.closest && event.target.closest("a[href]");
+        if (!anchor) return;
+
+        const url = new URL(anchor.getAttribute("href"), window.location.href);
+        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
+
+        const fileName = url.pathname.split("/").filter(Boolean).pop() || "download.dmg";
+        gtag("event", "file_download", {
+          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
+          file_extension: "dmg",
+          file_name: fileName,
+          link_text: anchor.textContent.trim(),
+          link_url: url.href,
+        });
+      }, { capture: true });
 
       const loadGA = () => {
         if (window.__gaLoaded) return;

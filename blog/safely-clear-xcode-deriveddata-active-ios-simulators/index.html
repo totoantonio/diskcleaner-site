@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+    <link id="canonical-link" rel="canonical" href="https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators" />
+    <link rel="alternate" hreflang="x-default" href="https://www.diskcleaner.pro/" />
+    <link rel="alternate" hreflang="en" href="https://www.diskcleaner.pro/" />
+
+    <!-- Hero LCP image preload — stable public path, no hash -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/DiskCleaner.webp"
+      imagesrcset="/DiskCleaner-464.webp 464w, /DiskCleaner-640.webp 640w, /DiskCleaner.webp 1376w"
+      imagesizes="(max-width: 1024px) 92vw, 50vw"
+    />
+
+    <!-- Primary SEO -->
+    <title>How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators — DiskCleaner</title>
+    <meta
+      id="meta-desc"
+      name="description"
+      content="A simulator-safe guide to clearing Xcode DerivedData: what to stop first, what not to delete, the safest manual commands, and how to avoid touching active CoreSimulator data."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="DiskCleaner" />
+    <meta name="author" content="DiskCleaner" />
+    <meta name="keywords" content="mac cleaner, disk cleaner mac, mac storage cleaner, cache cleaner mac, free up mac space, macOS junk cleaner, system data mac, app uninstaller mac, mac disk space, mac cache remover, macOS utility, diskcleaner" />
+
+    <script>
+      if (window.location.hostname === "diskcleaner.pro") {
+        window.location.replace(`https://www.diskcleaner.pro${window.location.pathname}${window.location.search}${window.location.hash}`)
+      }
+    </script>
+
+    <!-- Open Graph -->
+    <meta id="og-type" property="og:type" content="article" />
+    <meta property="og:site_name" content="DiskCleaner" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:locale:alternate" content="en_CA" />
+    <meta property="og:locale:alternate" content="en_AU" />
+    <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators" />
+    <meta id="og-title" property="og:title" content="How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators — DiskCleaner" />
+    <meta id="og-desc" property="og:description" content="A simulator-safe guide to clearing Xcode DerivedData: what to stop first, what not to delete, the safest manual commands, and how to avoid touching active CoreSimulator data." />
+    <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta id="og-image-alt" property="og:image:alt" content="How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators — DiskCleaner" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="tw-url" name="twitter:url" content="https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators" />
+    <meta id="tw-title" name="twitter:title" content="How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators — DiskCleaner" />
+    <meta id="tw-desc" name="twitter:description" content="A simulator-safe guide to clearing Xcode DerivedData: what to stop first, what not to delete, the safest manual commands, and how to avoid touching active CoreSimulator data." />
+    <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+
+    <!-- Structured data (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.diskcleaner.pro/#organization",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "logo": "https://www.diskcleaner.pro/favicon.png",
+            "email": "customersupport@diskcleaner.pro",
+            "areaServed": "Worldwide",
+            "availableLanguage": "en",
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "customersupport@diskcleaner.pro",
+                "url": "https://www.diskcleaner.pro/help",
+                "availableLanguage": "en"
+              }
+            ],
+            "sameAs": [
+              "https://x.com/diskcleanerpro",
+              "https://www.threads.net/@diskcleanerpro"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.diskcleaner.pro/#website",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://www.diskcleaner.pro/#software",
+            "name": "DiskCleaner",
+            "operatingSystem": "macOS 13 Ventura or later",
+            "operatingSystemVersion": "macOS 13 Ventura or later",
+            "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
+            "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
+            "inLanguage": "en-US",
+            "url": "https://www.diskcleaner.pro/",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            },
+            "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "softwareVersion": "1.0",
+            "softwareRequirements": "macOS 13 Ventura or later",
+            "about": [
+              {"@type": "Thing", "name": "macOS storage optimization"},
+              {"@type": "Thing", "name": "disk cleaner"},
+              {"@type": "Thing", "name": "cache cleaner"},
+              {"@type": "Thing", "name": "Mac app uninstaller"}
+            ],
+            "memoryRequirements": "4 GB RAM",
+            "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help"
+            },
+            "featureList": [
+              "App Cache cleaning",
+              "Browser Cache cleaning (9 browsers, all profiles)",
+              "Screenshot removal",
+              "Trash cleanup",
+              "System Logs removal",
+              "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
+              "App Leftovers detection and removal",
+              "Large Files scanner — finds oversized files across the disk",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
+              "Menu Bar disk usage overview",
+              "Trash-first safety — nothing permanently deleted",
+              "Zero-decision interface — review every file before moving",
+              "100% local — no internet, no data collection, no account",
+              "Universal Binary — native Apple Silicon and Intel"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Trial",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "3 free scans included — no account required",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <script id="article-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators#article",
+      "headline": "How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators",
+      "description": "A simulator-safe guide to clearing Xcode DerivedData: what to stop first, what not to delete, the safest manual commands, and how to avoid touching active CoreSimulator data.",
+      "abstract": "You can safely clear Xcode DerivedData without breaking active iOS simulators if you stop builds and tests first, leave CoreSimulator device data alone, and delete only Xcode's DerivedData folder.",
+      "datePublished": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "url": "https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://www.diskcleaner.pro/blog#blog"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Thomas A.",
+        "description": "Contributing Author"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.diskcleaner.pro/#organization",
+        "name": "DiskCleaner",
+        "url": "https://www.diskcleaner.pro",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.diskcleaner.pro/favicon.png"
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+        "width": 1200,
+        "height": 630
+      },
+      "articleSection": "Developer",
+      "keywords": [
+        "Developer",
+        "DiskCleaner",
+        "Mac cleaner",
+        "macOS storage"
+      ],
+      "wordCount": 1393,
+      "timeRequired": "PT7M",
+      "inLanguage": "en-US",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.diskcleaner.pro/#software",
+          "name": "DiskCleaner",
+          "url": "https://www.diskcleaner.pro"
+        },
+        {
+          "@type": "Thing",
+          "name": "Developer"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.diskcleaner.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.diskcleaner.pro/blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators",
+          "item": "https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FAQPage schema — home page default; suppressed on pages with their own FAQPage schema -->
+    <script id="global-faqpage-jsonld" type="text/plain">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is DiskCleaner safe? Does it delete files permanently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No file is ever permanently deleted. DiskCleaner uses macOS's native Trash system exclusively — every file moved is recoverable from your Trash. You also review every file before anything moves."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner connect to the internet or collect my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. DiskCleaner runs 100% locally on your Mac. It makes no network calls, collects no data, and requires no account. Your file names and disk contents never leave your machine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly does DiskCleaner scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which macOS versions does DiskCleaner support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13 Ventura through macOS 26 Tahoe. DiskCleaner is built as a native Universal Binary with full Apple Silicon and Intel support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is DiskCleaner different from other Mac cleaners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most Mac cleaners delete files silently and show you a number after the fact. DiskCleaner shows you every single file before anything moves, with per-file checkboxes so you stay in control. It also never permanently deletes — everything goes through Trash."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner have a free trial?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account or subscription for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a refund for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at customersupport@diskcleaner.pro."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="module" crossorigin src="/assets/index-B1lAzSeb.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-B8OAP_Ki.css">
+  </head>
+
+  <body>
+    <div id="root"><section style="background:var(--bg,#f5f5f7);padding:48px 0 80px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+    <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
+    <div style="max-width:860px;margin:0 auto;text-align:center">
+      <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">Developer</span>
+      <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators</h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">You can safely clear Xcode DerivedData without breaking active iOS simulators if you stop builds and tests first, leave CoreSimulator device data alone, and delete only Xcode's DerivedData folder.</p>
+      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">May 16, 2026 · 7 min read · 1,393 words · By Thomas A.</p>
+    </div>
+    <section style="max-width:860px;margin:32px auto 0;padding:20px 24px;border-radius:20px;border:1px solid var(--border,rgba(0,0,0,.1));background:var(--surface,#fff)">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2,#aeaeb2);margin:0 0 8px">About the Author</p>
+      <h2 style="font-size:18px;font-weight:600;margin:0 0 4px;color:var(--text,#1d1d1f)">Thomas A.</h2>
+      <p style="font-size:13px;font-weight:500;color:#0071e3;margin:0 0 10px">Contributing Author</p>
+      <p style="font-size:15px;line-height:1.7;color:var(--muted,#6e6e73);margin:0">Contributes developer-focused cleanup guides for Xcode, iOS Simulator storage, and safe macOS maintenance workflows.</p>
+    </section>
+    <article style="max-width:860px;margin:24px auto 0;border-radius:24px;background:var(--surface,#fff);padding:20px 20px 40px">
+      <div class="blog-content" style="padding:24px 20px 0">
+        <h1>How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators</h1><p>Yes, you can clear Xcode DerivedData without breaking active iOS simulators. The safe rule is simple: stop active builds, tests, previews, and debugging sessions first, then delete only <code>~/Library/Developer/Xcode/DerivedData</code>. Do not delete <code>~/Library/Developer/CoreSimulator</code> while Simulator devices are booted.</p>
+<p>DerivedData and Simulator data are different storage areas. DerivedData is Xcode&#39;s build output and index cache. CoreSimulator stores simulator runtimes, devices, installed apps, and simulated device state. Confusing those two folders is what causes most cleanup mistakes.</p>
+<h2>Quick Answer</h2><p>To clear DerivedData safely:</p>
+<ol>
+<li>Stop running builds, tests, SwiftUI previews, and debug sessions in Xcode.</li>
+<li>Leave any booted iOS Simulator devices alone unless you intentionally want to erase simulator state.</li>
+<li>Delete the contents of <code>~/Library/Developer/Xcode/DerivedData</code>, not <code>~/Library/Developer/CoreSimulator</code>.</li>
+<li>Reopen or rebuild the project. Xcode recreates the needed build artifacts automatically.</li>
+</ol>
+<p>This may make the next build slower, but it should not delete your source code, Xcode project, simulator runtime, simulator device, keychain, photos, app container, or simulator-installed apps.</p>
+<h2>What DerivedData Contains</h2><p>Xcode DerivedData contains generated build products, intermediate files, index data, module caches, logs, and other files Xcode can recreate from your project. The default path is:</p>
+<pre><code class="language-text">~/Library/Developer/Xcode/DerivedData
+</code></pre>
+<p>Each project usually gets a subfolder named after the project plus a generated suffix. Over time, those folders can grow into tens of gigabytes, especially when you work across multiple branches, package versions, Xcode versions, or simulator destinations.</p>
+<p>DerivedData is safe to remove because it is derived from source. The tradeoff is time: the first build after cleanup has to rebuild more work from scratch.</p>
+<h2>What Active iOS Simulators Use Instead</h2><p>iOS Simulator state lives under CoreSimulator, not DerivedData. The important simulator locations are separate:</p>
+<pre><code class="language-text">~/Library/Developer/CoreSimulator/Devices
+~/Library/Developer/CoreSimulator/Runtimes
+</code></pre>
+<p><code>Devices</code> contains simulated device state, including installed apps and app containers. <code>Runtimes</code> contains installed simulator operating system runtimes. Apple recommends managing simulator runtimes from Xcode Settings under Components, where Xcode shows installed components and storage that can be recovered.<sup><a href="#ref-1">[1]</a></sup></p>
+<p>If your goal is only to clear DerivedData, do not remove CoreSimulator folders manually. That is the boundary that keeps active simulators safe.</p>
+<h2>When Clearing DerivedData Can Interrupt Your Work</h2><p>Deleting DerivedData is low risk, but timing still matters. Avoid clearing it while Xcode is actively using it.</p>
+<p>Do not clear DerivedData during:</p>
+<ul>
+<li>An active Xcode build</li>
+<li>A running test suite</li>
+<li>A SwiftUI preview refresh</li>
+<li>A debugging session attached to Simulator</li>
+<li>A command-line <code>xcodebuild</code> job</li>
+<li>A package resolution or indexing pass you care about finishing</li>
+</ul>
+<p>If you delete build products while a build, test, or debug session is reading them, the likely failure is not permanent damage. It is usually a failed build, a stopped test run, a missing debug symbol, or a need to rebuild and relaunch.</p>
+<h2>Safest Manual Method</h2><p>The safest manual method is to close the active project, quit Xcode if you want to be conservative, and delete only the subfolders inside DerivedData.</p>
+<p>In Finder:</p>
+<ol>
+<li>Open Xcode.</li>
+<li>Choose Xcode &gt; Settings.</li>
+<li>Open the Locations section.</li>
+<li>Use the DerivedData location to reveal the folder in Finder.</li>
+<li>Move the project folders inside DerivedData to Trash.</li>
+</ol>
+<p>Using Trash is safer than permanent deletion because you keep a recovery window. Xcode will rebuild the necessary files the next time you build.</p>
+<h2>Safest Terminal Method</h2><p>If you prefer Terminal, delete the contents of DerivedData rather than typing a broader developer directory path:</p>
+<pre><code class="language-sh">rm -rf ~/Library/Developer/Xcode/DerivedData/*
+</code></pre>
+<p>Before running it, make sure your builds and tests are stopped. This command targets only DerivedData contents. It does not remove CoreSimulator devices or runtimes.</p>
+<p>If you want a more cautious version that moves the folder to Trash instead of permanently deleting it, use Finder or a Trash-first cleanup app. That approach is better when you are cleaning a work machine in the middle of an active project.</p>
+<h2>Check Whether Simulators Are Booted</h2><p>You do not have to shut down booted simulators just to clear DerivedData, but it helps to know what is running.</p>
+<p>Use:</p>
+<pre><code class="language-sh">xcrun simctl list devices booted
+</code></pre>
+<p>If this prints booted devices, leave CoreSimulator data untouched. If you are attached to one of those simulators from Xcode, stop the debug session before deleting DerivedData.</p>
+<p>Apple&#39;s simulator tooling is provided through Xcode command-line tools, including <code>simctl</code>, which Xcode installs as part of first-launch setup for command-line workflows.<sup><a href="#ref-1">[1]</a></sup></p>
+<h2>What Not to Delete While Simulators Are Active</h2><p>Avoid these paths while Simulator is booted unless you are intentionally resetting simulator state:</p>
+<pre><code class="language-text">~/Library/Developer/CoreSimulator/Devices
+~/Library/Developer/CoreSimulator/Runtimes
+</code></pre>
+<p>Deleting from <code>Devices</code> can erase simulated devices or app state. Deleting from <code>Runtimes</code> can remove platform runtimes that Xcode needs to launch a simulator. Manage runtimes through Xcode Settings &gt; Components instead of removing runtime files directly.<sup><a href="#ref-1">[1]</a></sup></p>
+<p>Also avoid broad commands such as:</p>
+<pre><code class="language-sh">rm -rf ~/Library/Developer/*
+</code></pre>
+<p>That command is too wide. It can touch Xcode archives, device support files, simulator state, and other developer data that you may still need.</p>
+<h2>Safe Cleanup Decision Table</h2><table>
+<thead>
+<tr>
+<th>Location</th>
+<th align="right">Safe during active simulators?</th>
+<th>What happens if removed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>~/Library/Developer/Xcode/DerivedData</code></td>
+<td align="right">Usually yes, after stopping builds and debug sessions</td>
+<td>Xcode rebuilds generated files</td>
+</tr>
+<tr>
+<td><code>~/Library/Developer/CoreSimulator/Devices</code></td>
+<td align="right">No</td>
+<td>Simulator devices and app state can be erased</td>
+</tr>
+<tr>
+<td><code>~/Library/Developer/CoreSimulator/Runtimes</code></td>
+<td align="right">No</td>
+<td>Simulator OS runtimes can be removed</td>
+</tr>
+<tr>
+<td><code>~/Library/Developer/Xcode/Archives</code></td>
+<td align="right">Be careful</td>
+<td>Old distributable archives may be lost</td>
+</tr>
+<tr>
+<td><code>~/Library/Developer/Xcode/iOS DeviceSupport</code></td>
+<td align="right">Usually safe if obsolete</td>
+<td>Device debugging support may need to be restored</td>
+</tr>
+</tbody></table>
+<p>The key distinction is whether the folder contains generated build output or simulator/device state. DerivedData is generated build output. CoreSimulator is simulator state.</p>
+<h2>Best Practice for Teams</h2><p>On a team Mac, CI machine, or shared development setup, do not run broad cleanup scripts against all developer data. Use a narrow cleanup policy:</p>
+<ul>
+<li>Clear DerivedData by project or by age.</li>
+<li>Keep current simulator runtimes installed.</li>
+<li>Use <code>xcrun simctl delete unavailable</code> only for unavailable simulator devices, not active ones.</li>
+<li>Keep recent Xcode archives until releases are safely shipped and reproducible.</li>
+<li>Prefer Trash-first cleanup for local developer workstations.</li>
+</ul>
+<p>This preserves active simulator workflows while still reclaiming the biggest low-risk storage category.</p>
+<h2>How DiskCleaner Handles This</h2><p>DiskCleaner separates Developer Data into reviewable items before anything moves. Xcode DerivedData appears as a cleanup candidate, while the app&#39;s safety model is review-first and Trash-first: you see files before removal, and cleaned items go to macOS Trash instead of being permanently deleted.</p>
+<p>That matters for Xcode cleanup because a mistake is usually caused by selecting the wrong developer folder, not by DerivedData itself. A review step makes the boundary visible before anything changes.</p>
+<h2>FAQ</h2><h3>Can I delete DerivedData while Simulator is open?</h3><p>Yes, but stop active Xcode builds, tests, previews, and debug sessions first. Simulator being open is not the main issue. Xcode actively reading or writing build products is the issue.</p>
+<h3>Will clearing DerivedData uninstall apps from the iOS Simulator?</h3><p>No. Simulator-installed apps and their containers live under CoreSimulator device data, not DerivedData. Clearing only <code>~/Library/Developer/Xcode/DerivedData</code> should not uninstall simulator apps.</p>
+<h3>Will clearing DerivedData erase simulator keychain or app documents?</h3><p>No, not if you only clear DerivedData. Simulator keychain and app data are part of simulator device state under CoreSimulator.</p>
+<h3>Why did my app fail to launch after deleting DerivedData?</h3><p>The app may have been running from build products that Xcode needed for the active debug session. Stop the session, rebuild the app, and run it again. That is a rebuild interruption, not usually permanent simulator damage.</p>
+<h3>Should I delete CoreSimulator to free more space?</h3><p>Not while simulators are active, and not with broad manual deletion. Manage runtimes through Xcode Settings &gt; Components, and remove unavailable devices with <code>xcrun simctl delete unavailable</code> when appropriate.</p>
+<h2>Bottom Line</h2><p>Clearing Xcode DerivedData is safe when you keep the target narrow. Stop active Xcode work, delete only <code>~/Library/Developer/Xcode/DerivedData</code>, and leave <code>~/Library/Developer/CoreSimulator</code> alone unless you explicitly want to reset or remove simulator data.</p>
+<p>That gives you the storage win without breaking active iOS simulators.</p>
+<div class="blog-references">
+<p class="blog-references-label">References</p>
+<ol class="references">
+  <li id="ref-1">Apple Inc. "Downloading and installing additional Xcode components." <em>Apple Developer Documentation</em>, accessed May 16, 2026. <a href="https://developer.apple.com/documentation/xcode/installing-additional-simulator-runtimes">developer.apple.com</a></li>
+  <li id="ref-2">Apple Inc. "Devices and Simulator." <em>Apple Developer Documentation</em>, accessed May 16, 2026. <a href="https://developer.apple.com/documentation/xcode/devices-and-simulator">developer.apple.com</a></li>
+  <li id="ref-3">Apple Inc. "Troubleshooting Simulator launch or animation issues." <em>Apple Developer Documentation</em>, accessed May 16, 2026. <a href="https://developer.apple.com/documentation/xcode/troubleshooting-simulator-launch-or-animation-issues">developer.apple.com</a></li>
+</ol>
+</div>
+
+      </div>
+    </article>
+  </div>
+</section></div>
+
+    <script>
+      // Delay non-critical third-party scripts to protect mobile LCP/TBT.
+      const ua = navigator.userAgent || "";
+      const isLabRun =
+        /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
+        navigator.webdriver === true;
+
+      window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };
+
+      const loadAffiliate = () => {
+        if (isLabRun || window.__affiliateLoaded) return;
+        window.__affiliateLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://lmsqueezy.com/affiliate.js";
+        s.defer = true;
+        document.head.appendChild(s);
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAffiliate, { timeout: 3000 });
+      } else {
+        window.addEventListener("load", () => window.setTimeout(loadAffiliate, 1500), { once: true });
+      }
+
+      if (isLabRun || navigator.doNotTrack === "1") {
+        window.__gaLoaded = true;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      document.addEventListener("click", event => {
+        const anchor = event.target.closest && event.target.closest("a[href]");
+        if (!anchor) return;
+
+        const url = new URL(anchor.getAttribute("href"), window.location.href);
+        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
+
+        const fileName = url.pathname.split("/").filter(Boolean).pop() || "download.dmg";
+        gtag("event", "file_download", {
+          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
+          file_extension: "dmg",
+          file_name: fileName,
+          link_text: anchor.textContent.trim(),
+          link_url: url.href,
+        });
+      }, { capture: true });
+
+      const loadGA = () => {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+        document.head.appendChild(s);
+
+        gtag("js", new Date());
+        gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+      };
+
+      ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true, passive: true })
+      );
+    </script>
+  </body>
+</html>

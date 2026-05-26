@@ -1,5 +1,5 @@
 # DiskCleaner
-> A macOS utility app that removes junk files, system logs, and clutter to free up disk space. Free trial includes 3 scans. $9.99 one-time purchase after — no subscription.
+> A released, Apple-notarized macOS utility app that removes junk files, system logs, and clutter to free up disk space. Free trial includes 3 scans. $9.99 one-time purchase after — no subscription.
 
 > Full reference: https://www.diskcleaner.pro/llms-full.txt
 
@@ -8,9 +8,13 @@
 - Platform: macOS 13 Ventura through macOS 26 Tahoe
 - Category: Utilities / Disk Cleaner / Mac Storage Optimizer
 - Price: Free trial (3 scans included); $9.99 one-time after (no subscription, covers up to 2 Macs)
-- Privacy: 100% local — no network calls, no data collection, no account required
+- Status: Released as a direct Mac download
+- Direct download: https://www.diskcleaner.pro/downloads/DiskCleaner-macOS.dmg
+- Distribution: Apple-notarized direct download; Mac App Store availability planned
+- Privacy: Cleanup runs locally — no telemetry, no data collection, no account required for scanning
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
+- Changelog: https://www.diskcleaner.pro/changelog
 - Support: customersupport@diskcleaner.pro
 
 ## What It Does
@@ -35,13 +39,18 @@ DiskCleaner scans junk on macOS and shows you every file before moving anything.
 ## Key Features
 - Zero-decision cleanup: every file is shown in a checklist before anything moves
 - Trash-first safety: all cleaned files go to macOS Trash — nothing is permanently deleted
-- Private and local: no internet connection required, no accounts, no telemetry
+- Private and local cleanup: no internet connection required for scanning, no accounts, no telemetry
 - Menu Bar App: quick disk usage overview accessible from your Mac's menu bar
 - RAM Optimizer: live Memory Pressure, Compressed Memory, Swap Used, and Page In/Out metrics with one-tap memory optimization
 - App Uninstaller: cleanly remove apps and all their associated leftover files, with drag-and-drop support
 - Large Files scanner: find and review oversized files taking up space across your disk
 - Per-file checkboxes: granular control — approve or skip individual files
 - Universal Binary: full native performance on both Apple Silicon and Intel Macs
+- In-app update path: user-initiated "Check for Updates" flow powered by Sparkle, with secure feed and signature verification support
+
+## Latest Changelog
+- DiskCleaner 26.1.1.0 — May 26, 2026: Sparkle updater integration, secure update feed, signature verification support, release delivery improvements, and general stability improvements.
+- Launch — May 25, 2026: DiskCleaner released as a direct Mac download with 3 free scans, one-time licensing, and a signed, notarized universal Mac build.
 
 ## Safety Philosophy
 DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Personal files, documents, photos, and passwords are never scanned or touched.
@@ -51,8 +60,8 @@ DiskCleaner never permanently deletes files. Every item moved goes to macOS Tras
 Q: Is DiskCleaner safe?
 A: Yes. No file is ever permanently deleted. Everything goes to macOS Trash and is recoverable. You review every file before anything moves.
 
-Q: Does DiskCleaner collect my data or connect to the internet?
-A: Never. It runs 100% locally. No network calls, no data collection, no account required. Your file names and disk contents never leave your machine.
+Q: Does DiskCleaner collect my data or make background network calls?
+A: No. Scanning and cleanup run locally. DiskCleaner does not collect telemetry, and your file names and disk contents never leave your machine. It does not make background network calls for scanning or cleaning. Update checks are user-initiated and happen only when the user chooses to check for updates.
 
 Q: What macOS versions are supported?
 A: macOS 13 Ventura through macOS 26 Tahoe. Universal Binary for Apple Silicon and Intel.
@@ -76,8 +85,10 @@ https://www.diskcleaner.pro/blog — guides on Mac storage, cache cleaning, syst
 - https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac — How to Free Up Storage on Mac — A Practical Guide That Actually Works
 - https://www.diskcleaner.pro/blog/how-to-reduce-system-data-on-mac — How to Reduce System Data on Mac — What It Actually Is and What You Can Safely Remove
 - https://www.diskcleaner.pro/blog/delete-xcode-derived-data — How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)
+- https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators — How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators
 
 ### Product Explainers
+- https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released — DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner
 - https://www.diskcleaner.pro/blog/how-diskcleaner-works — How DiskCleaner Works — And Why It Never Touches Files Without Asking
 - https://www.diskcleaner.pro/blog/why-trash-first-cleanup-matters — Why Cleanup Should Send Files to Trash — Not Delete Them Permanently
 

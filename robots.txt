@@ -65,7 +65,3 @@ User-agent: MistralAI-Robotparser
 Allow: /
 
 Sitemap: https://www.diskcleaner.pro/sitemap.xml
-
-# AI reference files
-# https://www.diskcleaner.pro/llms.txt
-# https://www.diskcleaner.pro/llms-full.txt

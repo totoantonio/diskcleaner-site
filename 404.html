@@ -71,6 +71,7 @@
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://www.diskcleaner.pro/#organization",
             "name": "DiskCleaner",
             "url": "https://www.diskcleaner.pro/",
             "logo": "https://www.diskcleaner.pro/favicon.png",
@@ -93,16 +94,18 @@
           },
           {
             "@type": "WebSite",
+            "@id": "https://www.diskcleaner.pro/#website",
             "name": "DiskCleaner",
             "url": "https://www.diskcleaner.pro/",
             "inLanguage": "en-US",
             "publisher": {
               "@type": "Organization",
-              "name": "DiskCleaner"
+              "@id": "https://www.diskcleaner.pro/#organization"
             }
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://www.diskcleaner.pro/#software",
             "name": "DiskCleaner",
             "operatingSystem": "macOS 13 Ventura or later",
             "operatingSystemVersion": "macOS 13 Ventura or later",
@@ -111,6 +114,10 @@
             "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
             "inLanguage": "en-US",
             "url": "https://www.diskcleaner.pro/",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            },
             "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
             "softwareVersion": "1.0",
@@ -252,9 +259,9 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-D816LEVv.js"></script>
+    <script type="module" crossorigin src="/assets/index-B1lAzSeb.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DwUYKl8T.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-B8OAP_Ki.css">
   </head>
 
   <body>
@@ -293,6 +300,23 @@
       function gtag() {
         dataLayer.push(arguments);
       }
+
+      document.addEventListener("click", event => {
+        const anchor = event.target.closest && event.target.closest("a[href]");
+        if (!anchor) return;
+
+        const url = new URL(anchor.getAttribute("href"), window.location.href);
+        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
+
+        const fileName = url.pathname.split("/").filter(Boolean).pop() || "download.dmg";
+        gtag("event", "file_download", {
+          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
+          file_extension: "dmg",
+          file_name: fileName,
+          link_text: anchor.textContent.trim(),
+          link_url: url.href,
+        });
+      }, { capture: true });
 
       const loadGA = () => {
         if (window.__gaLoaded) return;

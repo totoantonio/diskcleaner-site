@@ -1,6 +1,6 @@
 # DiskCleaner — Full Reference
 
-> A macOS utility app that removes junk files, system logs, and clutter to free up disk space. Free trial includes 3 scans. $9.99 one-time purchase after — no subscription.
+> A released, Apple-notarized macOS utility app that removes junk files, system logs, and clutter to free up disk space. Free trial includes 3 scans. $9.99 one-time purchase after — no subscription.
 
 ## Product
 
@@ -9,9 +9,13 @@
 - Category: Utilities / Disk Cleaner / Mac Storage Optimizer
 - Trial: 3 free scans, no account required
 - Price: $9.99 one-time after trial (no subscription, covers up to 2 Macs, includes all future updates)
-- Privacy: 100% local — no network calls, no data collection, no account required
+- Status: Released as a direct Mac download
+- Direct download: https://www.diskcleaner.pro/downloads/DiskCleaner-macOS.dmg
+- Distribution: Apple-notarized direct download; Mac App Store availability planned
+- Privacy: Cleanup runs locally — no telemetry, no data collection, no account required for scanning
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
+- Changelog: https://www.diskcleaner.pro/changelog
 - Support: customersupport@diskcleaner.pro
 - Help: https://www.diskcleaner.pro/help
 
@@ -51,6 +55,24 @@ Surfaces oversized files across the entire disk. Displays file name, path, size,
 ### Menu Bar App
 Quick disk usage overview accessible from the Mac's menu bar at all times. Shows free space, triggers Quick Scan, and displays update badges without opening the main app.
 
+### In-App Update Checks
+DiskCleaner 26.1.1.0 adds Sparkle updater integration for user-initiated in-app update checks, with a secure update feed and signature verification support. Users can still download the latest DMG directly from the website.
+
+## Latest Changelog
+
+### DiskCleaner 26.1.1.0 — May 26, 2026
+- Added Sparkle updater integration for in-app update checks
+- Configured secure update feed and signature verification support
+- Improved release delivery pipeline for smoother update rollout
+- General stability and reliability improvements
+- Installation: Open the DMG, drag DiskCleaner to Applications, then launch from Applications
+- Security: signed, notarized, and stapled
+
+### Launch — May 25, 2026
+- DiskCleaner released as a direct Mac download
+- Includes 3 free scans, then a $9.99 one-time license for up to 2 Macs
+- Apple-notarized universal Mac build for Apple Silicon and Intel
+
 ## Safety Model
 
 DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Personal files, documents, photos, passwords, and iCloud data are never scanned or touched. Over 20 folder categories are explicitly protected.
@@ -88,7 +110,7 @@ DiskCleaner requests Full Disk Access and Home Folder access from macOS to enabl
 - No internet connection required for scanning or cleaning
 - No analytics, tracking, or telemetry in the app
 - No account registration
-- License activation and update checks are the only outbound network activity
+- No background network calls for scanning or cleaning. Update checks are user-initiated and happen only when the user chooses to check for updates.
 - File names, paths, and disk contents never leave the machine
 
 ## Frequently Asked Questions
@@ -99,8 +121,8 @@ A: Yes. No file is ever permanently deleted. Everything goes to macOS Trash and 
 Q: Does DiskCleaner have a free trial?
 A: Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs including all future updates — no subscription.
 
-Q: Does DiskCleaner collect my data or connect to the internet?
-A: Never. It runs 100% locally. No network calls, no data collection, no account required. Your file names and disk contents never leave your machine.
+Q: Does DiskCleaner collect my data or make background network calls?
+A: No. Scanning and cleanup run locally. DiskCleaner does not collect telemetry, and your file names and disk contents never leave your machine. It does not make background network calls for scanning or cleaning. Update checks are user-initiated and happen only when the user chooses to check for updates.
 
 Q: What macOS versions are supported?
 A: macOS 13 Ventura through macOS 26 Tahoe. Universal Binary for Apple Silicon and Intel.
@@ -128,6 +150,9 @@ A: Yes. If purchased through the Mac App Store, Apple's standard 14-day refund p
 Full guides on Mac storage, cache cleaning, system data, and disk optimization:
 
 ### Product Explainers
+- https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released — DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner
+  Release article covering the current direct download, Apple notarization, review-first cleanup, Trash-first safety, privacy model, current feature set, and user-initiated in-app update checks.
+
 - https://www.diskcleaner.pro/blog/how-diskcleaner-works — How DiskCleaner Works — And Why It Never Touches Files Without Asking
   Overview of the scan pipeline, checklist model, Trash-first safety, and what each category covers.
 
@@ -159,6 +184,9 @@ Full guides on Mac storage, cache cleaning, system data, and disk optimization:
 
 - https://www.diskcleaner.pro/blog/delete-xcode-derived-data — How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)
   Explains what DerivedData is, why it grows to 20–50 GB or more, how to delete it safely (manually and with DiskCleaner), and why it comes back after deletion.
+
+- https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators — How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators
+  Simulator-safe guide explaining how to clear only Xcode DerivedData, what to stop before cleanup, which CoreSimulator folders not to touch, and how to avoid interrupting active iOS simulator workflows.
 
 ### Comparisons and Alternatives
 - https://www.diskcleaner.pro/blog/cleanmymac-alternative — The Best CleanMyMac Alternative in 2026 — Honest Comparison
