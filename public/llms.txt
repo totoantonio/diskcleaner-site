@@ -60,7 +60,7 @@ DiskCleaner scans 16+ cleanup categories and targeted locations on macOS, then s
 - Launch — May 25, 2026: DiskCleaner released as a direct Mac download with 3 free scans, one-time licensing, and a signed, notarized universal Mac build.
 
 ## Safety Philosophy
-DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Protected paths are blocked from deletion, and risky or personal findings are never pre-selected.
+DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Protected paths are blocked from deletion. iCloud-safe scanning skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. Risky or personal findings are never pre-selected.
 
 ## Frequently Asked Questions
 

@@ -82,7 +82,7 @@ DiskCleaner uses Sparkle for background update delivery, with a secure update fe
 
 ## Safety Model
 
-DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Protected system paths, iCloud sync folders, and app data are blocked from deletion. Risky and personal findings are never pre-selected.
+DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Protected system paths, iCloud sync folders, and app data are blocked from deletion. iCloud-safe scanning skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. Risky and personal findings are never pre-selected.
 
 ## Risk Classification
 

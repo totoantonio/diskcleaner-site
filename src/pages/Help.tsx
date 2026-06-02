@@ -197,6 +197,7 @@ export default function Help() {
             <h3>What DiskCleaner protects by default</h3>
             <ul>
               <li>System files, iCloud sync folders, and protected app data are blocked from deletion.</li>
+              <li><strong>iCloud-safe scanning</strong> — DiskCleaner skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs.</li>
               <li>Personal documents, photos, videos, and music are never automatically selected as junk. Large File Finder may surface files over 50 MB for your review.</li>
               <li>Keychain data or passwords</li>
               <li>Riskier findings such as iOS backups and local Time Machine snapshots are never pre-selected.</li>

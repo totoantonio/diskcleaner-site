@@ -156,7 +156,7 @@ const getPrivacySvg = (dark: boolean) => {
   ${sep(274)}
   <text x="28" y="294" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Reads file names and sizes only — never file contents</text>${check(289)}
   ${sep(308)}
-  <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">Protected paths — passwords, iCloud,</tspan><tspan x="28" dy="18">system files blocked from deletion</tspan></text>${check(333)}
+  <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">iCloud-safe scanning — skips placeholders</tspan><tspan x="28" dy="18">and sync daemon caches</tspan></text>${check(333)}
   </g>
 </svg>`
 }
@@ -179,7 +179,7 @@ const getHighlightSlides = (dark: boolean) => [
   {
     eyebrow: "Privacy",
     title: "Privacy, by Design.",
-    body: "No background network activity while scanning or cleaning. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
+    body: "No background network activity while scanning or cleaning. No analytics. No account. iCloud placeholders and sync daemon caches stay out of the scan path.",
     svgHtml: getPrivacySvg(dark) as string,
     accent: dark ? "#0a1a0e" : "#f3f8f4",
   },
@@ -482,8 +482,8 @@ function Features({ SURFACE }: { SURFACE: string }) {
               {
                 tag: "Safety",
                 ico: <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 24h44" /><path d="M25 24v-7h22v7" /><path d="M20 31h32" /><path d="M21 31l3 26a6 6 0 0 0 6 4h12a6 6 0 0 0 6-4l3-26" /><path d="M32 39v12" /><path d="M40 39v12" /></svg>,
-                ttl: "Everything Goes to Trash. Always.",
-                dsc: "Every file moves to Trash, never permanent deletion. Risky items such as iOS backups and Time Machine snapshots are flagged and never pre-selected.",
+                ttl: "Won't disrupt iCloud sync.",
+                dsc: "Skips iCloud placeholder files and daemon caches so your sync keeps running uninterrupted. Risky items are flagged and never pre-selected.",
               },
               {
                 tag: "Scanning",
@@ -881,7 +881,7 @@ const WhatItFinds = lazy(async () => {
               </div>
               <div>
                 <div className="text-[17px] font-bold text-[var(--blue)]">Always safe</div>
-                <div className="mt-1 text-[14px] leading-[1.6] text-[var(--muted)]">Protected paths stay blocked. Risky and personal findings are never pre-selected. Every removal goes to Trash, not permanent deletion.</div>
+                <div className="mt-1 text-[14px] leading-[1.6] text-[var(--muted)]">Protected paths stay blocked. iCloud placeholder files and sync daemon caches are skipped. Risky and personal findings are never pre-selected. Every removal goes to Trash, not permanent deletion.</div>
               </div>
             </div>
           </div>

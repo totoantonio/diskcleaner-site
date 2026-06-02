@@ -29,7 +29,7 @@ export default function Trust() {
           "name": "DiskCleaner Trust Center",
           "url": url,
           "description": description,
-          "dateModified": "2026-06-01",
+          "dateModified": "2026-06-02",
           "about": {
             "@type": "SoftwareApplication",
             "@id": "https://www.diskcleaner.pro/#software",
@@ -152,7 +152,7 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
             <h2>6. What DiskCleaner does not touch</h2>
             <p>
               Trust is not only about what a cleaner removes. It is also about what it refuses to touch.
-              DiskCleaner blocks protected paths from deletion, never pre-selects risky or personal findings, and keeps passwords and protected system locations out of the cleanup flow. That boundary matters just as much as the cleanup features themselves.
+              DiskCleaner blocks protected paths from deletion, never pre-selects risky or personal findings, and keeps passwords and protected system locations out of the cleanup flow. Its iCloud-safe scanning also skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. That boundary matters just as much as the cleanup features themselves.
             </p>
 
             <h2>7. Technical security documentation</h2>
