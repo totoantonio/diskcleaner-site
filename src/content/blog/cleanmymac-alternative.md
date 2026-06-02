@@ -50,16 +50,16 @@ It's worth being clear about what you're optimizing for before comparing apps.
 
 ## DiskCleaner — Best for Transparency
 
-**Price:** Free (3 scans) · $9.99 one-time
+**Price:** Free core cleaning · $9.99 one-time Premium unlock
 **Approach:** Shows every file before anything moves. Per-file checkboxes. Everything goes to Trash — no permanent deletions.
 
-This is the main differentiator: where CleanMyMac cleans first and shows you a number, DiskCleaner shows you every individual file across all 7 categories before you approve anything.
+This is the main differentiator: where CleanMyMac cleans first and shows you a number, DiskCleaner shows you every individual file across 16+ scan categories and targeted locations before you approve anything.
 
 **What it does well:**
 - Full scan-review-clean workflow — nothing moves until you say so
 - $9.99 one-time covers up to 2 Macs, all future updates
 - Local cleanup — no telemetry, no account, no data collection
-- Finds Xcode DerivedData, Simulators, CocoaPods, npm — developers typically recover the most
+- Finds Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads — developers typically recover the most
 - Includes an App Uninstaller that finds leftovers across 9 Library locations
 - Lightweight: native Swift, under 5MB
 

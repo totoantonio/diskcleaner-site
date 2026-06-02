@@ -59,14 +59,9 @@ The biggest recovery often comes from tooling artifacts, not generic temp files.
 DiskCleaner is particularly strong for developer Macs because it specifically surfaces:
 
 - Xcode DerivedData
-- Archives
-- Device Support
-- simulators
-- SwiftPM
-- CocoaPods
-- npm
-- JetBrains cache
-- VS Code cache
+- CoreSimulator files
+- old iOS DeviceSupport files
+- stale Homebrew downloads
 
 That matters because these categories are often the highest-yield cleanup wins on a dev machine.
 
@@ -74,7 +69,7 @@ It also helps that:
 
 - every file is shown before cleanup
 - items go to Trash instead of permanent deletion
-- Deep Scan expands into broader review areas when you need a fuller audit
+- Premium expands into broader review areas when you need a fuller audit
 
 ## What to Be Careful With
 

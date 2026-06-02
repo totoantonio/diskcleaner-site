@@ -18,7 +18,7 @@ const sections = [
 export default function Help() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/help"
-    const description = "DiskCleaner help center covering Quick Scan, Deep Scan, RAM Optimizer, App Uninstaller, safety labels, and common Mac cleaning questions."
+    const description = "DiskCleaner help center covering 16+ scan categories, free core cleaning, Premium tools, safety labels, and common Mac cleaning questions."
 
     suppressFaqPageSchema()
 
@@ -39,7 +39,7 @@ export default function Help() {
               "name": "What does DiskCleaner clean?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner scans seven categories in Quick Scan: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers from uninstalled apps. Deep Scan adds Downloads, iOS backups, Mail attachments, and external drive review."
+                "text": "DiskCleaner scans 16+ categories and targeted cleanup locations. Free core cleaning includes App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium adds browser cache, developer data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers."
               }
             },
             {
@@ -52,10 +52,10 @@ export default function Help() {
             },
             {
               "@type": "Question",
-              "name": "What is the difference between Quick Scan and Deep Scan?",
+              "name": "What is included for free and what does Premium unlock?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Quick Scan is the fast everyday pass covering the most common clutter categories. Deep Scan expands into larger, more review-sensitive storage areas including Downloads, iOS backups, Mail attachments, and external drives. The best workflow is to run Quick Scan regularly and use Deep Scan when storage pressure is real or you need a broader audit."
+                "text": "Free core cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 16+ category scanner and advanced cleanup areas. Riskier findings such as iOS backups and local Time Machine snapshots are flagged for review and are never pre-selected."
               }
             },
             {
@@ -87,7 +87,7 @@ export default function Help() {
               "name": "How much does DiskCleaner cost?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner includes 3 free scans. After that, Pro unlocks with a one-time license of $9.99 for up to 2 Macs, with all future updates included. No subscription required."
+                "text": "DiskCleaner includes free core cleaning with no scan limit. Premium unlocks all advanced scan categories with a one-time license of $9.99 for up to 2 Macs, with all future updates included. No subscription required."
               }
             },
             {
@@ -131,7 +131,7 @@ export default function Help() {
             Help Center
           </span>
           <h1 className="article-title text-balance">DiskCleaner Help</h1>
-          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what Quick Scan and Deep Scan cover, how review labels work, and how to use the latest cleanup tools safely.</p>
+          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what the 16+ scan categories cover, how review labels work, and how to use the latest cleanup tools safely.</p>
         </div>
 
         {/* Table of Contents */}
@@ -160,24 +160,30 @@ export default function Help() {
             <h2 id="what-gets-cleaned">What Gets Cleaned — and What's Safe</h2>
             <p>DiskCleaner is built around a review-first, Trash-first workflow. It focuses on clutter macOS and apps regenerate automatically, then marks larger or riskier areas for closer review before anything moves.</p>
 
-            <h3>Quick Scan coverage</h3>
+            <h3>Free core cleaning</h3>
             <ul>
-              <li><strong>App Cache</strong> — Temporary app cache files that rebuild as needed.</li>
-              <li><strong>Browser Cache</strong> — Cache data from supported browsers and profiles. Safari cache is measured but not cleared. Passwords, bookmarks, and history stay untouched.</li>
+              <li><strong>App Cache</strong> — Temporary app cache files that rebuild as needed, including the regenerating QuickLook thumbnail cache.</li>
               <li><strong>Screenshots</strong> — Old screenshots that tend to accumulate unnoticed on long-used Macs.</li>
-              <li><strong>Trash</strong> — Files you already threw away that are still consuming space.</li>
               <li><strong>System Logs</strong> — Diagnostic and crash logs that are useful temporarily but rarely worth keeping forever.</li>
-              <li><strong>Developer Data</strong> — Xcode DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches. If that category is the main culprit, start with <Link to="/blog/delete-xcode-derived-data">our Xcode DerivedData cleanup guide</Link>.</li>
-              <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed. For broader comparisons, see <Link to="/blog/best-app-uninstaller-for-mac">our best app uninstaller for Mac guide</Link>.</li>
+              <li><strong>.DS_Store Files</strong> — Hidden Finder metadata files scattered across your home folder.</li>
+              <li><strong>macOS Trash</strong> — Files you already threw away that are still consuming space.</li>
             </ul>
 
-            <h3>Deep Scan and expanded review areas</h3>
-            <p>Deep Scan goes beyond the everyday clutter pass and surfaces larger storage categories that often need more deliberate review.</p>
+            <h3>Premium cleaning and expanded review areas</h3>
+            <p>Premium unlocks the full scanner, including larger storage categories and areas that often need more deliberate review.</p>
             <ul>
+              <li><strong>Browser Cache</strong> — Cache data from Chrome, Firefox, Edge, Brave, Arc, and Opera profiles. Passwords, bookmarks, and history stay untouched.</li>
+              <li><strong>Developer Data</strong> — Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files. If that category is the main culprit, start with <Link to="/blog/delete-xcode-derived-data">our Xcode DerivedData cleanup guide</Link>.</li>
+              <li><strong>Homebrew Cache</strong> — Stale Homebrew downloads.</li>
+              <li><strong>Movies</strong> — Offline downloads and other large files in your Movies folder.</li>
               <li><strong>Downloads</strong> — Useful for catching forgotten installers, archives, and exported files.</li>
+              <li><strong>Large Files</strong> — Files over 50 MB hiding across your home folder.</li>
               <li><strong>iOS backups</strong> — Old device backups that can consume tens of gigabytes.</li>
-              <li><strong>Mail Attachments</strong> — Attachment caches, including expanded support for Outlook, Spark, and Canary locations.</li>
-              <li><strong>External drive review</strong> — Additional clutter visibility beyond the startup disk.</li>
+              <li><strong>Mail Attachments</strong> — Apple Mail attachment cache.</li>
+              <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed. For broader comparisons, see <Link to="/blog/best-app-uninstaller-for-mac">our best app uninstaller for Mac guide</Link>.</li>
+              <li><strong>External Storage</strong> — Junk on connected USB drives and external hard drives.</li>
+              <li><strong>Time Machine Snapshots</strong> — Local APFS snapshots, always presented for careful review.</li>
+              <li><strong>Old Installers</strong> — DMG and PKG installers in Downloads and Desktop.</li>
               <li><strong>Caution-labeled items</strong> — Results that deserve a second look before cleanup.</li>
             </ul>
 
@@ -188,13 +194,12 @@ export default function Help() {
               <li>It does not clear personal content like passwords, bookmarks, or saved logins.</li>
             </ul>
 
-            <h3>What DiskCleaner never targets as cleanup junk</h3>
+            <h3>What DiskCleaner protects by default</h3>
             <ul>
-              <li>Documents, spreadsheets, or any file in your home folder outside of <code>Library/</code></li>
-              <li>Photos, videos, or music libraries</li>
-              <li>App preferences and settings (<code>~/Library/Preferences</code>)</li>
+              <li>System files, iCloud sync folders, and protected app data are blocked from deletion.</li>
+              <li>Personal documents, photos, videos, and music are never automatically selected as junk. Large File Finder may surface files over 50 MB for your review.</li>
               <li>Keychain data or passwords</li>
-              <li>iCloud Drive files</li>
+              <li>Riskier findings such as iOS backups and local Time Machine snapshots are never pre-selected.</li>
             </ul>
 
             <blockquote>
@@ -208,15 +213,15 @@ export default function Help() {
 
             <h3>Running your first clean</h3>
             <ol>
-              <li><strong>Open DiskCleaner</strong> and start with <strong>Quick Scan</strong> for the most common clutter categories.</li>
+              <li><strong>Open DiskCleaner</strong> and start a scan for the most common clutter categories.</li>
               <li>Review the results list. DiskCleaner shows categories, file sizes, and per-file checkboxes before anything moves.</li>
-              <li>If you want deeper coverage, switch to <strong>Deep Scan</strong> to include larger review areas such as Downloads, iOS backups, Mail attachments, and external-drive findings.</li>
+              <li>If you use Premium, review advanced areas such as Downloads, iOS backups, Mail attachments, external storage, and local Time Machine snapshots.</li>
               <li>Pay attention to notes, legends, and caution labels. Those are there to slow you down on categories where context matters.</li>
               <li>Click <strong>Clean</strong> when you are satisfied with the selection. Files move to Trash, not permanent deletion.</li>
             </ol>
 
-            <h3>Understanding Quick Scan vs Deep Scan</h3>
-            <p><strong>Quick Scan</strong> is the fast everyday pass. <strong>Deep Scan</strong> expands into larger, more review-sensitive storage areas. The best default workflow is to run Quick Scan regularly and use Deep Scan when storage pressure is real or you need a broader audit.</p>
+            <h3>Understanding free core cleaning vs Premium</h3>
+            <p><strong>Free core cleaning</strong> covers everyday clutter without a scan limit. <strong>Premium</strong> unlocks the full 16+ category scanner and advanced review areas. Riskier findings are flagged with an explanation and are never pre-selected.</p>
 
             <h3>Menu bar utilities</h3>
             <p>DiskCleaner includes menu bar utilities so disk state is always close at hand. The menu bar view is useful for quick visibility into available space and for returning to the app quickly when storage pressure starts building.</p>
@@ -227,8 +232,8 @@ export default function Help() {
             <h3>Using the Uninstaller</h3>
             <p>Open <strong>App Uninstaller</strong> when dragging an app to Trash is not enough. DiskCleaner helps you review the app bundle plus leftover support files before removal, and the latest uninstaller update improves layout, drag-and-drop flow, and installed-app selection.</p>
 
-            <h3>Free scans and Pro unlock</h3>
-            <p>DiskCleaner includes <strong>3 free scans</strong>. After that, Pro unlocks with a license key. The current direct-license messaging in the app and site is <strong>$9.99 one-time for up to 2 Macs</strong>, with future updates included.</p>
+            <h3>Free core cleaning and Premium unlock</h3>
+            <p>DiskCleaner includes <strong>free core cleaning</strong> for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full scanner with a <strong>$9.99 one-time license for up to 2 Macs</strong>, with future updates included.</p>
 
             <hr />
 
@@ -253,8 +258,8 @@ export default function Help() {
             <h3>The Uninstaller doesn't show what I expected</h3>
             <p>Use the improved installed-app picker first, then try the drag-and-drop uninstall flow if needed. Some apps may have fewer matchable leftovers than others, and App Store-distributed apps can behave differently because of macOS sandboxing.</p>
 
-            <h3>Deep Scan found categories I want to keep</h3>
-            <p>That is exactly what the review model is for. Deep Scan is broader by design, and some categories are intentionally marked for second-look review. Uncheck anything you want to keep and clean only the categories you are confident about.</p>
+            <h3>The scan found categories I want to keep</h3>
+            <p>That is exactly what the review model is for. Some categories are intentionally marked for second-look review. Uncheck anything you want to keep and clean only the categories you are confident about.</p>
 
             <h3>Still need help?</h3>
             <p>Reach out via the <strong>Support</strong> link in the footer — we typically respond within one business day.</p>

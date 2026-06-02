@@ -18,11 +18,11 @@ Too many cleaner apps ask you to trust a black box. We didn't want that. If a fi
 
 When you click **Scan**, DiskCleaner checks the places where storage usually leaks on macOS:<sup><a href="#ref-1">[1]</a></sup>
 
-- **App Cache**
-- **Browser Cache** (Safari, Chrome, Firefox, Edge, Arc, and others)<sup><a href="#ref-2">[2]</a></sup>
-- **Screenshots**
-- **Trash**
-- **Developer Data** (including Xcode DerivedData and package caches)<sup><a href="#ref-3">[3]</a></sup>
+- **App Cache**, including the regenerating QuickLook thumbnail cache
+- **Browser Cache** for Chrome, Firefox, Edge, Brave, Arc, and Opera profiles<sup><a href="#ref-2">[2]</a></sup>
+- **Screenshots**, **System Logs**, **.DS_Store files**, and **macOS Trash**
+- **Developer Data** including Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files<sup><a href="#ref-3">[3]</a></sup>
+- **Homebrew downloads**, **Large Files**, **iOS backups**, **Apple Mail attachments**, **App Leftovers**, **external storage**, **local Time Machine snapshots**, and **old installers**
 
 The key detail is transparency: category sizes are shown before cleanup, and categories can be expanded so you can review individual items.
 

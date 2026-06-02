@@ -152,7 +152,7 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
             <h2>6. What DiskCleaner does not touch</h2>
             <p>
               Trust is not only about what a cleaner removes. It is also about what it refuses to touch.
-              DiskCleaner is designed to stay away from personal documents, passwords, and protected system locations, and that boundary matters just as much as the cleanup features themselves.
+              DiskCleaner blocks protected paths from deletion, never pre-selects risky or personal findings, and keeps passwords and protected system locations out of the cleanup flow. That boundary matters just as much as the cleanup features themselves.
             </p>
 
             <h2>7. Technical security documentation</h2>

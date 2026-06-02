@@ -52,7 +52,7 @@ DiskCleaner is positioned well for this search because it combines:
 - **$9.99 one-time pricing**
 - **up to 2 Macs**
 - **future updates included**
-- **Quick Scan and Deep Scan**
+- **16+ cleanup categories and targeted locations**
 - **Trash-first cleanup**
 - **App Uninstaller**
 - **developer-data coverage**

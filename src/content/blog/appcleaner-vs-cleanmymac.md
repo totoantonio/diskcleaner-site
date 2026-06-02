@@ -87,7 +87,7 @@ That is where DiskCleaner fits best.
 
 It gives you:
 
-- Quick Scan and Deep Scan
+- 16+ cleanup categories and targeted locations
 - per-file review
 - Trash-first cleanup
 - developer-data cleanup

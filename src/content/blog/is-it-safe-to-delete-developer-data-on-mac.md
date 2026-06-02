@@ -96,7 +96,7 @@ The standard advice is to clean derived data from inside Xcode (Product → Clea
 
 ## A More Reliable Approach
 
-DiskCleaner scans Developer Data as a dedicated category — covering Xcode derived data, simulator images, device support files, CocoaPods cache, and npm cache. You see a full list with file sizes before anything moves, and everything goes to Trash (not permanent deletion), so you can recover anything you removed by mistake.
+DiskCleaner scans Developer Data as a dedicated category — covering Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files. Homebrew downloads appear in their own cache category. You see a full list with file sizes before anything moves, and everything goes to Trash (not permanent deletion), so you can recover anything you removed by mistake.
 
 ## Final Take
 

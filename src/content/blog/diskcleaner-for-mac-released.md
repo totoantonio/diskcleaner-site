@@ -1,12 +1,12 @@
 ---
 title: "DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner"
-description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and user-initiated in-app update checks."
+description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
 date: "2026-05-25"
-updatedAt: "2026-05-26"
+updatedAt: "2026-06-02"
 slug: "diskcleaner-for-mac-released"
 category: "Product Update"
 author: "Thomas A."
-excerpt: "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and updates can be checked from inside the app."
+excerpt: "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated."
 featured: true
 ---
 
@@ -22,12 +22,12 @@ That matters because the Mac cleaner category has a trust problem. Many tools le
 
 The current release includes the core DiskCleaner workflow:
 
-- Quick Scan for common clutter categories
-- Deep Scan for larger storage areas
+- 16+ cleanup categories and targeted locations
+- Free core cleaning with a one-time Premium unlock for advanced categories
 - App Cache and Browser Cache review
 - Screenshots and Trash visibility
 - System Logs cleanup
-- Developer Data cleanup for Xcode and package caches
+- Developer Data cleanup for Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files
 - App Leftovers review
 - Large Files discovery
 - App Uninstaller with leftover-file detection
@@ -69,7 +69,7 @@ The practical privacy model is straightforward:
 - no cleanup action without review
 - no permanent deletion as the default path
 
-DiskCleaner does not make background network calls for scanning or cleaning. Update checks are user-initiated: the user chooses when to ask the app to check whether a newer version is available. Cleanup itself remains local.
+DiskCleaner does not make background network calls for scanning or cleaning. Sparkle handles background app updates without transmitting scan results or file data. Cleanup itself remains local.
 
 ## Built for Real Mac Storage Problems
 
@@ -77,7 +77,7 @@ DiskCleaner is not limited to generic cache folders. It targets the places that 
 
 For everyday users, that means browser cache, app cache, screenshots, old downloads, logs, Trash contents, large files, and app leftovers.
 
-For developers, it means Xcode DerivedData, simulator-related storage, CocoaPods, npm, Swift package artifacts, build products, and other project tooling caches. Developer Data can quietly become one of the largest categories on a Mac, especially for people who use Xcode, simulators, package managers, and multiple projects.
+For developers, it means Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads. Developer Data can quietly become one of the largest categories on a Mac, especially for people who use Xcode and multiple simulators.
 
 The goal is not to pretend every byte is useless. The goal is to make the storage visible enough that you can decide what is worth keeping.
 
@@ -110,11 +110,11 @@ Planned future improvements include:
 - smoother licensing and activation flow
 - continued refinement of developer cleanup
 
-DiskCleaner 26.1.1.0 adds Sparkle updater integration for user-initiated in-app update checks. Users can choose **Check for Updates** inside the app, with update feed and signature verification support for safer direct-distribution updates. The latest DMG remains available from the website for manual installation.
+DiskCleaner uses Sparkle for background app updates, with update feed and signature verification support for safer direct-distribution updates. The latest DMG remains available from the website for manual installation.
 
 That matters for a utility app because maintenance releases should be boring. If a fix improves scanning, notarization packaging, compatibility, or app behavior, the user should be able to request it through a standard update flow instead of repeating the first-install process.
 
-For direct-distributed Mac apps, an updater must be handled carefully. A proper update flow should verify update signatures, respect user consent, and preserve the same safety posture as the app itself. Sparkle, a long-running macOS update framework, documents support for signed update archives and appcast-driven updates for direct-distributed Mac apps.<sup><a href="#ref-3">[3]</a></sup> DiskCleaner's update flow follows the same principle: updates should be easier, user-initiated, and not less trustworthy.
+For direct-distributed Mac apps, an updater must be handled carefully. A proper update flow should verify update signatures and preserve the same safety posture as the app itself. Sparkle, a long-running macOS update framework, documents support for signed update archives and appcast-driven updates for direct-distributed Mac apps.<sup><a href="#ref-3">[3]</a></sup> DiskCleaner's update flow follows the same principle: updates should be easier and not less trustworthy.
 
 ## Why the First Release Still Matters
 
@@ -132,7 +132,7 @@ DiskCleaner is available now as a direct Mac download:
 
 <div class="blog-cta-block">
   <p class="blog-cta-block-title">Download DiskCleaner for Mac</p>
-  <p class="blog-cta-block-sub">A safe, transparent, Apple-notarized Mac cleaner with 3 free scans and no subscription.</p>
+  <p class="blog-cta-block-sub">A safe, transparent, Apple-notarized Mac cleaner with free core cleaning and no subscription.</p>
   <a href="/downloads/DiskCleaner-macOS.dmg" download class="blog-cta-btn" data-analytics-location="release-article">
     Download for macOS
   </a>
@@ -157,13 +157,13 @@ No. DiskCleaner uses a Trash-first cleanup model. Selected files are moved to ma
 
 Yes. The app is built around review-first cleanup. You can review categories and individual files before anything moves.
 
-### Will DiskCleaner add in-app updates?
+### Does DiskCleaner support automatic updates?
 
-Yes. DiskCleaner 26.1.1.0 adds a user-initiated **Check for Updates** flow powered by Sparkle, with secure update feed and signature verification support.
+Yes. DiskCleaner uses Sparkle for background app updates, with secure update feed and signature verification support.
 
 ### Is DiskCleaner a subscription?
 
-No. DiskCleaner includes 3 free scans, then unlocks with a one-time license for up to 2 Macs.
+No. DiskCleaner includes free core cleaning, then unlocks Premium categories with a one-time license for up to 2 Macs.
 
 ## Bottom Line
 

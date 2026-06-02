@@ -55,10 +55,10 @@ That usually favors tools with:
 
 DiskCleaner is built for the narrower use case:
 
-- **Quick Scan and Deep Scan** for storage-heavy clutter
+- **16+ cleanup categories and targeted locations** for storage-heavy clutter
 - **per-file checkboxes** before anything moves
 - **Trash-first cleanup** rather than permanent deletion
-- **developer-data coverage** for Xcode, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code cache
+- **developer-data coverage** for Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads
 - **App Uninstaller** for leftovers that basic app deletion leaves behind
 - **one-time license** instead of a subscription
 

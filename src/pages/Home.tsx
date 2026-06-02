@@ -95,22 +95,22 @@ const getScanPerfSvg = (dark: boolean) => {
   <g transform="translate(0,12)">
   ${sectionBg(48)}
   <text x="28" y="64" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">SCAN TIMES</text>
-  <text x="28" y="88" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Quick Scan — all 7 categories</text>
+  <text x="28" y="88" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Smart Scan — 16+ cleanup categories</text>
   <text x="452" y="88" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
   <rect x="28" y="98" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
   <rect x="28" y="98" width="403" height="5" rx="2.5" fill="#0071E3"/>
   ${sep(118)}
-  <text x="28" y="138" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — small DerivedData</text>
+  <text x="28" y="138" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Premium scan — small DerivedData</text>
   <text x="452" y="138" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">10–20s</text>
   <rect x="28" y="148" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
   <rect x="28" y="148" width="318" height="5" rx="2.5" fill="#0071E3"/>
   ${sep(168)}
-  <text x="28" y="188" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — large DerivedData (~20 GB)</text>
+  <text x="28" y="188" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Premium scan — large DerivedData (~20 GB)</text>
   <text x="452" y="188" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">20–45s</text>
   <rect x="28" y="198" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
   <rect x="28" y="198" width="204" height="5" rx="2.5" fill="#0071E3"/>
   ${sep(218)}
-  <text x="28" y="238" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Deep Scan — very large caches (50 GB+)</text>
+  <text x="28" y="238" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Premium scan — very large caches (50 GB+)</text>
   <text x="452" y="238" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">45–90s</text>
   <rect x="28" y="248" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
   <rect x="28" y="248" width="93" height="5" rx="2.5" fill="#0071E3"/>
@@ -148,15 +148,15 @@ const getPrivacySvg = (dark: boolean) => {
   ${sep(138)}
   <text x="28" y="158" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No account required — ever</text>${check(153)}
   ${sep(172)}
-  <text x="28" y="192" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Manual update checks only when you ask</text>${check(187)}
+  <text x="28" y="192" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Sparkle auto-updates in the background</text>${check(187)}
   ${sep(206)}
-  <text x="28" y="226" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No background processes when the app is closed</text>${check(221)}
+  <text x="28" y="226" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">No background scanning or cleaning processes</text>${check(221)}
   ${sep(240)}
   <text x="28" y="260" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Requires Full Disk Access — explicitly granted by you</text>${check(255)}
   ${sep(274)}
   <text x="28" y="294" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Reads file names and sizes only — never file contents</text>${check(289)}
   ${sep(308)}
-  <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">20+ protected folders — passwords, iCloud,</tspan><tspan x="28" dy="18">system files never touched</tspan></text>${check(333)}
+  <text x="28" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}"><tspan x="28" y="328">Protected paths — passwords, iCloud,</tspan><tspan x="28" dy="18">system files blocked from deletion</tspan></text>${check(333)}
   </g>
 </svg>`
 }
@@ -179,7 +179,7 @@ const getHighlightSlides = (dark: boolean) => [
   {
     eyebrow: "Privacy",
     title: "Privacy, by Design.",
-    body: "No background network activity. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
+    body: "No background network activity while scanning or cleaning. No analytics. No account. Your files, your Mac, your data — it never leaves your device.",
     svgHtml: getPrivacySvg(dark) as string,
     accent: dark ? "#0a1a0e" : "#f3f8f4",
   },
@@ -410,7 +410,7 @@ function Hero({ BG }: { BG: string }) {
           <em className="not-italic text-[var(--blue)] block">Every file, your call.</em>
         </h1>
         <p className="mx-auto mt-5 max-w-[760px] text-[clamp(18px,2vw,22px)] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
-          DiskCleaner scans cache, logs, screenshots, developer data, and other clutter, then shows every file before it moves to Trash. If you are trying to{" "}
+          DiskCleaner scans 16+ categories across your Mac, then shows every file before it moves to Trash. Start with our guides to{" "}
           <Link to="/blog/how-to-free-up-storage-on-mac" onMouseEnter={() => preloadArticle("how-to-free-up-storage-on-mac")} onFocus={() => preloadArticle("how-to-free-up-storage-on-mac")} onTouchStart={() => preloadArticle("how-to-free-up-storage-on-mac")} className="font-semibold text-[var(--blue)] no-underline">
             free up storage on your Mac
           </Link>{" "}
@@ -418,8 +418,7 @@ function Hero({ BG }: { BG: string }) {
           <Link to="/blog/what-is-system-data-mac" onMouseEnter={() => preloadArticle("what-is-system-data-mac")} onFocus={() => preloadArticle("what-is-system-data-mac")} onTouchStart={() => preloadArticle("what-is-system-data-mac")} className="font-semibold text-[var(--blue)] no-underline">
             what System Data on Mac means
           </Link>
-          ,
-          No silent cleanup. <span className="font-semibold text-[var(--blue)]">No subscription.</span> No guesswork.
+          . No silent cleanup. <span className="font-semibold text-[var(--blue)]">No subscription.</span> No guesswork.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a href={appDownloadUrl} download data-analytics-location="hero" className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
@@ -440,9 +439,9 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
           {[
-            { n: "7",   u: "",   l: "Categories in one scan" },
+            { n: "16",  u: "+",  l: "Cleanup categories" },
             { n: "<10", u: "s",  l: "Time to first results" },
-            { n: "9",   u: "",   l: "Browsers cleaned" },
+            { n: "6",   u: "",   l: "Browser caches cleaned" },
             { n: "~5",  u: "MB", l: "Total install size" },
           ].map((s, i) => (
             <div className={`px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 ${i < 2 ? "border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0" : ""}`} key={i}>
@@ -484,13 +483,13 @@ function Features({ SURFACE }: { SURFACE: string }) {
                 tag: "Safety",
                 ico: <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 24h44" /><path d="M25 24v-7h22v7" /><path d="M20 31h32" /><path d="M21 31l3 26a6 6 0 0 0 6 4h12a6 6 0 0 0 6-4l3-26" /><path d="M32 39v12" /><path d="M40 39v12" /></svg>,
                 ttl: "Everything Goes to Trash. Always.",
-                dsc: "We use macOS trashItem exclusively — never removeItem. Every file is recoverable, every time. Not a single permanent deletion.",
+                dsc: "Every file moves to Trash, never permanent deletion. Risky items such as iOS backups and Time Machine snapshots are flagged and never pre-selected.",
               },
               {
                 tag: "Scanning",
                 ico: <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="20" /><path d="m47 47 13 13" /><path d="M24 32h16" /><path d="M32 24v16" /></svg>,
-                ttl: "Under 10 seconds. Every category.",
-                dsc: "Run a fast scan from the app or menu bar, then switch to Deep Scan for additional locations, caution items, and broader review.",
+                ttl: "16+ categories. One clear review.",
+                dsc: "Scan from the app or menu bar, review caution warnings, and filter cache files by age before you clean.",
               },
               {
                 tag: "Performance",
@@ -502,13 +501,13 @@ function Features({ SURFACE }: { SURFACE: string }) {
                 tag: "Browsers",
                 ico: <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="36" cy="36" r="25" /><path d="M36 11c7 7 10 15 10 25S43 54 36 61" /><path d="M36 11c-7 7-10 15-10 25s3 18 10 25" /><path d="M13 36h46" /></svg>,
                 ttl: "Every Browser. Every Profile.",
-                dsc: "Chrome, Firefox, Edge, Arc, Brave, Vivaldi, Chromium, and Opera caches are cleaned across profiles. Safari cache is measured but not cleared. Passwords, bookmarks, and history stay untouched.",
+                dsc: "Chrome, Firefox, Edge, Brave, Arc, and Opera caches are cleaned across profiles. Passwords, bookmarks, and history stay untouched.",
               },
               {
                 tag: "Developers",
                 ico: <svg viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m28 23-13 13 13 13" /><path d="m44 23 13 13-13 13" /><path d="m39 16-7 40" /></svg>,
                 ttl: "Developers save the most.",
-                dsc: "Xcode DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches. Usually the biggest hidden recovery on a developer Mac.",
+                dsc: "Clear Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads.",
               },
             ].map((f, i) => (
               <div key={i} className="reveal feature-premium-card rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 text-center transition duration-200 hover:-translate-y-0.5 hover:border-[rgba(0,113,227,0.18)]" style={{ transitionDelay: `${i * 65}ms` }}>
@@ -523,7 +522,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
           <a href={appDownloadUrl} download data-analytics-location="features-cta" className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
             Download for macOS
           </a>
-          <p className="text-[12px] text-[var(--muted2)]">Free trial · $9.99 one-time after · No subscription</p>
+          <p className="text-[12px] text-[var(--muted2)]">Free core cleaning · $9.99 one-time Premium unlock · No subscription</p>
         </div>
       </div>
     </section>
@@ -576,7 +575,7 @@ const InterfaceSplit = lazy(async () => {
                         <rect x="3" y="3" width="14" height="14" rx="3" />
                         <path d="m6.5 10 2 2 5-5" />
                       </svg>
-                      Per-file checkboxes across Quick Scan and Deep Scan results.
+                      Per-file checkboxes across every scan result.
                     </dt>
                   </div>
                   <div className="relative pl-9">
@@ -802,7 +801,7 @@ const MenuBarSplit = lazy(async () => {
               </h2>
               <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                 Your free space, always visible — no app to open.
-                Trigger a Quick Scan, see update badges, or check full disk stats from a single click.
+                Trigger a scan, see update badges, or check full disk stats from a single click.
                 Lightweight. Always on. Never in the way.
               </p>
               <ul className="mt-6 list-none space-y-2 pl-0 text-[17px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
@@ -818,7 +817,7 @@ const MenuBarSplit = lazy(async () => {
                     <circle cx="11" cy="11" r="7" />
                     <path d="m20 20-3.5-3.5" />
                   </svg>
-                  Quick Scan from the menu bar
+                  Scan and clean from the menu bar
                 </li>
                 <li className="flex items-center gap-3">
                   <svg className="h-5 w-5 shrink-0 text-[var(--blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -844,11 +843,11 @@ const WhatItFinds = lazy(async () => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     const categories = [
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>, name: "App Cache", desc: "Safe third-party app caches that grow quietly over time." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>, name: "Browser Cache", desc: "Chrome, Edge, Firefox, Brave, and Arc caches, plus Safari cache measurement." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>, name: "Browser Cache", desc: "Chrome, Firefox, Edge, Brave, Arc, and Opera cache folders." },
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, name: "Screenshots", desc: "Screenshot-named files in the actual macOS screenshots folder." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>, name: "Trash Contents", desc: "Trash measured across users and mounted volumes so hidden waste still shows up." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>, name: "macOS Trash", desc: "Files still consuming space in your Mac's Trash." },
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>, name: "System Logs", desc: "App logs, crash reports, and diagnostic logs that are safe to review and remove." },
-      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>, name: "Developer Data", desc: "DerivedData, Archives, Device Support, simulators, SwiftPM, CocoaPods, npm, JetBrains, and VS Code caches." },
+      { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>, name: "Developer Data", desc: "Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files." },
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Orphaned support files, caches, and preferences with risk labels and review before cleanup." },
     ]
     return (
@@ -856,10 +855,10 @@ const WhatItFinds = lazy(async () => {
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-              <span className="text-[var(--text)]">Seven categories.</span> <span className="text-[var(--blue)]">One scan. You decide what goes.</span>
+              <span className="text-[var(--text)]">16+ categories.</span> <span className="text-[var(--blue)]">One scan. You decide what goes.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[560px] text-[16px] leading-[1.6] text-[var(--muted)]">
-              Quick Scan covers what every Mac accumulates quietly over time. Deep Scan goes deeper — developer files, large downloads, and more. If Xcode storage keeps ballooning, read our guide on{" "}
+              Free core cleaning covers everyday clutter. Premium adds browser cache, developer files, large downloads, backups, external storage, and more. If Xcode storage keeps ballooning, read our guide on{" "}
               <Link to="/blog/delete-xcode-derived-data" onMouseEnter={() => preloadArticle("delete-xcode-derived-data")} onFocus={() => preloadArticle("delete-xcode-derived-data")} onTouchStart={() => preloadArticle("delete-xcode-derived-data")} className="text-[var(--blue)] no-underline">
                 deleting Xcode DerivedData
               </Link>. You see exactly what was found before anything moves.
@@ -882,7 +881,7 @@ const WhatItFinds = lazy(async () => {
               </div>
               <div>
                 <div className="text-[17px] font-bold text-[var(--blue)]">Always safe</div>
-                <div className="mt-1 text-[14px] leading-[1.6] text-[var(--muted)]">Passwords, documents, and personal files are never touched — ever. Every removal goes to Trash, not permanent deletion.</div>
+                <div className="mt-1 text-[14px] leading-[1.6] text-[var(--muted)]">Protected paths stay blocked. Risky and personal findings are never pre-selected. Every removal goes to Trash, not permanent deletion.</div>
               </div>
             </div>
           </div>
@@ -906,11 +905,11 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Does DiskCleaner connect to the internet or collect my data?",
-        a: "DiskCleaner runs locally on your Mac. Scanning and cleaning stay on-device, the app includes no analytics or tracking, and no account is required. It does not make background network calls for scanning or cleaning; update checks are user-initiated and happen only when you ask the app to check.",
+        a: "DiskCleaner runs locally on your Mac. Scanning and cleaning stay on-device, the app includes no analytics or tracking, and no account is required. Sparkle keeps the app up to date in the background without sending your scan results or file data anywhere.",
       },
       {
         q: "What exactly does DiskCleaner scan?",
-        a: "Quick Scan covers App Cache, Browser Cache, Screenshots, Trash, System Logs, Developer Data, and App Leftovers. Deep Scan expands into additional locations such as Downloads, iOS backups, Mail attachments, and external drives. Caution categories are marked for review before cleanup.",
+        a: "DiskCleaner scans 16+ categories and targeted cleanup locations, including app cache, browser cache, logs, screenshots, .DS_Store files, Trash, developer data, Homebrew downloads, large files, iOS backups, Mail attachments, app leftovers, external storage, local Time Machine snapshots, and old installers. Caution categories are clearly flagged before cleanup.",
       },
       {
         q: "Which macOS versions are supported?",
@@ -937,7 +936,7 @@ const FAQ = lazy(async () => {
       },
       {
         q: "Do I need an account or subscription?",
-        a: "No account and no subscription. DiskCleaner includes 3 free scans, then unlocks Pro with a license key. The current direct license is $9.99 one-time for up to 2 Macs and includes future updates.",
+        a: "No account and no subscription. Core cleaning for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash is available without upgrading. A $9.99 one-time Premium purchase unlocks the full scanner for up to 2 Macs and includes future updates.",
       },
     ]
     return (
@@ -1025,7 +1024,7 @@ const CTA = lazy(async () => {
           </div>
           <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
             {[
-              "3 free scans included",
+              "Free core cleaning included",
               "No subscription",
               "macOS 13 → 26 Tahoe",
               "Apple Silicon native",
