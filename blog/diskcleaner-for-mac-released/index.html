@@ -15,12 +15,19 @@
     <link rel="alternate" hreflang="x-default" href="https://www.diskcleaner.pro/" />
     <link rel="alternate" hreflang="en" href="https://www.diskcleaner.pro/" />
 
+    <!-- Hero LCP image preload — stable public path, no hash -->
+    <link rel="preload" as="image" type="image/webp"
+      href="/DiskCleaner.webp"
+      imagesrcset="/DiskCleaner-464.webp 464w, /DiskCleaner-640.webp 640w, /DiskCleaner.webp 1376w"
+      imagesizes="(max-width: 1024px) 92vw, 50vw"
+    />
+
     <!-- Primary SEO -->
     <title>DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner — DiskCleaner</title>
     <meta
       id="meta-desc"
       name="description"
-      content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
+      content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and user-initiated in-app update checks."
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="application-name" content="DiskCleaner" />
@@ -42,7 +49,7 @@
     <meta property="og:locale:alternate" content="en_AU" />
     <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released" />
     <meta id="og-title" property="og:title" content="DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner — DiskCleaner" />
-    <meta id="og-desc" property="og:description" content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates." />
+    <meta id="og-desc" property="og:description" content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and user-initiated in-app update checks." />
     <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
     <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
     <meta property="og:image:type" content="image/webp" />
@@ -54,7 +61,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta id="tw-url" name="twitter:url" content="https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released" />
     <meta id="tw-title" name="twitter:title" content="DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner — DiskCleaner" />
-    <meta id="tw-desc" name="twitter:description" content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates." />
+    <meta id="tw-desc" name="twitter:description" content="DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and user-initiated in-app update checks." />
     <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
 
     <!-- Structured data (Google) -->
@@ -129,25 +136,17 @@
             },
             "featureList": [
               "App Cache cleaning",
-              "Browser Cache cleaning for Chrome, Firefox, Edge, Brave, Arc, and Opera",
+              "Browser Cache cleaning (9 browsers, all profiles)",
               "Screenshot removal",
-              ".DS_Store file cleanup across the home folder",
-              "macOS Trash cleanup",
+              "Trash cleanup",
               "System Logs removal",
-              "Developer Data cleanup (Xcode DerivedData, CoreSimulator, iOS DeviceSupport)",
-              "Homebrew Cache cleanup",
-              "Movies and Downloads review",
+              "Developer Data cleanup (Xcode, Simulators, CocoaPods, npm)",
               "App Leftovers detection and removal",
-              "Large Files scanner — finds files over 50 MB across the home folder",
-              "iOS backups and Apple Mail attachment review",
-              "External storage scanning",
-              "Local Time Machine snapshot review",
-              "Old DMG and PKG installer cleanup",
+              "Large Files scanner — finds oversized files across the disk",
               "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
               "App Uninstaller — removes apps and all associated leftover files",
               "Menu Bar disk usage overview",
               "Trash-first safety — nothing permanently deleted",
-              "iCloud-safe scanning — skips iCloud placeholder files and sync daemon caches",
               "Zero-decision interface — review every file before moving",
               "100% local — no internet, no data collection, no account",
               "Universal Binary — native Apple Silicon and Intel"
@@ -155,10 +154,10 @@
             "offers": [
               {
                 "@type": "Offer",
-                "name": "Free Core Cleaning",
+                "name": "Free Trial",
                 "price": "0",
                 "priceCurrency": "USD",
-                "description": "App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash cleaning without an upgrade",
+                "description": "3 free scans included — no account required",
                 "availability": "https://schema.org/InStock",
                 "url": "https://www.diskcleaner.pro/"
               },
@@ -185,10 +184,10 @@
       "@type": "BlogPosting",
       "@id": "https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released#article",
       "headline": "DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner",
-      "description": "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates.",
-      "abstract": "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated.",
+      "description": "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and user-initiated in-app update checks.",
+      "abstract": "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and updates can be checked from inside the app.",
       "datePublished": "2026-05-25",
-      "dateModified": "2026-06-02",
+      "dateModified": "2026-05-26",
       "url": "https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released",
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -226,7 +225,7 @@
         "Mac cleaner",
         "macOS storage"
       ],
-      "wordCount": 1547,
+      "wordCount": 1578,
       "timeRequired": "PT8M",
       "inLanguage": "en-US",
       "about": [
@@ -289,7 +288,7 @@
             "name": "Does DiskCleaner connect to the internet or collect my data?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Scanning and cleaning run locally on your Mac. DiskCleaner collects no scan data and requires no account. Sparkle handles background app updates without sending your file names or disk contents anywhere."
+              "text": "Never. DiskCleaner runs 100% locally on your Mac. It makes no network calls, collects no data, and requires no account. Your file names and disk contents never leave your machine."
             }
           },
           {
@@ -297,7 +296,7 @@
             "name": "What exactly does DiskCleaner scan?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "DiskCleaner scans 16+ categories and targeted cleanup locations, including App Cache, Browser Cache, Screenshots, .DS_Store files, macOS Trash, System Logs, Developer Data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and associated leftover files. Protected paths are blocked. iCloud-safe scanning skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. Risky or personal findings are never pre-selected."
+              "text": "Seven cleanup categories: App Cache, Browser Cache (9 browsers, all profiles), Screenshots, Trash Contents, System Logs, Developer Data (Xcode, Simulators, CocoaPods, npm), and App Leftovers. Deep Scan adds Large Files, Downloads, iOS backups, and Mail attachments. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and all associated leftover files. Personal files, passwords, and documents are never touched."
             }
           },
           {
@@ -318,10 +317,10 @@
           },
           {
             "@type": "Question",
-            "name": "What does DiskCleaner include for free?",
+            "name": "Does DiskCleaner have a free trial?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "DiskCleaner includes free core cleaning for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. A one-time $9.99 Premium purchase unlocks the full scanner for up to 2 Macs and includes all future updates — no subscription."
+              "text": "Yes. DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the app for up to 2 Macs and includes all future updates — no subscription."
             }
           },
           {
@@ -329,7 +328,7 @@
             "name": "Do I need an account or subscription for DiskCleaner?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No account and no subscription. DiskCleaner includes free core cleaning. A $9.99 one-time Premium purchase unlocks the full scanner for up to 2 Macs and includes every future update."
+              "text": "No account and no subscription. DiskCleaner starts with 3 free scans. After the trial, $9.99 one-time purchase covers up to 2 Macs and includes every future update."
             }
           },
           {
@@ -344,9 +343,9 @@
       }
     </script>
 
-    <script type="module" crossorigin src="/assets/index-D-kj77iS.js"></script>
+    <script type="module" crossorigin src="/assets/index-B1lAzSeb.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DEWmOCey.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-B8OAP_Ki.css">
   </head>
 
   <body>
@@ -356,8 +355,8 @@
     <div style="max-width:860px;margin:0 auto;text-align:center">
       <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">Product Update</span>
       <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner</h1>
-      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated.</p>
-      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">May 25, 2026 · Updated June 2, 2026 · 8 min read · 1,547 words · By Thomas A.</p>
+      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and updates can be checked from inside the app.</p>
+      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">May 25, 2026 · Updated May 26, 2026 · 8 min read · 1,578 words · By Thomas A.</p>
     </div>
     <section style="max-width:860px;margin:32px auto 0;padding:20px 24px;border-radius:20px;border:1px solid var(--border,rgba(0,0,0,.1));background:var(--surface,#fff)">
       <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2,#aeaeb2);margin:0 0 8px">About the Author</p>
@@ -372,12 +371,12 @@
 <p>That matters because the Mac cleaner category has a trust problem. Many tools lead with one-click claims, vague &quot;junk&quot; totals, or subscription prompts before users understand what is actually being removed. DiskCleaner takes the opposite approach. It scans, explains, and waits for approval.</p>
 <h2>What Is Available Now</h2><p>The current release includes the core DiskCleaner workflow:</p>
 <ul>
-<li>16+ cleanup categories and targeted locations</li>
-<li>Free core cleaning with a one-time Premium unlock for advanced categories</li>
+<li>Quick Scan for common clutter categories</li>
+<li>Deep Scan for larger storage areas</li>
 <li>App Cache and Browser Cache review</li>
 <li>Screenshots and Trash visibility</li>
 <li>System Logs cleanup</li>
-<li>Developer Data cleanup for Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files</li>
+<li>Developer Data cleanup for Xcode and package caches</li>
 <li>App Leftovers review</li>
 <li>Large Files discovery</li>
 <li>App Uninstaller with leftover-file detection</li>
@@ -403,10 +402,10 @@
 <li>no cleanup action without review</li>
 <li>no permanent deletion as the default path</li>
 </ul>
-<p>DiskCleaner does not make background network calls for scanning or cleaning. Sparkle handles background app updates without transmitting scan results or file data. Cleanup itself remains local.</p>
+<p>DiskCleaner does not make background network calls for scanning or cleaning. Update checks are user-initiated: the user chooses when to ask the app to check whether a newer version is available. Cleanup itself remains local.</p>
 <h2>Built for Real Mac Storage Problems</h2><p>DiskCleaner is not limited to generic cache folders. It targets the places that actually grow on working Macs.</p>
 <p>For everyday users, that means browser cache, app cache, screenshots, old downloads, logs, Trash contents, large files, and app leftovers.</p>
-<p>For developers, it means Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads. Developer Data can quietly become one of the largest categories on a Mac, especially for people who use Xcode and multiple simulators.</p>
+<p>For developers, it means Xcode DerivedData, simulator-related storage, CocoaPods, npm, Swift package artifacts, build products, and other project tooling caches. Developer Data can quietly become one of the largest categories on a Mac, especially for people who use Xcode, simulators, package managers, and multiple projects.</p>
 <p>The goal is not to pretend every byte is useless. The goal is to make the storage visible enough that you can decide what is worth keeping.</p>
 <h2>App Uninstaller and Leftover Files</h2><p>Dragging an app to Trash removes the app bundle, but many apps leave support files behind in Library locations.</p>
 <p>DiskCleaner&#39;s App Uninstaller is built for that gap. You can review an app and its related leftovers before cleanup. The same review-first rule applies: leftover files are shown before removal, and selected items go to Trash.</p>
@@ -424,9 +423,9 @@
 <li>smoother licensing and activation flow</li>
 <li>continued refinement of developer cleanup</li>
 </ul>
-<p>DiskCleaner uses Sparkle for background app updates, with update feed and signature verification support for safer direct-distribution updates. The latest DMG remains available from the website for manual installation.</p>
+<p>DiskCleaner 26.1.1.0 adds Sparkle updater integration for user-initiated in-app update checks. Users can choose <strong>Check for Updates</strong> inside the app, with update feed and signature verification support for safer direct-distribution updates. The latest DMG remains available from the website for manual installation.</p>
 <p>That matters for a utility app because maintenance releases should be boring. If a fix improves scanning, notarization packaging, compatibility, or app behavior, the user should be able to request it through a standard update flow instead of repeating the first-install process.</p>
-<p>For direct-distributed Mac apps, an updater must be handled carefully. A proper update flow should verify update signatures and preserve the same safety posture as the app itself. Sparkle, a long-running macOS update framework, documents support for signed update archives and appcast-driven updates for direct-distributed Mac apps.<sup><a href="#ref-3">[3]</a></sup> DiskCleaner&#39;s update flow follows the same principle: updates should be easier and not less trustworthy.</p>
+<p>For direct-distributed Mac apps, an updater must be handled carefully. A proper update flow should verify update signatures, respect user consent, and preserve the same safety posture as the app itself. Sparkle, a long-running macOS update framework, documents support for signed update archives and appcast-driven updates for direct-distributed Mac apps.<sup><a href="#ref-3">[3]</a></sup> DiskCleaner&#39;s update flow follows the same principle: updates should be easier, user-initiated, and not less trustworthy.</p>
 <h2>Why the First Release Still Matters</h2><p>This release is not just &quot;version one is available.&quot; It establishes the product&#39;s standard.</p>
 <p>DiskCleaner is safe by design because cleanup is reviewable and Trash-first. It is transparent because categories and files are visible before action. It is privacy-respecting because scan results stay local. It is Mac-native because it is built for modern macOS distribution, Apple Silicon, Intel Macs, and Apple&#39;s notarization expectations.</p>
 <p>That combination is the product thesis.</p>
@@ -434,7 +433,7 @@
 <h2>Download DiskCleaner for Mac</h2><p>DiskCleaner is available now as a direct Mac download:</p>
 <div class="blog-cta-block">
   <p class="blog-cta-block-title">Download DiskCleaner for Mac</p>
-  <p class="blog-cta-block-sub">A safe, transparent, Apple-notarized Mac cleaner with free core cleaning and no subscription.</p>
+  <p class="blog-cta-block-sub">A safe, transparent, Apple-notarized Mac cleaner with 3 free scans and no subscription.</p>
   <a href="/downloads/DiskCleaner-macOS.dmg" download class="blog-cta-btn" data-analytics-location="release-article">
     Download for macOS
   </a>
@@ -445,8 +444,8 @@
 <h3>Is DiskCleaner notarized by Apple?</h3><p>Yes. DiskCleaner is distributed as an Apple-notarized macOS app for direct download outside the Mac App Store.</p>
 <h3>Does DiskCleaner permanently delete files?</h3><p>No. DiskCleaner uses a Trash-first cleanup model. Selected files are moved to macOS Trash, where they can be reviewed and recovered.</p>
 <h3>Does DiskCleaner show files before cleanup?</h3><p>Yes. The app is built around review-first cleanup. You can review categories and individual files before anything moves.</p>
-<h3>Does DiskCleaner support automatic updates?</h3><p>Yes. DiskCleaner uses Sparkle for background app updates, with secure update feed and signature verification support.</p>
-<h3>Is DiskCleaner a subscription?</h3><p>No. DiskCleaner includes free core cleaning, then unlocks Premium categories with a one-time license for up to 2 Macs.</p>
+<h3>Will DiskCleaner add in-app updates?</h3><p>Yes. DiskCleaner 26.1.1.0 adds a user-initiated <strong>Check for Updates</strong> flow powered by Sparkle, with secure update feed and signature verification support.</p>
+<h3>Is DiskCleaner a subscription?</h3><p>No. DiskCleaner includes 3 free scans, then unlocks with a one-time license for up to 2 Macs.</p>
 <h2>Bottom Line</h2><p>DiskCleaner is now released as a safe, transparent, Apple-notarized Mac cleaner for users who want control over what gets removed.</p>
 <p>The product will keep growing, but the core rule stays the same: every file, your call.</p>
 <div class="blog-references">
