@@ -38,7 +38,7 @@ const getMacOsChipSvg = (dark: boolean) => {
   const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
   const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
   const cross = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(255,255,255,0.14)' : '#DFDFE4'}"/><path d="M448 ${cy-4}l8 8M456 ${cy-4}l-8 8" stroke="${dark ? '#636366' : '#C7C7CC'}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-  return `<svg width="100%" viewBox="0 0 480 502" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  return `<svg width="100%" viewBox="0 0 480 502" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <rect x="0" y="0" width="480" height="502" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
@@ -84,7 +84,7 @@ const getScanPerfSvg = (dark: boolean) => {
   const sep = (y: number) => `<line x1="28" y1="${y}" x2="464" y2="${y}" stroke="${dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)'}" stroke-width="0.5"/>`
   const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
   const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-  return `<svg width="100%" viewBox="0 0 480 432" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  return `<svg width="100%" viewBox="0 0 480 432" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <rect x="0" y="0" width="480" height="432" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
@@ -131,7 +131,7 @@ const getPrivacySvg = (dark: boolean) => {
   const sep = (y: number) => `<line x1="28" y1="${y}" x2="464" y2="${y}" stroke="${dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)'}" stroke-width="0.5"/>`
   const sectionBg = (y: number) => `<rect x="0" y="${y}" width="480" height="22" fill="${dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.025)'}" />`
   const check = (cy: number) => `<circle cx="452" cy="${cy}" r="9" fill="${dark ? '#1c1c1e' : '#FFFFFF'}" stroke="${dark ? 'rgba(0,113,227,0.4)' : '#B9D4FF'}"/><path d="M448 ${cy}l3 3 6-7" stroke="#0071E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-  return `<svg width="100%" viewBox="0 0 480 378" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  return `<svg width="100%" viewBox="0 0 480 378" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <rect x="0" y="0" width="480" height="378" fill="${dark ? '#1c1c1e' : '#FFFFFF'}"/>
   <rect x="0" y="0" width="480" height="44" fill="${dark ? '#2c2c2e' : '#F5F5F7'}"/>
   <line x1="0" y1="44.5" x2="480" y2="44.5" stroke="${dark ? 'rgba(255,255,255,0.12)' : '#D8DADF'}"/>
@@ -402,13 +402,11 @@ function Hero({ BG }: { BG: string }) {
             className="h-24 w-24 object-cover drop-shadow-[0_12px_20px_rgba(59,130,246,0.16)] sm:h-28 sm:w-28"
           />
         </div>
-        <h1 className="mx-auto max-w-[1080px] text-[clamp(40px,7vw,80px)] font-bold leading-[0.97] tracking-[-0.055em]">
-          <span className="text-[var(--text)] block sm:hidden">DiskCleaner is a Mac cleaner and</span>
-          <span className="text-[var(--text)] block sm:hidden">disk cleanup app for macOS.</span>
-          <span className="hidden text-[var(--text)] sm:block">DiskCleaner is a Mac cleaner</span>
-          <span className="hidden text-[var(--text)] sm:block">and disk cleanup app for macOS.</span>
-          <em className="not-italic text-[var(--blue)] block">Every file, your call.</em>
+        {/* APPLE_REDESIGN_REVERT_MARKER: hero headline/tagline styling */}
+        <h1 className="apple-hero-title mx-auto max-w-[1080px]">
+          Your Mac is slower than it should be.
         </h1>
+        <p className="apple-hero-tagline">Every file, your call.</p>
         <p className="mx-auto mt-5 max-w-[760px] text-[clamp(18px,2vw,22px)] leading-[1.55] tracking-[-0.01em] text-[var(--muted)]">
           DiskCleaner scans 16+ categories across your Mac, then shows every file before it moves to Trash. Start with our guides to{" "}
           <Link to="/blog/how-to-free-up-storage-on-mac" onMouseEnter={() => preloadArticle("how-to-free-up-storage-on-mac")} onFocus={() => preloadArticle("how-to-free-up-storage-on-mac")} onTouchStart={() => preloadArticle("how-to-free-up-storage-on-mac")} className="font-semibold text-[var(--blue)] no-underline">
@@ -421,13 +419,16 @@ function Hero({ BG }: { BG: string }) {
           . No silent cleanup. <span className="font-semibold text-[var(--blue)]">No subscription.</span> No guesswork.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-          <a href={appDownloadUrl} download data-analytics-location="hero" className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
+          <a href={appDownloadUrl} download data-analytics-location="hero" className="apple-primary-cta inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
             Download for macOS
           </a>
-          <a href="#features" className="inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">
+          <a href="#features" className="apple-secondary-link inline-flex items-center gap-2 px-2 py-3.5 text-[17px] font-medium text-[var(--muted)] no-underline transition-colors duration-150 hover:text-[var(--text)]">
             See how it works <span aria-hidden>›</span>
           </a>
         </div>
+        <p className="compat-note">
+          Requires macOS 13 Ventura or later &nbsp;·&nbsp; Free Download
+        </p>
       </div>
     </section>
   )
@@ -435,23 +436,32 @@ function Hero({ BG }: { BG: string }) {
 
 function StatsBand({ SURFACE }: { SURFACE: string }) {
   return (
-    <div className="border-y border-[var(--border)] py-8 sm:py-10 lg:py-12" style={{ background: SURFACE }}>
+    <div className="apple-stats-band py-8 sm:py-10 lg:py-12" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
           {[
-            { n: "16",  u: "+",  l: "Cleanup categories" },
-            { n: "<10", u: "s",  l: "Time to first results" },
-            { n: "6",   u: "",   l: "Browser caches cleaned" },
-            { n: "~5",  u: "MB", l: "Total install size" },
+            { n: "16+",  l: "Cleanup categories" },
+            { n: "<10s", l: "Time to first results" },
+            { n: "6",    l: "Browser caches cleaned" },
+            { n: "~5MB", l: "Total install size" },
           ].map((s, i) => (
-            <div className={`px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 ${i < 2 ? "border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0" : ""}`} key={i}>
-              <div className="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">{s.n}<span className="text-[var(--blue)]">{s.u}</span></div>
-              <div className="mt-2 text-[14px] font-medium text-[var(--muted)]">{s.l}</div>
+            <div className={`stat-card ${i < 2 ? "is-mobile-top-row" : ""}`} key={i}>
+              <span className="stat-number">{s.n}</span>
+              <span className="stat-label">{s.l}</span>
             </div>
           ))}
         </div>
       </div>
     </div>
+  )
+}
+
+function EditorialStatement() {
+  return (
+    /* APPLE_REDESIGN_REVERT_MARKER: editorial statement section */
+    <section className="editorial-statement">
+      <p>We don't move a single file without your permission.</p>
+    </section>
   )
 }
 
@@ -519,7 +529,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
         </div>
         {/* Inline CTA after features grid */}
         <div className="reveal mt-10 flex flex-col items-center gap-3 text-center">
-          <a href={appDownloadUrl} download data-analytics-location="features-cta" className="inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
+          <a href={appDownloadUrl} download data-analytics-location="features-cta" className="apple-primary-cta inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90">
             Download for macOS
           </a>
           <p className="text-[12px] text-[var(--muted2)]">Free core cleaning · $9.99 one-time Premium unlock · No subscription</p>
@@ -1017,7 +1027,7 @@ const CTA = lazy(async () => {
               href={appDownloadUrl}
               download
               data-analytics-location="download-section"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
+              className="apple-primary-cta mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
             >
               Download for macOS
             </a>
@@ -1246,6 +1256,7 @@ export default function Home() {
       <div className="pt-[52px]">
         <Hero BG="var(--bg)" />
         <StatsBand SURFACE={STRIPE_WHITE} />
+        <EditorialStatement />
 
         <Suspense fallback={null}>
           <InterfaceSplit />

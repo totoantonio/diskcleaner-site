@@ -19,7 +19,7 @@ const getTableSvg = (dark: boolean) => {
   const cross = (cx: number, cy: number) =>
     `<circle cx="${cx}" cy="${cy}" r="10" fill="${crossFill}" stroke="${crossStroke}"/><path d="M${cx-4} ${cy-4}l8 8M${cx+4} ${cy-4}l-8 8" stroke="${crossPath}" stroke-width="1.5" stroke-linecap="round" fill="none"/>`
 
-  return `<svg width="980" height="590" viewBox="0 0 980 590" xmlns="http://www.w3.org/2000/svg" font-family="'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif">
+  return `<svg width="980" height="590" viewBox="0 0 980 590" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <defs>
     <clipPath id="dc-table-clip">
       <rect x="0.5" y="0.5" width="979" height="589" rx="28"/>
