@@ -511,19 +511,22 @@ function Features({ SURFACE }: { SURFACE: string }) {
       number: "01",
       title: "You see the files, not just a reclaimed-space number.",
       body: "Every scan ends with a review. Expand a category, inspect paths and sizes, then uncheck anything you want to keep.",
-      detail: "~/Library/Caches · 4.8 GB · 1,284 files",
+      detail: "Every File Visible",
+      tone: "review",
     },
     {
       number: "02",
       title: "Cleanup uses the Mac safety net already built in.",
       body: "Normal cleanup moves files to macOS Trash instead of erasing them permanently. If you change your mind, restore them.",
-      detail: "Move to Trash → review → empty when ready",
+      detail: "Recoverable from Trash",
+      tone: "trash",
     },
     {
       number: "03",
       title: "Risky findings are treated differently.",
       body: "Personal files, backups, snapshots, and caution items are never presented as mindless one-click cleanup.",
-      detail: "Caution items are never pre-selected",
+      detail: "Never Pre-Selected",
+      tone: "caution",
     },
   ]
 
@@ -545,11 +548,47 @@ function Features({ SURFACE }: { SURFACE: string }) {
           {decisions.map((decision) => (
             <article key={decision.number} className="authored-decision reveal">
               <span className="authored-decision-number">{decision.number}</span>
-              <div>
+              <div className={`authored-decision-card authored-decision-card-${decision.tone}`}>
+                <div className="authored-decision-icon" aria-hidden="true">
+                  {decision.number === "01" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h7L20 9.5v9A2.5 2.5 0 0 1 17.5 21h-11A2.5 2.5 0 0 1 4 18.5z" />
+                      <path d="M13 3v7h7M8 14h8M8 17.5h5" />
+                    </svg>
+                  )}
+                  {decision.number === "02" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5" />
+                    </svg>
+                  )}
+                  {decision.number === "03" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 3 4.5 6v5.5c0 4.6 3.1 7.8 7.5 9.5 4.4-1.7 7.5-4.9 7.5-9.5V6z" />
+                      <path d="m8.5 12 2.2 2.2 4.8-5" />
+                    </svg>
+                  )}
+                </div>
                 <h3>{decision.title}</h3>
                 <p>{decision.body}</p>
+                <div className="authored-decision-app-row" aria-hidden="true">
+                  <span className="authored-decision-checkbox">
+                    {decision.tone !== "caution" && "✓"}
+                  </span>
+                  <span className="authored-decision-app-label">
+                    {decision.tone === "review" && "App Cache"}
+                    {decision.tone === "trash" && "Trash Items"}
+                    {decision.tone === "caution" && "Developer"}
+                  </span>
+                  <strong>
+                    {decision.tone === "review" && "165.1 MB"}
+                    {decision.tone === "trash" && "Recoverable"}
+                    {decision.tone === "caution" && "27.1 GB"}
+                  </strong>
+                  {decision.tone === "caution" && <span className="authored-decision-warning">!</span>}
+                  <span className="authored-decision-chevron">›</span>
+                </div>
+                <span className="authored-decision-status"><i />{decision.detail}</span>
               </div>
-              <code>{decision.detail}</code>
             </article>
           ))}
         </div>
