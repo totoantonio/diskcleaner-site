@@ -8,6 +8,7 @@ import Blog from "./pages/Blog"
 import About from "./pages/About"
 import DiskCleanProAlternative from "./pages/DiskCleanProAlternative"
 import Trust from "./pages/Trust"
+import Security from "./pages/Security"
 import Changelog from "./pages/Changelog"
 import EditorialPolicy from "./pages/EditorialPolicy"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
@@ -25,6 +26,7 @@ export function render(url: string): string {
             <Route path="/about" element={<About />} />
             <Route path="/disk-clean-pro-alternative" element={<DiskCleanProAlternative />} />
             <Route path="/trust" element={<Trust />} />
+            <Route path="/security" element={<Security />} />
             <Route path="/changelog" element={<Changelog />} />
             <Route path="/editorial-policy" element={<EditorialPolicy />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

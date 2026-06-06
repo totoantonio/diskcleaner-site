@@ -102,34 +102,34 @@ export default function Trust() {
 
         <article className="mx-auto mt-10 max-w-[860px] rounded-3xl bg-[var(--surface)] px-5 py-6 sm:px-12 sm:py-12">
           <div className="blog-content">
-            <h2>Verification summary</h2>
+            <h2>Verification Summary</h2>
             <p>
-              DiskCleaner is distributed as a signed, Apple-notarized macOS app. Its cleanup model is review-first and Trash-first: users inspect files before cleanup, and removed items remain recoverable from macOS Trash.
+              DiskCleaner is distributed as a signed, Apple-Notarized macOS app. Its cleanup model is review-first and Trash-first: users inspect files before cleanup, and removed items remain recoverable from macOS Trash.
               Scanning and cleaning run locally on the Mac. The current direct-download release supports macOS 13 Ventura through macOS 26 Tahoe on Apple Silicon and Intel Macs.
             </p>
             <p>
               Last reviewed: June 1, 2026. Current release details are listed in the <Link to="/changelog">DiskCleaner changelog</Link>.
             </p>
 
-            <h2>1. Trash-first safety</h2>
+            <h2>1. Trash-First Safety</h2>
             <p>
               DiskCleaner is built around a review-first workflow. You see what was found before anything moves, and cleanup actions are designed to go through macOS Trash instead of permanent deletion.
               That means removed items remain recoverable and cleanup stays visible rather than hidden behind a one-click black box.
             </p>
 
-            <h2>2. Privacy and network behavior</h2>
+            <h2>2. Privacy and Network Behavior</h2>
             <p>
               DiskCleaner is positioned as a local-first utility. Cleanup does not depend on creating an account, and the product messaging is built around keeping scanning and cleaning on your Mac rather than turning storage cleanup into a cloud service.
               Privacy matters most when a utility can inspect thousands of files, so the standard here is simple: explain what the app reads, explain what it avoids, and keep that scope narrow.
             </p>
 
-            <h2>3. Apple notarization and Gatekeeper</h2>
+            <h2>3. Apple Notarization and Gatekeeper</h2>
             <p>
-              DiskCleaner is presented as Apple-notarized software that passes Gatekeeper. For Mac users, that matters because notarization is one of the clearest trust signals available for independent software distribution.
+              DiskCleaner is presented as Apple-Notarized software that passes Gatekeeper. For Mac users, that matters because notarization is one of the clearest trust signals available for independent software distribution.
               As new builds ship, this page will continue to be the place where release and trust-related status is kept clear and easy to verify.
             </p>
 
-            <h2>4. How to verify the downloaded app</h2>
+            <h2>4. How to Verify the Downloaded App</h2>
             <p>
               macOS includes command-line tools that let you independently inspect the downloaded app after dragging it to Applications. These checks read the installed app signature, Gatekeeper assessment, and stapled notarization ticket:
             </p>
@@ -140,7 +140,7 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
               Download the current build from the <a href="/downloads/DiskCleaner-macOS.dmg">official DiskCleaner DMG</a>.
             </p>
 
-            <h2>5. Scan-performance methodology</h2>
+            <h2>5. Scan-Performance Methodology</h2>
             <p>
               Performance claims are most useful when they are repeatable. Scan timing depends on the Mac model, macOS version, storage condition, and the amount of cache or developer data on disk.
               When DiskCleaner publishes scan-speed guidance, the goal is to describe the kind of workload behind the number so users understand what “fast” means in practice. For practical storage scenarios, see our guides on{" "}
@@ -149,17 +149,17 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
               <Link to="/blog/delete-xcode-derived-data">deleting Xcode DerivedData</Link>.
             </p>
 
-            <h2>6. What DiskCleaner does not touch</h2>
+            <h2>6. What DiskCleaner Does Not Touch</h2>
             <p>
               Trust is not only about what a cleaner removes. It is also about what it refuses to touch.
               DiskCleaner blocks protected paths from deletion, never pre-selects risky or personal findings, and keeps passwords and protected system locations out of the cleanup flow. Its iCloud-safe scanning also skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. That boundary matters just as much as the cleanup features themselves.
             </p>
 
-            <h2>7. Technical security documentation</h2>
+            <h2>7. Technical Security Documentation</h2>
             <p>
               For readers who want a more technical summary of DiskCleaner&apos;s security posture and disclosure path, the repository also includes a dedicated
               {" "}
-              <a href="https://github.com/totoantonio/diskcleaner-site/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">SECURITY.md</a>
+              <Link to="/security">SECURITY.md</Link>
               {" "}
               document.
             </p>

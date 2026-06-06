@@ -10,6 +10,7 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"))
 const Help = lazy(() => import("./pages/Help"))
 const About = lazy(() => import("./pages/About"))
 const Trust = lazy(() => import("./pages/Trust"))
+const Security = lazy(() => import("./pages/Security"))
 const Changelog = lazy(() => import("./pages/Changelog"))
 const EditorialPolicy = lazy(() => import("./pages/EditorialPolicy"))
 const DiskCleanProAlternative = lazy(() => import("./pages/DiskCleanProAlternative"))
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/disk-clean-pro-alternative" element={<DiskCleanProAlternative />} />
           <Route path="/trust" element={<Trust />} />
+          <Route path="/security" element={<Security />} />
           <Route path="/changelog" element={<Changelog />} />
           <Route path="/editorial-policy" element={<EditorialPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

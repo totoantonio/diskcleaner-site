@@ -94,7 +94,7 @@ export default function DiskCleanProAlternative() {
               The product promise is simple: show the files first, let you choose what moves, and send everything through macOS Trash rather than normalizing blind cleanup.
             </p>
 
-            <h2>Quick answer</h2>
+            <h2>Quick Answer</h2>
             <p>
               Choose <strong className="text-[var(--blue)]">DiskCleaner</strong> if you care most about reviewing every file, keeping cleanup recoverable, and paying once instead of turning storage maintenance into a recurring tool decision.
               Choose <strong>Disk Clean Pro</strong> if you specifically want an all-in-one utility built around faster one-click cleanup messaging.
@@ -130,7 +130,7 @@ export default function DiskCleanProAlternative() {
               <li>The current direct license is a one-time purchase for up to 2 Macs.</li>
             </ul>
 
-            <h2>What makes Disk Clean Pro different</h2>
+            <h2>What Makes Disk Clean Pro Different</h2>
             <p>
               Disk Clean Pro positions itself as a broader utility. Its App Store listing emphasizes one-click cleaning, privacy cleaning, duplicate finding, startup management, and an all-in-one optimization angle.
               That can appeal to users who want a wider toolkit, but it is a different philosophy from DiskCleaner&apos;s narrower review-first approach.
@@ -142,7 +142,7 @@ export default function DiskCleanProAlternative() {
               That is especially relevant for people who want to audit cache, screenshots, logs, developer data, and leftovers without treating file removal like a black box.
             </p>
 
-            <h2>Related comparisons</h2>
+            <h2>Related Comparisons</h2>
             <ul>
               <li><Link to="/blog/cleanmymac-alternative">CleanMyMac alternative</Link></li>
               <li><Link to="/blog/macpaw-alternative">MacPaw alternative</Link></li>

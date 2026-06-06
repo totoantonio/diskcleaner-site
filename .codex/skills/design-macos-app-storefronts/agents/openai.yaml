@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design macOS App Storefronts"
+  short_description: "Design trustworthy websites that sell macOS apps"
+  default_prompt: "Use $design-macos-app-storefronts to design or improve this macOS app website for trust, clarity, trials, downloads, and sales."

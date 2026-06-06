@@ -81,28 +81,28 @@ export default function About() {
           <span className="rounded-full border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-3 py-1 text-xs font-semibold tracking-[0.01em] text-[var(--blue)]">
             About
           </span>
-          <h1 className="article-title text-balance">What DiskCleaner is trying to do.</h1>
+          <h1 className="article-title text-balance">Why we built DiskCleaner.</h1>
           <p className="article-excerpt">
-            DiskCleaner is a Mac cleanup utility built around one idea: users should be able to see exactly what will move before any cleanup happens.
+            We wanted a Mac cleaner that never asks you to trust a mysterious number or a flashing “Clean” button.
           </p>
         </div>
 
         <article className="mx-auto mt-10 max-w-[860px] rounded-3xl bg-[var(--surface)] px-5 py-6 sm:px-12 sm:py-12">
           <div className="blog-content">
-            <h2>Why DiskCleaner exists</h2>
+            <h2>Why DiskCleaner Exists</h2>
             <p>
-              Many Mac cleaner apps optimize for speed and automation first. DiskCleaner takes the opposite position: visibility and reversibility come first.
-              The goal is to help people recover space without turning cleanup into a black box.
+              Most cleaner apps try to make the decision for you. They scan, announce that they found several gigabytes, and encourage you to remove it all.
+              We built DiskCleaner because we wanted to inspect those files first. Visibility and reversibility come before automation.
             </p>
 
-            <h2>How the product is designed</h2>
+            <h2>How the Product Is Designed</h2>
             <ul>
               {principles.map(principle => (
                 <li key={principle}>{principle}</li>
               ))}
             </ul>
 
-            <h2>What DiskCleaner covers</h2>
+            <h2>What DiskCleaner Covers</h2>
             <p>
               DiskCleaner scans 16+ cleanup categories and targeted locations, including caches, logs, screenshots, .DS_Store files, Trash contents, developer data, large files, backups, external storage, and leftover files from removed apps.
               It also includes tools such as app uninstallation support and a menu bar disk-space view so users can act on storage pressure more quickly. For deeper walkthroughs, see our guides on{" "}
@@ -112,9 +112,9 @@ export default function About() {
               <Link to="/blog/delete-xcode-derived-data">deleting Xcode DerivedData</Link>.
             </p>
 
-            <h2>Privacy and safety stance</h2>
+            <h2>Privacy and Safety Stance</h2>
             <p>
-              The site and product messaging consistently position DiskCleaner as local-first. Cleanup actions are reviewed before execution, and the primary safety model is to move items to Trash instead of permanently deleting them.
+              Scanning and cleaning happen on your Mac. You review cleanup actions before they run, and normal removals go to Trash instead of disappearing permanently.
             </p>
 
             <h2>Contact</h2>

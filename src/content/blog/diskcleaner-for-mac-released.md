@@ -1,12 +1,12 @@
 ---
 title: "DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner"
-description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
+description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-Notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
 date: "2026-05-25"
 updatedAt: "2026-06-02"
 slug: "diskcleaner-for-mac-released"
 category: "Product Update"
 author: "Thomas A."
-excerpt: "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated."
+excerpt: "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-Notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated."
 featured: true
 ---
 
@@ -23,7 +23,7 @@ That matters because the Mac cleaner category has a trust problem. Many tools le
 The current release includes the core DiskCleaner workflow:
 
 - 16+ cleanup categories and targeted locations
-- Free core cleaning with a one-time Premium unlock for advanced categories
+- Free Core Cleaning with a One-Time Premium unlock for advanced categories
 - App Cache and Browser Cache review
 - Screenshots and Trash visibility
 - System Logs cleanup
@@ -132,7 +132,7 @@ DiskCleaner is available now as a direct Mac download:
 
 <div class="blog-cta-block">
   <p class="blog-cta-block-title">Download DiskCleaner for Mac</p>
-  <p class="blog-cta-block-sub">A safe, transparent, Apple-notarized Mac cleaner with free core cleaning and no subscription.</p>
+  <p class="blog-cta-block-sub">A safe, transparent, Apple-Notarized Mac cleaner with Free Core Cleaning and no subscription.</p>
   <a href="/downloads/DiskCleaner-macOS.dmg" download class="blog-cta-btn" data-analytics-location="release-article">
     Download for macOS
   </a>
@@ -147,7 +147,7 @@ Yes. DiskCleaner for Mac is now available as a direct download from the DiskClea
 
 ### Is DiskCleaner notarized by Apple?
 
-Yes. DiskCleaner is distributed as an Apple-notarized macOS app for direct download outside the Mac App Store.
+Yes. DiskCleaner is distributed as an Apple-Notarized macOS app for direct download outside the Mac App Store.
 
 ### Does DiskCleaner permanently delete files?
 
@@ -163,11 +163,11 @@ Yes. DiskCleaner uses Sparkle for background app updates, with secure update fee
 
 ### Is DiskCleaner a subscription?
 
-No. DiskCleaner includes free core cleaning, then unlocks Premium categories with a one-time license for up to 2 Macs.
+No. DiskCleaner includes Free Core Cleaning, then unlocks Premium categories with a one-time license for up to 2 Macs.
 
 ## Bottom Line
 
-DiskCleaner is now released as a safe, transparent, Apple-notarized Mac cleaner for users who want control over what gets removed.
+DiskCleaner is now released as a safe, transparent, Apple-Notarized Mac cleaner for users who want control over what gets removed.
 
 The product will keep growing, but the core rule stays the same: every file, your call.
 

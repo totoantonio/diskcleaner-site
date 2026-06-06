@@ -426,11 +426,11 @@ const COMPARISON_FAQS = {
   "cleanmymac-alternative": [
     {
       q: "What is the best CleanMyMac alternative for Mac?",
-      a: "DiskCleaner is a focused Mac cleaner that shows every file before moving it and sends everything to Trash. It covers App Cache, Browser Cache (9 browsers), System Logs, Developer Data, App Leftovers, Large Files, Downloads, iOS Backups, and Mail Attachments. Includes 3 free scans — $9.99 one-time after, no subscription.",
+      a: "DiskCleaner is a focused Mac cleaner that shows every file before moving it and sends everything to Trash. It covers App Cache, Browser Cache, System Logs, Developer Data, App Leftovers, Large Files, Downloads, iOS Backups, and Mail Attachments. Free Core Cleaning is included; Premium is $9.99 one-time with no subscription.",
     },
     {
       q: "Is there a free CleanMyMac alternative?",
-      a: "DiskCleaner includes 3 free scans with no account required. After the trial, a one-time $9.99 purchase unlocks the full app for up to 2 Macs — no annual subscription, unlike CleanMyMac.",
+      a: "DiskCleaner includes Free Core Cleaning with no account required. A one-time $9.99 purchase unlocks the full app for up to 2 Macs — no annual subscription, unlike CleanMyMac.",
     },
     {
       q: "How is DiskCleaner different from CleanMyMac?",
@@ -440,7 +440,7 @@ const COMPARISON_FAQS = {
   "macpaw-alternative": [
     {
       q: "What is the best MacPaw alternative for Mac cleaning?",
-      a: "DiskCleaner covers the core cleaning MacPaw's CleanMyMac offers — App Cache, Browser Cache, System Logs, Developer Data, and App Leftovers — plus Large Files, RAM Optimizer, and App Uninstaller. $9.99 one-time with 3 free scans.",
+      a: "DiskCleaner covers the core cleaning MacPaw's CleanMyMac offers — App Cache, Browser Cache, System Logs, Developer Data, and App Leftovers — plus Large Files, RAM Optimizer, and App Uninstaller. Free Core Cleaning is included; Premium is $9.99 one-time.",
     },
     {
       q: "Is DiskCleaner a good alternative to MacPaw's CleanMyMac?",
@@ -450,7 +450,7 @@ const COMPARISON_FAQS = {
   "best-mac-cleaner": [
     {
       q: "What is the best Mac cleaner app?",
-      a: "The best Mac cleaner shows every file before removal, uses Trash instead of permanent deletion, covers major categories (App Cache, Browser Cache, System Logs, Developer Data, Large Files), and doesn't require a subscription. DiskCleaner meets all four criteria at $9.99 one-time with 3 free scans.",
+      a: "The best Mac cleaner shows every file before removal, uses Trash instead of permanent deletion, covers major categories (App Cache, Browser Cache, System Logs, Developer Data, Large Files), and doesn't require a subscription. DiskCleaner meets all four criteria, includes Free Core Cleaning, and offers Premium for $9.99 one-time.",
     },
     {
       q: "What should I look for in a Mac cleaner?",
@@ -474,7 +474,7 @@ const COMPARISON_FAQS = {
   "best-mac-cleaner-for-developers": [
     {
       q: "What is the best Mac cleaner for developers?",
-      a: "DiskCleaner's Developer Data category targets Xcode derived data, iOS Simulators, CocoaPods caches, npm caches, and build artifacts — the largest sources of developer storage bloat on Mac. Deep Scan adds Downloads and Large Files. Includes 3 free scans.",
+      a: "DiskCleaner's Developer Data category targets Xcode derived data, iOS Simulators, CocoaPods caches, npm caches, and build artifacts — the largest sources of developer storage bloat on Mac. Deep Scan adds Downloads and Large Files. Free Core Cleaning is included.",
     },
     {
       q: "How much disk space can developers recover on Mac?",
@@ -488,7 +488,7 @@ const COMPARISON_FAQS = {
   "one-time-purchase-mac-cleaner": [
     {
       q: "What is the best one-time purchase Mac cleaner?",
-      a: "DiskCleaner offers a $9.99 one-time purchase covering up to 2 Macs and all future updates. It includes 3 free scans before purchase so you can verify it finds real junk on your Mac before spending anything.",
+      a: "DiskCleaner offers a $9.99 one-time purchase covering up to 2 Macs and all future updates. Free Core Cleaning lets you verify the review-first workflow before spending anything.",
     },
     {
       q: "Which Mac cleaners don't require a subscription?",
@@ -572,8 +572,8 @@ const IMG_BLOG    = `${BASE_URL}/DiskCleaner_blog.webp`
 const STATIC_PAGES = [
   {
     route: "/",
-    title: "DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner",
-    description: "DiskCleaner is a focused macOS cleaner that scans cache and clutter safely, shows every file before it moves, and sends everything to Trash. Private, fast, and beautifully simple.",
+    title: "DiskCleaner for Mac | Review-First, Trash-First Cleaner",
+    description: "DiskCleaner is a review-first Mac cleaner. See every cache, log, leftover, and large file before cleanup. Everything moves to Trash. Free Core Cleaning.",
     image: IMG_DEFAULT,
     jsonLd: buildBreadcrumbJsonLd([{ name: "Home", url: `${BASE_URL}/` }]),
   },
@@ -610,6 +610,17 @@ const STATIC_PAGES = [
     description: "Evidence and methodology behind DiskCleaner's privacy, safety, notarization, and scan-performance claims.",
     image: IMG_DEFAULT,
     jsonLd: buildTrustJsonLd(`${BASE_URL}/trust`),
+  },
+  {
+    route: "/security",
+    title: "DiskCleaner Security",
+    description: "DiskCleaner security posture, local-first cleanup model, permissions, data handling, and vulnerability reporting channel.",
+    image: IMG_DEFAULT,
+    jsonLd: buildBreadcrumbJsonLd([
+      { name: "Home", url: `${BASE_URL}/` },
+      { name: "Trust Center", url: `${BASE_URL}/trust` },
+      { name: "Security", url: `${BASE_URL}/security` },
+    ]),
   },
   {
     route: "/changelog",

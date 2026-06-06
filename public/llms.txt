@@ -1,5 +1,5 @@
 # DiskCleaner
-> A released, Apple-notarized macOS utility app that scans 16+ cleanup categories, shows every file before it moves, and sends cleaned items to Trash. Free core cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
+> A released, Apple-Notarized macOS utility app that scans 16+ cleanup categories, shows every file before it moves, and sends cleaned items to Trash. Free Core Cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
 
 > Full reference: https://www.diskcleaner.pro/llms-full.txt
 
@@ -7,10 +7,10 @@
 - Name: DiskCleaner
 - Platform: macOS 13 Ventura through macOS 26 Tahoe
 - Category: Utilities / Disk Cleaner / Mac Storage Optimizer
-- Price: Free core cleaning included; $9.99 one-time Premium unlock (no subscription, covers up to 2 Macs)
+- Price: Free Core Cleaning included; $9.99 One-Time Premium unlock (no subscription, covers up to 2 Macs)
 - Status: Released as a direct Mac download
 - Direct download: https://www.diskcleaner.pro/downloads/DiskCleaner-macOS.dmg
-- Distribution: Apple-notarized direct download; Mac App Store availability planned
+- Distribution: Apple-Notarized direct download; Mac App Store availability planned
 - Privacy: Cleanup runs locally — no telemetry, no data collection, no account required for scanning
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
@@ -22,14 +22,14 @@
 ## What It Does
 DiskCleaner scans 16+ cleanup categories and targeted locations on macOS, then shows you every file before moving anything. All cleaned files go to macOS Trash — nothing is permanently deleted.
 
-### Free core cleaning
+### Free Core Cleaning
 1. App Cache — per-app cache folders, including the regenerating QuickLook thumbnail cache
 2. System Logs — app and system log files
 3. Screenshots — Screenshot PNG files accumulated on your Desktop
 4. .DS_Store Files — hidden Finder metadata files across your home folder
 5. macOS Trash — files still consuming space in your Trash
 
-### Premium cleaning adds
+### Premium Cleaning Adds
 - Browser Cache — Chrome, Firefox, Edge, Brave, Arc, and Opera cache folders
 - Developer Data — Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files
 - Homebrew Cache — stale Homebrew downloads
@@ -57,7 +57,7 @@ DiskCleaner scans 16+ cleanup categories and targeted locations on macOS, then s
 
 ## Latest Changelog
 - DiskCleaner 26.1.1.0 — May 26, 2026: Sparkle updater integration, secure update feed, signature verification support, release delivery improvements, and general stability improvements.
-- Launch — May 25, 2026: DiskCleaner released as a direct Mac download with 3 free scans, one-time licensing, and a signed, notarized universal Mac build.
+- Launch — May 25, 2026: DiskCleaner released as a direct Mac download with Free Core Cleaning, One-Time Premium licensing, and a signed, notarized universal Mac build.
 
 ## Safety Philosophy
 DiskCleaner never permanently deletes files. Every item moved goes to macOS Trash, where it can be reviewed and recovered. Users see a complete checklist of every file before anything is moved. Protected paths are blocked from deletion. iCloud-safe scanning skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. Risky or personal findings are never pre-selected.
@@ -74,7 +74,7 @@ Q: What macOS versions are supported?
 A: macOS 13 Ventura through macOS 26 Tahoe. Universal Binary for Apple Silicon and Intel.
 
 Q: What is included for free?
-A: Core cleaning for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash is available without upgrading. A one-time $9.99 Premium purchase unlocks the full scanner for up to 2 Macs and includes all future updates — no subscription ever.
+A: Free Core Cleaning for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash is available without upgrading. A one-time $9.99 Premium purchase unlocks the full scanner for up to 2 Macs and includes all future updates — no subscription ever.
 
 Q: Is there a subscription?
 A: No. $9.99 one-time purchase covers up to 2 Macs and includes all future updates.

@@ -235,7 +235,7 @@ function ArticleFeedback({ slug, title }: { slug: string; title: string }) {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted2)]">Article Feedback</p>
-          <h2 className="mt-2 text-[20px] font-semibold tracking-[-0.03em] text-[var(--text)]">Was this article helpful?</h2>
+          <h2 className="mt-2 text-[20px] font-semibold tracking-[-0.03em] text-[var(--text)]">Was This Article Helpful?</h2>
           <p className="mt-1 text-[14px] leading-6 text-[var(--muted)]">
             Give it a quick thumbs up or down. We save your vote and use it to improve future articles.
           </p>
@@ -444,7 +444,7 @@ export default function Article() {
         {relatedPosts.length > 0 && (
           <section className="mx-auto mt-10 max-w-[920px] rounded-3xl border border-[var(--border)] bg-[var(--surface)] px-6 py-6 sm:px-8">
             <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[var(--muted2)]">Keep Reading</p>
-            <h2 className="mt-2 text-[24px] font-semibold tracking-[-0.03em] text-[var(--text)]">Related Mac cleaner guides</h2>
+            <h2 className="mt-2 text-[24px] font-semibold tracking-[-0.03em] text-[var(--text)]">Related Mac Cleaner Guides</h2>
             <div className="mt-5 grid gap-3">
               {relatedPosts.map(relatedPost => (
                 <Link

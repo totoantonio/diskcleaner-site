@@ -18,7 +18,7 @@ const sections = [
 export default function Help() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/help"
-    const description = "DiskCleaner help center covering 16+ scan categories, free core cleaning, Premium tools, safety labels, and common Mac cleaning questions."
+    const description = "DiskCleaner help center covering 16+ scan categories, Free Core Cleaning, Premium tools, safety labels, and common Mac cleaning questions."
 
     suppressFaqPageSchema()
 
@@ -39,7 +39,7 @@ export default function Help() {
               "name": "What does DiskCleaner clean?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner scans 16+ categories and targeted cleanup locations. Free core cleaning includes App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium adds browser cache, developer data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers."
+                "text": "DiskCleaner scans 16+ categories and targeted cleanup locations. Free Core Cleaning includes App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium adds browser cache, developer data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers."
               }
             },
             {
@@ -55,7 +55,7 @@ export default function Help() {
               "name": "What is included for free and what does Premium unlock?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Free core cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 16+ category scanner and advanced cleanup areas. Riskier findings such as iOS backups and local Time Machine snapshots are flagged for review and are never pre-selected."
+                "text": "Free Core Cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 16+ category scanner and advanced cleanup areas. Riskier findings such as iOS backups and local Time Machine snapshots are flagged for review and are never pre-selected."
               }
             },
             {
@@ -87,7 +87,7 @@ export default function Help() {
               "name": "How much does DiskCleaner cost?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner includes free core cleaning with no scan limit. Premium unlocks all advanced scan categories with a one-time license of $9.99 for up to 2 Macs, with all future updates included. No subscription required."
+                "text": "DiskCleaner includes Free Core Cleaning with no scan limit. Premium unlocks all advanced scan categories with a one-time license of $9.99 for up to 2 Macs, with all future updates included. No subscription required."
               }
             },
             {
@@ -160,7 +160,7 @@ export default function Help() {
             <h2 id="what-gets-cleaned">What Gets Cleaned — and What's Safe</h2>
             <p>DiskCleaner is built around a review-first, Trash-first workflow. It focuses on clutter macOS and apps regenerate automatically, then marks larger or riskier areas for closer review before anything moves.</p>
 
-            <h3>Free core cleaning</h3>
+            <h3>Free Core Cleaning</h3>
             <ul>
               <li><strong>App Cache</strong> — Temporary app cache files that rebuild as needed, including the regenerating QuickLook thumbnail cache.</li>
               <li><strong>Screenshots</strong> — Old screenshots that tend to accumulate unnoticed on long-used Macs.</li>
@@ -169,7 +169,7 @@ export default function Help() {
               <li><strong>macOS Trash</strong> — Files you already threw away that are still consuming space.</li>
             </ul>
 
-            <h3>Premium cleaning and expanded review areas</h3>
+            <h3>Premium Cleaning and Expanded Review Areas</h3>
             <p>Premium unlocks the full scanner, including larger storage categories and areas that often need more deliberate review.</p>
             <ul>
               <li><strong>Browser Cache</strong> — Cache data from Chrome, Firefox, Edge, Brave, Arc, and Opera profiles. Passwords, bookmarks, and history stay untouched.</li>
@@ -187,14 +187,14 @@ export default function Help() {
               <li><strong>Caution-labeled items</strong> — Results that deserve a second look before cleanup.</li>
             </ul>
 
-            <h3>What DiskCleaner does not do for you automatically</h3>
+            <h3>What DiskCleaner Does Not Do for You Automatically</h3>
             <ul>
               <li>It does not silently delete files in the background.</li>
               <li>It does not permanently delete as part of normal cleanup. Files go to macOS Trash.</li>
               <li>It does not clear personal content like passwords, bookmarks, or saved logins.</li>
             </ul>
 
-            <h3>What DiskCleaner protects by default</h3>
+            <h3>What DiskCleaner Protects by Default</h3>
             <ul>
               <li>System files, iCloud sync folders, and protected app data are blocked from deletion.</li>
               <li><strong>iCloud-safe scanning</strong> — DiskCleaner skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs.</li>
@@ -212,7 +212,7 @@ export default function Help() {
             {/* ── Section 2 ── */}
             <h2 id="how-to-use">How to Use DiskCleaner</h2>
 
-            <h3>Running your first clean</h3>
+            <h3>Running Your First Clean</h3>
             <ol>
               <li><strong>Open DiskCleaner</strong> and start a scan for the most common clutter categories.</li>
               <li>Review the results list. DiskCleaner shows categories, file sizes, and per-file checkboxes before anything moves.</li>
@@ -221,10 +221,10 @@ export default function Help() {
               <li>Click <strong>Clean</strong> when you are satisfied with the selection. Files move to Trash, not permanent deletion.</li>
             </ol>
 
-            <h3>Understanding free core cleaning vs Premium</h3>
-            <p><strong>Free core cleaning</strong> covers everyday clutter without a scan limit. <strong>Premium</strong> unlocks the full 16+ category scanner and advanced review areas. Riskier findings are flagged with an explanation and are never pre-selected.</p>
+            <h3>Understanding Free Core Cleaning vs Premium</h3>
+            <p><strong>Free Core Cleaning</strong> covers everyday clutter without a scan limit. <strong>Premium</strong> unlocks the full 16+ category scanner and advanced review areas. Riskier findings are flagged with an explanation and are never pre-selected.</p>
 
-            <h3>Menu bar utilities</h3>
+            <h3>Menu Bar Utilities</h3>
             <p>DiskCleaner includes menu bar utilities so disk state is always close at hand. The menu bar view is useful for quick visibility into available space and for returning to the app quickly when storage pressure starts building.</p>
 
             <h3>Using RAM Optimizer</h3>
@@ -233,36 +233,36 @@ export default function Help() {
             <h3>Using the Uninstaller</h3>
             <p>Open <strong>App Uninstaller</strong> when dragging an app to Trash is not enough. DiskCleaner helps you review the app bundle plus leftover support files before removal, and the latest uninstaller update improves layout, drag-and-drop flow, and installed-app selection.</p>
 
-            <h3>Free core cleaning and Premium unlock</h3>
-            <p>DiskCleaner includes <strong>free core cleaning</strong> for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full scanner with a <strong>$9.99 one-time license for up to 2 Macs</strong>, with future updates included.</p>
+            <h3>Free Core Cleaning and Premium Unlock</h3>
+            <p>DiskCleaner includes <strong>Free Core Cleaning</strong> for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full scanner with a <strong>$9.99 one-time license for up to 2 Macs</strong>, with future updates included.</p>
 
             <hr />
 
             {/* ── Section 3 ── */}
             <h2 id="troubleshooting">Troubleshooting Common Issues</h2>
 
-            <h3>DiskCleaner shows 0 MB found</h3>
+            <h3>DiskCleaner Shows 0 MB Found</h3>
             <p>This is normal on a freshly cleaned or new Mac. macOS caches rebuild as you use your apps — try scanning again after a day of normal use.</p>
 
-            <h3>macOS asks for Full Disk Access or my password — is that normal?</h3>
+            <h3>macOS Asks for Full Disk Access or My Password — Is That Normal?</h3>
             <p>Yes. Some categories involve locations macOS protects more aggressively. Depending on what you review and choose to clean, macOS may require Full Disk Access or standard administrator approval. DiskCleaner uses the normal macOS permission flow and does not ask you to bypass it.</p>
 
-            <h3>An app is slow after cleaning</h3>
+            <h3>An App Is Slow After Cleaning</h3>
             <p>Apps may feel slightly slower the first time they launch after their cache is removed — this is expected. Performance returns to normal within a minute as the cache rebuilds. If an app continues to behave oddly, restarting it or your Mac usually resolves it.</p>
 
-            <h3>Disk space didn't change much after cleaning</h3>
+            <h3>Disk Space Didn't Change Much After Cleaning</h3>
             <p>macOS does not always reflect reclaimed space instantly. Some recovery may appear as <em>purgeable</em> before it shows up as fully available. If the number looks slow to update, wait a moment and then recheck, or restart the Mac if storage reporting still looks stale. If you are working through the bigger picture, see our guides on <Link to="/blog/how-to-free-up-storage-on-mac">how to free up storage on Mac</Link> and <Link to="/blog/what-is-system-data-mac">what System Data on Mac means</Link>.</p>
 
-            <h3>DiskCleaner can't be opened (Gatekeeper warning)</h3>
+            <h3>DiskCleaner Can't Be Opened (Gatekeeper Warning)</h3>
             <p>If macOS shows "DiskCleaner cannot be opened because it is from an unidentified developer," go to <strong>System Settings → Privacy &amp; Security</strong>, scroll down, and click <strong>Open Anyway</strong> next to the DiskCleaner entry.</p>
 
-            <h3>The Uninstaller doesn't show what I expected</h3>
+            <h3>The Uninstaller Doesn't Show What I Expected</h3>
             <p>Use the improved installed-app picker first, then try the drag-and-drop uninstall flow if needed. Some apps may have fewer matchable leftovers than others, and App Store-distributed apps can behave differently because of macOS sandboxing.</p>
 
-            <h3>The scan found categories I want to keep</h3>
+            <h3>The Scan Found Categories I Want to Keep</h3>
             <p>That is exactly what the review model is for. Some categories are intentionally marked for second-look review. Uncheck anything you want to keep and clean only the categories you are confident about.</p>
 
-            <h3>Still need help?</h3>
+            <h3>Still Need Help?</h3>
             <p>Reach out via the <strong>Support</strong> link in the footer — we typically respond within one business day.</p>
 
             <hr />
@@ -274,7 +274,7 @@ export default function Help() {
               and standard text-editing shortcuts in text fields. The table below stays intentionally focused on reliable, app-wide shortcuts.
             </p>
 
-            <h3>Common macOS shortcuts</h3>
+            <h3>Common macOS Shortcuts</h3>
             <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: "22px", fontSize: "14px", tableLayout: "fixed" }}>
               <colgroup>
                 <col style={{ width: "64%" }} />
@@ -312,7 +312,7 @@ export default function Help() {
               </tbody>
             </table>
 
-            <h3>Text fields</h3>
+            <h3>Text Fields</h3>
             <p>
               Standard macOS text-editing shortcuts such as <strong>⌘A</strong>, <strong>⌘C</strong>, <strong>⌘V</strong>,
               and <strong>⌘Z</strong> work anywhere DiskCleaner provides a normal text field.

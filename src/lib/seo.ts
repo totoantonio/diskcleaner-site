@@ -1,6 +1,6 @@
 const HOME_URL = "https://www.diskcleaner.pro/"
-const DEFAULT_TITLE = "DiskCleaner for Mac – Secure, Fast, Minimal Cache Cleaner"
-const DEFAULT_DESCRIPTION = "DiskCleaner is a focused macOS cleaner that scans cache and clutter safely, shows every file before it moves, and sends everything to Trash. Private, fast, and beautifully simple."
+const DEFAULT_TITLE = "DiskCleaner for Mac | Review-First, Trash-First Cleaner"
+const DEFAULT_DESCRIPTION = "DiskCleaner is a review-first Mac cleaner. See every cache, log, leftover, and large file before cleanup. Everything moves to Trash. Free Core Cleaning."
 const DEFAULT_IMAGE = "https://www.diskcleaner.pro/DiskCleaner_Social.webp"
 
 function setContent(id: string, value: string) {

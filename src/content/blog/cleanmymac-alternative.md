@@ -50,7 +50,7 @@ It's worth being clear about what you're optimizing for before comparing apps.
 
 ## DiskCleaner — Best for Transparency
 
-**Price:** Free core cleaning · $9.99 one-time Premium unlock
+**Price:** Free Core Cleaning · $9.99 One-Time Premium unlock
 **Approach:** Shows every file before anything moves. Per-file checkboxes. Everything goes to Trash — no permanent deletions.
 
 This is the main differentiator: where CleanMyMac cleans first and shows you a number, DiskCleaner shows you every individual file across 16+ scan categories and targeted locations before you approve anything.

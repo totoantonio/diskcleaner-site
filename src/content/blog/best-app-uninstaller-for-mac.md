@@ -78,7 +78,7 @@ What it covers:
 - `~/Library/Application Scripts`
 - `/Library/Application Support` (system-level)
 
-**Price:** Free core cleaning · $9.99 one-time Premium unlock for 2 Macs
+**Price:** Free Core Cleaning · $9.99 One-Time Premium unlock for 2 Macs
 
 **Best for:** Users who want to see exactly what they're removing and prefer the full cleanup workflow alongside regular disk scans.
 

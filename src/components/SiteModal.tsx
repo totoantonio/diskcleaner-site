@@ -269,7 +269,7 @@ export function SupportContent() {
         <li>What you clicked and what happened</li>
         <li>Screenshot of the result screen (if possible)</li>
       </ul>
-      <h3>Support email</h3>
+      <h3>Support Email</h3>
       <p className="font-semibold text-[var(--text)]">customersupport@diskcleaner.pro</p>
     </div>
   )
@@ -326,8 +326,8 @@ export function ChangelogContent() {
               label: "+ Released",
               items: [
                 "DiskCleaner is now available as a direct Mac download.",
-                "Includes 3 free scans, then a $9.99 one-time license for up to 2 Macs.",
-                "Apple-notarized universal Mac build for Apple Silicon and Intel.",
+                "Includes Free Core Cleaning, with a $9.99 One-Time Premium license for up to 2 Macs.",
+                "Apple-Notarized universal Mac build for Apple Silicon and Intel.",
               ],
             },
             {

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Apple-Style Product Websites"
+  short_description: "Design polished, cinematic product marketing websites"
+  default_prompt: "Use $design-apple-product-websites to design or improve this product website with disciplined Apple-inspired hierarchy and storytelling."

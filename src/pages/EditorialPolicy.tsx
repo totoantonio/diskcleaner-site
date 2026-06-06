@@ -71,7 +71,7 @@ export default function EditorialPolicy() {
               Articles include publication dates, and pages may also note updates when meaningful changes are made. Comparison pages and technical claims are intended to stay current as pricing, platform support, and product behavior change over time.
             </p>
 
-            <h2>Comparisons and product claims</h2>
+            <h2>Comparisons and Product Claims</h2>
             <p>
               DiskCleaner’s comparison content aims to separate observable product behavior, public pricing, and editorial opinion as clearly as possible. When claims rely on public documentation or vendor pages, they should reflect the most current information available at the time of publication or update.
             </p>

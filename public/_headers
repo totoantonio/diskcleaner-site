@@ -22,6 +22,9 @@
 /blog
   Cache-Control: public, max-age=0, must-revalidate
 
+/security
+  Cache-Control: public, max-age=0, must-revalidate
+
 /privacy-policy
   Cache-Control: public, max-age=0, must-revalidate
 
