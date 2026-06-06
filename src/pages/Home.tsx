@@ -1168,62 +1168,66 @@ function FAQ({ BG }: { BG: string }) {
 
 function CTA({ BG }: { BG: string }) {
   return (
-      <section id="download" className="relative overflow-hidden py-12 sm:py-16 lg:py-20" style={{ background: BG }}>
-        <div className="hero-glow h-[600px] w-[1000px] bg-[radial-gradient(ellipse,var(--blue-glow),transparent_65%)]" />
-        <div className="hero-ambient hero-ambient-c" />
-        <div className="relative mx-auto w-full max-w-[1200px] px-6 text-center md:px-12">
-          <h2 className="authored-major-headline reveal reveal-headline d1 mt-4 text-[clamp(42px,5.5vw,76px)] font-bold leading-[0.98] tracking-[-0.045em] text-[var(--text)]">
-            <span className="text-[var(--text)]">Try the cleaner. </span>
-            <span className="text-[var(--blue)]">Upgrade only if you need the rest.</span>
-          </h2>
-          <p className="reveal d2 mx-auto mt-4 max-w-[480px] text-[17px] leading-[1.55] text-[var(--muted)]">
-            Free Core Cleaning is included. A $9.99 one-time purchase unlocks every scan category for up to two Macs, including future updates.
-          </p>
-          <div className="reveal d3 mt-8 flex flex-col items-center gap-1 rounded-2xl border border-[var(--blue-tint-border)] bg-[var(--blue-tint)] px-6 py-3 sm:inline-flex sm:flex-row sm:rounded-full sm:gap-3 sm:px-7">
-            <span className="text-[26px] font-bold tracking-[-0.03em] text-[var(--text)] sm:text-[28px]">$9.99</span>
-            <span className="text-center text-sm text-[var(--muted)]">One-Time · Yours Forever · Up to 2 Macs</span>
-          </div>
-          <div className="reveal d4">
+      <section id="download" className="authored-download-section" style={{ background: BG }}>
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
+          <div className="authored-download-panel">
+            <div className="authored-download-orb authored-download-orb-left" aria-hidden="true" />
+            <div className="authored-download-orb authored-download-orb-right" aria-hidden="true" />
+            <div className="authored-download-float authored-download-float-free" aria-hidden="true">
+              <span>✓</span>
+              <div>
+                <strong>Free Core Cleaning</strong>
+                <small>Start without upgrading</small>
+              </div>
+            </div>
+            <div className="authored-download-float authored-download-float-license" aria-hidden="true">
+              <span>$</span>
+              <div>
+                <strong>One-Time Purchase</strong>
+                <small>Yours forever · Up to 2 Macs</small>
+              </div>
+            </div>
+
+            <div className="authored-download-content">
+              <div className="authored-download-kicker reveal">
+                <span />
+                Ready When Your Mac Needs Space
+              </div>
+              <h2 className="reveal reveal-headline d1">
+                Try the cleaner.<br />
+                Upgrade only if you need the rest.
+              </h2>
+              <p className="reveal d2">
+                Free Core Cleaning is included. A $9.99 one-time purchase unlocks every scan category
+                for up to two Macs, including future updates.
+              </p>
+              <div className="authored-download-price reveal d3">
+                <strong>$9.99</strong>
+                <span>One-Time · Yours Forever · Up to 2 Macs</span>
+              </div>
+              <div className="authored-download-actions reveal d4">
             <a
               href={appDownloadUrl}
               download
               data-analytics-location="download-section"
-              className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-[var(--blue)] px-7 py-3.5 text-[17px] font-medium text-white no-underline transition-[filter,transform] duration-150 hover:brightness-110 active:scale-[0.97] active:brightness-90 sm:w-auto"
+                  className="authored-download-button"
             >
-              Download for macOS
+                  Download for macOS <span aria-hidden>↓</span>
             </a>
+                <a href="/trust" className="authored-download-secondary">Review Security</a>
           </div>
-          <div className="reveal d5 mt-7 flex flex-wrap justify-center gap-x-2 gap-y-1.5 sm:gap-5">
-            {[
-              "Free Core Cleaning Included",
-              "No Subscription",
-              "macOS 13 → 26 Tahoe",
-              "Apple Silicon Native",
-              "Apple-Notarized",
-              "No Account Needed",
-            ].map(f => (
-              <div key={f} className="flex items-center gap-2 text-[13px] text-[var(--muted)]">
-                <div className="h-1 w-1 rounded-full bg-[var(--blue)]" />
-                {f}
+              <div className="authored-download-trust reveal d5">
+                {[
+                  "No Subscription",
+                  "macOS 13 → 26 Tahoe",
+                  "Apple Silicon Native",
+                  "Apple-Notarized",
+                  "No Account Needed",
+                  "Zero Data Collected",
+                  "Coming to the Mac App Store",
+                ].map(item => <span key={item}>{item}</span>)}
               </div>
-            ))}
-          </div>
-          {/* Trust signals inline row */}
-          <div className="reveal d5 mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-6">
-            <span className="flex items-center gap-1.5 text-[13px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" className="shrink-0 text-[var(--blue)]" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-              Coming to the Mac App Store
-            </span>
-            <span className="hidden text-[var(--border)] sm:inline">·</span>
-            <span className="flex items-center gap-1.5 text-[13px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[var(--blue)]" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              Apple-Notarized
-            </span>
-            <span className="hidden text-[var(--border)] sm:inline">·</span>
-            <span className="flex items-center gap-1.5 text-[13px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[var(--blue)]" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Zero Data Collected
-            </span>
+            </div>
           </div>
         </div>
       </section>
@@ -1235,15 +1239,20 @@ function TrustBand({ BG }: { BG: string }) {
       <section className="py-12 sm:py-16 lg:py-20" style={{ background: BG }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="authored-trust-note reveal">
-            <h2 className="reveal reveal-headline d1 text-balance text-[clamp(30px,3.6vw,48px)] font-bold leading-[1.06] tracking-[-0.04em] text-[var(--text)]">
-              <span className="text-[var(--text)]">What DiskCleaner refuses to do </span>
-              <span className="text-[var(--blue)]">matters too.</span>
-            </h2>
-            <p className="reveal d2 mx-auto mt-4 max-w-[760px] text-[17px] leading-[1.6] text-[var(--muted)]">
-              It does not silently clean in the background, permanently erase normal cleanup results,
-              upload scan results, or pre-select personal and caution-labeled files.
-            </p>
-            <a href="/trust" className="authored-text-link">Read the Trust Center <span aria-hidden>→</span></a>
+            <span className="authored-trust-eyebrow">Trust Before You Clean</span>
+            <div className="authored-trust-heading">
+              <h2 className="reveal reveal-headline d1 text-balance text-[clamp(30px,3.6vw,48px)] font-bold leading-[1.06] tracking-[-0.04em] text-[var(--text)]">
+                <span className="text-[var(--text)]">What DiskCleaner refuses to do </span>
+                <span className="text-[var(--blue)]">matters too.</span>
+              </h2>
+              <a href="/trust" className="authored-text-link">Read the Trust Center <span aria-hidden>→</span></a>
+            </div>
+            <div className="authored-trust-details">
+              <p className="reveal d2 max-w-[760px] text-[17px] leading-[1.6] text-[var(--muted)]">
+                It does not silently clean in the background, permanently erase normal cleanup results,
+                upload scan results, or pre-select personal and caution-labeled files.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1353,7 +1362,7 @@ export default function Home() {
       >
         <div className="authored-floating-brand">
           <a href="/">Disk<span>Cleaner</span></a>
-          <small>Review First. Trash First.</small>
+          <small>Review First. Trash, Not Delete.</small>
         </div>
         <div className="authored-floating-links">
           <a href="#review-first">How It Works</a>
