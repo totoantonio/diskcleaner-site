@@ -726,7 +726,7 @@ const InterfaceSplit = lazy(async () => {
                   Expand any category down to individual files. Uncheck anything you want to keep.
                   When you're ready - and only then - click Clean.
                 </p>
-                <dl className="mt-6 max-w-xl space-y-2 text-[16px] leading-[1.7] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
+                <dl className="feature-bullet-list mt-6 max-w-xl space-y-2 text-[16px] leading-[1.7] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
                     <dt className="inline text-[var(--text-dim)]">
                       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
@@ -795,7 +795,7 @@ function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
                   Dragging an app to Trash only removes the app itself. The rest hides quietly in Library folders: caches, preferences, logs, containers, and support files.
                   Drop an app into DiskCleaner to see its full footprint, then choose which leftovers should go.
                 </p>
-                <dl className="mt-6 max-w-xl space-y-2 text-[17px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
+                <dl className="feature-bullet-list mt-6 max-w-xl space-y-2 text-[17px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
                     <dt className="inline text-[var(--text-dim)]">
                       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
@@ -874,7 +874,7 @@ const RamOptimizerSplit = lazy(async () => {
                     how to free up storage on Mac
                   </Link>.
                 </p>
-                <dl className="mt-6 max-w-xl space-y-2 text-[17px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
+                <dl className="feature-bullet-list mt-6 max-w-xl space-y-2 text-[17px] leading-[1.65] text-[var(--muted)] sm:mt-8 sm:space-y-4 lg:max-w-none">
                   <div className="relative pl-9">
                     <dt className="inline text-[var(--text-dim)]">
                       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="absolute top-1 left-1 size-5 text-[var(--blue)]">
@@ -967,7 +967,7 @@ function MenuBarSplit({ BG }: { BG: string }) {
                 The menu bar view keeps the useful number close: how much space is left.
                 Open DiskCleaner or start a scan when the number begins to look uncomfortable.
               </p>
-              <ul className="mt-6 list-none space-y-2 pl-0 text-[17px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
+              <ul className="feature-bullet-list mt-6 list-none space-y-2 pl-0 text-[17px] leading-[1.65] text-[var(--text-dim)] sm:mt-8 sm:space-y-4">
                 <li className="flex items-center gap-3">
                   <svg className="h-5 w-5 shrink-0 text-[var(--blue)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="8" />

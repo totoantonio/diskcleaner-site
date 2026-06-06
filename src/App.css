@@ -3341,6 +3341,37 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   transform: translateX(3px);
 }
 
+/* ===== FEATURE BULLET ICONS ===== */
+.feature-bullet-list > div > dt,
+.feature-bullet-list > li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding-left: 0;
+}
+
+.feature-bullet-list > div {
+  padding-left: 0;
+}
+
+.feature-bullet-list svg {
+  position: static !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 5px;
+  border: 1px solid var(--blue-tint-border);
+  border-radius: 9px;
+  background: var(--blue-tint);
+  color: var(--blue);
+  stroke-width: 1.7;
+}
+
+.feature-bullet-list > div > dt,
+.feature-bullet-list > li {
+  color: var(--text-dim);
+}
+
 .authored-follow-card {
   padding: clamp(30px, 5vw, 64px);
   border: 1px solid var(--border);
