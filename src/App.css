@@ -4618,20 +4618,29 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 
 @media (max-width: 560px) {
   .site-footer {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
   .site-footer-cols {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 10px;
   }
 
   .site-footer-col {
     min-width: 0;
   }
 
+  .site-footer-col-hd {
+    margin-bottom: 12px;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
   .site-footer-link {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.35;
     overflow-wrap: anywhere;
   }
 }
