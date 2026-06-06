@@ -3289,14 +3289,13 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
 .authored-guide-card:hover {
   background: var(--blue-tint);
   border-color: var(--blue-tint-border);
   box-shadow: 0 14px 34px var(--shadow);
-  transform: translateY(-4px);
 }
 
 .authored-guide-card > span {
@@ -3331,6 +3330,15 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   padding-top: 24px;
   color: var(--blue);
   font-size: 12px;
+}
+
+.authored-guide-card strong span {
+  display: inline-block;
+  transition: transform .18s ease;
+}
+
+.authored-guide-card:hover strong span {
+  transform: translateX(3px);
 }
 
 .authored-follow-card {
