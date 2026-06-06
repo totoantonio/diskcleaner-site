@@ -103,6 +103,17 @@ body, [data-theme] {
   --glass-border: rgba(255,255,255,0.1);
 }
 
+[data-theme="dark"] .authored-problem-layout {
+  border-color: rgba(255,255,255,.14);
+  background:
+    radial-gradient(circle at 14% 8%, rgba(41,151,255,.18), transparent 34%),
+    linear-gradient(135deg, rgba(44,44,46,.8), rgba(28,28,30,.68));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.11),
+    inset 0 0 0 1px rgba(0,113,227,.08),
+    0 26px 68px rgba(0,0,0,.3);
+}
+
 [data-theme] {
   background: var(--bg);
   color: var(--text);
@@ -3300,16 +3311,42 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 }
 
 .authored-problem-layout {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(41,151,255,.16), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--surface2) 64%, transparent));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 0 0 0 1px rgba(0,113,227,.045),
+    0 26px 68px rgba(15,23,42,.1);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
   overflow: hidden;
 }
 
+.authored-problem-layout::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.35), transparent 34%),
+    radial-gradient(circle at 84% 84%, rgba(0,113,227,.07), transparent 36%);
+  pointer-events: none;
+}
+
+.authored-problem-layout > * {
+  position: relative;
+  z-index: 1;
+}
+
 .authored-problem-tabs {
-  border-right: 1px solid var(--border);
+  border-right: 1px solid rgba(0,113,227,.1);
+  background: color-mix(in srgb, var(--surface) 48%, transparent);
 }
 
 .authored-problem-tabs button {
@@ -3317,7 +3354,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   min-height: 76px;
   padding: 18px 20px;
   border: 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(0,113,227,.09);
   background: transparent;
   color: var(--muted);
   display: flex;
@@ -3339,7 +3376,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-problem-tabs button:hover,
 .authored-problem-tabs button.is-active {
   padding-left: 25px;
-  background: var(--blue-tint);
+  background: color-mix(in srgb, var(--blue-tint) 82%, transparent);
   color: var(--text);
 }
 
@@ -3350,6 +3387,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-problem-answer {
   min-height: 350px;
   padding: clamp(30px, 5vw, 64px);
+  background: color-mix(in srgb, var(--surface) 54%, transparent);
   animation: authoredAnswerIn .36s cubic-bezier(.22,1,.36,1);
 }
 
@@ -3751,7 +3789,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 
   .authored-problem-tabs {
     border-right: 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(0,113,227,.1);
   }
 
   .authored-guide-grid {
@@ -3996,6 +4034,12 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   .authored-follow-card {
     min-height: 0;
     padding: 26px 20px;
+  }
+
+  .authored-problem-layout {
+    border-radius: 22px;
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
   }
 
   .authored-guide-card {
