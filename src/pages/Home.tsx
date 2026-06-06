@@ -431,6 +431,11 @@ function Hero({ BG }: { BG: string }) {
         </div>
 
         <div className="authored-product-proof reveal">
+          <div className="authored-proof-ambient" aria-hidden="true">
+            <span />
+            <span />
+          </div>
+          <div className="authored-proof-floor" aria-hidden="true" />
           <div className="authored-proof-scanlines" aria-hidden="true">
             <span />
           </div>
@@ -445,6 +450,20 @@ function Hero({ BG }: { BG: string }) {
           <div className="authored-proof-note authored-proof-note-trash">
             <strong>Trash, Not Permanent Deletion</strong>
             <span>Anything moved remains recoverable.</span>
+          </div>
+          <div className="authored-proof-float authored-proof-float-files" aria-hidden="true">
+            <span className="authored-proof-float-icon">✓</span>
+            <span>
+              <strong>Per-File Control</strong>
+              <small>Keep anything you recognize</small>
+            </span>
+          </div>
+          <div className="authored-proof-float authored-proof-float-safety" aria-hidden="true">
+            <span className="authored-proof-float-icon">↩</span>
+            <span>
+              <strong>Recoverable Cleanup</strong>
+              <small>Moved to macOS Trash</small>
+            </span>
           </div>
           <img
             src={appImage}

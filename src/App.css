@@ -2881,15 +2881,80 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   margin: 64px auto 0;
   padding: 44px 52px 0;
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(0,113,227,.13);
   border-radius: 28px;
   background:
+    radial-gradient(circle at 50% 44%, rgba(41,151,255,.13), transparent 42%),
     linear-gradient(180deg, var(--surface2), var(--surface));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.72),
+    0 28px 70px rgba(15,23,42,.08);
+  isolation: isolate;
+}
+
+.authored-product-proof::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,113,227,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,113,227,.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(circle at 50% 52%, #000, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 52%, #000, transparent 72%);
+  pointer-events: none;
+}
+
+.authored-proof-ambient {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+
+.authored-proof-ambient span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: .62;
+}
+
+.authored-proof-ambient span:first-child {
+  top: 18%;
+  left: 27%;
+  width: 48%;
+  height: 58%;
+  background: radial-gradient(circle, rgba(41,151,255,.24), rgba(0,113,227,.06) 52%, transparent 72%);
+  animation: authoredAmbientBreathe 7s ease-in-out infinite;
+}
+
+.authored-proof-ambient span:last-child {
+  right: 6%;
+  bottom: 5%;
+  width: 34%;
+  height: 38%;
+  background: radial-gradient(circle, rgba(100,210,255,.17), transparent 70%);
+  animation: authoredAmbientBreathe 8s 1.2s ease-in-out infinite reverse;
+}
+
+.authored-proof-floor {
+  position: absolute;
+  z-index: 1;
+  left: 17%;
+  right: 17%;
+  bottom: 7%;
+  height: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0,113,227,.18), transparent 68%);
+  filter: blur(16px);
+  transform: scaleX(1.18);
+  pointer-events: none;
 }
 
 .authored-proof-scanlines {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   inset: 18% 18% 15%;
   overflow: hidden;
   pointer-events: none;
@@ -2912,7 +2977,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 
 .authored-proof-status {
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   top: 24px;
   right: 26px;
   min-height: 28px;
@@ -2950,23 +3015,33 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   50% { opacity: .45; transform: scale(.82); }
 }
 
+@keyframes authoredAmbientBreathe {
+  50% { opacity: .9; transform: scale(1.08); }
+}
+
 .authored-product-proof > img {
   position: absolute;
-  top: 54%;
+  z-index: 2;
+  top: 55%;
   left: 50%;
-  width: min(760px, 74%);
+  width: min(790px, 76%);
   height: auto;
   margin: 0;
   transform: translate(-50%, -50%);
-  filter: saturate(.88);
+  filter: saturate(.93) drop-shadow(0 24px 30px rgba(15,23,42,.13));
 }
 
 .authored-proof-note {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   width: 210px;
-  padding-left: 14px;
-  border-left: 2px solid var(--blue);
+  padding: 14px 15px;
+  border: 1px solid rgba(0,113,227,.16);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: 0 12px 30px rgba(15,23,42,.08);
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
   text-align: left;
 }
 
@@ -2989,19 +3064,86 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 }
 
 .authored-proof-note-review {
-  top: 54px;
-  left: 52px;
+  top: 48px;
+  left: 42px;
 }
 
 .authored-proof-note-trash {
   width: 280px;
   top: auto;
-  right: 34px;
-  bottom: 46px;
+  right: 30px;
+  bottom: 34px;
 }
 
 .authored-proof-note-trash strong {
   white-space: nowrap;
+}
+
+.authored-proof-float {
+  position: absolute;
+  z-index: 5;
+  min-width: 190px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,113,227,.14);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  box-shadow: 0 14px 34px rgba(15,23,42,.09);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  pointer-events: none;
+}
+
+.authored-proof-float > span:last-child,
+.authored-proof-float strong,
+.authored-proof-float small {
+  display: block;
+}
+
+.authored-proof-float-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--blue-tint);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.authored-proof-float strong {
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: -.012em;
+}
+
+.authored-proof-float small {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.authored-proof-float-files {
+  top: 31%;
+  right: 5%;
+  animation: authoredFloatCard 5.8s ease-in-out infinite;
+}
+
+.authored-proof-float-safety {
+  left: 8%;
+  bottom: 20%;
+  animation: authoredFloatCard 6.4s 1s ease-in-out infinite reverse;
+}
+
+@keyframes authoredFloatCard {
+  50% { transform: translateY(-5px); }
 }
 
 .authored-decisions {
@@ -3571,6 +3713,10 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     transform: translate(-50%, -50%);
   }
 
+  .authored-proof-float {
+    display: none;
+  }
+
   .authored-proof-note-review {
     top: 26px;
     left: 22px;
@@ -3789,6 +3935,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     border-radius: 18px;
     isolation: isolate;
     transform: translateZ(0);
+    box-shadow: 0 18px 44px rgba(15,23,42,.07);
   }
 
   .authored-product-proof > img {
@@ -3797,6 +3944,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     max-width: none;
     margin: 0;
     transform: translate(-50%, -50%);
+    filter: saturate(.93) drop-shadow(0 15px 20px rgba(15,23,42,.1));
   }
 
   .authored-proof-note {
@@ -3881,6 +4029,8 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .authored-proof-ambient span,
+  .authored-proof-float,
   .authored-proof-scanlines span,
   .authored-proof-status span {
     animation: none;
