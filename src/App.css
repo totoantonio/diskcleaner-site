@@ -2725,10 +2725,6 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   transform: translateY(1px);
 }
 
-.authored-hero {
-  border-bottom: 1px solid var(--border);
-}
-
 .authored-hero-copy {
   max-width: 1060px;
   margin: 0 auto;
@@ -2994,16 +2990,14 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 }
 
 .authored-decisions {
-  padding: 88px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 76px 0;
 }
 
 .authored-section-intro {
   display: grid;
   grid-template-columns: 170px minmax(0, 1fr);
   gap: 20px 40px;
-  padding-bottom: 44px;
-  border-bottom: 1px solid var(--border);
+  padding-bottom: 34px;
 }
 
 .authored-section-intro > span {
@@ -3035,21 +3029,16 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   text-wrap: pretty;
 }
 
-.authored-decision-list {
-  border-bottom: 1px solid var(--border);
-}
-
 .authored-decision {
   display: grid;
   grid-template-columns: 90px minmax(0, 1fr) minmax(220px, .65fr);
   align-items: start;
   gap: 36px;
-  padding: 42px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 34px 0;
 }
 
-.authored-decision:last-child {
-  border-bottom: 0;
+.authored-decision + .authored-decision {
+  margin-top: 8px;
 }
 
 .authored-decision-number {
@@ -3092,9 +3081,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 }
 
 .authored-trust-note {
-  padding: 44px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
   text-align: left;
 }
 
@@ -3111,8 +3098,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-problem-finder,
 .authored-guides,
 .authored-follow {
-  padding: 88px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 76px 0;
 }
 
 .authored-problem-heading,
@@ -3272,8 +3258,6 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-guide-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
 }
 
 .authored-guide-card {
@@ -3551,7 +3535,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-decision {
-    padding: 34px 0;
+    padding: 28px 0;
   }
 
   .authored-problem-layout,
@@ -3785,7 +3769,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-decision {
-    padding: 30px 0;
+    padding: 24px 0;
   }
 
   .authored-decision code,
@@ -3819,13 +3803,13 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-decisions {
-    padding: 64px 0;
+    padding: 52px 0;
   }
 
   .authored-problem-finder,
   .authored-guides,
   .authored-follow {
-    padding: 64px 0;
+    padding: 52px 0;
   }
 
   .authored-guides-heading {
