@@ -4382,6 +4382,10 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     flex-direction: column;
   }
 
+  .authored-decision-card:hover {
+    transform: none;
+  }
+
   .authored-problem-layout,
   .authored-follow-card {
     grid-template-columns: 1fr;
@@ -4647,34 +4651,34 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-decision-list {
-    gap: 16px;
-    padding: 22px 14px 28px 56px;
+    gap: 18px;
+    padding: 28px 12px 32px 62px;
     border-radius: 22px;
   }
 
   .authored-decision-list::before {
-    top: 42px;
-    bottom: 42px;
-    left: 26px;
+    top: 49px;
+    bottom: 49px;
+    left: 30px;
   }
 
   .authored-decision-list::after {
-    top: 42px;
-    left: 25px;
-    height: 60px;
+    top: 49px;
+    left: 29px;
+    height: 66px;
   }
 
   .authored-decision-number {
-    top: 2px;
-    left: -48px;
-    width: 36px;
-    height: 36px;
-    border-width: 3px;
-    font-size: 9px;
+    top: 0;
+    left: -53px;
+    width: 42px;
+    height: 42px;
+    border-width: 4px;
+    font-size: 10px;
   }
 
   .authored-decision-card {
-    padding: 22px 18px 18px;
+    padding: 22px 16px 18px;
     border-radius: 18px;
   }
 
@@ -4685,15 +4689,31 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-decision h3 {
-    font-size: 20px;
+    font-size: 21px;
+    line-height: 1.16;
+  }
+
+  .authored-decision p {
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .authored-decision-status {
     margin-top: 14px;
+    max-width: 100%;
+    padding: 0 10px;
+    font-size: 9px;
+    white-space: nowrap;
   }
 
   .authored-decision-app-row {
     margin-top: 20px;
+    padding: 0 8px;
+    gap: 6px;
+  }
+
+  .authored-decision-app-row strong {
+    font-size: 8px;
   }
 
   .authored-problem-answer code {
@@ -4741,11 +4761,11 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-download-section {
-    padding: 40px 0 48px;
+    padding: 56px 0 48px;
   }
 
   .authored-download-panel {
-    padding: 46px 20px 36px;
+    padding: 58px 18px 34px;
     border-radius: 24px;
   }
 
@@ -4757,20 +4777,20 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   #download .authored-download-panel h2 {
-    margin-top: 30px;
-    font-size: clamp(36px, 10.6vw, 48px);
+    margin-top: 26px;
+    font-size: clamp(34px, 10vw, 46px);
     line-height: 1.04;
     letter-spacing: -.048em;
   }
 
   #download .authored-download-panel p {
-    margin-top: 22px;
+    margin-top: 20px;
     font-size: 14px;
     line-height: 1.58;
   }
 
   .authored-download-price {
-    margin-top: 24px;
+    margin-top: 22px;
     align-items: center;
     flex-direction: column;
     gap: 2px;
@@ -4785,7 +4805,7 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-download-actions {
-    margin-top: 24px;
+    margin-top: 22px;
     flex-direction: column;
   }
 
@@ -4795,11 +4815,18 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-download-trust {
-    margin-top: 28px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 9px;
+    margin-top: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 10px 14px;
     text-align: left;
+  }
+
+  .authored-download-trust span {
+    align-items: flex-start;
+    font-size: 9px;
+    line-height: 1.4;
   }
 
   .authored-trust-details {
