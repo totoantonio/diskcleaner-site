@@ -4468,7 +4468,18 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-theme-button {
-    display: none;
+    display: grid;
+    width: 30px;
+    height: 30px;
+  }
+
+  .authored-theme-button svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .authored-blog-shortcut {
+    font-size: 13px;
   }
 
   .authored-hero h1 {
