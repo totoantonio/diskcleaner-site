@@ -674,7 +674,7 @@ function ProblemFinder({ BG }: { BG: string }) {
             <code>{active.detail}</code>
             <div className="authored-problem-actions">
               <a href={appDownloadUrl} download data-analytics-location={`problem-${active.id}`} className="authored-primary-button">
-                Try the free cleaner
+                Download for macOS
               </a>
               <Link to={active.href} className="authored-text-link">
                 {active.link} <span aria-hidden>→</span>
