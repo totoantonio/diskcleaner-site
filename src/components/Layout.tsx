@@ -41,9 +41,9 @@ export default function Layout() {
           <ul className="hidden list-none items-center gap-7 md:flex">
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#features">Features</a></li>
             <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/#download">Pricing</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog">Blog</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/about">About</a></li>
-            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help">Help</a></li>
+            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/blog/">Blog</a></li>
+            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/about/">About</a></li>
+            <li><a className="text-[13px] text-[var(--muted)] no-underline transition-colors hover:text-[var(--text)]" href="/help/">Help</a></li>
           </ul>
           <div className="flex items-center gap-2.5">
             <button
@@ -88,9 +88,9 @@ export default function Layout() {
               {[
                 { href: "/#features", label: "Features" },
                 { href: "/#download", label: "Pricing" },
-                { href: "/blog", label: "Blog" },
-                { href: "/about", label: "About" },
-                { href: "/help", label: "Help" },
+                { href: "/blog/", label: "Blog" },
+                { href: "/about/", label: "About" },
+                { href: "/help/", label: "Help" },
               ].map(link => (
                 <a
                   key={link.href}
@@ -133,18 +133,18 @@ export default function Layout() {
             <div className="site-footer-col-hd">Product</div>
             <a href="/#features" className="site-footer-link">Features</a>
             <a href="/#download" className="site-footer-link">Download</a>
-            <a href="/changelog" className="site-footer-link">Changelog</a>
-            <a href="/about" className="site-footer-link">About</a>
-            <a href="/trust" className="site-footer-link">Trust Center</a>
+            <a href="/changelog/" className="site-footer-link">Changelog</a>
+            <a href="/about/" className="site-footer-link">About</a>
+            <a href="/trust/" className="site-footer-link">Trust Center</a>
           </div>
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Support</div>
-            <a href="/help" className="site-footer-link">Help</a>
+            <a href="/help/" className="site-footer-link">Help</a>
             <button type="button" onClick={() => setModal("support")} className="site-footer-link">FAQ</button>
             <button type="button" onClick={() => setModal("support")} className="site-footer-link">Contact</button>
-            <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
-            <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
-            <a href="/editorial-policy" className="site-footer-link">Editorial Policy</a>
+            <a href="/privacy-policy/" className="site-footer-link">Privacy Policy</a>
+            <a href="/terms-of-service/" className="site-footer-link">Terms of Use</a>
+            <a href="/editorial-policy/" className="site-footer-link">Editorial Policy</a>
           </div>
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Connect</div>

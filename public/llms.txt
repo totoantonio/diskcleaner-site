@@ -14,9 +14,9 @@
 - Privacy: Cleanup runs locally — no telemetry, no data collection, no account required for scanning
 - Architecture: Universal Binary — native Apple Silicon and Intel support
 - Website: https://www.diskcleaner.pro
-- Changelog: https://www.diskcleaner.pro/changelog
-- Trust Center: https://www.diskcleaner.pro/trust — verification summary, safety model, privacy scope, and independent macOS signature checks
-- Editorial Policy: https://www.diskcleaner.pro/editorial-policy
+- Changelog: https://www.diskcleaner.pro/changelog/
+- Trust Center: https://www.diskcleaner.pro/trust/ — verification summary, safety model, privacy scope, and independent macOS signature checks
+- Editorial Policy: https://www.diskcleaner.pro/editorial-policy/
 - Support: customersupport@diskcleaner.pro
 
 ## What It Does
@@ -83,41 +83,42 @@ Q: How is it different from other Mac cleaners?
 A: Most cleaners delete files silently. DiskCleaner shows you every single file first, with per-file checkboxes, and only moves files to Trash — never permanent deletion.
 
 ## Blog
-https://www.diskcleaner.pro/blog — guides on Mac storage, cache cleaning, system data, and disk optimization
+https://www.diskcleaner.pro/blog/ — guides on Mac storage, cache cleaning, system data, and disk optimization
 
 ## Articles
 
 ### How-To Guides
-- https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac — How to Clear Cache on Mac — The Right Way (Without Breaking Anything)
-- https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac — How to Free Up Storage on Mac — A Practical Guide That Actually Works
-- https://www.diskcleaner.pro/blog/how-to-reduce-system-data-on-mac — How to Reduce System Data on Mac — What It Actually Is and What You Can Safely Remove
-- https://www.diskcleaner.pro/blog/delete-xcode-derived-data — How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)
-- https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators — How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators
+- https://www.diskcleaner.pro/blog/how-to-clear-cache-on-mac/ — How to Clear Cache on Mac — The Right Way (Without Breaking Anything)
+- https://www.diskcleaner.pro/blog/how-to-free-up-storage-on-mac/ — How to Free Up Storage on Mac — A Practical Guide That Actually Works
+- https://www.diskcleaner.pro/blog/how-to-reduce-system-data-on-mac/ — How to Reduce System Data on Mac — What It Actually Is and What You Can Safely Remove
+- https://www.diskcleaner.pro/blog/delete-xcode-derived-data/ — How to Delete Xcode DerivedData (And Get Back Gigabytes You Didn't Know Were Gone)
+- https://www.diskcleaner.pro/blog/safely-clear-xcode-deriveddata-active-ios-simulators/ — How to Safely Clear Xcode DerivedData Without Breaking Active iOS Simulators
 
 ### Product Explainers
-- https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released — DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner
-- https://www.diskcleaner.pro/blog/how-diskcleaner-works — How DiskCleaner Works — And Why It Never Touches Files Without Asking
-- https://www.diskcleaner.pro/blog/why-trash-first-cleanup-matters — Why Cleanup Should Send Files to Trash — Not Delete Them Permanently
+- https://www.diskcleaner.pro/blog/diskcleaner-for-mac-released/ — DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner
+- https://www.diskcleaner.pro/blog/how-diskcleaner-works/ — How DiskCleaner Works — And Why It Never Touches Files Without Asking
+- https://www.diskcleaner.pro/blog/why-trash-first-cleanup-matters/ — Why Cleanup Should Send Files to Trash — Not Delete Them Permanently
 
 ### macOS Storage Guides
-- https://www.diskcleaner.pro/blog/what-is-system-data-mac — What Is System Data on Mac and Why Is It Eating All Your Storage?
-- https://www.diskcleaner.pro/blog/why-mac-keeps-running-out-of-storage — Why Your Mac Keeps Running Out of Storage (And What's Actually Eating It)
-- https://www.diskcleaner.pro/blog/how-much-space-do-system-logs-take-on-mac — How Much Space Do System Logs Take on Mac — And Is It Safe to Delete Them?
-- https://www.diskcleaner.pro/blog/is-it-safe-to-delete-developer-data-on-mac — Is It Safe to Delete Developer Data on Mac?
+- https://www.diskcleaner.pro/blog/what-is-system-data-mac/ — What Is System Data on Mac? What It Includes and How to Reduce It
+- https://www.diskcleaner.pro/blog/why-mac-keeps-running-out-of-storage/ — Why Your Mac Keeps Running Out of Storage (And What's Actually Eating It)
+- https://www.diskcleaner.pro/blog/how-much-space-do-system-logs-take-on-mac/ — How Much Space Do System Logs Take on Mac — And Is It Safe to Delete Them?
+- https://www.diskcleaner.pro/blog/is-it-safe-to-delete-developer-data-on-mac/ — Is It Safe to Delete Developer Data on Mac?
+- https://www.diskcleaner.pro/blog/which-xcode-folders-are-safe-to-delete/ — Which Xcode Folders Are Safe to Delete on Mac?
 
 ### Comparisons and Alternatives
-- https://www.diskcleaner.pro/blog/best-mac-cleaner — Best Mac Cleaner in 2026 — What to Look For Before You Download One
-- https://www.diskcleaner.pro/blog/cleanmymac-alternative — The Best CleanMyMac Alternative in 2026 — Honest Comparison
-- https://www.diskcleaner.pro/blog/macpaw-alternative — Best MacPaw Alternative in 2026 — If You Only Want the Cleaning Part
-- https://www.diskcleaner.pro/blog/appcleaner-vs-cleanmymac — AppCleaner vs CleanMyMac in 2026 — Which One Solves the Problem You Actually Have?
-- https://www.diskcleaner.pro/blog/best-mac-cleaner-for-developers — Best Mac Cleaner for Developers in 2026 — What Actually Finds the Storage Bloat
-- https://www.diskcleaner.pro/blog/one-time-purchase-mac-cleaner — Best One-Time Purchase Mac Cleaner in 2026 — If You Refuse Another Subscription
-- https://www.diskcleaner.pro/blog/best-app-uninstaller-for-mac — Best App Uninstaller for Mac in 2026 — Why Dragging to Trash Isn't Enough
-- https://www.diskcleaner.pro/blog/best-one-time-purchase-mac-cleaner — Best One-Time Purchase Mac Cleaner in 2026 — Ranked and Compared
+- https://www.diskcleaner.pro/blog/best-mac-cleaner/ — Best Mac Cleaner in 2026 — What to Look For Before You Download One
+- https://www.diskcleaner.pro/blog/cleanmymac-alternative/ — The Best CleanMyMac Alternative in 2026 — Honest Comparison
+- https://www.diskcleaner.pro/blog/macpaw-alternative/ — Best MacPaw Alternative in 2026 — If You Only Want the Cleaning Part
+- https://www.diskcleaner.pro/blog/appcleaner-vs-cleanmymac/ — AppCleaner vs CleanMyMac in 2026 — Which One Solves the Problem You Actually Have?
+- https://www.diskcleaner.pro/blog/best-mac-cleaner-for-developers/ — Best Mac Cleaner for Developers in 2026 — What Actually Finds the Storage Bloat
+- https://www.diskcleaner.pro/blog/one-time-purchase-mac-cleaner/ — Best One-Time Purchase Mac Cleaner in 2026 — If You Refuse Another Subscription
+- https://www.diskcleaner.pro/blog/best-app-uninstaller-for-mac/ — Best App Uninstaller for Mac in 2026 — Why Dragging to Trash Isn't Enough
+- https://www.diskcleaner.pro/blog/best-one-time-purchase-mac-cleaner/ — Best One-Time Purchase Mac Cleaner in 2026 — Ranked and Compared
 
 ### Industry
-- https://www.diskcleaner.pro/blog/future-of-mac-cleaner-apps — The Future of Mac Cleaner Apps: Where Cache Cleaners and System Optimizers Are Heading
-- https://www.diskcleaner.pro/blog/top-mac-cleaner-apps-ranked — Who's Actually Behind the Top Mac Cleaner Apps — Ranked by Revenue, Size, and Track Record
+- https://www.diskcleaner.pro/blog/future-of-mac-cleaner-apps/ — The Future of Mac Cleaner Apps: Where Cache Cleaners and System Optimizers Are Heading
+- https://www.diskcleaner.pro/blog/top-mac-cleaner-apps-ranked/ — Who's Actually Behind the Top Mac Cleaner Apps — Ranked by Revenue, Size, and Track Record
 
 ### Partner
-- https://www.diskcleaner.pro/blog/become-diskcleaner-affiliate — Become a DiskCleaner Affiliate — Earn From Home Helping Mac Users
+- https://www.diskcleaner.pro/blog/become-diskcleaner-affiliate/ — Become a DiskCleaner Affiliate — Earn From Home Helping Mac Users

@@ -1,2 +1,3 @@
-/blog/:slug.html  /blog/:slug  301
-/:page.html  /:page  301
+https://diskcleaner.pro/*  https://www.diskcleaner.pro/:splat  301!
+/blog/:slug.html  /blog/:slug/  301
+/:page.html  /:page/  301

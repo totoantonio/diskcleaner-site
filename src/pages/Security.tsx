@@ -46,7 +46,7 @@ export default function Security() {
   return (
     <section className="bg-[var(--bg)] py-12 sm:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-4 md:px-12">
-        <Link to="/trust" className="article-back">
+        <Link to="/trust/" className="article-back">
           <ChevronLeft />
           Back to Trust Center
         </Link>
@@ -191,10 +191,10 @@ export default function Security() {
               Related public trust materials:
             </p>
             <ul>
-              <li><Link to="/trust">Trust Center</Link></li>
-              <li><Link to="/help">Help Center</Link></li>
-              <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-              <li><Link to="/terms-of-service">Terms of Service</Link></li>
+              <li><Link to="/trust/">Trust Center</Link></li>
+              <li><Link to="/help/">Help Center</Link></li>
+              <li><Link to="/privacy-policy/">Privacy Policy</Link></li>
+              <li><Link to="/terms-of-service/">Terms of Service</Link></li>
             </ul>
           </div>
         </article>

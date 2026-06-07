@@ -173,14 +173,14 @@ export default function Help() {
             <p>Premium unlocks the full scanner, including larger storage categories and areas that often need more deliberate review.</p>
             <ul>
               <li><strong>Browser Cache</strong> — Cache data from Chrome, Firefox, Edge, Brave, Arc, and Opera profiles. Passwords, bookmarks, and history stay untouched.</li>
-              <li><strong>Developer Data</strong> — Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files. If that category is the main culprit, start with <Link to="/blog/delete-xcode-derived-data">our Xcode DerivedData cleanup guide</Link>.</li>
+              <li><strong>Developer Data</strong> — Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files. If that category is the main culprit, start with <Link to="/blog/which-xcode-folders-are-safe-to-delete/">our Xcode folder safety guide</Link>.</li>
               <li><strong>Homebrew Cache</strong> — Stale Homebrew downloads.</li>
               <li><strong>Movies</strong> — Offline downloads and other large files in your Movies folder.</li>
               <li><strong>Downloads</strong> — Useful for catching forgotten installers, archives, and exported files.</li>
               <li><strong>Large Files</strong> — Files over 50 MB hiding across your home folder.</li>
               <li><strong>iOS backups</strong> — Old device backups that can consume tens of gigabytes.</li>
               <li><strong>Mail Attachments</strong> — Apple Mail attachment cache.</li>
-              <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed. For broader comparisons, see <Link to="/blog/best-app-uninstaller-for-mac">our best app uninstaller for Mac guide</Link>.</li>
+              <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed. For broader comparisons, see <Link to="/blog/best-app-uninstaller-for-mac/">our best app uninstaller for Mac guide</Link>.</li>
               <li><strong>External Storage</strong> — Junk on connected USB drives and external hard drives.</li>
               <li><strong>Time Machine Snapshots</strong> — Local APFS snapshots, always presented for careful review.</li>
               <li><strong>Old Installers</strong> — DMG and PKG installers in Downloads and Desktop.</li>
@@ -251,7 +251,7 @@ export default function Help() {
             <p>Apps may feel slightly slower the first time they launch after their cache is removed — this is expected. Performance returns to normal within a minute as the cache rebuilds. If an app continues to behave oddly, restarting it or your Mac usually resolves it.</p>
 
             <h3>Disk Space Didn't Change Much After Cleaning</h3>
-            <p>macOS does not always reflect reclaimed space instantly. Some recovery may appear as <em>purgeable</em> before it shows up as fully available. If the number looks slow to update, wait a moment and then recheck, or restart the Mac if storage reporting still looks stale. If you are working through the bigger picture, see our guides on <Link to="/blog/how-to-free-up-storage-on-mac">how to free up storage on Mac</Link> and <Link to="/blog/what-is-system-data-mac">what System Data on Mac means</Link>.</p>
+            <p>macOS does not always reflect reclaimed space instantly. Some recovery may appear as <em>purgeable</em> before it shows up as fully available. If the number looks slow to update, wait a moment and then recheck, or restart the Mac if storage reporting still looks stale. If you are working through the bigger picture, see our guides on <Link to="/blog/how-to-free-up-storage-on-mac/">how to free up storage on Mac</Link> and <Link to="/blog/what-is-system-data-mac/">what System Data on Mac means</Link>.</p>
 
             <h3>DiskCleaner Can't Be Opened (Gatekeeper Warning)</h3>
             <p>If macOS shows "DiskCleaner cannot be opened because it is from an unidentified developer," go to <strong>System Settings → Privacy &amp; Security</strong>, scroll down, and click <strong>Open Anyway</strong> next to the DiskCleaner entry.</p>

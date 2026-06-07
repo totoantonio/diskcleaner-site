@@ -604,7 +604,7 @@ const problemPaths = [
     title: "Start by finding what macOS groups together.",
     body: "System Data can include caches, logs, local snapshots, developer files, and old support data. DiskCleaner separates those categories so you can review the real files instead of guessing.",
     detail: "Best First Scan: App Cache + System Logs + Developer Data",
-    href: "/blog/what-is-system-data-mac",
+    href: "/blog/what-is-system-data-mac/",
     link: "Understand System Data",
   },
   {
@@ -613,8 +613,8 @@ const problemPaths = [
     title: "Find build files without touching active work.",
     body: "Review DerivedData, simulator files, DeviceSupport, and other developer storage separately. Caution items stay visible and nothing is silently selected for removal.",
     detail: "Best First Scan: Developer Data + Large Files",
-    href: "/blog/delete-xcode-derived-data",
-    link: "Read the Xcode cleanup guide",
+    href: "/blog/which-xcode-folders-are-safe-to-delete/",
+    link: "See which Xcode folders are safe",
   },
   {
     id: "apps",
@@ -622,7 +622,7 @@ const problemPaths = [
     title: "See the rest of an app before removing it.",
     body: "Dragging an app to Trash often leaves caches, preferences, containers, logs, and support files behind. The App Uninstaller shows that footprint before anything moves.",
     detail: "Best First Scan: App Uninstaller + App Leftovers",
-    href: "/blog/best-app-uninstaller-for-mac",
+    href: "/blog/best-app-uninstaller-for-mac/",
     link: "See the app uninstaller guide",
   },
   {
@@ -631,7 +631,7 @@ const problemPaths = [
     title: "Begin with the obvious clutter, then decide.",
     body: "Run Free Core Cleaning first. Review app caches, logs, screenshots, .DS_Store files, and Trash, then upgrade only if the deeper categories are useful on your Mac.",
     detail: "Best First Scan: Free Core Cleaning",
-    href: "/blog/how-to-free-up-storage-on-mac",
+    href: "/blog/how-to-free-up-storage-on-mac/",
     link: "Read the practical storage guide",
   },
 ]
@@ -693,19 +693,19 @@ function LatestGuides({ BG }: { BG: string }) {
         eyebrow: "Practical guide",
         title: "How to free up storage on Mac",
         body: "A useful order of operations, from obvious clutter to the storage categories macOS makes harder to understand.",
-        href: "/blog/how-to-free-up-storage-on-mac",
+        href: "/blog/how-to-free-up-storage-on-mac/",
       },
       {
         eyebrow: "Explainer",
         title: "What is System Data on Mac?",
         body: "Learn what macOS puts in the System Data bucket and which parts are reasonable to review.",
-        href: "/blog/what-is-system-data-mac",
+        href: "/blog/what-is-system-data-mac/",
       },
       {
         eyebrow: "Product philosophy",
         title: "Why Trash-first cleanup matters",
         body: "Why recoverable cleanup is a better default than silently deleting files forever.",
-        href: "/blog/why-trash-first-cleanup-matters",
+        href: "/blog/why-trash-first-cleanup-matters/",
       },
   ]
   return (
@@ -716,7 +716,7 @@ function LatestGuides({ BG }: { BG: string }) {
               <span>Useful Before You Download</span>
               <h2 className="authored-single-line-headline"><span>Learn what is taking space. </span><span className="authored-headline-blue">Then decide.</span></h2>
             </div>
-            <a href="/blog" className="authored-text-link">Browse Every Guide <span aria-hidden>↗</span></a>
+            <a href="/blog/" className="authored-text-link">Browse Every Guide <span aria-hidden>↗</span></a>
           </div>
           <div className="authored-guide-grid">
             {guides.map(guide => (
@@ -746,7 +746,7 @@ function FollowBuild({ BG }: { BG: string }) {
             <div className="authored-follow-actions">
               <a href="https://x.com/diskcleanerpro" target="_blank" rel="noopener noreferrer">Follow on X <span aria-hidden>↗</span></a>
               <a href="https://www.threads.net/@diskcleanerpro" target="_blank" rel="noopener noreferrer">Follow on Threads <span aria-hidden>↗</span></a>
-              <a href="/changelog">Read the Changelog <span aria-hidden>→</span></a>
+              <a href="/changelog/">Read the Changelog <span aria-hidden>→</span></a>
             </div>
           </div>
         </div>
@@ -928,7 +928,7 @@ const RamOptimizerSplit = lazy(async () => {
                 <p className="mt-4 text-[17px] leading-[1.65] tracking-[-0.01em] text-[var(--muted)]">
                   No fake RAM gains. No risky background tricks. DiskCleaner shows the memory signals that actually matter: pressure, compressed memory, and swap usage.
                   When your Mac feels heavy, you get a clear picture of why — and a safe refresh action that works with macOS, not against it. If storage pressure is part of the problem, start with our guide on{" "}
-                  <Link to="/blog/how-to-free-up-storage-on-mac" onMouseEnter={() => preloadArticle("how-to-free-up-storage-on-mac")} onFocus={() => preloadArticle("how-to-free-up-storage-on-mac")} onTouchStart={() => preloadArticle("how-to-free-up-storage-on-mac")} className="text-[var(--blue)] no-underline">
+                  <Link to="/blog/how-to-free-up-storage-on-mac/" onMouseEnter={() => preloadArticle("how-to-free-up-storage-on-mac")} onFocus={() => preloadArticle("how-to-free-up-storage-on-mac")} onTouchStart={() => preloadArticle("how-to-free-up-storage-on-mac")} className="text-[var(--blue)] no-underline">
                     how to free up storage on Mac
                   </Link>.
                 </p>
@@ -1078,7 +1078,7 @@ const WhatItFinds = lazy(async () => {
             </h2>
             <p className="reveal d2 mt-4 max-w-[560px] text-[16px] leading-[1.6] text-[var(--muted)]">
               Free Core Cleaning covers everyday clutter. Premium adds browser cache, developer files, large downloads, backups, external storage, and more. If Xcode storage keeps ballooning, read our guide on{" "}
-              <Link to="/blog/delete-xcode-derived-data" onMouseEnter={() => preloadArticle("delete-xcode-derived-data")} onFocus={() => preloadArticle("delete-xcode-derived-data")} onTouchStart={() => preloadArticle("delete-xcode-derived-data")} className="text-[var(--blue)] no-underline">
+              <Link to="/blog/delete-xcode-derived-data/" onMouseEnter={() => preloadArticle("delete-xcode-derived-data")} onFocus={() => preloadArticle("delete-xcode-derived-data")} onTouchStart={() => preloadArticle("delete-xcode-derived-data")} className="text-[var(--blue)] no-underline">
                 deleting Xcode DerivedData
               </Link>. You see exactly what was found before anything moves.
             </p>
@@ -1141,7 +1141,7 @@ function FAQ({ BG }: { BG: string }) {
         a: (
           <>
             No. DiskCleaner is a separate product with its own review-first, Trash-first workflow. If you are comparing similarly named Mac cleaners, see our{" "}
-            <Link to="/disk-clean-pro-alternative" className="text-[var(--blue)] no-underline">
+            <Link to="/disk-clean-pro-alternative/" className="text-[var(--blue)] no-underline">
               Disk Clean Pro alternative guide
             </Link>.
           </>
@@ -1253,7 +1253,7 @@ function CTA({ BG }: { BG: string }) {
             >
                   Download for macOS <span aria-hidden>↓</span>
             </a>
-                <a href="/trust" className="authored-download-secondary">Review Security</a>
+                <a href="/trust/" className="authored-download-secondary">Review Security</a>
           </div>
               <div className="authored-download-trust reveal d5">
                 {[
@@ -1284,7 +1284,7 @@ function TrustBand({ BG }: { BG: string }) {
                 <span className="text-[var(--text)]">What DiskCleaner refuses to do </span>
                 <span className="text-[var(--blue)]">matters too.</span>
               </h2>
-              <a href="/trust" className="authored-text-link">Read the Trust Center <span aria-hidden>→</span></a>
+              <a href="/trust/" className="authored-text-link">Read the Trust Center <span aria-hidden>→</span></a>
             </div>
             <div className="authored-trust-details">
               <p className="reveal d2 max-w-[760px] text-[17px] leading-[1.6] text-[var(--muted)]">
@@ -1317,19 +1317,19 @@ function SiteFooter({ openModal }: { openModal: (k: "support" | "changelog") => 
             <div className="site-footer-col-hd">Product</div>
             <a href="#features" className="site-footer-link">Features</a>
             <a href="#download" className="site-footer-link">Download</a>
-            <a href="/changelog" className="site-footer-link">Changelog</a>
-            <a href="/about" className="site-footer-link">About</a>
-            <a href="/trust" className="site-footer-link">Trust Center</a>
+            <a href="/changelog/" className="site-footer-link">Changelog</a>
+            <a href="/about/" className="site-footer-link">About</a>
+            <a href="/trust/" className="site-footer-link">Trust Center</a>
           </div>
           {/* Support */}
           <div className="site-footer-col">
             <div className="site-footer-col-hd">Support</div>
-            <a href="/help" className="site-footer-link">Help</a>
+            <a href="/help/" className="site-footer-link">Help</a>
             <button type="button" onClick={() => openModal("support")} className="site-footer-link">FAQ</button>
             <button type="button" onClick={() => openModal("support")} className="site-footer-link">Contact</button>
-            <a href="/privacy-policy" className="site-footer-link">Privacy Policy</a>
-            <a href="/terms-of-service" className="site-footer-link">Terms of Use</a>
-            <a href="/editorial-policy" className="site-footer-link">Editorial Policy</a>
+            <a href="/privacy-policy/" className="site-footer-link">Privacy Policy</a>
+            <a href="/terms-of-service/" className="site-footer-link">Terms of Use</a>
+            <a href="/editorial-policy/" className="site-footer-link">Editorial Policy</a>
           </div>
           {/* Connect */}
           <div className="site-footer-col">
@@ -1405,7 +1405,7 @@ export default function Home() {
         </div>
         <div className="authored-floating-links">
           <a href="#review-first">How It Works</a>
-          <a href="/trust">Safety</a>
+          <a href="/trust/">Safety</a>
           <a href="#download">Pricing</a>
         </div>
         <a href={appDownloadUrl} download data-analytics-location="floating-nav" className="authored-floating-download">
@@ -1433,7 +1433,7 @@ export default function Home() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="/blog" className="authored-blog-shortcut">
+            <a href="/blog/" className="authored-blog-shortcut">
               Blog <span aria-hidden>↗</span>
             </a>
           </div>

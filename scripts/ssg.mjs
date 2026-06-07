@@ -33,6 +33,23 @@ const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim() || ""
 const INDEXNOW_FILENAME = "indexnow.txt"
 const INDEXNOW_URL = `${BASE_URL}/${INDEXNOW_FILENAME}`
 
+function canonicalUrl(value) {
+  const url = new URL(value, `${BASE_URL}/`)
+  if (!url.pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(url.pathname)) {
+    url.pathname += "/"
+  }
+  return url.toString()
+}
+
+function normalizeSchemaUrls(value) {
+  if (typeof value === "string" && value.startsWith(BASE_URL)) return canonicalUrl(value)
+  if (Array.isArray(value)) return value.map(normalizeSchemaUrls)
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, normalizeSchemaUrls(entry)]))
+  }
+  return value
+}
+
 // ── Authors (mirrors src/lib/authors.ts) ────────────────────────────────────
 
 const AUTHORS = {
@@ -136,22 +153,23 @@ function suppressGlobalFaqPageSchema(html) {
 }
 
 function applySeo(html, seo) {
+  const url = canonicalUrl(seo.url)
   let h = html
   h = replaceTitle(h, seo.title)
-  h = replaceCanonical(h, seo.url)
+  h = replaceCanonical(h, url)
   h = replaceMetaById(h, "meta-desc", seo.description)
   h = replaceMetaById(h, "og-type", seo.ogType ?? "website")
-  h = replaceMetaById(h, "og-url", seo.url)
+  h = replaceMetaById(h, "og-url", url)
   h = replaceMetaById(h, "og-title", seo.title)
   h = replaceMetaById(h, "og-desc", seo.description)
   h = replaceMetaById(h, "og-image", seo.image)
   h = replaceMetaById(h, "og-image-secure", seo.image)
   h = replaceMetaById(h, "og-image-alt", seo.title)
-  h = replaceMetaById(h, "tw-url", seo.url)
+  h = replaceMetaById(h, "tw-url", url)
   h = replaceMetaById(h, "tw-title", seo.title)
   h = replaceMetaById(h, "tw-desc", seo.description)
   h = replaceMetaById(h, "tw-image", seo.image)
-  h = replaceJsonLd(h, "article-jsonld", seo.jsonLd)
+  h = replaceJsonLd(h, "article-jsonld", normalizeSchemaUrls(seo.jsonLd))
   if (seo.suppressGlobalFaq) h = suppressGlobalFaqPageSchema(h)
   if (seo.noindex) h = setNoindex(h)
   return h
@@ -212,14 +230,14 @@ function generateSitemap(staticPages, posts) {
     ...staticPages
       .filter(page => page.route !== "/" && !page.noindex)
       .map(page => ({
-        loc: `${BASE_URL}${page.route}`,
+        loc: canonicalUrl(`${BASE_URL}${page.route}`),
         lastmod: new Date().toISOString().split("T")[0],
         changefreq: "monthly",
         priority: 0.6,
       })),
 
     ...posts.map(post => ({
-      loc: `${BASE_URL}/blog/${post.slug}`,
+      loc: canonicalUrl(`${BASE_URL}/blog/${post.slug}`),
       lastmod: post.updatedAt || post.date,
       changefreq: "monthly",
       priority: 0.7,
@@ -301,7 +319,7 @@ function generateArticleBody(post) {
 
   return `<section style="background:var(--bg,#f5f5f7);padding:48px 0 80px">
   <div style="max-width:1200px;margin:0 auto;padding:0 16px">
-    <a href="/blog" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
+    <a href="/blog/" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
     <div style="max-width:860px;margin:0 auto;text-align:center">
       <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">${escapeHtml(post.category)}</span>
       <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">${escapeHtml(post.title)}</h1>
@@ -722,7 +740,7 @@ const { render } = await import(pathToFileURL(ssrEntryFile).href)
 
 console.log(`\n📄 Rendering ${STATIC_PAGES.length} pages...`)
 for (const page of STATIC_PAGES) {
-  const url = `${BASE_URL}${page.route}`
+  const url = canonicalUrl(`${BASE_URL}${page.route}`)
   process.stdout.write(`   ${page.route} `)
 
   const body = render(page.route)
@@ -745,7 +763,7 @@ for (const page of STATIC_PAGES) {
 
 console.log(`\n📝 Rendering ${posts.length} blog articles...`)
 for (const post of posts) {
-  const url = `${BASE_URL}/blog/${post.slug}`
+  const url = canonicalUrl(`${BASE_URL}/blog/${post.slug}`)
   process.stdout.write(`   /blog/${post.slug} `)
 
   const body = generateArticleBody(post)
@@ -769,8 +787,8 @@ writeIndexNowKey()
 
 const indexNowUrls = [
   `${BASE_URL}/`,
-  ...STATIC_PAGES.filter((page) => page.route !== "/" && !page.noindex).map((page) => `${BASE_URL}${page.route}`),
-  ...posts.map((post) => `${BASE_URL}/blog/${post.slug}`),
+  ...STATIC_PAGES.filter((page) => page.route !== "/" && !page.noindex).map((page) => canonicalUrl(`${BASE_URL}${page.route}`)),
+  ...posts.map((post) => canonicalUrl(`${BASE_URL}/blog/${post.slug}`)),
 ]
 await pingIndexNow(indexNowUrls)
 

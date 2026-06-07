@@ -98,6 +98,8 @@ The standard advice is to clean derived data from inside Xcode (Product → Clea
 
 DiskCleaner scans Developer Data as a dedicated category — covering Xcode DerivedData, CoreSimulator files, and old iOS DeviceSupport files. Homebrew downloads appear in their own cache category. You see a full list with file sizes before anything moves, and everything goes to Trash (not permanent deletion), so you can recover anything you removed by mistake.
 
+For a folder-by-folder breakdown, see <a href="/blog/which-xcode-folders-are-safe-to-delete/">which Xcode folders are safe to delete</a>.
+
 ## Final Take
 
 Most developer data on a Mac is safely removable. Derived data, simulator runtimes, and package manager caches are all designed to be rebuilt on demand. The one real exception is Xcode archives — only remove those if you're confident you don't need to re-export or re-sign a previous build.

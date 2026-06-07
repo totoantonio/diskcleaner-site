@@ -26,6 +26,8 @@ lerna-debug.log*
 .env.local
 .env.*.local
 *.local
+.gsc-credentials.local
+.gsc-token.local
 
 # =========================
 # Editor / IDE

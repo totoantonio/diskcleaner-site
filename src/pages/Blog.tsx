@@ -53,7 +53,7 @@ function preloadArticle(slug: string) {
 }
 
 function preloadArticlePath(path: string) {
-  if (path.startsWith("/blog/")) preloadArticle(path.replace("/blog/", ""))
+  if (path.startsWith("/blog/")) preloadArticle(path.replace("/blog/", "").replace(/\/$/, ""))
 }
 
 export default function Blog() {
@@ -116,15 +116,16 @@ export default function Blog() {
 
         <div className="mx-auto mb-10 flex max-w-[960px] flex-wrap justify-center gap-2.5">
           {[
-            { href: "/blog/best-mac-cleaner", label: "Best Mac Cleaner" },
-            { href: "/disk-clean-pro-alternative", label: "Disk Clean Pro Alternative" },
-            { href: "/blog/cleanmymac-alternative", label: "CleanMyMac Alternative" },
-            { href: "/blog/macpaw-alternative", label: "MacPaw Alternative" },
-            { href: "/blog/appcleaner-vs-cleanmymac", label: "AppCleaner vs CleanMyMac" },
-            { href: "/blog/best-mac-cleaner-for-developers", label: "Best Mac Cleaner for Developers" },
-            { href: "/blog/one-time-purchase-mac-cleaner", label: "One-Time Purchase Mac Cleaner" },
-            { href: "/blog/what-is-system-data-mac", label: "System Data on Mac" },
-            { href: "/blog/is-it-safe-to-delete-developer-data-on-mac", label: "Delete Developer Data" },
+            { href: "/blog/best-mac-cleaner/", label: "Best Mac Cleaner" },
+            { href: "/disk-clean-pro-alternative/", label: "Disk Clean Pro Alternative" },
+            { href: "/blog/cleanmymac-alternative/", label: "CleanMyMac Alternative" },
+            { href: "/blog/macpaw-alternative/", label: "MacPaw Alternative" },
+            { href: "/blog/appcleaner-vs-cleanmymac/", label: "AppCleaner vs CleanMyMac" },
+            { href: "/blog/best-mac-cleaner-for-developers/", label: "Best Mac Cleaner for Developers" },
+            { href: "/blog/one-time-purchase-mac-cleaner/", label: "One-Time Purchase Mac Cleaner" },
+            { href: "/blog/what-is-system-data-mac/", label: "System Data on Mac" },
+            { href: "/blog/which-xcode-folders-are-safe-to-delete/", label: "Xcode Folders" },
+            { href: "/blog/is-it-safe-to-delete-developer-data-on-mac/", label: "Delete Developer Data" },
           ].map(link => (
             <Link
               key={link.href}
@@ -143,7 +144,7 @@ export default function Blog() {
           {posts.map((post, i) => (
             <Link
               key={post.slug}
-              to={`/blog/${post.slug}`}
+              to={`/blog/${post.slug}/`}
               onMouseEnter={() => preloadArticle(post.slug)}
               onFocus={() => preloadArticle(post.slug)}
               onTouchStart={() => preloadArticle(post.slug)}

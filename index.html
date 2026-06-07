@@ -76,7 +76,7 @@
                 "@type": "ContactPoint",
                 "contactType": "customer support",
                 "email": "customersupport@diskcleaner.pro",
-                "url": "https://www.diskcleaner.pro/help",
+                "url": "https://www.diskcleaner.pro/help/",
                 "availableLanguage": "en"
               }
             ],
@@ -125,7 +125,7 @@
             "processorRequirements": "Apple Silicon or Intel",
             "softwareHelp": {
               "@type": "CreativeWork",
-              "url": "https://www.diskcleaner.pro/help"
+              "url": "https://www.diskcleaner.pro/help/"
             },
             "featureList": [
               "App Cache cleaning",
@@ -300,23 +300,6 @@
         dataLayer.push(arguments);
       }
 
-      document.addEventListener("click", event => {
-        const anchor = event.target.closest && event.target.closest("a[href]");
-        if (!anchor) return;
-
-        const url = new URL(anchor.getAttribute("href"), window.location.href);
-        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
-
-        const fileName = url.pathname.split("/").filter(Boolean).pop() || "download.dmg";
-        gtag("event", "file_download", {
-          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
-          file_extension: "dmg",
-          file_name: fileName,
-          link_text: anchor.textContent.trim(),
-          link_url: url.href,
-        });
-      }, { capture: true });
-
       const loadGA = () => {
         if (window.__gaLoaded) return;
         window.__gaLoaded = true;
@@ -330,9 +313,40 @@
         gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
       };
 
+      document.addEventListener("click", event => {
+        const anchor = event.target.closest && event.target.closest("a[href]");
+        if (!anchor) return;
+
+        const url = new URL(anchor.getAttribute("href"), window.location.href);
+        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
+
+        loadGA();
+
+        const params = {
+          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
+          file_extension: "dmg",
+          file_name: url.pathname.split("/").filter(Boolean).pop() || "download.dmg",
+          link_text: anchor.textContent.trim(),
+          link_url: url.href,
+          transport_type: "beacon",
+        };
+
+        // Keep the original reporting event and GA4's recommended download event.
+        gtag("event", "download", params);
+        gtag("event", "file_download", params);
+      }, { capture: true });
+
       ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
         window.addEventListener(evt, loadGA, { once: true, passive: true })
       );
+
+      if (!isLabRun && navigator.doNotTrack !== "1") {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadGA, { timeout: 2500 });
+        } else {
+          window.addEventListener("load", () => window.setTimeout(loadGA, 750), { once: true });
+        }
+      }
     </script>
   </body>
 </html>

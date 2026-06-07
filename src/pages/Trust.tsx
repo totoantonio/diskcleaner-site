@@ -108,7 +108,7 @@ export default function Trust() {
               Scanning and cleaning run locally on the Mac. The current direct-download release supports macOS 13 Ventura through macOS 26 Tahoe on Apple Silicon and Intel Macs.
             </p>
             <p>
-              Last reviewed: June 1, 2026. Current release details are listed in the <Link to="/changelog">DiskCleaner changelog</Link>.
+              Last reviewed: June 1, 2026. Current release details are listed in the <Link to="/changelog/">DiskCleaner changelog</Link>.
             </p>
 
             <h2>1. Trash-First Safety</h2>
@@ -144,9 +144,9 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
             <p>
               Performance claims are most useful when they are repeatable. Scan timing depends on the Mac model, macOS version, storage condition, and the amount of cache or developer data on disk.
               When DiskCleaner publishes scan-speed guidance, the goal is to describe the kind of workload behind the number so users understand what “fast” means in practice. For practical storage scenarios, see our guides on{" "}
-              <Link to="/blog/how-to-free-up-storage-on-mac">how to free up storage on Mac</Link>,{" "}
-              <Link to="/blog/what-is-system-data-mac">what System Data on Mac means</Link>, and{" "}
-              <Link to="/blog/delete-xcode-derived-data">deleting Xcode DerivedData</Link>.
+              <Link to="/blog/how-to-free-up-storage-on-mac/">how to free up storage on Mac</Link>,{" "}
+              <Link to="/blog/what-is-system-data-mac/">what System Data on Mac means</Link>, and{" "}
+              <Link to="/blog/which-xcode-folders-are-safe-to-delete/">which Xcode folders are safe to delete</Link>.
             </p>
 
             <h2>6. What DiskCleaner Does Not Touch</h2>
@@ -159,7 +159,7 @@ xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
             <p>
               For readers who want a more technical summary of DiskCleaner&apos;s security posture and disclosure path, the repository also includes a dedicated
               {" "}
-              <Link to="/security">SECURITY.md</Link>
+              <Link to="/security/">SECURITY.md</Link>
               {" "}
               document.
             </p>

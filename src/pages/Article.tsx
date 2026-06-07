@@ -288,7 +288,7 @@ export default function Article() {
         })
       }, 250)
 
-      const url = `https://www.diskcleaner.pro/blog/${p.slug}`
+      const url = `https://www.diskcleaner.pro/blog/${p.slug}/`
       const desc = p.description || p.excerpt
       const image = "https://www.diskcleaner.pro/DiskCleaner_blog.webp"
       const authorProfile = getAuthorProfile(p.author)
@@ -319,7 +319,7 @@ export default function Article() {
         "wordCount": p.wordCount,
         "timeRequired": `PT${p.readingTimeMinutes}M`,
         "keywords": [p.category, "DiskCleaner", "Mac cleaner", "macOS storage"],
-        "isPartOf": { "@type": "Blog", "@id": "https://www.diskcleaner.pro/blog#blog" },
+        "isPartOf": { "@type": "Blog", "@id": "https://www.diskcleaner.pro/blog/#blog" },
         "author": {
           "@type": "Person",
           "name": authorProfile.name,
@@ -355,7 +355,7 @@ export default function Article() {
           "@id": `${url}#breadcrumb`,
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.diskcleaner.pro/" },
-            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.diskcleaner.pro/blog" },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.diskcleaner.pro/blog/" },
             { "@type": "ListItem", "position": 3, "name": p.title, "item": url }
           ]
         }
@@ -396,7 +396,7 @@ export default function Article() {
     <section className="bg-[var(--bg)] py-12 sm:py-20">
       <div className="mx-auto w-full max-w-[1200px] px-4 md:px-12">
 
-        <Link to="/blog" className="article-back">
+        <Link to="/blog/" className="article-back">
           <ChevronLeft />
           Back to Blog
         </Link>
@@ -449,7 +449,7 @@ export default function Article() {
               {relatedPosts.map(relatedPost => (
                 <Link
                   key={relatedPost.slug}
-                  to={`/blog/${relatedPost.slug}`}
+                  to={`/blog/${relatedPost.slug}/`}
                   onMouseEnter={() => preloadPostBySlug(relatedPost.slug)}
                   onFocus={() => preloadPostBySlug(relatedPost.slug)}
                   onTouchStart={() => preloadPostBySlug(relatedPost.slug)}

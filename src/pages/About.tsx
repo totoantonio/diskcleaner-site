@@ -106,10 +106,10 @@ export default function About() {
             <p>
               DiskCleaner scans 16+ cleanup categories and targeted locations, including caches, logs, screenshots, .DS_Store files, Trash contents, developer data, large files, backups, external storage, and leftover files from removed apps.
               It also includes tools such as app uninstallation support and a menu bar disk-space view so users can act on storage pressure more quickly. For deeper walkthroughs, see our guides on{" "}
-              <Link to="/blog/how-to-free-up-storage-on-mac">freeing up storage on Mac</Link>,{" "}
-              <Link to="/blog/what-is-system-data-mac">what System Data on Mac means</Link>,{" "}
-              <Link to="/blog/best-app-uninstaller-for-mac">the best app uninstallers for Mac</Link>, and{" "}
-              <Link to="/blog/delete-xcode-derived-data">deleting Xcode DerivedData</Link>.
+              <Link to="/blog/how-to-free-up-storage-on-mac/">freeing up storage on Mac</Link>,{" "}
+              <Link to="/blog/what-is-system-data-mac/">what System Data on Mac means</Link>,{" "}
+              <Link to="/blog/best-app-uninstaller-for-mac/">the best app uninstallers for Mac</Link>, and{" "}
+              <Link to="/blog/which-xcode-folders-are-safe-to-delete/">which Xcode folders are safe to delete</Link>.
             </p>
 
             <h2>Privacy and Safety Stance</h2>
@@ -120,7 +120,7 @@ export default function About() {
             <h2>Contact</h2>
             <p>
               Support and product questions: <a href="mailto:customersupport@diskcleaner.pro">customersupport@diskcleaner.pro</a><br />
-              Help center: <a href="/help">diskcleaner.pro/help</a>
+              Help center: <a href="/help/">diskcleaner.pro/help</a>
             </p>
           </div>
         </article>

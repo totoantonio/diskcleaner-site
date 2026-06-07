@@ -8,6 +8,12 @@
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/ssg.mjs",
     "deploy": "npm run build && git add -A && (git diff --cached --quiet || git commit -m 'deploy') && git push origin main",
+    "gsc:auth": "node scripts/search-console.mjs auth",
+    "gsc:ctr-weekly": "node scripts/search-console.mjs ctr-weekly",
+    "gsc:opportunities": "node scripts/search-console.mjs opportunities",
+    "gsc:report": "node scripts/search-console.mjs report",
+    "gsc:sites": "node scripts/search-console.mjs sites",
+    "gsc:submit-sitemap": "node scripts/search-console.mjs submit-sitemap",
     "lint": "eslint .",
     "preview": "vite preview"
   },

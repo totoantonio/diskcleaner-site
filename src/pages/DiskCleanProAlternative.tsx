@@ -144,9 +144,9 @@ export default function DiskCleanProAlternative() {
 
             <h2>Related Comparisons</h2>
             <ul>
-              <li><Link to="/blog/cleanmymac-alternative">CleanMyMac alternative</Link></li>
-              <li><Link to="/blog/macpaw-alternative">MacPaw alternative</Link></li>
-              <li><Link to="/blog/best-one-time-purchase-mac-cleaner">Best one-time purchase Mac cleaner</Link></li>
+              <li><Link to="/blog/cleanmymac-alternative/">CleanMyMac alternative</Link></li>
+              <li><Link to="/blog/macpaw-alternative/">MacPaw alternative</Link></li>
+              <li><Link to="/blog/best-one-time-purchase-mac-cleaner/">Best one-time purchase Mac cleaner</Link></li>
             </ul>
 
             <blockquote>

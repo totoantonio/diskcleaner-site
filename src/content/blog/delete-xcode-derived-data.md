@@ -137,6 +137,8 @@ Most other cleanup steps — clearing browser cache, screenshots, logs — recov
 
 If you've been struggling with Mac storage and you're a developer, this is almost certainly one of the first places to look.
 
+If you want the broader map beyond DerivedData, read <a href="/blog/which-xcode-folders-are-safe-to-delete/">which Xcode folders are safe to delete on Mac</a>.
+
 <div class="blog-references">
 <p class="blog-references-label">References</p>
 <ol class="references">
