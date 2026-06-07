@@ -251,6 +251,19 @@ async function submitSitemap() {
   console.log(`Submitted sitemap for ${site.siteUrl}: ${sitemapUrl}`)
 }
 
+async function cleanSitemaps() {
+  const site = await selectedSite()
+  const obsolete = "https://diskcleaner.pro/sitemap.xml"
+  const response = await fetch(
+    `https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site.siteUrl)}/sitemaps/${encodeURIComponent(obsolete)}`,
+    { method: "DELETE", headers: { authorization: `Bearer ${await accessToken()}` } },
+  )
+  if (!response.ok && response.status !== 404) {
+    throw new Error(`Could not remove obsolete sitemap: ${response.status} ${await response.text()}`)
+  }
+  console.log(`Removed obsolete sitemap submission: ${obsolete}`)
+}
+
 async function ctrWeekly() {
   const site = await selectedSite()
   const end = new Date()
@@ -297,6 +310,7 @@ try {
   else if (command === "report") await report()
   else if (command === "opportunities") await opportunities()
   else if (command === "submit-sitemap") await submitSitemap()
+  else if (command === "clean-sitemaps") await cleanSitemaps()
   else if (command === "ctr-weekly") await ctrWeekly()
   else throw new Error(`Unknown command: ${command}`)
 } catch (error) {
