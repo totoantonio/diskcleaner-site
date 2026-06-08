@@ -2908,14 +2908,6 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   gap: 18px;
 }
 
-.authored-hero-cta-note {
-  margin: 13px auto 0;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 560;
-  letter-spacing: .005em;
-}
-
 .authored-text-link {
   display: inline-flex;
   align-items: center;
@@ -4559,13 +4551,6 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     margin-top: 26px;
     flex-direction: column;
     gap: 14px;
-  }
-
-  .authored-hero-cta-note {
-    max-width: 300px;
-    margin-top: 12px;
-    font-size: 10px;
-    line-height: 1.5;
   }
 
   .authored-primary-button {

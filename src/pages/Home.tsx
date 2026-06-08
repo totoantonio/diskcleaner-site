@@ -424,9 +424,6 @@ function Hero({ BG }: { BG: string }) {
               See the Review Flow <span aria-hidden>↓</span>
             </a>
           </div>
-          <div className="authored-hero-cta-note">
-            Free Core Cleaning · No Account · Notarized by Apple
-          </div>
           <div className="authored-hero-meta" aria-label="Product details">
             <span>Free Download</span>
             <span>$9.99 One-Time Premium</span>
