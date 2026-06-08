@@ -1406,7 +1406,10 @@ export default function Home() {
         aria-hidden={!scrolled}
       >
         <div className="authored-floating-brand">
-          <a href="/">Disk<span>Cleaner</span></a>
+          <a href="/">
+            <img src="/macOS 512@2.png" alt="" width="30" height="30" />
+            <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
+          </a>
           <small>Review First. Trash, Not Delete.</small>
         </div>
         <div className="authored-floating-links">
@@ -1425,7 +1428,8 @@ export default function Home() {
       <nav className={`site-top-nav authored-nav ${scrolled ? "is-hidden" : ""}`}>
         <div className="authored-nav-inner">
           <a href="/" className="authored-nav-logo">
-            Disk<span>Cleaner</span>
+            <img src="/macOS 512@2.png" alt="" width="30" height="30" />
+            <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
           <div className="authored-nav-actions">
             <button
