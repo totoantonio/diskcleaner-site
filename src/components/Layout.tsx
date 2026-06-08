@@ -5,6 +5,7 @@ import { Modal, SupportContent } from "./SiteModal"
 import "../App.css"
 
 const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg"
+const appIconSrc = "/macOS_newAppicon.png?v=20260608b"
 
 const SunIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -38,7 +39,7 @@ export default function Layout() {
       <nav className="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150">
         <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-6 md:px-12">
           <a href="/" className="flex items-center gap-2 text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">
-            <img src="/macOS 512@2.png" alt="" width="30" height="30" className="h-[30px] w-[30px] rounded-[8px] shadow-sm" />
+            <img src={appIconSrc} alt="" width="30" height="30" className="h-[30px] w-[30px] rounded-[8px] shadow-sm" />
             <span>Disk<em className="not-italic text-[var(--blue)]">Cleaner</em></span>
           </a>
           <ul className="hidden list-none items-center gap-7 md:flex">

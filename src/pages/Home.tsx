@@ -379,6 +379,8 @@ const MoonIcon = () => (
   </svg>
 )
 
+const APP_ICON_SRC = "/macOS_newAppicon.png?v=20260608b"
+
 // ─── Above-fold Sections ──────────────────────────────────────────────────────
 
 function Hero({ BG }: { BG: string }) {
@@ -392,7 +394,7 @@ function Hero({ BG }: { BG: string }) {
           <div className="authored-product-lockup">
             <div className="authored-app-icon">
               <img
-                src="/macOS 512@2.png"
+                src={APP_ICON_SRC}
                 alt=""
                 width="52"
                 height="52"
@@ -1407,7 +1409,7 @@ export default function Home() {
       >
         <div className="authored-floating-brand">
           <a href="/">
-            <img src="/macOS 512@2.png" alt="" width="30" height="30" />
+            <img src={APP_ICON_SRC} alt="" width="30" height="30" />
             <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
           <small>Review First. Trash, Not Delete.</small>
@@ -1428,7 +1430,7 @@ export default function Home() {
       <nav className={`site-top-nav authored-nav ${scrolled ? "is-hidden" : ""}`}>
         <div className="authored-nav-inner">
           <a href="/" className="authored-nav-logo">
-            <img src="/macOS 512@2.png" alt="" width="30" height="30" />
+            <img src={APP_ICON_SRC} alt="" width="30" height="30" />
             <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
           <div className="authored-nav-actions">

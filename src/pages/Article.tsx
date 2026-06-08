@@ -330,7 +330,7 @@ export default function Article() {
           "@id": "https://www.diskcleaner.pro/#organization",
           "name": "DiskCleaner",
           "url": "https://www.diskcleaner.pro/",
-          "logo": { "@type": "ImageObject", "url": "https://www.diskcleaner.pro/favicon.png" }
+          "logo": { "@type": "ImageObject", "url": "https://www.diskcleaner.pro/macOS_newAppicon.png" }
         },
         "mainEntityOfPage": { "@type": "WebPage", "@id": url },
         "articleSection": p.category,

@@ -46,7 +46,7 @@ export default function About() {
           "@type": "Organization",
           "name": "DiskCleaner",
           "url": "https://www.diskcleaner.pro/",
-          "logo": "https://www.diskcleaner.pro/favicon.png",
+          "logo": "https://www.diskcleaner.pro/macOS_newAppicon.png",
           "contactPoint": [
             {
               "@type": "ContactPoint",
