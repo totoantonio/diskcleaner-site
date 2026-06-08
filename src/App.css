@@ -2609,22 +2609,12 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-floating-brand a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   color: var(--text);
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -.03em;
   white-space: nowrap;
-}
-
-.authored-floating-brand img,
-.authored-nav-logo img {
-  flex: 0 0 auto;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(15,23,42,.12);
 }
 
 .authored-brand-wordmark {
@@ -2696,7 +2686,6 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
 .authored-nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   color: var(--text);
   text-decoration: none;
   font-size: 16px;

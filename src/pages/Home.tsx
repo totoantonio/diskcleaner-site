@@ -1406,7 +1406,6 @@ export default function Home() {
       >
         <div className="authored-floating-brand">
           <a href="/">
-            <img src={APP_ICON_SRC} alt="" width="30" height="30" />
             <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
           <small>Review First. Trash, Not Delete.</small>
@@ -1427,7 +1426,6 @@ export default function Home() {
       <nav className={`site-top-nav authored-nav ${scrolled ? "is-hidden" : ""}`}>
         <div className="authored-nav-inner">
           <a href="/" className="authored-nav-logo">
-            <img src={APP_ICON_SRC} alt="" width="30" height="30" />
             <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
           <div className="authored-nav-actions">
