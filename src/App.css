@@ -2892,6 +2892,14 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   gap: 18px;
 }
 
+.authored-hero-cta-note {
+  margin: 13px auto 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 560;
+  letter-spacing: .005em;
+}
+
 .authored-text-link {
   display: inline-flex;
   align-items: center;
@@ -4068,9 +4076,18 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   background: rgba(255,255,255,.1);
 }
 
+.authored-download-install-note {
+  max-width: 620px !important;
+  margin: 16px auto 0 !important;
+  color: rgba(255,255,255,.78) !important;
+  font-size: 11px !important;
+  font-weight: 540;
+  line-height: 1.5 !important;
+}
+
 .authored-download-trust {
   max-width: 850px;
-  margin: 34px auto 0;
+  margin: 24px auto 0;
   color: rgba(255,255,255,.8);
   display: flex;
   flex-wrap: wrap;
@@ -4528,6 +4545,13 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     gap: 14px;
   }
 
+  .authored-hero-cta-note {
+    max-width: 300px;
+    margin-top: 12px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
   .authored-primary-button {
     width: 100%;
     max-width: 340px;
@@ -4825,8 +4849,14 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
     width: 100%;
   }
 
+  .authored-download-install-note {
+    max-width: 310px !important;
+    margin-top: 14px !important;
+    font-size: 10px !important;
+  }
+
   .authored-download-trust {
-    margin-top: 26px;
+    margin-top: 22px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;

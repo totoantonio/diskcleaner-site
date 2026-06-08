@@ -416,14 +416,17 @@ function Hero({ BG }: { BG: string }) {
           </p>
           <div className="authored-hero-actions">
             <a href={appDownloadUrl} download data-analytics-location="hero" className="authored-primary-button">
-              Download for macOS
+              Download Free for macOS
             </a>
             <a href="#review-first" className="authored-text-link">
               See the Review Flow <span aria-hidden>↓</span>
             </a>
           </div>
+          <div className="authored-hero-cta-note">
+            Free Core Cleaning · No Account · Notarized by Apple
+          </div>
           <div className="authored-hero-meta" aria-label="Product details">
-            <span>Free Core Cleaning</span>
+            <span>Free Download</span>
             <span>$9.99 One-Time Premium</span>
             <span>macOS 13–26</span>
             <span>Apple-Notarized</span>
@@ -674,7 +677,7 @@ function ProblemFinder({ BG }: { BG: string }) {
             <code>{active.detail}</code>
             <div className="authored-problem-actions">
               <a href={appDownloadUrl} download data-analytics-location={`problem-${active.id}`} className="authored-primary-button">
-                Download for macOS
+                Download Free for macOS
               </a>
               <Link to={active.href} className="authored-text-link">
                 {active.link} <span aria-hidden>→</span>
@@ -1233,7 +1236,7 @@ function CTA({ BG }: { BG: string }) {
                 Ready When Your Mac Needs Space
               </div>
               <h2 className="reveal reveal-headline d1">
-                Try the cleaner.<br />
+                Download the cleaner free.<br />
                 Upgrade only if you need the rest.
               </h2>
               <p className="reveal d2">
@@ -1251,10 +1254,13 @@ function CTA({ BG }: { BG: string }) {
               data-analytics-location="download-section"
                   className="authored-download-button"
             >
-                  Download for macOS <span aria-hidden>↓</span>
+                  Download Free for macOS <span aria-hidden>↓</span>
             </a>
                 <a href="/trust/" className="authored-download-secondary">Review Security</a>
           </div>
+              <p className="authored-download-install-note reveal d5">
+                Opens as a standard Mac DMG. No account or payment details are required to start Free Core Cleaning.
+              </p>
               <div className="authored-download-trust reveal d5">
                 {[
                   "No Subscription",
@@ -1409,7 +1415,7 @@ export default function Home() {
           <a href="#download">Pricing</a>
         </div>
         <a href={appDownloadUrl} download data-analytics-location="floating-nav" className="authored-floating-download">
-          Download
+          Download Free
         </a>
       </nav>
 

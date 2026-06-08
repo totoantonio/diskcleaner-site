@@ -79,7 +79,7 @@ export default function Layout() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href={appDownloadUrl} download data-analytics-location="top-nav" className="hidden rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110 md:inline-block">Download</a>
+            <a href={appDownloadUrl} download data-analytics-location="top-nav" className="hidden rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110 md:inline-block">Download Free</a>
           </div>
         </div>
         {mobileMenuOpen && (
@@ -108,7 +108,7 @@ export default function Layout() {
                 className="mt-2 inline-flex items-center justify-center rounded-full bg-[var(--blue)] px-5 py-3 text-[15px] font-medium text-white no-underline"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Download for macOS
+                Download Free for macOS
               </a>
             </div>
           </div>
