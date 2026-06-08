@@ -1,6 +1,6 @@
 ---
-title: "What Is System Data on Mac? What It Includes and How to Reduce It"
-description: "System Data on Mac includes caches, logs, backups, snapshots, developer files, and app leftovers. Learn what's usually safe to remove and what to leave alone."
+title: "System Data on Mac: What It Is, What It Includes, and How to Reduce It"
+description: "System Data on Mac can include caches, logs, snapshots, iOS backups, developer files, and app leftovers. See what is usually safe to remove and what to leave alone."
 date: "2026-03-01"
 updatedAt: "2026-06-07"
 slug: "what-is-system-data-mac"
@@ -9,7 +9,7 @@ excerpt: "System Data is not one mystery file. It is a broad macOS storage bucke
 featured: true
 ---
 
-# What Is System Data on Mac? What It Includes and How to Reduce It
+# System Data on Mac: What It Is, What It Includes, and How to Reduce It
 
 If you've opened macOS Storage and seen **System Data** taking 50+ GB, you're not overreacting. It's one of the most frustrating parts of Mac storage management.
 

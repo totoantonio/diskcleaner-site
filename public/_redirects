@@ -1,3 +1,12 @@
 https://diskcleaner.pro/*  https://www.diskcleaner.pro/:splat  301!
+/blog/:slug  /blog/:slug/  301
+/blog  /blog/  301
+/about  /about/  301
+/disk-clean-pro-alternative  /disk-clean-pro-alternative/  301
+/trust  /trust/  301
+/security  /security/  301
+/changelog  /changelog/  301
+/editorial-policy  /editorial-policy/  301
+/help  /help/  301
 /blog/:slug.html  /blog/:slug/  301
 /:page.html  /:page/  301
