@@ -18,6 +18,7 @@ import ramOptimizerImage_464 from "../assets/RAM Optimizer-464.webp"
 import ramOptimizerImage_640 from "../assets/RAM Optimizer-640.webp"
 import ramOptimizerImage_1024 from "../assets/RAM Optimizer-1024.webp"
 import ramOptimizerImage_1600 from "../assets/RAM Optimizer-1600.webp"
+import sunBurstImage from "../assets/SunBurst.webp"
 import "../App.css"
 
 const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg"
@@ -437,6 +438,16 @@ function Hero({ BG }: { BG: string }) {
             <span />
             <span />
           </div>
+          <img
+            src={sunBurstImage}
+            width="1200"
+            height="1200"
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="authored-proof-sunburst"
+            aria-hidden="true"
+          />
           <div className="authored-proof-floor" aria-hidden="true" />
           <div className="authored-proof-scanlines" aria-hidden="true">
             <span />
@@ -476,6 +487,7 @@ function Hero({ BG }: { BG: string }) {
             alt="DiskCleaner showing storage categories and files available for review before cleanup"
             fetchPriority="high"
             decoding="async"
+            className="authored-proof-product-image"
           />
         </div>
       </div>
@@ -1228,6 +1240,16 @@ function CTA({ BG }: { BG: string }) {
                 <small>Yours forever · Up to 2 Macs</small>
               </div>
             </div>
+            <img
+              src={sunBurstImage}
+              width="1200"
+              height="1200"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="authored-download-sunburst"
+              aria-hidden="true"
+            />
 
             <div className="authored-download-content">
               <div className="authored-download-kicker reveal">
