@@ -44,6 +44,12 @@ a, button, [role="button"] { -webkit-tap-highlight-color: transparent; }
   --blue-dim: #0051a2;
 }
 
+html[data-device-family="non-apple"] {
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
 body, [data-theme] {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -4656,10 +4662,13 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-proof-sunburst {
-    right: -62px;
-    bottom: 18px;
-    width: min(360px, 92vw);
-    opacity: .38;
+    z-index: 3;
+    top: 132px;
+    right: -34px;
+    bottom: auto;
+    width: min(240px, 58vw);
+    opacity: .82;
+    filter: saturate(1.08) drop-shadow(0 18px 28px rgba(37,99,235,.16));
   }
 
   .authored-proof-note {
@@ -4830,10 +4839,11 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-download-sunburst {
-    right: -82px;
-    bottom: -44px;
-    width: min(380px, 96vw);
-    opacity: .3;
+    right: -54px;
+    bottom: auto;
+    top: 82px;
+    width: min(300px, 78vw);
+    opacity: .36;
   }
 
   .authored-download-kicker {
