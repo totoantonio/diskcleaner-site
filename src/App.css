@@ -4656,10 +4656,10 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-proof-sunburst {
-    right: -105px;
-    bottom: -80px;
-    width: 300px;
-    opacity: .18;
+    right: -62px;
+    bottom: 18px;
+    width: min(360px, 92vw);
+    opacity: .38;
   }
 
   .authored-proof-note {
@@ -4830,10 +4830,10 @@ footer { padding: 32px 0; background: var(--bg); border-top: 1px solid var(--bor
   }
 
   .authored-download-sunburst {
-    right: -130px;
-    bottom: -120px;
-    width: 360px;
-    opacity: .2;
+    right: -82px;
+    bottom: -44px;
+    width: min(380px, 96vw);
+    opacity: .3;
   }
 
   .authored-download-kicker {
