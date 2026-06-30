@@ -10,6 +10,7 @@ export default {
         sans: [
           "-apple-system",
           "BlinkMacSystemFont",
+          "Plus Jakarta Sans",
           "SF Pro Display",
           "SF Pro Text",
           "system-ui",

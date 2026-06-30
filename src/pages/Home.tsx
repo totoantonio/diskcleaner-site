@@ -499,12 +499,11 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
   return (
     <div className="border-y border-[var(--border)] py-8 sm:py-10 lg:py-12" style={{ background: SURFACE }}>
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
-        <div className="grid grid-cols-2 gap-y-3 md:grid-cols-4 md:gap-y-0">
+        <div className="grid grid-cols-2 gap-y-3 md:grid-cols-3 md:gap-y-0">
           {[
             { n: "16",  u: "+",  l: "Cleanup Categories" },
             { n: "<10", u: "s",  l: "Time to First Results" },
             { n: "6",   u: "",   l: "Browser Caches Cleaned" },
-            { n: "~5",  u: "MB", l: "Total Install Size" },
           ].map((s, i) => (
             <div className={`px-3 text-center md:border-r md:border-[var(--border)] md:last:border-r-0 ${i < 2 ? "border-b border-[var(--border)] pb-6 md:border-b-0 md:pb-0" : ""}`} key={i}>
               <div className="text-[34px] font-bold leading-none tracking-[-0.04em] text-[var(--text)] md:text-[44px]">{s.n}<span className="text-[var(--blue)]">{s.u}</span></div>
@@ -1332,10 +1331,10 @@ function SiteFooter({ openModal }: { openModal: (k: "support" | "changelog") => 
         <div className="site-footer-cols">
           {/* Brand */}
           <div className="site-footer-brand">
-            <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
+            <div className="type-ttl">
               <span style={{ color: "var(--text)" }}>Disk</span><span style={{ color: "var(--blue)" }}>Cleaner</span>
             </div>
-            <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6, margin: 0 }}>
+            <p className="type-copy-muted" style={{ margin: 0 }}>
               The Mac cleaner built for people<br />who actually use their Mac.
             </p>
           </div>
@@ -1368,9 +1367,9 @@ function SiteFooter({ openModal }: { openModal: (k: "support" | "changelog") => 
         </div>
         {/* Bottom strip */}
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-          <span style={{ fontSize: 12, color: "var(--muted)" }}>© {new Date().getFullYear()} 22 Software Publishing. All rights reserved.</span>
-          <span style={{ fontSize: 12, color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <span aria-hidden="true" style={{ fontSize: 13, lineHeight: 1 }}></span>
+          <span className="type-caption">© {new Date().getFullYear()} 22 Software Publishing. All rights reserved.</span>
+          <span className="type-caption" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+              <span aria-hidden="true" className="type-caption"></span>
             Made for Mac.
           </span>
         </div>

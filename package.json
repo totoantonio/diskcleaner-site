@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/ssg.mjs",
-    "deploy": "npm run build && git add -A && (git diff --cached --quiet || git commit -m 'deploy') && git push origin main",
+    "deploy": "node scripts/check-dmg.mjs && npm run build && git add -A && (git diff --cached --quiet || git commit -m 'deploy') && git push origin main",
     "gsc:auth": "node scripts/search-console.mjs auth",
     "gsc:clean-sitemaps": "node scripts/search-console.mjs clean-sitemaps",
     "gsc:ctr-weekly": "node scripts/search-console.mjs ctr-weekly",

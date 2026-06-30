@@ -209,7 +209,7 @@ export default function CompareTable({ BG, theme }: { BG: string; theme?: string
         </div>
 
         <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
-          <p style={{ fontSize: "clamp(18px,2.5vw,24px)", fontWeight: 500, lineHeight: 1.55, letterSpacing: "-0.015em", color: "var(--muted)", margin: 0 }}>
+          <p className="type-lead">
             DiskCleaner is built around proof, not promises. You review the actual cleanup before it happens, which makes the app feel safer, calmer, and more Mac-native than black-box cleaners.
           </p>
         </div>

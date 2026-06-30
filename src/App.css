@@ -44,6 +44,43 @@ a, button, [role="button"] { -webkit-tap-highlight-color: transparent; }
   --blue-dim: #0051a2;
 }
 
+/* ===== TYPOGRAPHY TOKENS (centralized) ===== */
+:root {
+  /* base scale (kept in px for parity with existing layout) */
+  --fs-xs: 12px;
+  --fs-sm: 13px;
+  --fs-md: 14px;
+  --fs-lg: 17px; /* current body */
+  --fs-xl: 20px;
+  --fs-2xl: 28px;
+
+  --lh-copy: 1.55;
+  --lh-tight: 1.2;
+
+  --track-tight: -0.03em;
+  --track-normal: 0em;
+
+  /* font weight tokens */
+  --fw-regular: 400;
+  --fw-medium: 600;
+  --fw-bold: 700;
+}
+
+/* Utility classes for typography to replace inline styles */
+.type-body { font-size: var(--fs-lg); line-height: var(--lh-copy); font-weight: var(--fw-regular); }
+.type-copy-muted { font-size: var(--fs-sm); line-height: var(--lh-copy); color: var(--muted); }
+.type-ttl { font-size: var(--fs-lg); font-weight: var(--fw-medium); letter-spacing: var(--track-tight); margin-bottom: 12px; }
+.type-caption { font-size: var(--fs-xs); color: var(--muted); line-height: 1; }
+.type-lead { font-size: clamp(18px,2.5vw,24px); font-weight: 500; line-height: 1.55; letter-spacing: -0.015em; color: var(--muted); margin: 0; }
+.type-small { font-size: var(--fs-sm); }
+.track-tight { letter-spacing: var(--track-tight); }
+.track-normal { letter-spacing: var(--track-normal); }
+.fw-600 { font-weight: var(--fw-medium); }
+.fw-700 { font-weight: var(--fw-bold); }
+
+/* Small helper to keep footer compact */
+.site-footer .site-footer-brand .brand-wordmark { display: block; }
+
 html[data-device-family="non-apple"] {
   --font-sans: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;
   --font-display: "Plus Jakarta Sans", "Segoe UI", Roboto, Arial, sans-serif;

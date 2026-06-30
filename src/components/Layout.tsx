@@ -123,10 +123,10 @@ export default function Layout() {
       <footer className="site-footer" style={{ marginTop: 0 }}>
         <div className="site-footer-cols">
           <div className="site-footer-brand">
-            <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: "-0.3px", marginBottom: 12 }}>
+            <div className="type-ttl">
               <span style={{ color: "var(--text)" }}>Disk</span><span style={{ color: "var(--blue)" }}>Cleaner</span>
             </div>
-            <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.6, margin: 0 }}>
+            <p className="type-copy-muted" style={{ margin: 0 }}>
               The Mac cleaner built for people<br />who actually use their Mac.
             </p>
           </div>
@@ -155,9 +155,9 @@ export default function Layout() {
           </div>
         </div>
         <div style={{ borderTop: "1px solid var(--border)", paddingTop: 24, maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-          <span style={{ fontSize: 12, color: "var(--muted)" }}>© {new Date().getFullYear()} 22 Software Publishing. All rights reserved.</span>
-          <span style={{ fontSize: 12, color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <span aria-hidden="true" style={{ fontSize: 13, lineHeight: 1 }}></span>
+          <span className="type-caption">© {new Date().getFullYear()} 22 Software Publishing. All rights reserved.</span>
+          <span className="type-caption" style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+            <span aria-hidden="true" className="type-caption"></span>
             Made for Mac.
           </span>
         </div>

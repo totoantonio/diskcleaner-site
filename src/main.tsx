@@ -32,7 +32,8 @@ const configurePlatformFonts = () => {
 
   const fontStylesheet = document.createElement("link")
   fontStylesheet.rel = "stylesheet"
-  fontStylesheet.href = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+  // Load a conservative set of weights to reduce payload: 400,600,700
+  fontStylesheet.href = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
   fontStylesheet.dataset.googleFonts = "plus-jakarta"
   document.head.appendChild(fontStylesheet)
 }
