@@ -226,7 +226,7 @@ function HighlightsCarousel({ SURFACE, theme }: { SURFACE: string; theme: string
   }
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20" style={{ background: SURFACE }}>
+    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-32" style={{ background: SURFACE }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
         <div className="reveal" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, marginBottom: 40, flexWrap: "wrap" }}>
           <h2 className="section-h2" style={{ margin: 0 }}>
@@ -773,7 +773,7 @@ const InterfaceSplit = lazy(async () => {
   const Comp = () => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="relative overflow-hidden py-12 sm:py-16 lg:py-20" style={{ background: "var(--surface2)" }}>
+      <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32" style={{ background: "var(--surface2)" }}>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-0 top-0 hidden h-full w-[30%] lg:block"
@@ -853,7 +853,7 @@ void InterfaceSplit
 
 function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
   return (
-      <section id="uninstaller" className="overflow-hidden py-12 sm:py-16 lg:py-20" style={{ background: SURFACE }}>
+      <section id="uninstaller" className="overflow-hidden py-16 sm:py-24 lg:py-32" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pr-8 reveal">
@@ -930,7 +930,7 @@ const RamOptimizerSplit = lazy(async () => {
   const Comp = ({ BG }: { BG: string }) => {
     useEffect(() => { const raf = requestAnimationFrame(dispatchRevealRefresh); return () => cancelAnimationFrame(raf) }, [])
     return (
-      <section className="overflow-hidden py-12 sm:py-16 lg:py-20" style={{ background: BG }}>
+      <section className="overflow-hidden py-16 sm:py-24 lg:py-32" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 lg:pr-8 reveal">
@@ -1012,7 +1012,7 @@ void RamOptimizerSplit
 
 function MenuBarSplit({ BG }: { BG: string }) {
   return (
-      <section className="py-12 sm:py-16 lg:py-20" style={{ background: BG }}>
+      <section className="py-16 sm:py-24 lg:py-32" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-2 lg:order-1 reveal flex justify-center py-1 sm:py-0 lg:items-center">
@@ -1083,7 +1083,7 @@ const WhatItFinds = lazy(async () => {
       { icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: 22, height: 22 }}><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>, name: "App Leftovers", desc: "Orphaned support files, caches, and preferences with risk labels and review before cleanup." },
     ]
     return (
-      <section className="py-12 sm:py-16 lg:py-20" style={{ background: SURFACE }}>
+      <section className="py-16 sm:py-24 lg:py-32" style={{ background: SURFACE }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
@@ -1170,7 +1170,7 @@ function FAQ({ BG }: { BG: string }) {
       },
   ]
   return (
-      <section id="faq" className="py-12 sm:py-16 lg:py-20 faq-premium" style={{ background: BG }}>
+      <section id="faq" className="py-16 sm:py-24 lg:py-32 faq-premium" style={{ background: BG }}>
         <div className="mx-auto w-full max-w-[860px] px-4 sm:px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em] text-[var(--text)]">
@@ -1301,7 +1301,7 @@ function CTA({ BG }: { BG: string }) {
 
 function TrustBand({ BG }: { BG: string }) {
   return (
-      <section className="py-12 sm:py-16 lg:py-20" style={{ background: BG }}>
+      <section className="py-16 sm:py-24 lg:py-32" style={{ background: BG }}>
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="authored-trust-note reveal">
             <span className="authored-trust-eyebrow">Trust Before You Clean</span>
