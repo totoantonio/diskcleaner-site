@@ -18,7 +18,7 @@ const sections = [
 export default function Help() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/help"
-    const description = "DiskCleaner help center covering 16+ scan categories, Free Core Cleaning, Premium tools, safety labels, and common Mac cleaning questions."
+    const description = "DiskCleaner help center covering 21 cleanup categories and tools, Free Core Cleaning, Premium tools, safety labels, and common Mac cleaning questions."
 
     suppressFaqPageSchema()
 
@@ -39,7 +39,7 @@ export default function Help() {
               "name": "What does DiskCleaner clean?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "DiskCleaner scans 16+ categories and targeted cleanup locations. Free Core Cleaning includes App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium adds browser cache, developer data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers."
+                "text": "DiskCleaner covers 21 cleanup categories and tools. Free Core Cleaning includes App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium adds browser cache, developer data, Homebrew cache, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, purgeable space, and old installers — plus dedicated RAM Optimizer, App Uninstaller, and WiFi & DNS Optimizer tools."
               }
             },
             {
@@ -55,7 +55,7 @@ export default function Help() {
               "name": "What is included for free and what does Premium unlock?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Free Core Cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 16+ category scanner and advanced cleanup areas. Riskier findings such as iOS backups and local Time Machine snapshots are flagged for review and are never pre-selected."
+                "text": "Free Core Cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 21-category scanner, dedicated tools, and advanced cleanup areas. Riskier findings such as iOS backups and local Time Machine snapshots are flagged for review and are never pre-selected."
               }
             },
             {
@@ -131,7 +131,7 @@ export default function Help() {
             Help Center
           </span>
           <h1 className="article-title text-balance">DiskCleaner Help</h1>
-          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what the 16+ scan categories cover, how review labels work, and how to use the latest cleanup tools safely.</p>
+          <p className="article-excerpt">Everything you need to get the most out of DiskCleaner — what the 21 cleanup categories and tools cover, how review labels work, and how to use the latest cleanup tools safely.</p>
         </div>
 
         {/* Table of Contents */}
@@ -183,7 +183,8 @@ export default function Help() {
               <li><strong>App Leftovers</strong> — Support files and residue left behind after apps were removed. For broader comparisons, see <Link to="/blog/best-app-uninstaller-for-mac/">our best app uninstaller for Mac guide</Link>.</li>
               <li><strong>External Storage</strong> — Junk on connected USB drives and external hard drives.</li>
               <li><strong>Time Machine Snapshots</strong> — Local APFS snapshots, always presented for careful review.</li>
-              <li><strong>Old Installers</strong> — DMG and PKG installers in Downloads and Desktop.</li>
+              <li><strong>Purgeable Space</strong> — macOS-managed space that the system holds in reserve, surfaced so you can understand it.</li>
+              <li><strong>Old Installers</strong> — DMG and PKG installers on your Desktop and in Documents.</li>
               <li><strong>Caution-labeled items</strong> — Results that deserve a second look before cleanup.</li>
             </ul>
 
@@ -222,7 +223,7 @@ export default function Help() {
             </ol>
 
             <h3>Understanding Free Core Cleaning vs Premium</h3>
-            <p><strong>Free Core Cleaning</strong> covers everyday clutter without a scan limit. <strong>Premium</strong> unlocks the full 16+ category scanner and advanced review areas. Riskier findings are flagged with an explanation and are never pre-selected.</p>
+            <p><strong>Free Core Cleaning</strong> covers everyday clutter without a scan limit. <strong>Premium</strong> unlocks the full 21-category scanner, dedicated tools, and advanced review areas. Riskier findings are flagged with an explanation and are never pre-selected.</p>
 
             <h3>Menu Bar Utilities</h3>
             <p>DiskCleaner includes menu bar utilities so disk state is always close at hand. The menu bar view is useful for quick visibility into available space and for returning to the app quickly when storage pressure starts building.</p>

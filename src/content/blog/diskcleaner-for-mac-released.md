@@ -1,6 +1,6 @@
 ---
 title: "DiskCleaner for Mac Is Released: A Safe, Transparent, Apple-Notarized Mac Cleaner"
-description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-Notarized Mac cleaner with 16+ scan categories, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
+description: "DiskCleaner for Mac is now available as a direct download: a safe, transparent, Apple-Notarized Mac cleaner with 21 cleanup categories and tools, Trash-first cleanup, app uninstalling, developer cleanup, RAM tools, and Sparkle auto-updates."
 date: "2026-05-25"
 updatedAt: "2026-06-02"
 slug: "diskcleaner-for-mac-released"
@@ -22,7 +22,7 @@ That matters because the Mac cleaner category has a trust problem. Many tools le
 
 The current release includes the core DiskCleaner workflow:
 
-- 16+ cleanup categories and targeted locations
+- 21 cleanup categories and tools
 - Free Core Cleaning with a One-Time Premium unlock for advanced categories
 - App Cache and Browser Cache review
 - Screenshots and Trash visibility

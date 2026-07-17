@@ -104,8 +104,8 @@ export default function About() {
 
             <h2>What DiskCleaner Covers</h2>
             <p>
-              DiskCleaner scans 16+ cleanup categories and targeted locations, including caches, logs, screenshots, .DS_Store files, Trash contents, developer data, large files, backups, external storage, and leftover files from removed apps.
-              It also includes tools such as app uninstallation support and a menu bar disk-space view so users can act on storage pressure more quickly. For deeper walkthroughs, see our guides on{" "}
+              DiskCleaner covers 21 cleanup categories and tools, including caches, logs, screenshots, .DS_Store files, Trash contents, developer data, large files, backups, external storage, and leftover files from removed apps.
+              It also includes dedicated tools — a RAM Optimizer, an App Uninstaller, and a WiFi & DNS Optimizer — along with a menu bar disk-space view so users can act on storage pressure more quickly. For deeper walkthroughs, see our guides on{" "}
               <Link to="/blog/how-to-free-up-storage-on-mac/">freeing up storage on Mac</Link>,{" "}
               <Link to="/blog/what-is-system-data-mac/">what System Data on Mac means</Link>,{" "}
               <Link to="/blog/best-app-uninstaller-for-mac/">the best app uninstallers for Mac</Link>, and{" "}

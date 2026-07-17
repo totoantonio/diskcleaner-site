@@ -55,7 +55,7 @@ That usually favors tools with:
 
 DiskCleaner is built for the narrower use case:
 
-- **16+ cleanup categories and targeted locations** for storage-heavy clutter
+- **21 cleanup categories and tools** for storage-heavy clutter
 - **per-file checkboxes** before anything moves
 - **Trash-first cleanup** rather than permanent deletion
 - **developer-data coverage** for Xcode DerivedData, CoreSimulator files, old iOS DeviceSupport files, and stale Homebrew downloads

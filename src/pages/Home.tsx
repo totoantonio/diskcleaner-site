@@ -94,7 +94,7 @@ const getScanPerfSvg = (dark: boolean) => {
   <g transform="translate(0,12)">
   ${sectionBg(48)}
   <text x="28" y="64" font-size="11" font-weight="600" fill="${dark ? '#8e8e93' : '#6e6e73'}" letter-spacing="1">SCAN TIMES</text>
-  <text x="28" y="88" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Smart Scan — 16+ Cleanup Categories</text>
+  <text x="28" y="88" font-size="13" fill="${dark ? '#f5f5f7' : '#1D1D1F'}">Smart Scan — 21 Cleanup Categories</text>
   <text x="452" y="88" font-size="13" font-weight="600" fill="#0071E3" text-anchor="end">&lt; 10s</text>
   <rect x="28" y="98" width="424" height="5" rx="2.5" fill="${dark ? '#3a3a3c' : '#F0F0F3'}"/>
   <rect x="28" y="98" width="403" height="5" rx="2.5" fill="#0071E3"/>
@@ -501,7 +501,7 @@ function StatsBand({ SURFACE }: { SURFACE: string }) {
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="grid grid-cols-2 gap-y-3 md:grid-cols-3 md:gap-y-0">
           {[
-            { n: "16",  u: "+",  l: "Cleanup Categories" },
+            { n: "21",  u: "",   l: "Cleanup Categories" },
             { n: "<10", u: "s",  l: "Time to First Results" },
             { n: "6",   u: "",   l: "Browser Caches Cleaned" },
           ].map((s, i) => (
@@ -1087,7 +1087,7 @@ const WhatItFinds = lazy(async () => {
         <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
           <div className="mb-8 flex flex-col items-center text-center sm:mb-12">
             <h2 className="reveal reveal-headline d1 text-balance text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
-              <span className="text-[var(--text)]">16+ categories.</span> <span className="text-[var(--blue)]">One scan. You decide what goes.</span>
+              <span className="text-[var(--text)]">21 categories.</span> <span className="text-[var(--blue)]">One scan. You decide what goes.</span>
             </h2>
             <p className="reveal d2 mt-4 max-w-[560px] text-[16px] leading-[1.6] text-[var(--muted)]">
               Free Core Cleaning covers everyday clutter. Premium adds browser cache, developer files, large downloads, backups, external storage, and more. If Xcode storage keeps ballooning, read our guide on{" "}
@@ -1139,7 +1139,7 @@ function FAQ({ BG }: { BG: string }) {
       },
       {
         q: "What exactly does DiskCleaner scan?",
-        a: "DiskCleaner scans 16+ categories and targeted cleanup locations, including app cache, browser cache, logs, screenshots, .DS_Store files, Trash, developer data, Homebrew downloads, large files, iOS backups, Mail attachments, app leftovers, external storage, local Time Machine snapshots, and old installers. Caution categories are clearly flagged before cleanup.",
+        a: "DiskCleaner covers 21 cleanup categories and tools, including app cache, browser cache, system logs, screenshots, .DS_Store files, Trash, developer data, Homebrew cache, movies, downloads, large files, iOS backups, Mail attachments, app leftovers, external storage, local Time Machine snapshots, purgeable space, and old installers — plus dedicated RAM Optimizer, App Uninstaller, and WiFi & DNS Optimizer tools. Caution and Review items are clearly flagged and never pre-selected.",
       },
       {
         q: "Which macOS versions are supported?",
