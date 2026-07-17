@@ -331,9 +331,7 @@
           transport_type: "beacon",
         };
 
-        // Separate intent from GA4's recommended file download event for funnel reporting.
-        gtag("event", "download_intent", params);
-        gtag("event", "download", params);
+        // Single GA4-recommended download event so reports show one clean count.
         gtag("event", "file_download", params);
       }, { capture: true });
 
