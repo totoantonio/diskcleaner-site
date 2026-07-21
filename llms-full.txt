@@ -1,6 +1,6 @@
 # DiskCleaner — Full Reference
 
-> A released, Apple-Notarized macOS utility app that scans 16+ cleanup categories, shows every file before it moves, and sends cleaned items to Trash. Free Core Cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
+> A released, Apple-Notarized macOS utility app that scans 21 cleanup categories and tools, shows every file before it moves, and sends cleaned items to Trash. Free Core Cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
 
 ## Product
 
@@ -23,7 +23,7 @@
 
 ## What It Does
 
-DiskCleaner scans 16+ cleanup categories and targeted locations on macOS, then shows you every file before moving anything. All cleaned files go to macOS Trash — nothing is permanently deleted.
+DiskCleaner scans 21 cleanup categories and tools plus targeted locations on macOS, then shows you every file before moving anything. All cleaned files go to macOS Trash — nothing is permanently deleted.
 
 ### Free Core Cleaning
 
@@ -141,7 +141,7 @@ Q: How is it different from other Mac cleaners?
 A: Most cleaners delete files silently. DiskCleaner shows you every single file first, with per-file checkboxes, and only moves files to Trash — never permanent deletion.
 
 Q: What is included for free and what does Premium unlock?
-A: Free Core Cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 16+ category scanner, including browser cache, developer data, Homebrew downloads, large files, backups, external storage, local Time Machine snapshots, and old installers.
+A: Free Core Cleaning covers App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. Premium unlocks the full 21-category scanner, including browser cache, developer data, Homebrew downloads, large files, backups, external storage, local Time Machine snapshots, and old installers.
 
 Q: Does DiskCleaner require Full Disk Access?
 A: Full Disk Access and Home Folder permissions are requested to enable comprehensive scanning. Scans work at reduced scope without them — DiskCleaner never demands access it doesn't have a specific use for.

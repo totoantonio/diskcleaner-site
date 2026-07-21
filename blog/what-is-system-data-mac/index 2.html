@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="theme-color" content="#0071e3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" />
+
+    <link rel="shortcut icon" href="/favicon-20260608.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-20260608.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/macOS_newAppicon.png?v=20260608b">
+    <link id="canonical-link" rel="canonical" href="https://www.diskcleaner.pro/blog/what-is-system-data-mac/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.diskcleaner.pro/" />
+    <link rel="alternate" hreflang="en" href="https://www.diskcleaner.pro/" />
+
+    <!-- Primary SEO -->
+    <title>System Data on Mac: What It Is, What It Includes, and How to Reduce It — DiskCleaner</title>
+    <meta
+      id="meta-desc"
+      name="description"
+      content="System Data on Mac can include caches, logs, snapshots, iOS backups, developer files, and app leftovers. See what is usually safe to remove and what to leave alone."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="DiskCleaner" />
+    <meta name="author" content="DiskCleaner" />
+    <meta name="keywords" content="mac cleaner, disk cleaner mac, mac storage cleaner, cache cleaner mac, free up mac space, macOS junk cleaner, system data mac, app uninstaller mac, mac disk space, mac cache remover, macOS utility, diskcleaner" />
+
+    <script>
+      if (window.location.hostname === "diskcleaner.pro") {
+        window.location.replace(`https://www.diskcleaner.pro${window.location.pathname}${window.location.search}${window.location.hash}`)
+      }
+    </script>
+
+    <!-- Open Graph -->
+    <meta id="og-type" property="og:type" content="article" />
+    <meta property="og:site_name" content="DiskCleaner" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:locale:alternate" content="en_CA" />
+    <meta property="og:locale:alternate" content="en_AU" />
+    <meta id="og-url" property="og:url" content="https://www.diskcleaner.pro/blog/what-is-system-data-mac/" />
+    <meta id="og-title" property="og:title" content="System Data on Mac: What It Is, What It Includes, and How to Reduce It — DiskCleaner" />
+    <meta id="og-desc" property="og:description" content="System Data on Mac can include caches, logs, snapshots, iOS backups, developer files, and app leftovers. See what is usually safe to remove and what to leave alone." />
+    <meta id="og-image" property="og:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta id="og-image-secure" property="og:image:secure_url" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta id="og-image-alt" property="og:image:alt" content="System Data on Mac: What It Is, What It Includes, and How to Reduce It — DiskCleaner" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="tw-url" name="twitter:url" content="https://www.diskcleaner.pro/blog/what-is-system-data-mac/" />
+    <meta id="tw-title" name="twitter:title" content="System Data on Mac: What It Is, What It Includes, and How to Reduce It — DiskCleaner" />
+    <meta id="tw-desc" name="twitter:description" content="System Data on Mac can include caches, logs, snapshots, iOS backups, developer files, and app leftovers. See what is usually safe to remove and what to leave alone." />
+    <meta id="tw-image" name="twitter:image" content="https://www.diskcleaner.pro/DiskCleaner_blog.webp" />
+
+    <!-- Structured data (Google) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.diskcleaner.pro/#organization",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "logo": "https://www.diskcleaner.pro/macOS_newAppicon.png",
+            "email": "customersupport@diskcleaner.pro",
+            "areaServed": "Worldwide",
+            "availableLanguage": "en",
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "customersupport@diskcleaner.pro",
+                "url": "https://www.diskcleaner.pro/help/",
+                "availableLanguage": "en"
+              }
+            ],
+            "sameAs": [
+              "https://x.com/diskcleanerpro",
+              "https://www.threads.net/@diskcleanerpro"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.diskcleaner.pro/#website",
+            "name": "DiskCleaner",
+            "url": "https://www.diskcleaner.pro/",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://www.diskcleaner.pro/#software",
+            "name": "DiskCleaner",
+            "operatingSystem": "macOS 13 Ventura or later",
+            "operatingSystemVersion": "macOS 13 Ventura or later",
+            "applicationCategory": "UtilityApplication",
+            "applicationSubCategory": "Disk Cleaner",
+            "description": "DiskCleaner is a focused macOS cleaner that safely scans cache and clutter, shows every file before it moves, and sends everything to Trash.",
+            "inLanguage": "en-US",
+            "url": "https://www.diskcleaner.pro/",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://www.diskcleaner.pro/#organization"
+            },
+            "image": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "screenshot": "https://www.diskcleaner.pro/DiskCleaner_Social.webp",
+            "softwareVersion": "1.0",
+            "softwareRequirements": "macOS 13 Ventura or later",
+            "about": [
+              {"@type": "Thing", "name": "macOS storage optimization"},
+              {"@type": "Thing", "name": "disk cleaner"},
+              {"@type": "Thing", "name": "cache cleaner"},
+              {"@type": "Thing", "name": "Mac app uninstaller"}
+            ],
+            "memoryRequirements": "4 GB RAM",
+            "processorRequirements": "Apple Silicon or Intel",
+            "softwareHelp": {
+              "@type": "CreativeWork",
+              "url": "https://www.diskcleaner.pro/help/"
+            },
+            "featureList": [
+              "App Cache cleaning",
+              "Browser Cache cleaning for Chrome, Firefox, Edge, Brave, Arc, and Opera",
+              "Screenshot removal",
+              ".DS_Store file cleanup across the home folder",
+              "macOS Trash cleanup",
+              "System Logs removal",
+              "Developer Data cleanup (Xcode DerivedData, CoreSimulator, iOS DeviceSupport)",
+              "Homebrew Cache cleanup",
+              "Movies and Downloads review",
+              "App Leftovers detection and removal",
+              "Large Files scanner — finds files over 50 MB across the home folder",
+              "iOS backups and Apple Mail attachment review",
+              "External storage scanning",
+              "Local Time Machine snapshot review",
+              "Old DMG and PKG installer cleanup",
+              "RAM Optimizer — live Memory Pressure, Swap, and Compressed Memory metrics with one-tap optimization",
+              "App Uninstaller — removes apps and all associated leftover files",
+              "Menu Bar disk usage overview",
+              "Trash-first safety — nothing permanently deleted",
+              "iCloud-safe scanning — skips iCloud placeholder files and sync daemon caches",
+              "Zero-decision interface — review every file before moving",
+              "100% local — no internet, no data collection, no account",
+              "Universal Binary — native Apple Silicon and Intel"
+            ],
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Free Core Cleaning",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash cleaning without an upgrade",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              },
+              {
+                "@type": "Offer",
+                "name": "DiskCleaner Pro",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "description": "One-time purchase, covers up to 2 Macs, includes all future updates — no subscription",
+                "availability": "https://schema.org/InStock",
+                "url": "https://www.diskcleaner.pro/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+
+    <script id="article-jsonld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://www.diskcleaner.pro/blog/what-is-system-data-mac/#article",
+      "headline": "System Data on Mac: What It Is, What It Includes, and How to Reduce It",
+      "description": "System Data on Mac can include caches, logs, snapshots, iOS backups, developer files, and app leftovers. See what is usually safe to remove and what to leave alone.",
+      "abstract": "System Data is not one mystery file. It is a broad macOS storage bucket that can include caches, logs, backups, snapshots, developer files, app leftovers, and temporary system files.",
+      "datePublished": "2026-03-01",
+      "dateModified": "2026-06-07",
+      "url": "https://www.diskcleaner.pro/blog/what-is-system-data-mac/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.diskcleaner.pro/blog/what-is-system-data-mac/"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://www.diskcleaner.pro/blog/#blog"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "DiskCleaner Team",
+        "description": "Editorial Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.diskcleaner.pro/#organization",
+        "name": "DiskCleaner",
+        "url": "https://www.diskcleaner.pro/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.diskcleaner.pro/favicon.png"
+        }
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.diskcleaner.pro/DiskCleaner_blog.webp",
+        "width": 1200,
+        "height": 630
+      },
+      "articleSection": "macOS",
+      "keywords": [
+        "macOS",
+        "DiskCleaner",
+        "Mac cleaner",
+        "macOS storage"
+      ],
+      "wordCount": 1060,
+      "timeRequired": "PT5M",
+      "inLanguage": "en-US",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.diskcleaner.pro/#software",
+          "name": "DiskCleaner",
+          "url": "https://www.diskcleaner.pro/"
+        },
+        {
+          "@type": "Thing",
+          "name": "macOS"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.diskcleaner.pro/blog/what-is-system-data-mac/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.diskcleaner.pro/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://www.diskcleaner.pro/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "System Data on Mac: What It Is, What It Includes, and How to Reduce It",
+          "item": "https://www.diskcleaner.pro/blog/what-is-system-data-mac/"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
+    <!-- FAQPage schema — home page default; suppressed on pages with their own FAQPage schema -->
+    <script id="global-faqpage-jsonld" type="text/plain">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is DiskCleaner safe? Does it delete files permanently?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No file is ever permanently deleted. DiskCleaner uses macOS's native Trash system exclusively — every file moved is recoverable from your Trash. You also review every file before anything moves."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DiskCleaner connect to the internet or collect my data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Scanning and cleaning run locally on your Mac. DiskCleaner collects no scan data and requires no account. Sparkle handles background app updates without sending your file names or disk contents anywhere."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What exactly does DiskCleaner scan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DiskCleaner scans 16+ categories and targeted cleanup locations, including App Cache, Browser Cache, Screenshots, .DS_Store files, macOS Trash, System Logs, Developer Data, Homebrew downloads, Movies, Downloads, Large Files, iOS backups, Apple Mail attachments, App Leftovers, external storage, local Time Machine snapshots, and old installers. The RAM Optimizer monitors Memory Pressure, Swap, and Compressed Memory with one-tap optimization. The App Uninstaller removes apps and associated leftover files. Protected paths are blocked. iCloud-safe scanning skips iCloud placeholder files and sync daemon caches so iCloud Drive can keep syncing normally while a scan runs. Risky or personal findings are never pre-selected."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which macOS versions does DiskCleaner support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13 Ventura through macOS 26 Tahoe. DiskCleaner is built as a native Universal Binary with full Apple Silicon and Intel support."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is DiskCleaner different from other Mac cleaners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most Mac cleaners delete files silently and show you a number after the fact. DiskCleaner shows you every single file before anything moves, with per-file checkboxes so you stay in control. It also never permanently deletes — everything goes through Trash."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does DiskCleaner include for free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DiskCleaner includes Free Core Cleaning for App Cache, System Logs, Screenshots, .DS_Store files, and macOS Trash. A one-time $9.99 Premium purchase unlocks the full scanner for up to 2 Macs and includes all future updates — no subscription."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account or subscription for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No account and no subscription. DiskCleaner includes Free Core Cleaning. A $9.99 One-Time Premium purchase unlocks the full scanner for up to 2 Macs and includes every future update."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get a refund for DiskCleaner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. If you purchase through the Mac App Store, Apple's standard 14-day refund policy applies. For direct purchases, contact us at customersupport@diskcleaner.pro."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="module" crossorigin src="/assets/index-DwpimGwb.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/router-CVLgSSAE.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-LcZ6Bcb7.css">
+  </head>
+
+  <body>
+    <div id="root"><section style="background:var(--bg,#f5f5f7);padding:48px 0 80px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 16px">
+    <a href="/blog/" style="display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--muted,#6e6e73);text-decoration:none;margin-bottom:32px">&#8592; Back to Blog</a>
+    <div style="max-width:860px;margin:0 auto;text-align:center">
+      <span style="display:inline-block;padding:2px 12px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#0071e3">macOS</span>
+      <h1 style="font-size:clamp(28px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-.04em;margin:16px 0 12px;color:var(--text,#1d1d1f)">System Data on Mac: What It Is, What It Includes, and How to Reduce It</h1>
+      <p style="font-size:18px;line-height:1.6;color:var(--muted,#6e6e73);margin-bottom:16px">System Data is not one mystery file. It is a broad macOS storage bucket that can include caches, logs, backups, snapshots, developer files, app leftovers, and temporary system files.</p>
+      <p style="font-size:13px;color:var(--muted2,#aeaeb2)">March 1, 2026 · Updated June 7, 2026 · 5 min read · 1,060 words · By DiskCleaner Team</p>
+    </div>
+    <section style="max-width:860px;margin:32px auto 0;padding:20px 24px;border-radius:20px;border:1px solid var(--border,rgba(0,0,0,.1));background:var(--surface,#fff)">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--muted2,#aeaeb2);margin:0 0 8px">About the Author</p>
+      <h2 style="font-size:18px;font-weight:600;margin:0 0 4px;color:var(--text,#1d1d1f)">DiskCleaner Team</h2>
+      <p style="font-size:13px;font-weight:500;color:#0071e3;margin:0 0 10px">Editorial Team</p>
+      <p style="font-size:15px;line-height:1.7;color:var(--muted,#6e6e73);margin:0">Publishes product explainers, help content, and update notes for DiskCleaner.</p>
+    </section>
+    <article style="max-width:860px;margin:24px auto 0;border-radius:24px;background:var(--surface,#fff);padding:20px 20px 40px">
+      <div class="blog-content" style="padding:24px 20px 0">
+        <h1>System Data on Mac: What It Is, What It Includes, and How to Reduce It</h1><p>If you&#39;ve opened macOS Storage and seen <strong>System Data</strong> taking 50+ GB, you&#39;re not overreacting. It&#39;s one of the most frustrating parts of Mac storage management.</p>
+<p>You get a big number, but almost no explanation.<sup><a href="#ref-1">[1]</a></sup></p>
+<h2>Quick Answer</h2><p>System Data on Mac is a broad storage category for files macOS cannot place neatly into Apps, Photos, Documents, or other user-facing groups. It can include caches, logs, local snapshots, iOS backups, app support files, developer data, and temporary system files.</p>
+<p>You can usually reduce System Data by reviewing cache files, old logs, outdated iOS backups, stale developer folders, and leftover app data. You should not randomly delete files from <code>/System</code>, <code>/Library</code>, or hidden Library folders without knowing what they are.</p>
+<h2>What &quot;System Data&quot; Usually Includes</h2><p>In practice, System Data is a mixed bucket. It often includes:</p>
+<ul>
+<li>app caches</li>
+<li>logs and diagnostics</li>
+<li>leftovers from removed apps</li>
+<li>developer artifacts (Xcode builds, simulators, package caches)</li>
+<li>local iOS backups<sup><a href="#ref-2">[2]</a></sup></li>
+<li>temporary system files and APFS snapshots<sup><a href="#ref-3">[3]</a></sup></li>
+</ul>
+<p>So when that number grows, it is usually multiple small causes stacking over time — not one obvious culprit.</p>
+<p><img src="/DiskCleaner_Social.webp" alt="System Data storage breakdown in DiskCleaner"></p>
+<h2>What Is Included in macOS System Data?</h2><p>The exact contents vary by Mac, but these are the categories that most often contribute to a large System Data number:</p>
+<table>
+<thead>
+<tr>
+<th>System Data source</th>
+<th>Common location</th>
+<th>Usually safe to review?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>App cache</td>
+<td><code>~/Library/Caches</code></td>
+<td>Yes, especially stale app folders</td>
+</tr>
+<tr>
+<td>Browser cache</td>
+<td>Browser profile cache folders</td>
+<td>Yes, but browsers may recreate it</td>
+</tr>
+<tr>
+<td>System and app logs</td>
+<td><code>~/Library/Logs</code>, <code>/Library/Logs</code></td>
+<td>Yes, old logs are usually low-risk</td>
+</tr>
+<tr>
+<td>App leftovers</td>
+<td><code>~/Library/Application Support</code>, <code>~/Library/Containers</code>, <code>~/Library/Preferences</code></td>
+<td>Yes, after confirming the app is gone</td>
+</tr>
+<tr>
+<td>iPhone and iPad backups</td>
+<td>Finder-managed backup folders</td>
+<td>Yes, if the device backup is outdated</td>
+</tr>
+<tr>
+<td>Xcode and simulator data</td>
+<td><code>~/Library/Developer</code>, <code>/Library/Developer</code></td>
+<td>Yes, with category-specific rules</td>
+</tr>
+<tr>
+<td>Local snapshots</td>
+<td>APFS / Time Machine managed storage</td>
+<td>Careful; macOS often manages these automatically</td>
+</tr>
+<tr>
+<td>System files</td>
+<td><code>/System</code>, protected <code>/Library</code> paths</td>
+<td>No, leave these alone</td>
+</tr>
+</tbody></table>
+<p>This is why System Data feels confusing: it mixes files you can safely review with files macOS protects for a reason.</p>
+<h2>Why It Creeps Up</h2><p>This almost never happens in one day.</p>
+<p>A bit of browser cache each week. Old logs nobody checks. A simulator image from months ago. A backup from an older iPhone that you stopped using two years back.</p>
+<p>Nothing looks dramatic alone, but together it becomes real storage pressure.</p>
+<h2>Usually Safe Wins</h2><p>For most users, these are common low-risk cleanup targets:</p>
+<ul>
+<li>browser and app cache</li>
+<li>old screenshots</li>
+<li>stale developer build artifacts</li>
+<li>outdated iOS device backups</li>
+<li>package manager caches</li>
+</ul>
+<p>These are usually rebuildable or non-critical. Clearing them rarely causes problems.</p>
+<h2>Usually Safe to Remove</h2><p>These categories are good first-pass targets because they are either rebuildable or easy to recognize:</p>
+<ul>
+<li>old app cache folders for apps you still use</li>
+<li>browser cache for browsers you can reopen afterward</li>
+<li>screenshots and old downloads that you recognize</li>
+<li>old iOS device backups you no longer need</li>
+<li>Xcode DerivedData and simulator data you can rebuild or re-download</li>
+<li>logs from apps you are no longer troubleshooting</li>
+<li>leftovers from apps you already removed</li>
+</ul>
+<p>The safest pattern is not &quot;delete everything.&quot; It is: identify the category, inspect the files, then remove only what you understand.</p>
+<h2>Where You Should Be Careful</h2><p>Don&#39;t randomly remove files you can&#39;t identify. Be cautious with:<sup><a href="#ref-4">[4]</a></sup></p>
+<ul>
+<li>core macOS system files</li>
+<li>active app preference data</li>
+<li>system-managed snapshots unless you know what you&#39;re doing</li>
+</ul>
+<p>If you&#39;re guessing, pause first. A few seconds of hesitation is worth more than an afternoon of troubleshooting.</p>
+<h2>How to Reduce System Data on Mac Safely</h2><ol>
+<li>Open <strong>System Settings → General → Storage</strong> and check whether System Data is actually the large category.</li>
+<li>Review easy visible folders first: Downloads, Movies, old installers, screenshots, and Trash.</li>
+<li>Check app and browser cache next. These can be rebuilt, but you should still review the source.</li>
+<li>If you use Xcode, inspect Developer Data. DerivedData, simulator runtimes, and device support files can quietly grow into tens of gigabytes.</li>
+<li>Review old iPhone or iPad backups in Finder before deleting them.</li>
+<li>Leave protected system folders alone unless you are following official Apple guidance or know exactly what the file does.</li>
+<li>Prefer recoverable cleanup. Moving files to Trash gives you a chance to restore them if something looks wrong.</li>
+</ol>
+<h2>Why Manual Cleanup Is So Slow</h2><p>The files you need are spread across hidden Library paths, and Finder is not designed to guide this workflow.</p>
+<p>Manual cleanup works, but it&#39;s tedious and easy to get wrong. The directories aren&#39;t surfaced, the sizes aren&#39;t visible at a glance, and there&#39;s no undo once a file is gone.</p>
+<h2>The Workflow We Recommend</h2><p>Use a scan-first process: inspect categories, review file sizes, then remove intentionally.</p>
+<p>That&#39;s the model DiskCleaner follows. It surfaces common storage-heavy areas, lets you inspect before action, and uses Trash-first cleanup so recovery stays available.</p>
+<p>If System Data is your main problem, start with App Cache, System Logs, App Leftovers, iOS Backups, and Developer Data. If you use Xcode, also read our guide to <a href="/blog/which-xcode-folders-are-safe-to-delete/">which Xcode folders are safe to delete</a>.</p>
+<h2>Final Take</h2><p>&quot;System Data&quot; is not one mystery file. It&#39;s a pile of many categories.</p>
+<p>Once you break it down and review it methodically, storage decisions become much easier and much safer.</p>
+<div class="blog-references">
+<p class="blog-references-label">References</p>
+<ol class="references">
+  <li id="ref-1">Apple Inc. "About System Data in the storage information for your Mac." <em>Apple Support</em>, 2024. <a href="https://support.apple.com/en-us/102677">support.apple.com/en-us/102677</a></li>
+  <li id="ref-2">Apple Inc. "Manage iPhone backups in Finder on Mac." <em>Apple Support</em>, 2024. <a href="https://support.apple.com/guide/iphone/back-up-iphone-iph3ecf67d29/ios">support.apple.com</a></li>
+  <li id="ref-3">Apple Inc. "What is APFS?" <em>Apple Support</em>, 2024. <a href="https://support.apple.com/guide/disk-utility/file-system-formats-dsku19ed921c/mac">support.apple.com</a></li>
+  <li id="ref-4">Apple Inc. "File System Basics — About the macOS File System." <em>Apple Developer Documentation</em>, 2024. <a href="https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html">developer.apple.com</a></li>
+</ol>
+</div>
+
+      </div>
+    </article>
+  </div>
+</section></div>
+
+    <script>
+      // Delay non-critical third-party scripts to protect mobile LCP/TBT.
+      const ua = navigator.userAgent || "";
+      const isLabRun =
+        /HeadlessChrome|Lighthouse|Chrome-Lighthouse|PageSpeed/i.test(ua) ||
+        navigator.webdriver === true;
+
+      window.lemonSqueezyAffiliateConfig = { store: "cleandiskmac" };
+
+      const loadAffiliate = () => {
+        if (isLabRun || window.__affiliateLoaded) return;
+        window.__affiliateLoaded = true;
+
+        const s = document.createElement("script");
+        s.src = "https://lmsqueezy.com/affiliate.js";
+        s.defer = true;
+        document.head.appendChild(s);
+      };
+
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(loadAffiliate, { timeout: 3000 });
+      } else {
+        window.addEventListener("load", () => window.setTimeout(loadAffiliate, 1500), { once: true });
+      }
+
+      if (isLabRun || navigator.doNotTrack === "1") {
+        window.__gaLoaded = true;
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      const loadGA = () => {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-5829VKKXH4";
+        document.head.appendChild(s);
+
+        gtag("js", new Date());
+        gtag("config", "G-5829VKKXH4", { anonymize_ip: true });
+      };
+
+      document.addEventListener("click", event => {
+        const anchor = event.target.closest && event.target.closest("a[href]");
+        if (!anchor) return;
+
+        const url = new URL(anchor.getAttribute("href"), window.location.href);
+        if (!url.pathname.toLowerCase().endsWith(".dmg")) return;
+
+        loadGA();
+
+        const params = {
+          cta_location: anchor.dataset.analyticsLocation || anchor.id || anchor.textContent.trim() || "download-link",
+          file_extension: "dmg",
+          file_name: url.pathname.split("/").filter(Boolean).pop() || "download.dmg",
+          link_text: anchor.textContent.trim(),
+          link_url: url.href,
+          transport_type: "beacon",
+        };
+
+        // Single GA4-recommended download event so reports show one clean count.
+        gtag("event", "file_download", params);
+      }, { capture: true });
+
+      ["scroll", "mousemove", "touchstart", "keydown", "pointerdown"].forEach(evt =>
+        window.addEventListener(evt, loadGA, { once: true, passive: true })
+      );
+
+      if (!isLabRun && navigator.doNotTrack !== "1") {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadGA, { timeout: 2500 });
+        } else {
+          window.addEventListener("load", () => window.setTimeout(loadGA, 750), { once: true });
+        }
+      }
+    </script>
+  </body>
+</html>
