@@ -29,7 +29,18 @@ const SSR_DIR = path.join(ROOT, ".ssg-server")
 const BLOG_DIR = path.join(ROOT, "src", "content", "blog")
 const BASE_URL = "https://www.diskcleaner.pro"
 
-const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim() || ""
+// Vite loads .env.production for the browser build, but this postbuild step runs
+// as a standalone Node process, so load it here too (e.g. for INDEXNOW_KEY).
+// An existing env var still wins; a missing file just no-ops IndexNow.
+if (!process.env.INDEXNOW_KEY) {
+  try {
+    process.loadEnvFile(path.join(ROOT, ".env.production"))
+  } catch {
+    // No .env.production present — IndexNow key/ping will be skipped.
+  }
+}
+
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY?.trim().replace(/^["']|["']$/g, "") || ""
 const INDEXNOW_FILENAME = "indexnow.txt"
 const INDEXNOW_URL = `${BASE_URL}/${INDEXNOW_FILENAME}`
 
