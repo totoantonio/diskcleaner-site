@@ -4,7 +4,7 @@ description: "A practical safety guide to Xcode folders: DerivedData, Archives, 
 date: "2026-06-07"
 slug: "which-xcode-folders-are-safe-to-delete"
 category: "Developer"
-author: "Thomas A."
+author: "Thomas Antoni"
 excerpt: "Xcode can leave tens of gigabytes across Developer folders. This guide explains which folders are safe to delete, which ones reset simulators or slow builds, and which archives deserve caution."
 featured: true
 ---

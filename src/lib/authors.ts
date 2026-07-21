@@ -30,8 +30,8 @@ const authorProfiles: Record<string, AuthorProfile> = {
     role: "Product Commentary",
     bio: "Covers product direction, workflow design, and the practical tradeoffs behind modern Mac cleaner apps.",
   },
-  "Thomas A.": {
-    name: "Thomas A.",
+  "Thomas Antoni": {
+    name: "Thomas Antoni",
     role: "Contributing Author",
     bio: "Contributes developer-focused cleanup guides for Xcode, iOS Simulator storage, and safe macOS maintenance workflows.",
   },

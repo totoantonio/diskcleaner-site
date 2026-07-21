@@ -1,5 +1,5 @@
 # DiskCleaner
-> A released, Apple-Notarized macOS utility app that scans 16+ cleanup categories, shows every file before it moves, and sends cleaned items to Trash. Free Core Cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
+> A released, Apple-Notarized macOS utility app that scans 21 cleanup categories and tools, shows every file before it moves, and sends cleaned items to Trash. Free Core Cleaning is included. Premium is a $9.99 one-time purchase — no subscription.
 
 > Full reference: https://www.diskcleaner.pro/llms-full.txt
 
@@ -20,7 +20,7 @@
 - Support: customersupport@diskcleaner.pro
 
 ## What It Does
-DiskCleaner scans 16+ cleanup categories and targeted locations on macOS, then shows you every file before moving anything. All cleaned files go to macOS Trash — nothing is permanently deleted.
+DiskCleaner scans 21 cleanup categories and tools plus targeted locations on macOS, then shows you every file before moving anything. All cleaned files go to macOS Trash — nothing is permanently deleted.
 
 ### Free Core Cleaning
 1. App Cache — per-app cache folders, including the regenerating QuickLook thumbnail cache

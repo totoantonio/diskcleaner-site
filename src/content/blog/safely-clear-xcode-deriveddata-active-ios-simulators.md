@@ -4,7 +4,7 @@ description: "A simulator-safe guide to clearing Xcode DerivedData: what to stop
 date: "2026-05-16"
 slug: "safely-clear-xcode-deriveddata-active-ios-simulators"
 category: "Developer"
-author: "Thomas A."
+author: "Thomas Antoni"
 excerpt: "You can safely clear Xcode DerivedData without breaking active iOS simulators if you stop builds and tests first, leave CoreSimulator device data alone, and delete only Xcode's DerivedData folder."
 ---
 

@@ -5,7 +5,7 @@ date: "2026-05-25"
 updatedAt: "2026-06-02"
 slug: "diskcleaner-for-mac-released"
 category: "Product Update"
-author: "Thomas A."
+author: "Thomas Antoni"
 excerpt: "DiskCleaner for Mac is now released as a direct download. It stays focused on safe, transparent, Apple-Notarized cleanup: every file is shown before removal, everything goes to Trash, and Sparkle keeps the app updated."
 featured: true
 ---
