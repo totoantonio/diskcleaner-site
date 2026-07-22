@@ -5847,8 +5847,8 @@ body:has([data-theme="light"]) {
   }
 
   .authored-hero-copy {
-    width: calc(100vw - 48px) !important;
-    max-width: calc(100vw - 48px) !important;
+    width: min(calc(100vw - 48px), 430px) !important;
+    max-width: 430px !important;
     margin-inline: auto;
     text-align: left;
   }
@@ -5873,7 +5873,8 @@ body:has([data-theme="light"]) {
   .authored-hero-copy > p {
     max-width: 38ch;
     margin: 22px 0 0;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.55;
   }
 
   .authored-hero-actions {
