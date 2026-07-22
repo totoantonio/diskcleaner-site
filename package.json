@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "postbuild": "node scripts/ssg.mjs",
-    "deploy": "node scripts/check-dmg.mjs && npm run build && git add -A && (git diff --cached --quiet || git commit -m 'deploy') && git push origin main",
+    "deploy": "node scripts/check-dmg.mjs && npm run build && git add -A -- . ':(exclude)public/downloads/**' && (git diff --cached --quiet || git commit -m 'deploy') && git push origin main",
     "gsc:auth": "node scripts/search-console.mjs auth",
     "gsc:clean-sitemaps": "node scripts/search-console.mjs clean-sitemaps",
     "gsc:ctr-weekly": "node scripts/search-console.mjs ctr-weekly",
@@ -16,9 +16,11 @@
     "gsc:sites": "node scripts/search-console.mjs sites",
     "gsc:submit-sitemap": "node scripts/search-console.mjs submit-sitemap",
     "lint": "eslint .",
+    "setup:hooks": "git config core.hooksPath .githooks",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.2.8",
     "marked": "^14.0.0",
     "react": "^19.2.0",

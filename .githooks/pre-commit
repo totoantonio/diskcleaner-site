@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if ! git diff --cached --quiet -- public/downloads; then
+  echo >&2 "ERROR: public/downloads is protected and cannot be included in a normal commit."
+  echo >&2 "Unstage the download change before committing. Release-DMG updates must be explicit and separate."
+  exit 1
+fi

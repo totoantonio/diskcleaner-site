@@ -76,6 +76,16 @@ DiskCleaner is a paid Mac utility, so the website avoids noisy growth language a
 | SEO utilities | Applies per-page metadata, canonical URLs, social images, and schema control |
 | Content markdown | Powers long-form blog content around Mac cleanup and storage education |
 
+## Protected Release Download
+
+`public/downloads/**` is excluded from normal deployment commits so the published DMG stays at its stable URL. After cloning the repository, enable the versioned commit and push guards once:
+
+```sh
+npm run setup:hooks
+```
+
+Release-DMG replacements are intentionally handled as separate, explicit changes.
+
 ## Product And Website Links
 
 - Main site: https://www.diskcleaner.pro/

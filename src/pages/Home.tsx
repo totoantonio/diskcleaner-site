@@ -22,6 +22,7 @@ import sunBurstImage from "../assets/SunBurst.webp"
 import "../App.css"
 
 const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg"
+const appVersion = "26.1.1.0"
 const screenshotRevision = "20260531-v2"
 const withScreenshotRevision = (url: string) => `${url}?v=${screenshotRevision}`
 
@@ -403,7 +404,7 @@ function Hero({ BG }: { BG: string }) {
             </div>
             <div>
               <strong>DiskCleaner for Mac</strong>
-              <span>Review-First Cleanup</span>
+              <span>Review-First Cleanup · v{appVersion}</span>
             </div>
           </div>
           <h1 className="authored-major-headline">
@@ -853,9 +854,9 @@ void InterfaceSplit
 
 function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
   return (
-      <section id="uninstaller" className="overflow-hidden py-16 sm:py-24 lg:py-32" style={{ background: SURFACE }}>
+      <section id="uninstaller" className="authored-uninstaller-section overflow-hidden py-16 sm:py-24 lg:py-32" style={{ background: SURFACE }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
+          <div className="authored-uninstaller-layout mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
             <div className="order-1 lg:order-1 lg:pr-8 reveal">
               <div className="lg:max-w-[40rem]">
                 <p className="reveal reveal-headline text-[clamp(34px,4vw,56px)] font-bold leading-[1.04] tracking-[-0.04em]">
@@ -917,7 +918,7 @@ function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
                 alt="DiskCleaner App Uninstaller for Mac showing leftover files, caches, preferences, containers, and app removal review before cleanup"
                 loading="lazy"
                 decoding="async"
-                className="split-img mx-auto w-full max-w-[760px] object-contain object-center lg:max-w-[820px]"
+                className="authored-uninstaller-visual split-img mx-auto w-full max-w-[760px] object-contain object-center lg:max-w-[820px]"
               />
             </div>
           </div>
@@ -1382,12 +1383,13 @@ function SiteFooter({ openModal }: { openModal: (k: "support" | "changelog") => 
 export default function Home() {
   const location = useLocation()
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light"
+    if (typeof window === "undefined") return "dark"
     const saved = localStorage.getItem("dc-theme")
     if (saved === "light" || saved === "dark") return saved
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    return "dark"
   })
   const [modal, setModal] = useState<ModalKey>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -1421,34 +1423,22 @@ export default function Home() {
 
   return (
     <>
-      <nav
-        className={`authored-floating-nav ${scrolled ? "is-visible" : ""}`}
-        aria-hidden={!scrolled}
-      >
-        <div className="authored-floating-brand">
-          <a href="/">
-            <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
-          </a>
-          <small>Review First. Trash, Not Delete.</small>
-        </div>
-        <div className="authored-floating-links">
-          <a href="#review-first">How It Works</a>
-          <a href="/trust/">Safety</a>
-          <a href="#download">Pricing</a>
-        </div>
-        <a href={appDownloadUrl} download data-analytics-location="floating-nav" className="authored-floating-download">
-          Download Free
-        </a>
-      </nav>
-
-      <div data-theme={theme} className="page-enter">
+      <div data-theme={theme}>
 
       {/* NAV */}
-      <nav className={`site-top-nav authored-nav ${scrolled ? "is-hidden" : ""}`}>
+      <nav className={`site-top-nav authored-nav ${scrolled ? "is-scrolled" : ""}`}>
         <div className="authored-nav-inner">
           <a href="/" className="authored-nav-logo">
+            <img src={APP_ICON_SRC} width="28" height="28" alt="" />
             <span className="authored-brand-wordmark">Disk<strong>Cleaner</strong></span>
           </a>
+          <div className="authored-nav-links" aria-label="Primary navigation">
+            <a href="#review-first">How It Works</a>
+            <a href="#uninstaller">Features</a>
+            <a href="/trust/">Safety</a>
+            <a href="#download">Pricing</a>
+            <a href="/blog/">Blog</a>
+          </div>
           <div className="authored-nav-actions">
             <button
               className="authored-theme-button"
@@ -1461,14 +1451,40 @@ export default function Home() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href="/blog/" className="authored-blog-shortcut">
-              Blog <span aria-hidden>↗</span>
+            <button
+              type="button"
+              className={`authored-menu-button ${mobileMenuOpen ? "is-open" : ""}`}
+              onClick={() => setMobileMenuOpen(open => !open)}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="home-mobile-menu"
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            >
+              <span /><span />
+            </button>
+            <a href={appDownloadUrl} download data-analytics-location="top-nav" className="authored-nav-download">
+              Download Free
             </a>
           </div>
+          {mobileMenuOpen && (
+            <div id="home-mobile-menu" className="authored-mobile-menu">
+              {[
+                { href: "#review-first", label: "How It Works" },
+                { href: "#uninstaller", label: "Features" },
+                { href: "/trust/", label: "Safety" },
+                { href: "#download", label: "Pricing" },
+                { href: "/blog/", label: "Blog" },
+              ].map(link => (
+                <a key={link.href} href={link.href} onClick={() => setMobileMenuOpen(false)}>{link.label}</a>
+              ))}
+              <a href={appDownloadUrl} download data-analytics-location="mobile-nav" className="authored-mobile-download" onClick={() => setMobileMenuOpen(false)}>
+                Download Free for macOS
+              </a>
+            </div>
+          )}
         </div>
       </nav>
 
-      <div className="pt-[52px]">
+      <div className="page-enter pt-[52px]">
         <Hero BG="var(--bg)" />
         <Features SURFACE={STRIPE_GRAY} />
         <ProblemFinder BG={STRIPE_WHITE} />

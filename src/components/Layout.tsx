@@ -23,10 +23,10 @@ const MoonIcon = () => (
 
 export default function Layout() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light"
+    if (typeof window === "undefined") return "dark"
     const saved = localStorage.getItem("dc-theme")
     if (saved === "light" || saved === "dark") return saved
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    return "dark"
   })
   const [modal, setModal] = useState<ModalKey>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -36,7 +36,8 @@ export default function Layout() {
 
       <nav className="site-top-nav fixed left-0 top-0 z-[200] w-full border-b border-[var(--border)] bg-[var(--nav-bg)] backdrop-blur-2xl backdrop-saturate-150">
         <div className="mx-auto flex h-[52px] w-full max-w-[1200px] items-center justify-between px-6 md:px-12">
-          <a href="/" className="text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">
+          <a href="/" className="layout-brand text-[17px] font-semibold tracking-[-0.02em] text-[var(--text)] no-underline">
+            <img src="/macOS_newAppicon.png?v=20260608b" width="28" height="28" alt="" />
             <span>Disk<em className="not-italic text-[var(--blue)]">Cleaner</em></span>
           </a>
           <ul className="hidden list-none items-center gap-7 md:flex">
