@@ -23,10 +23,10 @@ const MoonIcon = () => (
 
 export default function Layout() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "dark"
+    if (typeof window === "undefined") return "light"
     const saved = localStorage.getItem("dc-theme")
     if (saved === "light" || saved === "dark") return saved
-    return "dark"
+    return "light"
   })
   const [modal, setModal] = useState<ModalKey>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

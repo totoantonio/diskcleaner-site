@@ -1383,10 +1383,10 @@ function SiteFooter({ openModal }: { openModal: (k: "support" | "changelog") => 
 export default function Home() {
   const location = useLocation()
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "dark"
+    if (typeof window === "undefined") return "light"
     const saved = localStorage.getItem("dc-theme")
     if (saved === "light" || saved === "dark") return saved
-    return "dark"
+    return "light"
   })
   const [modal, setModal] = useState<ModalKey>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -1395,7 +1395,14 @@ export default function Home() {
   useEffect(() => {
     const viewport = window.visualViewport
     const root = document.documentElement
+    const isDesktopSafari =
+      navigator.vendor === "Apple Computer, Inc." &&
+      /Safari/i.test(navigator.userAgent) &&
+      !/(Chrome|Chromium|CriOS|Edg|OPR)/i.test(navigator.userAgent) &&
+      navigator.maxTouchPoints === 0
     let frame = 0
+
+    if (isDesktopSafari) root.dataset.dcDesktopSafari = "true"
 
     const updateViewportTop = () => {
       window.cancelAnimationFrame(frame)
@@ -1416,6 +1423,7 @@ export default function Home() {
       viewport?.removeEventListener("resize", updateViewportTop)
       viewport?.removeEventListener("scroll", updateViewportTop)
       root.style.removeProperty("--dc-visual-viewport-top")
+      delete root.dataset.dcDesktopSafari
     }
   }, [])
 

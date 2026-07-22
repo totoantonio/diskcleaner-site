@@ -5973,6 +5973,15 @@ body:has([data-theme="light"]) {
   }
 }
 
+/* Safari 27's compact desktop chrome can overlap the top of the layout when
+   the window is short. Reserve the overlaid strip only for desktop Safari;
+   ordinary and maximized windows keep the standard navbar spacing. */
+@media (max-height: 760px) {
+  html[data-dc-desktop-safari="true"] .site-top-nav.authored-nav {
+    padding-top: 46px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-theme],
   .authored-product-proof,
