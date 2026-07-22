@@ -389,7 +389,7 @@ function Hero({ BG }: { BG: string }) {
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-12">
         <div className="authored-hero-copy">
           <div className="authored-product-lockup">
-            <div className="authored-app-icon">
+            <div className="authored-app-icon instapaper_ignore">
               <img
                 src={APP_ICON_SRC}
                 alt=""
@@ -434,16 +434,17 @@ function Hero({ BG }: { BG: string }) {
             <span />
             <span />
           </div>
-          <img
-            src={sunBurstImage}
-            width="1200"
-            height="1200"
-            alt=""
-            loading="eager"
-            decoding="async"
-            className="authored-proof-sunburst"
-            aria-hidden="true"
-          />
+          <div className="instapaper_ignore" aria-hidden="true">
+            <img
+              src={sunBurstImage}
+              width="1200"
+              height="1200"
+              alt=""
+              loading="eager"
+              decoding="async"
+              className="authored-proof-sunburst"
+            />
+          </div>
           <div className="authored-proof-floor" aria-hidden="true" />
           <div className="authored-proof-scanlines" aria-hidden="true">
             <span />
@@ -903,7 +904,7 @@ function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
                 </dl>
               </div>
             </div>
-            <div className="order-2 lg:order-2 reveal d1 lg:flex lg:items-center">
+            <div className="instapaper_ignore order-2 lg:order-2 reveal d1 lg:flex lg:items-center">
               <div className="authored-uninstaller-video">
                 <iframe
                   src="https://www.youtube-nocookie.com/embed/lVD6PgiqSOc?rel=0&playsinline=1"
@@ -1010,7 +1011,7 @@ function MenuBarSplit({ BG }: { BG: string }) {
       <section className="py-16 sm:py-24 lg:py-32" style={{ background: BG }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-14 sm:gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-x-16">
-            <div className="order-2 lg:order-1 reveal flex justify-center py-1 sm:py-0 lg:items-center">
+            <div className="instapaper_ignore order-2 lg:order-1 reveal flex justify-center py-1 sm:py-0 lg:items-center">
               <img
                 src={menuImage}
                 srcSet={`${menuImage_464} 464w, ${menuImage_640} 640w, ${menuImage} 650w`}
@@ -1234,16 +1235,17 @@ function CTA({ BG }: { BG: string }) {
                 <small>Yours forever · Up to 2 Macs</small>
               </div>
             </div>
-            <img
-              src={sunBurstImage}
-              width="1200"
-              height="1200"
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="authored-download-sunburst"
-              aria-hidden="true"
-            />
+            <div className="instapaper_ignore" aria-hidden="true">
+              <img
+                src={sunBurstImage}
+                width="1200"
+                height="1200"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="authored-download-sunburst"
+              />
+            </div>
 
             <div className="authored-download-content">
               <div className="authored-download-kicker reveal">
