@@ -5,11 +5,6 @@ import { modalTitle, type ModalKey } from "../components/modalConfig"
 import appImage from "../assets/DiskCleaner.webp"
 import appImage_464 from "../assets/DiskCleaner-464.webp"
 import appImage_640 from "../assets/DiskCleaner-640.webp"
-import appUninstallerImage from "../assets/App Uninstaller.webp"
-import appUninstallerImage_464 from "../assets/App Uninstaller-464.webp"
-import appUninstallerImage_640 from "../assets/App Uninstaller-640.webp"
-import appUninstallerImage_1024 from "../assets/App Uninstaller-1024.webp"
-import appUninstallerImage_1600 from "../assets/App Uninstaller-1600.webp"
 import menuImage from "../assets/Menu.png"
 import menuImage_464 from "../assets/Menu-464.png"
 import menuImage_640 from "../assets/Menu-640.png"
@@ -909,17 +904,16 @@ function UninstallerSplit({ SURFACE }: { SURFACE: string }) {
               </div>
             </div>
             <div className="order-2 lg:order-2 reveal d1 lg:flex lg:items-center">
-              <img
-                src={withScreenshotRevision(appUninstallerImage)}
-                srcSet={`${withScreenshotRevision(appUninstallerImage_464)} 464w, ${withScreenshotRevision(appUninstallerImage_640)} 640w, ${withScreenshotRevision(appUninstallerImage_1024)} 1024w, ${withScreenshotRevision(appUninstallerImage_1600)} 1600w, ${withScreenshotRevision(appUninstallerImage)} 2024w`}
-                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 88vw, 46vw"
-                width="2024"
-                height="1848"
-                alt="DiskCleaner App Uninstaller for Mac showing leftover files, caches, preferences, containers, and app removal review before cleanup"
-                loading="lazy"
-                decoding="async"
-                className="authored-uninstaller-visual split-img mx-auto w-full max-w-[760px] object-contain object-center lg:max-w-[820px]"
-              />
+              <div className="authored-uninstaller-video">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/lVD6PgiqSOc?rel=0&playsinline=1"
+                  title="See how DiskCleaner for Mac works"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </div>
         </div>
