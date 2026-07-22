@@ -555,7 +555,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
         </div>
         <div className="authored-decision-list">
           {decisions.map((decision) => (
-            <article key={decision.number} className="authored-decision reveal">
+            <section key={decision.number} className="authored-decision reveal">
               <span className="authored-decision-number">{decision.number}</span>
               <div className={`authored-decision-card authored-decision-card-${decision.tone}`}>
                 <div className="authored-decision-icon" aria-hidden="true">
@@ -598,7 +598,7 @@ function Features({ SURFACE }: { SURFACE: string }) {
                 </div>
                 <span className="authored-decision-status"><i />{decision.detail}</span>
               </div>
-            </article>
+            </section>
           ))}
         </div>
       </div>
@@ -676,7 +676,7 @@ function ProblemFinder({ BG }: { BG: string }) {
               </button>
             ))}
           </div>
-          <article className="authored-problem-answer" key={active.id} role="tabpanel">
+          <section className="authored-problem-answer" key={active.id} role="tabpanel">
             <span className="authored-problem-answer-label">Recommended Path</span>
             <h3>{active.title}</h3>
             <p>{active.body}</p>
@@ -689,7 +689,7 @@ function ProblemFinder({ BG }: { BG: string }) {
                 {active.link} <span aria-hidden>→</span>
               </Link>
             </div>
-          </article>
+          </section>
         </div>
       </div>
     </section>
@@ -1479,22 +1479,24 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="page-enter pt-[52px]">
-        <Hero BG="var(--bg)" />
-        <Features SURFACE={STRIPE_GRAY} />
-        <ProblemFinder BG={STRIPE_WHITE} />
-        <LatestGuides BG={STRIPE_WHITE} />
+      <main className="page-enter pt-[52px]">
+        <article className="home-reader-content">
+          <Hero BG="var(--bg)" />
+          <Features SURFACE={STRIPE_GRAY} />
+          <ProblemFinder BG={STRIPE_WHITE} />
+          <LatestGuides BG={STRIPE_WHITE} />
 
-        <UninstallerSplit SURFACE={STRIPE_WHITE} />
-        <MenuBarSplit BG={STRIPE_GRAY} />
-        <TrustBand BG={STRIPE_WHITE} />
-        <CTA BG={STRIPE_WHITE} />
+          <UninstallerSplit SURFACE={STRIPE_WHITE} />
+          <MenuBarSplit BG={STRIPE_GRAY} />
+          <TrustBand BG={STRIPE_WHITE} />
+          <CTA BG={STRIPE_WHITE} />
 
-        <FollowBuild BG={STRIPE_GRAY} />
+          <FollowBuild BG={STRIPE_GRAY} />
 
-        <FAQ BG={STRIPE_WHITE} />
-        <SiteFooter openModal={k => setModal(k)} />
-      </div>
+          <FAQ BG={STRIPE_WHITE} />
+        </article>
+      </main>
+      <SiteFooter openModal={k => setModal(k)} />
 
 
       <Modal
