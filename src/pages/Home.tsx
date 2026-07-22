@@ -1393,41 +1393,6 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const viewport = window.visualViewport
-    const root = document.documentElement
-    const isDesktopSafari =
-      navigator.vendor === "Apple Computer, Inc." &&
-      /Safari/i.test(navigator.userAgent) &&
-      !/(Chrome|Chromium|CriOS|Edg|OPR)/i.test(navigator.userAgent) &&
-      navigator.maxTouchPoints === 0
-    let frame = 0
-
-    if (isDesktopSafari) root.dataset.dcDesktopSafari = "true"
-
-    const updateViewportTop = () => {
-      window.cancelAnimationFrame(frame)
-      frame = window.requestAnimationFrame(() => {
-        const offsetTop = Math.max(0, viewport?.offsetTop ?? 0)
-        root.style.setProperty("--dc-visual-viewport-top", `${offsetTop}px`)
-      })
-    }
-
-    updateViewportTop()
-    window.addEventListener("resize", updateViewportTop, { passive: true })
-    viewport?.addEventListener("resize", updateViewportTop, { passive: true })
-    viewport?.addEventListener("scroll", updateViewportTop, { passive: true })
-
-    return () => {
-      window.cancelAnimationFrame(frame)
-      window.removeEventListener("resize", updateViewportTop)
-      viewport?.removeEventListener("resize", updateViewportTop)
-      viewport?.removeEventListener("scroll", updateViewportTop)
-      root.style.removeProperty("--dc-visual-viewport-top")
-      delete root.dataset.dcDesktopSafari
-    }
-  }, [])
-
-  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 520)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
@@ -1459,6 +1424,7 @@ export default function Home() {
   return (
     <>
       <div data-theme={theme}>
+        <div className="safari-toolbar-sentinel" aria-hidden="true" />
 
       {/* NAV */}
       <nav className={`site-top-nav authored-nav ${scrolled ? "is-scrolled" : ""}`}>

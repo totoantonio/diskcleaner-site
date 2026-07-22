@@ -5182,13 +5182,28 @@ body:has([data-theme="light"]) {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Keep the homepage header in document flow. Safari can retain a stale
-   clipping rectangle for transformed fixed layers after a desktop window is
-   resized, which hides the upper half of the capsule until maximized. */
+/* Safari 26+ samples a qualifying fixed edge element when it composites its
+   toolbar. Giving it an explicit page-colored sample prevents the toolbar's
+   transparent layer from obscuring the top of the sticky navigation. */
+.safari-toolbar-sentinel {
+  position: fixed;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 3px;
+  z-index: 2147483646;
+  visibility: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+/* Keep the homepage header in document flow so resizing Safari does not leave
+   it attached to a stale fixed-position clipping rectangle. */
 .site-top-nav.authored-nav {
   position: sticky;
   inset: auto;
-  top: max(env(safe-area-inset-top, 0px), var(--dc-visual-viewport-top, 0px));
+  top: env(safe-area-inset-top, 0px);
+  z-index: 1000;
   transform: none;
   will-change: auto;
 }
@@ -5697,10 +5712,10 @@ body:has([data-theme="light"]) {
 }
 
 @media (max-width: 900px) {
-  .authored-nav {
+  .site-top-nav.authored-nav {
     position: sticky;
     inset: auto;
-    top: max(env(safe-area-inset-top, 0px), var(--dc-visual-viewport-top, 0px));
+    top: env(safe-area-inset-top, 0px);
   }
 
   .authored-nav + div {
@@ -5971,15 +5986,6 @@ body:has([data-theme="light"]) {
     width: min(100%, 430px) !important;
     margin-top: -42px;
     margin-bottom: -62px;
-  }
-}
-
-/* Safari 27's compact desktop chrome can overlap the top of the layout when
-   the window is short. Reserve the overlaid strip only for desktop Safari;
-   ordinary and maximized windows keep the standard navbar spacing. */
-@media (max-height: 760px) {
-  html[data-dc-desktop-safari="true"] .site-top-nav.authored-nav {
-    padding-top: 46px;
   }
 }
 
