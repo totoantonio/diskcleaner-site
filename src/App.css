@@ -8,10 +8,6 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-html, body {
-  overflow-x: hidden;
-  overflow-x: clip;
-}
 body {
   min-width: 320px;
   margin: 0;
@@ -633,6 +629,7 @@ body, [data-theme] {
   to   { transform: none; }
 }
 .page-enter {
+  overflow-x: clip;
   animation: dc-page-in 0.28s cubic-bezier(.22,1,.36,1) both;
 }
 
@@ -5191,7 +5188,7 @@ body:has([data-theme="light"]) {
 .site-top-nav.authored-nav {
   position: sticky;
   inset: auto;
-  top: 0;
+  top: max(env(safe-area-inset-top, 0px), var(--dc-visual-viewport-top, 0px));
   transform: none;
   will-change: auto;
 }
@@ -5703,7 +5700,7 @@ body:has([data-theme="light"]) {
   .authored-nav {
     position: sticky;
     inset: auto;
-    top: 0;
+    top: max(env(safe-area-inset-top, 0px), var(--dc-visual-viewport-top, 0px));
   }
 
   .authored-nav + div {
