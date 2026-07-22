@@ -202,7 +202,6 @@ body, [data-theme] {
   font-size: 17px;
   line-height: 1.5;
   min-height: 100vh;
-  overflow-x: clip;
   transition: background .2s, color .2s;
 }
 
@@ -5186,6 +5185,17 @@ body:has([data-theme="light"]) {
   -webkit-backdrop-filter: none !important;
 }
 
+/* Keep the homepage header in document flow. Safari can retain a stale
+   clipping rectangle for transformed fixed layers after a desktop window is
+   resized, which hides the upper half of the capsule until maximized. */
+.site-top-nav.authored-nav {
+  position: sticky;
+  inset: auto;
+  top: 0;
+  transform: none;
+  will-change: auto;
+}
+
 .authored-nav-inner,
 .site-top-nav:not(.authored-nav) > div:first-child {
   position: relative;
@@ -5320,7 +5330,7 @@ body:has([data-theme="light"]) {
 .authored-mobile-menu .authored-mobile-download { margin-top: 5px; color: #fff; background: var(--blue); text-align: center; }
 
 .authored-floating-nav { display: none; }
-.authored-nav + div { padding-top: 72px !important; }
+.authored-nav + div { padding-top: 0 !important; }
 .site-top-nav:not(.authored-nav) + main { padding-top: 92px !important; }
 
 .authored-hero {
@@ -5691,12 +5701,13 @@ body:has([data-theme="light"]) {
 
 @media (max-width: 900px) {
   .authored-nav {
-    position: fixed;
-    inset: 0 0 auto;
+    position: sticky;
+    inset: auto;
+    top: 0;
   }
 
   .authored-nav + div {
-    padding-top: 64px !important;
+    padding-top: 0 !important;
   }
 
   .site-top-nav {
@@ -5809,7 +5820,7 @@ body:has([data-theme="light"]) {
   .authored-menu-button { width: 36px; height: 36px; }
 
   .site-top-nav:not(.authored-nav) + main { padding-top: 70px !important; }
-  .authored-nav + div { padding-top: 62px !important; }
+  .authored-nav + div { padding-top: 0 !important; }
 
   .site-top-nav:not(.authored-nav) > div + div {
     width: calc(100% - 20px);
