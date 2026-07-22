@@ -285,6 +285,41 @@ export function ChangelogContent() {
 
       {[
         {
+          version: "26.1.1.4",
+          date: "June 30, 2026",
+          title: "Network Status & Cleaning Stability",
+          groups: [
+            {
+              label: "+ Added",
+              items: [
+                "Live Wi-Fi strength, link speed, and DNS server status on the DNS Refresh page.",
+                "Background network diagnostics preload and loading feedback.",
+              ],
+            },
+            {
+              label: "• Improved",
+              items: [
+                "DNS Refresh now works better in smaller windows with a scrollable, refined layout.",
+                "Open DiskCleaner from the menu bar now focuses the existing main window.",
+                "Last Run results now use a cleaner list-style layout.",
+              ],
+            },
+            {
+              label: "✓ Fixed",
+              items: [
+                "Reduced cleanup UI stalls and redraws while Trash items are being processed.",
+                "Stopped repeated scans of unreadable Trash roots and paused Trash monitoring during cleanup.",
+              ],
+            },
+            {
+              label: "Build",
+              items: [
+                "Build 21, verified successfully in Xcode.",
+              ],
+            },
+          ],
+        },
+        {
           version: "26.1.1.0",
           date: "May 26, 2026",
           title: "In-App Update Support",

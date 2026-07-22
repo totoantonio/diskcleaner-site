@@ -654,7 +654,7 @@ const STATIC_PAGES = [
   {
     route: "/changelog",
     title: "DiskCleaner Changelog",
-    description: "DiskCleaner changelog with release notes for the latest Mac app updates, including version 26.1.1.0.",
+    description: "DiskCleaner changelog with release notes for the latest Mac app updates, including version 26.1.1.4.",
     image: IMG_DEFAULT,
     jsonLd: buildBreadcrumbJsonLd([
       { name: "Home", url: `${BASE_URL}/` },

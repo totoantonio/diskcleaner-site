@@ -22,7 +22,7 @@ import sunBurstImage from "../assets/SunBurst.webp"
 import "../App.css"
 
 const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg"
-const appVersion = "26.1.1.0"
+const appVersion = "26.1.1.4"
 const screenshotRevision = "20260531-v2"
 const withScreenshotRevision = (url: string) => `${url}?v=${screenshotRevision}`
 

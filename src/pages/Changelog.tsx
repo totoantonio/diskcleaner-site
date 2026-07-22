@@ -12,7 +12,7 @@ const ChevronLeft = () => (
 export default function Changelog() {
   useEffect(() => {
     const url = "https://www.diskcleaner.pro/changelog"
-    const description = "DiskCleaner changelog with release notes for the latest Mac app updates, including version 26.1.1.0."
+    const description = "DiskCleaner changelog with release notes for the latest Mac app updates, including version 26.1.1.4."
 
     applyPageMetadata({
       title: "DiskCleaner Changelog",
