@@ -4,7 +4,7 @@ import { modalTitle, type ModalKey } from "./modalConfig"
 import { Modal, SupportContent } from "./SiteModal"
 import "../App.css"
 
-const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg"
+const appDownloadUrl = "/downloads/DiskCleaner-macOS.dmg?v=26.1.1.5"
 const SunIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <circle cx="12" cy="12" r="5" />

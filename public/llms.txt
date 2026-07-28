@@ -9,7 +9,7 @@
 - Category: Utilities / Disk Cleaner / Mac Storage Optimizer
 - Price: Free Core Cleaning included; $9.99 One-Time Premium unlock (no subscription, covers up to 2 Macs)
 - Status: Released as a direct Mac download
-- Direct download: https://www.diskcleaner.pro/downloads/DiskCleaner-macOS.dmg
+- Direct download: https://www.diskcleaner.pro/downloads/DiskCleaner-macOS.dmg?v=26.1.1.5
 - Distribution: Apple-Notarized direct download; Mac App Store availability planned
 - Privacy: Cleanup runs locally — no telemetry, no data collection, no account required for scanning
 - Architecture: Universal Binary — native Apple Silicon and Intel support

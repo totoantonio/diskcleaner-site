@@ -137,7 +137,7 @@ export default function Trust() {
 spctl --assess --type execute --verbose=2 /Applications/DiskCleaner.app
 xcrun stapler validate /Applications/DiskCleaner.app`}</code></pre>
             <p>
-              Download the current build from the <a href="/downloads/DiskCleaner-macOS.dmg">official DiskCleaner DMG</a>.
+              Download the current build from the <a href="/downloads/DiskCleaner-macOS.dmg?v=26.1.1.5">official DiskCleaner DMG</a>.
             </p>
 
             <h2>5. Scan-Performance Methodology</h2>

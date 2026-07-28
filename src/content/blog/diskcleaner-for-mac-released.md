@@ -133,7 +133,7 @@ DiskCleaner is available now as a direct Mac download:
 <div class="blog-cta-block">
   <p class="blog-cta-block-title">Download DiskCleaner for Mac</p>
   <p class="blog-cta-block-sub">A safe, transparent, Apple-Notarized Mac cleaner with Free Core Cleaning and no subscription.</p>
-  <a href="/downloads/DiskCleaner-macOS.dmg" download class="blog-cta-btn" data-analytics-location="release-article">
+  <a href="/downloads/DiskCleaner-macOS.dmg?v=26.1.1.5" download class="blog-cta-btn" data-analytics-location="release-article">
     Download for macOS
   </a>
   <p class="blog-cta-block-note">macOS 13 Ventura through macOS 26 Tahoe · Apple Silicon and Intel</p>
