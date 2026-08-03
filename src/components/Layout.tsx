@@ -81,7 +81,7 @@ export default function Layout() {
             >
               {theme === "light" ? <MoonIcon /> : <SunIcon />}
             </button>
-            <a href={appDownloadUrl} download data-analytics-location="top-nav" className="hidden rounded-full bg-[var(--blue)] px-4 py-[7px] text-[13px] font-medium text-white no-underline transition hover:brightness-110 md:inline-block">Download Free</a>
+            <a href={appDownloadUrl} download data-analytics-location="top-nav" className="hidden h-9 items-center justify-center rounded-full bg-[var(--blue)] px-4 text-[13px] font-medium leading-none text-white no-underline transition hover:brightness-110 md:inline-flex">Download Free</a>
           </div>
         </div>
         {mobileMenuOpen && (
